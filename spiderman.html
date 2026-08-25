@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider-Man | Marvel Universe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --marvel-red: #e21b22;
+            --spider-blue: #1b365d;
+            --dark-bg: #0b0c10;
+            --card-bg: #1f2833;
+            --neon-glow: rgba(226, 27, 34, 0.6);
+            --text-light: #c5c6c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(11, 12, 16, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid var(--marvel-red);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--marvel-red);
+            text-shadow: 0 0 10px var(--neon-glow);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--marvel-red);
+            text-shadow: 0 0 8px var(--neon-glow);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(11,12,16,0.85), rgba(27,54,93,0.85)), 
+                        url('https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 900;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(226, 27, 34, 0.8);
+        }
+
+        .hero h1 span {
+            color: var(--marvel-red);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--marvel-red);
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-radius: 4px;
+            box-shadow: 0 0 15px var(--neon-glow);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ff2a31;
+            box-shadow: 0 0 25px var(--marvel-red);
+            transform: translateY(-3px);
+        }
+
+        /* FEATURED SUIT SECTION (1 IMAGE SHOWCASE) */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            border-bottom: 3px solid var(--marvel-red);
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .showcase-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--marvel-red);
+            box-shadow: 0 10px 40px rgba(226, 27, 34, 0.4);
+            text-align: left;
+        }
+
+        .showcase-card img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .showcase-content {
+            padding: 35px;
+        }
+
+        .showcase-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .showcase-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        /* QUOTE SECTION */
+        .quote-section {
+            background: linear-gradient(135deg, var(--spider-blue), var(--dark-bg));
+            padding: 80px 20px;
+            text-align: center;
+            border-top: 2px solid var(--marvel-red);
+            border-bottom: 2px solid var(--marvel-red);
+        }
+
+        .quote-section blockquote {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(20px, 3vw, 32px);
+            font-style: italic;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .quote-section cite {
+            display: block;
+            margin-top: 20px;
+            font-size: 16px;
+            color: var(--marvel-red);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #050608;
+            font-size: 14px;
+            color: #707070;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer span {
+            color: var(--marvel-red);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            nav ul {
+                display: none;
+            }
+            .showcase-card img {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">Marvel <span>Spider-Man</span></div>
+        <nav>
+            <ul>
+                <li><a href="#hero">Trang Chủ</a></li>
+                <li><a href="#suit-showcase">Bộ Giáp</a></li>
+                <li><a href="#quote">Châm Ngôn</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Sức Mạnh Lớn Đi Kèm <span>Trách Nhiệm Lớn</span></h1>
+            <p>Khám phá thế giới của Người Nhện - Biểu tượng anh hùng vĩ đại nhất thành phố New York, nơi công lý và lòng dũng cảm ngự trị.</p>
+            <a href="#suit-showcase" class="btn">Khám Phá Ngay</a>
+        </div>
+    </section>
+
+    <!-- SINGLE SUIT SHOWCASE SECTION -->
+    <section class="container" id="suit-showcase">
+        <h2 class="section-title">Bộ Giáp Tiêu Biểu</h2>
+        <div class="showcase-card">
+            <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?q=80&w=1200&auto=format&fit=crop" alt="Advanced Suit">
+            <div class="showcase-content">
+                <h3>Advanced Suit (Biểu Tượng Hiện Đại)</h3>
+                <p>Bộ trang phục kinh điển được tối ưu hóa với biểu tượng nhện trắng nổi bật trước ngực, chất liệu vải siêu bền và tích hợp nhiều công nghệ hỗ trợ chiến đấu đỉnh cao, giúp Spider-Man tung hoành khắp các con phố New York một cách linh hoạt nhất.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE SECTION -->
+    <section class="quote-section" id="quote">
+        <blockquote>
+            "Không quan trọng bạn vấp ngã bao nhiêu lần, điều quan trọng là bạn luôn đứng dậy và tiếp tục chiến đấu."
+        </blockquote>
+        <cite>- PETER PARKER -</cite>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Marvel Universe Fanpage. Designed with <span>❤️</span> for Spider-Man Fans.</p>
+    </footer>
+
+</body>
+</html>

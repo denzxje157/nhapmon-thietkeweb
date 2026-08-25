@@ -148,20 +148,6 @@ gantt
 
 ---
 
-### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png" alt="Bar Chart" width="28" height="28" /> GitHub Stats & Metrics
-
-<div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=denzxje157&show_icons=true&theme=radical&hide_border=true&title_color=38BDF8&icon_color=38BDF8&text_color=94A3B8&bg_color=0F172A" height="150" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=denzxje157&layout=compact&theme=radical&hide_border=true&title_color=38BDF8&text_color=94A3B8&bg_color=0F172A" height="150" />
-
-<br/><br/>
-
-<img src="https://komarev.com/ghpvc/?username=denzxje157&label=Profile%20Views&color=0ea5e9&style=flat-square" alt="Profile Views" />
-
-</div>
-
----
 
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,18,24&height=100&section=footer" width="100%"/>

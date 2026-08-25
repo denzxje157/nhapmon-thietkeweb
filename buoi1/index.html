@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nguyễn Hoàng Anh - Profile Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --primary: #38bdf8;
+      --primary-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-green: #34d399;
+      --accent-purple: #a855f7;
+      --accent-orange: #fb923c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #0d1322;
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .header-banner {
+      width: 100%;
+      border-radius: 16px;
+      margin-bottom: 24px;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 15px;
+    }
+
+    .badges img {
+      height: 28px;
+      border-radius: 6px;
+      transition: transform 0.2s;
+    }
+
+    .badges img:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Section styling */
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #1e293b;
+    }
+
+    .section-title img {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Code block styling */
+    .yaml-box {
+      background: #0b0f19;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 20px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      color: #38bdf8;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .yaml-box span.key { color: #f472b6; }
+    .yaml-box span.val { color: #e2e8f0; }
+
+    ul.bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    ul.bullet-list li {
+      position: relative;
+      padding-left: 28px;
+      color: #cbd5e1;
+    }
+
+    ul.bullet-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+
+    /* Tech Stack */
+    .tech-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .tech-table td {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--card-border);
+      vertical-align: middle;
+    }
+
+    .tech-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .tech-table td:first-child {
+      font-weight: 600;
+      color: #e2e8f0;
+      width: 32%;
+      background: rgba(15, 23, 42, 0.6);
+      border-right: 1px solid var(--card-border);
+    }
+
+    .tech-badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .tech-badge-group img {
+      height: 40px;
+    }
+
+    .tag {
+      background: #1e293b;
+      color: #94a3b8;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-family: 'Fira Code', monospace;
+      border: 1px solid #334155;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+
+    .project-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -8px rgba(56, 189, 248, 0.2);
+    }
+
+    .project-card h3 {
+      font-size: 1.15rem;
+      color: #f1f5f9;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .project-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .project-badges img {
+      height: 22px;
+      border-radius: 4px;
+    }
+
+    /* Roadmap */
+    .roadmap-box {
+      background: #0b0f19;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      color: #38bdf8;
+      line-height: 1.8;
+      overflow-x: auto;
+    }
+
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    .checkbox {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    .checkbox.checked {
+      background: #10b981;
+      color: #ffffff;
+    }
+
+    .checkbox.unchecked {
+      background: #1e293b;
+      border: 1px solid #475569;
+    }
+
+    /* GitHub Stats */
+    .stats-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .stats-row img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 24px 16px; }
+      .title { font-size: 1.8rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .tech-table td:first-child { width: 100%; display: block; border-right: none; }
+      .tech-table td { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header class="header">
+    <img class="header-banner" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,18,24&height=180&section=header&text=Nguy%E1%BB%85n%20Ho%C3%A0ng%20Anh&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Building%20Intelligent%20Systems%20%7C%20Embedded%20IoT%20%7C%20Academic%20Research&descSize=16&descAlignY=60&descAlign=50" alt="Banner Nguyễn Hoàng Anh">
+    
+    <h1 class="title">💫 Nguyễn Hoàng Anh 💫</h1>
+    <p class="subtitle">🎓 IT Undergraduate @ Lạc Hồng University | 🤖 AI & IoT Enthusiast | 👨‍🏫 Aspiring University Lecturer</p>
+
+    <div class="badges">
+      <a href="https://github.com/denzxje157" target="_blank"><img src="https://img.shields.io/badge/GitHub-denzxje157-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
+      <a href="https://youtube.com" target="_blank"><img src="https://img.shields.io/badge/YouTube-ARTFIVE_FASHION-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"></a>
+      <a href="https://lhu.edu.vn" target="_blank"><img src="https://img.shields.io/badge/LHU-Information_Technology-0052CC?style=for-the-badge&logo=affinitydesigner&logoColor=white" alt="LHU"></a>
+      <img src="https://img.shields.io/badge/Career_Goal-Academic_Lecturer-059669?style=for-the-badge&logo=googlescholar&logoColor=white" alt="Goal">
+    </div>
+  </header>
+
+  <!-- Giới thiệu chung -->
+  <section class="section">
+    <h2 class="section-title">
+      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand.png" alt="Wave">
+      Giới thiệu chung (About Me)
+    </h2>
+    <div class="yaml-box">
+<span class="key">Name:</span> <span class="val">Nguyễn Hoàng Anh</span><br>
+<span class="key">Current:</span> <span class="val">Sinh viên Năm 2 - Khoa CNTT @ Đại học Lạc Hồng (LHU)</span><br>
+<span class="key">Passions:</span> <span class="val">Deep Learning, Computer Vision, Embedded IoT, Web Architecture</span><br>
+<span class="key">Career Ambition:</span> <span class="val">Trở thành Giảng viên Đại học & Nhà nghiên cứu Khoa học</span><br>
+<span class="key">Content Creation:</span> <span class="val">ARTFIVE FASHION Channel</span><br>
+<span class="key">GitHub:</span> <span class="val">@denzxje157</span>
+    </div>
+    <ul class="bullet-list">
+      <li><strong>Đang tập trung:</strong> Nghiên cứu mô hình <strong>Transformers</strong> ứng dụng phân tích dữ liệu cục bộ (On-device / Edge AI) và mạng nơ-ron đa tầng.</li>
+      <li><strong>Kỹ thuật phần cứng:</strong> Thiết kế mạch, lập trình vi điều khiển <strong>ESP32 / ESP8266 / Arduino</strong> kết nối cảm biến và đẩy dữ liệu đám mây.</li>
+      <li><strong>Phát triển Web & Ứng dụng:</strong> Thiết kế UI/UX hiện đại, xây dựng kiến trúc cơ sở dữ liệu và hệ thống quản lý hoàn chỉnh.</li>
+      <li><strong>Tác phong:</strong> Trưởng nhóm chỉn chu, có kỹ năng lập kế hoạch tiến độ, phân bổ nhiệm vụ và thuyết trình học thuật sắc bén.</li>
+    </ul>
+  </section>
+
+  <!-- Kỹ năng & Tech Stack -->
+  <section class="section">
+    <h2 class="section-title">
+      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop">
+      Kỹ năng & Hệ sinh thái công nghệ (Tech Stack)
+    </h2>
+    <table class="tech-table">
+      <tr>
+        <td>🌐 Frontend & UI/UX</td>
+        <td>
+          <div class="tech-badge-group">
+            <img src="https://skillicons.dev/icons?i=html,css,js,bootstrap,tailwind,figma" alt="Frontend Icons">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>⚙️ Backend & Database</td>
+        <td>
+          <div class="tech-badge-group">
+            <img src="https://skillicons.dev/icons?i=cpp,python,mysql,sqlite,postman" alt="Backend Icons">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>🤖 AI & Deep Learning</td>
+        <td>
+          <div class="tech-badge-group">
+            <img src="https://skillicons.dev/icons?i=pytorch,tensorflow,opencv" alt="AI Icons">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>⚡ IoT & Hardware</td>
+        <td>
+          <div class="tech-badge-group">
+            <img src="https://skillicons.dev/icons?i=arduino,c" alt="Hardware Icons">
+            <span class="tag">ESP32 / ESP8266</span>
+            <span class="tag">DHT & Gas Sensors</span>
+            <span class="tag">Relays / Shields</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>🛠️ Tools & Cloud</td>
+        <td>
+          <div class="tech-badge-group">
+            <img src="https://skillicons.dev/icons?i=git,github,vscode,clion" alt="Tools">
+            <span class="tag">Google Cloud / Sheets API</span>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- Dự án tiêu biểu -->
+  <section class="section">
+    <h2 class="section-title">
+      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Rocket.png" alt="Rocket">
+      Dự án tiêu biểu (Featured Projects)
+    </h2>
+    <div class="projects-grid">
+      
+      <div class="project-card">
+        <div>
+          <h3>🏛️ Sắc Việt — Marketplace</h3>
+          <p>Nền tảng thương mại điện tử tôn vinh sản phẩm truyền thống, tích hợp hệ thống <b>bản đồ số tương tác</b> và <b>chatbot hỗ trợ du khách thông minh</b>.</p>
+        </div>
+        <div class="project-badges">
+          <img src="https://img.shields.io/badge/HTML5%2FCSS3-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
+          <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS">
+          <img src="https://img.shields.io/badge/Database-4479A1?style=flat-square&logo=mysql&logoColor=white" alt="MySQL">
+          <img src="https://img.shields.io/badge/AI_Chatbot-8A2BE2?style=flat-square" alt="Chatbot">
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <h3>👁️ AI Detector — Chrome Ext</h3>
+          <p>Tiện ích mở rộng sử dụng kiến trúc mô hình <b>Deep Learning Transformer</b> chạy trực tiếp trên trình duyệt (Local Runtime) để phát hiện và gắn nhãn ảnh AI chính xác cao.</p>
+        </div>
+        <div class="project-badges">
+          <img src="https://img.shields.io/badge/Chrome_Extension-4285F4?style=flat-square&logo=googlechrome&logoColor=white" alt="Chrome">
+          <img src="https://img.shields.io/badge/Transformers-FF6F00?style=flat-square" alt="Transformers">
+          <img src="https://img.shields.io/badge/Edge_Computing-009688?style=flat-square" alt="Edge">
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <h3>🚜 AgriTech — Precision System</h3>
+          <p>Giải pháp bản đồ hóa nông nghiệp thông minh, tích hợp mô-đun định vị chuẩn xác và mạng nơ-ron thị giác máy tính trên thiết bị cơ giới.</p>
+        </div>
+        <div class="project-badges">
+          <img src="https://img.shields.io/badge/Computer_Vision-5C3EE8?style=flat-square&logo=opencv&logoColor=white" alt="CV">
+          <img src="https://img.shields.io/badge/Deep_Learning-FF6F00?style=flat-square" alt="DL">
+          <img src="https://img.shields.io/badge/High_Precision_GPS-10B981?style=flat-square" alt="GPS">
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <h3>📊 IoT Smart Air Quality</h3>
+          <p>Hệ sinh thái quan trắc môi trường tự động sử dụng vi điều khiển ESP, cụm cảm biến khí và nhiệt độ; phân tích trạng thái và đồng bộ Google Sheets thời gian thực.</p>
+        </div>
+        <div class="project-badges">
+          <img src="https://img.shields.io/badge/ESP32%2FESP8266-E7352C?style=flat-square" alt="ESP">
+          <img src="https://img.shields.io/badge/IoT_Sensors-34A853?style=flat-square" alt="Sensors">
+          <img src="https://img.shields.io/badge/Cloud_Logging-FBBC05?style=flat-square" alt="Cloud">
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <h3>📝 Cuoiki-KTLT Testing System</h3>
+          <p>Hệ thống thi trắc nghiệm tiếng Anh với cơ sở dữ liệu quan hệ chặt chẽ, tối ưu thuật toán trộn đề thi và chấm điểm tự động.</p>
+        </div>
+        <div class="project-badges">
+          <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=flat-square&logo=c%2B%2B&logoColor=white" alt="C++">
+          <img src="https://img.shields.io/badge/Algorithms-6366F1?style=flat-square" alt="Algo">
+          <img src="https://img.shields.io/badge/GitHub_Repo-181717?style=flat-square&logo=github&logoColor=white" alt="Repo">
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div>
+          <h3>☕ LHU Smart Canteen Online</h3>
+          <p>Mô hình số hóa chuỗi dịch vụ đặt món nội bộ trường học, tối ưu quy trình order và quản lý thực đơn theo thời gian thực.</p>
+        </div>
+        <div class="project-badges">
+          <img src="https://img.shields.io/badge/Web_Application-0284C7?style=flat-square" alt="Web">
+          <img src="https://img.shields.io/badge/UI%2FUX-EC4899?style=flat-square" alt="UIUX">
+          <img src="https://img.shields.io/badge/LHU_Project-0052CC?style=flat-square" alt="LHU">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lộ trình phát triển -->
+  <section class="section">
+    <h2 class="section-title">
+      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Graduation%20Cap.png" alt="Cap">
+      Mục tiêu & Lộ trình phát triển (Roadmap)
+    </h2>
+    <div class="roadmap-box">
+[2025 - 2028] ───► 🎓 Tốt nghiệp Cử nhân CNTT (Đại học Lạc Hồng)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+[2026 - 2028] ───► 🔬 Nghiên cứu AI / Edge Computing & Công bố bài báo NCKH<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+[2028 - 2031] ───► 📚 Học Cao học (Thạc sĩ / Tiến sĩ chuyên ngành CNTT)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+[2031+]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;───► 👨‍🏫 Giảng viên Đại học & Đào tạo chuyên sâu CNTT
+    </div>
+    
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checkbox checked">✓</div>
+        <span>🌟 Hoàn thành xuất sắc các đồ án kỹ thuật lập trình & hệ thống.</span>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox unchecked"></div>
+        <span>🔬 Công bố công trình nghiên cứu khoa học sinh viên tại các hội nghị chuyên ngành.</span>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox unchecked"></div>
+        <span>🤖 Hoàn thiện các sản phẩm Edge AI ứng dụng thực tế.</span>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox unchecked"></div>
+        <span>🎓 Tốt nghiệp Cử nhân CNTT và theo học chương trình Sau Đại học (Master/Ph.D).</span>
+      </div>
+      <div class="checklist-item">
+        <div class="checkbox unchecked"></div>
+        <span>👨‍🏫 <strong>Trở thành Giảng viên Đại học tận tâm, truyền lửa công nghệ cho sinh viên.</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub Stats -->
+  <section class="section">
+    <h2 class="section-title">
+      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png" alt="Stats">
+      GitHub Stats & Metrics
+    </h2>
+    <div class="stats-container">
+      <img src="https://github-profile-trophy.vercel.app/?username=denzxje157&theme=tokyonight&no-frame=true&no-bg=true&margin-w=4" alt="GitHub Trophies" style="max-width: 100%;">
+      
+      <div class="stats-row">
+        <a href="https://github.com/denzxje157" target="_blank">
+          <img src="https://github-readme-stats.vercel.app/api?username=denzxje157&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" alt="Stats" height="155">
+        </a>
+        <a href="https://github.com/denzxje157" target="_blank">
+          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=denzxje157&layout=compact&theme=tokyonight&hide_border=true" alt="Langs" height="155">
+        </a>
+      </div>
+
+      <a href="https://github.com/denzxje157" target="_blank">
+        <img src="https://streak-stats.demolab.com/?user=denzxje157&theme=tokyonight&hide_border=true" alt="Streak" style="max-width: 100%;">
+      </a>
+
+      <img src="https://komarev.com/ghpvc/?username=denzxje157&label=Profile%20Views&color=38BDF8&style=flat-square" alt="Views">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,18,24&height=100&section=footer" alt="Wave Footer" style="width: 100%; border-radius: 12px; margin-bottom: 12px;">
+    <p>Designed with ❤️ by <strong>Nguyễn Hoàng Anh</strong> | Lạc Hồng University (LHU) - Faculty of Information Technology</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

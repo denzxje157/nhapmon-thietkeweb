@@ -3,20 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nguyễn Hoàng Anh - Profile Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>呪術廻戦 - Jujutsu Kaisen Universe | Bách Khoa Toàn Thư Chú Thuật Sư</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;500;600;700;800;900&family=Noto+Serif+JP:wght@700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg-dark: #090d16;
-      --card-bg: #111827;
-      --card-border: #1e293b;
-      --primary: #38bdf8;
-      --primary-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-      --text-main: #f8fafc;
+      --bg-dark: #06070d;
+      --bg-card: rgba(13, 16, 28, 0.82);
+      --bg-card-hover: rgba(22, 28, 50, 0.95);
+      --border-glow: #242b45;
+      
+      --cursed-blue: #00f2fe;
+      --gojo-blue: #38bdf8;
+      --sukuna-red: #ef4444;
+      --sukuna-glow: #dc2626;
+      --purple-hollow: #a855f7;
+      --murasaki: #c084fc;
+      --gold-star: #fbbf24;
+      
+      --text-pure: #ffffff;
       --text-muted: #94a3b8;
-      --accent-green: #34d399;
-      --accent-purple: #a855f7;
-      --accent-orange: #fb923c;
+      
+      --font-display: 'Cinzel', serif;
+      --font-tech: 'Orbitron', sans-serif;
+      --font-main: 'Montserrat', sans-serif;
+      --font-jp: 'Noto Serif JP', serif;
     }
 
     * {
@@ -27,576 +41,971 @@
 
     body {
       background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text-pure);
+      font-family: var(--font-main);
       line-height: 1.6;
-      padding: 40px 20px;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 20% 15%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 45%, rgba(239, 68, 68, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 50% 85%, rgba(0, 242, 254, 0.1) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #06070d; }
+    ::-webkit-scrollbar-thumb { background: #2e1065; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--purple-hollow); }
+
+    @keyframes cursedPulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.4)); }
+      50% { transform: scale(1.02); filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.6)); }
+    }
+
+    @keyframes redGlow {
+      0%, 100% { text-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
+      50% { text-shadow: 0 0 30px rgba(239, 68, 68, 1), 0 0 10px #fff; }
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(6, 7, 13, 0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-glow);
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .brand-jp {
+      font-family: var(--font-jp);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--sukuna-red);
+      letter-spacing: 2px;
+      animation: redGlow 3s infinite ease-in-out;
+    }
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #fff, var(--cursed-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.25s ease;
+    }
+    .nav-links a:hover {
+      color: var(--cursed-blue);
+      text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+    }
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      background: 
+        linear-gradient(180deg, rgba(6,7,13,0.3) 0%, rgba(6,7,13,0.95) 90%, #06070d 100%),
+        url('https://cdn.myanimelist.net/images/anime/1171/109222l.jpg') center 20%/cover no-repeat;
+    }
+    .hero-container {
+      max-width: 950px;
+      z-index: 2;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-family: var(--font-tech);
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      color: var(--murasaki);
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid var(--purple-hollow);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+      margin-bottom: 20px;
+    }
+    .hero-h1 {
+      font-family: var(--font-display);
+      font-size: 3.8rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff 20%, #e2e8f0 50%, var(--cursed-blue) 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 35px rgba(0, 242, 254, 0.4));
+    }
+    .hero-kanji-sub {
+      font-family: var(--font-jp);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--sukuna-red);
+      letter-spacing: 6px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0.8));
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      max-width: 760px;
+      margin: 0 auto 35px;
+      font-weight: 400;
+    }
+    .meta-pills {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+    .pill {
+      background: rgba(13, 16, 28, 0.85);
+      border: 1px solid var(--border-glow);
+      backdrop-filter: blur(10px);
+      padding: 8px 18px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      color: #e2e8f0;
+    }
+    .pill b { color: var(--gold-star); }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 36px;
+      border-radius: 12px;
+      font-family: var(--font-tech);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(135deg, var(--sukuna-red), var(--purple-hollow));
+      box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .btn-action:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 0 45px rgba(168, 85, 247, 0.8);
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1240px;
       margin: 0 auto;
-      background: #0d1322;
-      border: 1px solid var(--card-border);
+      padding: 70px 20px;
+    }
+
+    .heading-zone {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .eyebrow {
+      font-family: var(--font-tech);
+      font-size: 0.85rem;
+      color: var(--cursed-blue);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .main-title {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: #ffffff;
+      position: relative;
+      display: inline-block;
+    }
+    .main-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cursed-blue), var(--purple-hollow), var(--sukuna-red));
+      border-radius: 2px;
+    }
+
+    .synopsis-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      backdrop-filter: blur(12px);
       border-radius: 24px;
       padding: 40px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    }
-
-    /* Header */
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
-      padding-bottom: 30px;
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    .header-banner {
-      width: 100%;
-      border-radius: 16px;
-      margin-bottom: 24px;
-    }
-
-    .title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 8px;
-    }
-
-    .subtitle {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-    }
-
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-top: 15px;
-    }
-
-    .badges img {
-      height: 28px;
-      border-radius: 6px;
-      transition: transform 0.2s;
-    }
-
-    .badges img:hover {
-      transform: translateY(-2px);
-    }
-
-    /* Section styling */
-    .section {
-      margin-bottom: 40px;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 20px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #1e293b;
-    }
-
-    .section-title img {
-      width: 28px;
-      height: 28px;
-    }
-
-    /* Code block styling */
-    .yaml-box {
-      background: #0b0f19;
-      border: 1px solid #1e293b;
-      border-radius: 12px;
-      padding: 20px;
-      font-family: 'Fira Code', monospace;
-      font-size: 0.95rem;
-      color: #38bdf8;
-      margin-bottom: 20px;
-      line-height: 1.7;
-    }
-
-    .yaml-box span.key { color: #f472b6; }
-    .yaml-box span.val { color: #e2e8f0; }
-
-    ul.bullet-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    ul.bullet-list li {
-      position: relative;
-      padding-left: 28px;
-      color: #cbd5e1;
-    }
-
-    ul.bullet-list li::before {
-      content: "✦";
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-    }
-
-    /* Tech Stack */
-    .tech-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .tech-table td {
-      padding: 18px 20px;
-      border-bottom: 1px solid var(--card-border);
-      vertical-align: middle;
-    }
-
-    .tech-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .tech-table td:first-child {
-      font-weight: 600;
-      color: #e2e8f0;
-      width: 32%;
-      background: rgba(15, 23, 42, 0.6);
-      border-right: 1px solid var(--card-border);
-    }
-
-    .tech-badge-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .tech-badge-group img {
-      height: 40px;
-    }
-
-    .tag {
-      background: #1e293b;
-      color: #94a3b8;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-family: 'Fira Code', monospace;
-      border: 1px solid #334155;
-    }
-
-    /* Projects Grid */
-    .projects-grid {
+      margin-bottom: 80px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 20px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 35px;
+      align-items: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+    .synopsis-text h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .synopsis-text p {
+      color: #cbd5e1;
+      font-size: 0.96rem;
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+    .synopsis-quote {
+      border-left: 3px solid var(--sukuna-red);
+      background: rgba(239, 68, 68, 0.08);
+      padding: 12px 18px;
+      border-radius: 0 10px 10px 0;
+      color: #fca5a5 !important;
+      font-style: italic;
+    }
+    .synopsis-media {
+      height: 420px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      background-color: #0b0d17;
+    }
+    .synopsis-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .synopsis-media:hover img {
+      transform: scale(1.04);
     }
 
-    .project-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 24px;
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-bottom: 80px;
+    }
+    .timeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 20px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.25s ease;
+      transition: all 0.35s ease;
     }
-
-    .project-card:hover {
-      border-color: #38bdf8;
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px -8px rgba(56, 189, 248, 0.2);
+    .timeline-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--purple-hollow);
+      box-shadow: 0 18px 40px rgba(168, 85, 247, 0.25);
     }
-
-    .project-card h3 {
-      font-size: 1.15rem;
-      color: #f1f5f9;
-      margin-bottom: 10px;
+    .timeline-img {
+      height: 240px;
+      position: relative;
+      overflow: hidden;
+      background-color: #0d111e;
+    }
+    .timeline-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .timeline-card:hover .timeline-img img {
+      transform: scale(1.06);
+    }
+    .timeline-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(6, 7, 13, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-family: var(--font-tech);
+      font-size: 0.75rem;
+      color: var(--gold-star);
+    }
+    .timeline-content {
+      padding: 22px;
       display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .project-card p {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      margin-bottom: 16px;
+      flex-direction: column;
       flex-grow: 1;
     }
-
-    .project-badges {
+    .timeline-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .timeline-desc {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+    .timeline-foot {
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .project-badges img {
-      height: 22px;
-      border-radius: 4px;
-    }
-
-    /* Roadmap */
-    .roadmap-box {
-      background: #0b0f19;
-      border: 1px solid #1e293b;
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 20px;
-      font-family: 'Fira Code', monospace;
-      font-size: 0.9rem;
-      color: #38bdf8;
-      line-height: 1.8;
-      overflow-x: auto;
-    }
-
-    .checklist {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .checklist-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.95rem;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-glow);
+      padding-top: 12px;
+      font-size: 0.82rem;
       color: #cbd5e1;
     }
 
-    .checkbox {
-      width: 18px;
-      height: 18px;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
+    .char-deck {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 26px;
+      margin-bottom: 80px;
     }
-
-    .checkbox.checked {
-      background: #10b981;
-      color: #ffffff;
+    .character-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
     }
-
-    .checkbox.unchecked {
-      background: #1e293b;
-      border: 1px solid #475569;
+    .character-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--cursed-blue);
+      box-shadow: 0 16px 36px rgba(0, 242, 254, 0.25);
     }
-
-    /* GitHub Stats */
-    .stats-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 30px;
+    .char-img-wrap {
+      position: relative;
+      height: 330px;
+      overflow: hidden;
+      background-color: #0b0d17;
     }
-
-    .stats-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
+    .char-img-wrap img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      transition: transform 0.6s ease;
+    }
+    .character-card:hover .char-img-wrap img {
+      transform: scale(1.08);
+    }
+    .char-rank {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(6, 7, 13, 0.88);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: var(--font-tech);
+      font-size: 0.72rem;
+      color: var(--gold-star);
+      font-weight: 700;
+    }
+    .char-info {
+      padding: 20px;
+    }
+    .char-name-en {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+    .char-name-jp {
+      font-family: var(--font-jp);
+      font-size: 0.95rem;
+      color: var(--sukuna-red);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .char-skill-box {
+      background: rgba(22, 28, 50, 0.6);
+      border: 1px solid #1e2540;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      margin-bottom: 12px;
+    }
+    .char-skill-box strong {
+      color: var(--cursed-blue);
+      display: block;
+      margin-bottom: 3px;
+      font-family: var(--font-tech);
+      font-size: 0.8rem;
+    }
+    .char-bio {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
-    .stats-row img {
-      max-width: 100%;
-      border-radius: 10px;
+    .domain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+    .domain-box {
+      background: linear-gradient(145deg, rgba(13, 16, 28, 0.9), rgba(20, 24, 42, 0.9));
+      border: 1px solid var(--border-glow);
+      border-radius: 20px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s ease;
+    }
+    .domain-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--cursed-blue), var(--purple-hollow), var(--sukuna-red));
+    }
+    .domain-box:hover {
+      border-color: var(--purple-hollow);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(168, 85, 247, 0.25);
+    }
+    .domain-watermark {
+      font-family: var(--font-jp);
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.04);
+      position: absolute;
+      right: 14px;
+      top: 10px;
+      user-select: none;
+    }
+    .domain-title-text {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .domain-user-label {
+      font-family: var(--font-tech);
+      font-size: 0.85rem;
+      color: var(--cursed-blue);
+      margin-bottom: 12px;
+    }
+    .domain-desc-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
     }
 
-    /* Footer */
     .footer {
+      background: #030407;
+      border-top: 1px solid var(--border-glow);
+      padding: 45px 20px;
       text-align: center;
-      margin-top: 50px;
-      padding-top: 20px;
-      border-top: 1px solid var(--card-border);
+    }
+    .footer-kanji {
+      font-family: var(--font-jp);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--sukuna-red);
+      margin-bottom: 8px;
+    }
+    .footer-p {
       color: var(--text-muted);
       font-size: 0.88rem;
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+    .footer-credits {
+      font-size: 0.8rem;
+      color: #475569;
     }
 
-    @media (max-width: 768px) {
-      .container { padding: 24px 16px; }
-      .title { font-size: 1.8rem; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .tech-table td:first-child { width: 100%; display: block; border-right: none; }
-      .tech-table td { display: block; }
+    @media (max-width: 900px) {
+      .hero-h1 { font-size: 2.6rem; }
+      .synopsis-card { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-<div class="container">
+  <nav class="navbar">
+    <a href="#" class="brand-wrap">
+      <span class="brand-jp">呪術廻戦</span>
+      <span class="brand-title">JUJUTSU KAISEN</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#tong-quan">Cốt Truyện</a></li>
+      <li><a href="#mua-phim">Các Mùa Phim</a></li>
+      <li><a href="#nhan-vat">Nhân Vật</a></li>
+      <li><a href="#lanh-dia">Lãnh Địa</a></li>
+      <li><a href="#he-thong">Hệ Thống Thuật</a></li>
+    </ul>
+  </nav>
 
-  <!-- Header -->
-  <header class="header">
-    <img class="header-banner" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,18,24&height=180&section=header&text=Nguy%E1%BB%85n%20Ho%C3%A0ng%20Anh&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Building%20Intelligent%20Systems%20%7C%20Embedded%20IoT%20%7C%20Academic%20Research&descSize=16&descAlignY=60&descAlign=50" alt="Banner Nguyễn Hoàng Anh">
-    
-    <h1 class="title">💫 Nguyễn Hoàng Anh 💫</h1>
-    <p class="subtitle">🎓 IT Undergraduate @ Lạc Hồng University | 🤖 AI & IoT Enthusiast | 👨‍🏫 Aspiring University Lecturer</p>
+  <header class="hero">
+    <div class="hero-container">
+      <span class="hero-badge">⚡ MAPPA STUDIO • DARK FANTASY MASTERPIECE ⚡</span>
+      <h1 class="hero-h1">CHÚ THUẬT HỒI CHIẾN</h1>
+      <div class="hero-kanji-sub">JUJUTSU KAISEN</div>
+      <p class="hero-desc">Thế giới ngập tràn oán linh sinh ra từ bóng tối cảm xúc con người và cuộc huyết chiến trừ tà của các Chú thuật sư trường Tokyo.</p>
+      
+      <div class="meta-pills">
+        <div class="pill">🎬 Studio: <b>MAPPA</b></div>
+        <div class="pill">✍️ Tác giả: <b>Gege Akutami</b></div>
+        <div class="pill">⭐ Đánh giá: <b>8.8 / 10 MyAnimeList</b></div>
+        <div class="pill">⚔️ Thể loại: <b>Shounen, Supernatural, Action</b></div>
+      </div>
 
-    <div class="badges">
-      <a href="https://github.com/denzxje157" target="_blank"><img src="https://img.shields.io/badge/GitHub-denzxje157-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
-      <a href="https://youtube.com" target="_blank"><img src="https://img.shields.io/badge/YouTube-ARTFIVE_FASHION-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"></a>
-      <a href="https://lhu.edu.vn" target="_blank"><img src="https://img.shields.io/badge/LHU-Information_Technology-0052CC?style=for-the-badge&logo=affinitydesigner&logoColor=white" alt="LHU"></a>
-      <img src="https://img.shields.io/badge/Career_Goal-Academic_Lecturer-059669?style=for-the-badge&logo=googlescholar&logoColor=white" alt="Goal">
+      <div>
+        <a href="#nhan-vat" class="btn-action">KHÁM PHÁ DANH SÁCH NHÂN VẬT</a>
+      </div>
     </div>
   </header>
 
-  <!-- Giới thiệu chung -->
-  <section class="section">
-    <h2 class="section-title">
-      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand.png" alt="Wave">
-      Giới thiệu chung (About Me)
-    </h2>
-    <div class="yaml-box">
-<span class="key">Name:</span> <span class="val">Nguyễn Hoàng Anh</span><br>
-<span class="key">Current:</span> <span class="val">Sinh viên Năm 2 - Khoa CNTT @ Đại học Lạc Hồng (LHU)</span><br>
-<span class="key">Passions:</span> <span class="val">Deep Learning, Computer Vision, Embedded IoT, Web Architecture</span><br>
-<span class="key">Career Ambition:</span> <span class="val">Trở thành Giảng viên Đại học & Nhà nghiên cứu Khoa học</span><br>
-<span class="key">Content Creation:</span> <span class="val">ARTFIVE FASHION Channel</span><br>
-<span class="key">GitHub:</span> <span class="val">@denzxje157</span>
-    </div>
-    <ul class="bullet-list">
-      <li><strong>Đang tập trung:</strong> Nghiên cứu mô hình <strong>Transformers</strong> ứng dụng phân tích dữ liệu cục bộ (On-device / Edge AI) và mạng nơ-ron đa tầng.</li>
-      <li><strong>Kỹ thuật phần cứng:</strong> Thiết kế mạch, lập trình vi điều khiển <strong>ESP32 / ESP8266 / Arduino</strong> kết nối cảm biến và đẩy dữ liệu đám mây.</li>
-      <li><strong>Phát triển Web & Ứng dụng:</strong> Thiết kế UI/UX hiện đại, xây dựng kiến trúc cơ sở dữ liệu và hệ thống quản lý hoàn chỉnh.</li>
-      <li><strong>Tác phong:</strong> Trưởng nhóm chỉn chu, có kỹ năng lập kế hoạch tiến độ, phân bổ nhiệm vụ và thuyết trình học thuật sắc bén.</li>
-    </ul>
-  </section>
+  <main class="container">
 
-  <!-- Kỹ năng & Tech Stack -->
-  <section class="section">
-    <h2 class="section-title">
-      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop">
-      Kỹ năng & Hệ sinh thái công nghệ (Tech Stack)
-    </h2>
-    <table class="tech-table">
-      <tr>
-        <td>🌐 Frontend & UI/UX</td>
-        <td>
-          <div class="tech-badge-group">
-            <img src="https://skillicons.dev/icons?i=html,css,js,bootstrap,tailwind,figma" alt="Frontend Icons">
+    <section id="tong-quan" class="synopsis-card">
+      <div class="synopsis-text">
+        <span class="eyebrow">TỔNG QUAN TÁC PHẨM</span>
+        <h3>Bản Hùng Ca Chú Thuật Sư & Chúa Tể Lời Nguyền</h3>
+        <p>
+          Trong thế giới của <strong>Jujutsu Kaisen</strong>, cảm xúc tiêu cực của con người — căm hận, sợ hãi, đau khổ — tích tụ lại và hóa thành các thực thể tàn ác mang tên <em>Nguyền Hồn (Curses)</em> gieo rắc tai ương chết chóc khắp nơi.
+        </p>
+        <p>
+          Mọi chuyện bắt đầu khi <strong>Itadori Yuji</strong>, một học sinh sở hữu năng lực thể chất phi thường, vì giải cứu bạn bè đã bất chấp nuốt phải ngón tay chứa độc chú ngàn năm của <strong>Ryomen Sukuna</strong> — Vua của các Lời Nguyền. Trở thành vật chứa sống, Yuji bước chân vào Cao Trung Chú Thuật Tokyo cùng Gojo Satoru và Megumi Fushiguro để thu thập đủ 20 ngón tay và chấp nhận số phận trừ tà tối thượng.
+        </p>
+        <p class="synopsis-quote">
+          "Một cái chết đúng nghĩa cho mọi người... Đó là lý do tôi tiếp tục vung nắm đấm!"
+        </p>
+      </div>
+      <div class="synopsis-media">
+        <img src="https://cdn.myanimelist.net/images/anime/1171/109222l.jpg" alt="Jujutsu Kaisen Main Poster">
+      </div>
+    </section>
+
+    <section id="mua-phim">
+      <div class="heading-zone">
+        <span class="eyebrow">DÒNG THỜI GIAN & PHÁT HÀNH</span>
+        <h2 class="main-title">Trọn Bộ Phim Jujutsu Kaisen</h2>
+      </div>
+
+      <div class="timeline-grid">
+        
+        <div class="timeline-card">
+          <div class="timeline-img">
+            <span class="timeline-badge">MÙA 1 • 24 TẬP</span>
+            <img src="https://cdn.myanimelist.net/images/anime/1171/109222l.jpg" alt="Jujutsu Kaisen Season 1">
           </div>
-        </td>
-      </tr>
-      <tr>
-        <td>⚙️ Backend & Database</td>
-        <td>
-          <div class="tech-badge-group">
-            <img src="https://skillicons.dev/icons?i=cpp,python,mysql,sqlite,postman" alt="Backend Icons">
+          <div class="timeline-content">
+            <h3 class="timeline-title">Phần 1: Nhập Môn Chú Thuật</h3>
+            <p class="timeline-desc">Yuji nuốt ngón tay Sukuna, gia nhập Cao Trung Tokyo. Khởi đầu chuỗi sự kiện Giao lưu Kyoto và những màn khai mở Hắc Thiểm kinh điển.</p>
+            <div class="timeline-foot">
+              <span>Năm: <strong>2020 - 2021</strong></span>
+              <span style="color: #34d399; font-weight: 700;">Đã Hoàn Tất</span>
+            </div>
           </div>
-        </td>
-      </tr>
-      <tr>
-        <td>🤖 AI & Deep Learning</td>
-        <td>
-          <div class="tech-badge-group">
-            <img src="https://skillicons.dev/icons?i=pytorch,tensorflow,opencv" alt="AI Icons">
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-img">
+            <span class="timeline-badge">MOVIE 0 • 105 PHÚT</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx131573-rpl82vDEDRm6.jpg" alt="Jujutsu Kaisen 0 Movie">
           </div>
-        </td>
-      </tr>
-      <tr>
-        <td>⚡ IoT & Hardware</td>
-        <td>
-          <div class="tech-badge-group">
-            <img src="https://skillicons.dev/icons?i=arduino,c" alt="Hardware Icons">
-            <span class="tag">ESP32 / ESP8266</span>
-            <span class="tag">DHT & Gas Sensors</span>
-            <span class="tag">Relays / Shields</span>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Jujutsu Kaisen 0 (Tiền Truyện)</h3>
+            <p class="timeline-desc">Hành trình của thiên tài Okkotsu Yuta và Chú Linh Rika Orimoto. Đại chiến Bách Quỷ Dạ Hành chống lại Geto Suguru.</p>
+            <div class="timeline-foot">
+              <span>Năm: <strong>2021</strong></span>
+              <span style="color: var(--cursed-blue); font-weight: 700;">Top Box Office</span>
+            </div>
           </div>
-        </td>
-      </tr>
-      <tr>
-        <td>🛠️ Tools & Cloud</td>
-        <td>
-          <div class="tech-badge-group">
-            <img src="https://skillicons.dev/icons?i=git,github,vscode,clion" alt="Tools">
-            <span class="tag">Google Cloud / Sheets API</span>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-img">
+            <span class="timeline-badge">MÙA 2 • 23 TẬP</span>
+            <img src="https://cdn.myanimelist.net/images/anime/1792/138022l.jpg" alt="Jujutsu Kaisen Season 2 Shibuya">
           </div>
-        </td>
-      </tr>
-    </table>
-  </section>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Phần 2: Biến Cố Shibuya & Hoài Ngọc</h3>
+            <p class="timeline-desc">Thời thanh xuân của Gojo & Geto đối đầu Toji Fushiguro; theo sau là Biến Cố Shibuya tàn khốc làm thay đổi toàn bộ giới chú thuật.</p>
+            <div class="timeline-foot">
+              <span>Năm: <strong>2023</strong></span>
+              <span style="color: var(--sukuna-red); font-weight: 700;">Đỉnh Cao Anime</span>
+            </div>
+          </div>
+        </div>
 
-  <!-- Dự án tiêu biểu -->
-  <section class="section">
-    <h2 class="section-title">
-      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Rocket.png" alt="Rocket">
-      Dự án tiêu biểu (Featured Projects)
-    </h2>
-    <div class="projects-grid">
-      
-      <div class="project-card">
-        <div>
-          <h3>🏛️ Sắc Việt — Marketplace</h3>
-          <p>Nền tảng thương mại điện tử tôn vinh sản phẩm truyền thống, tích hợp hệ thống <b>bản đồ số tương tác</b> và <b>chatbot hỗ trợ du khách thông minh</b>.</p>
+        <div class="timeline-card">
+          <div class="timeline-img">
+            <span class="timeline-badge">MÙA 3 • SẮP CHIẾU</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx172463-LnXqHzt74SJL.jpg" alt="Jujutsu Kaisen Season 3 Culling Game">
+          </div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Phần 3: Tử Diệt Hồi Du (Culling Game)</h3>
+            <p class="timeline-desc">Trò chơi sinh tử trên toàn Nhật Bản do Kenjaku thiết lập. Yuji, Megumi và Yuta bước vào cuộc chiến giải cứu Gojo Satoru.</p>
+            <div class="timeline-foot">
+              <span>Studio: <strong>MAPPA</strong></span>
+              <span style="color: var(--gold-star); font-weight: 700;">Đang Sản Xuất</span>
+            </div>
+          </div>
         </div>
-        <div class="project-badges">
-          <img src="https://img.shields.io/badge/HTML5%2FCSS3-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
-          <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS">
-          <img src="https://img.shields.io/badge/Database-4479A1?style=flat-square&logo=mysql&logoColor=white" alt="MySQL">
-          <img src="https://img.shields.io/badge/AI_Chatbot-8A2BE2?style=flat-square" alt="Chatbot">
-        </div>
+
+      </div>
+    </section>
+
+    <section id="nhan-vat">
+      <div class="heading-zone">
+        <span class="eyebrow">HỒ SƠ CHÚ THUẬT SƯ & LỜI NGUYỀN</span>
+        <h2 class="main-title">Dàn Nhân Vật Huyền Thoại</h2>
       </div>
 
-      <div class="project-card">
-        <div>
-          <h3>👁️ AI Detector — Chrome Ext</h3>
-          <p>Tiện ích mở rộng sử dụng kiến trúc mô hình <b>Deep Learning Transformer</b> chạy trực tiếp trên trình duyệt (Local Runtime) để phát hiện và gắn nhãn ảnh AI chính xác cao.</p>
+      <div class="char-deck">
+
+        <!-- 1. Gojo Satoru -->
+        <div class="character-card">
+          <div class="char-img-wrap">
+            <span class="char-rank">ĐẶC CẤP • MẠNH NHẤT</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/character/large/b127691-9zqh1xpIubn7.png" alt="Gojo Satoru">
+          </div>
+          <div class="char-info">
+            <h3 class="char-name-en">Gojo Satoru</h3>
+            <div class="char-name-jp">五条 悟</div>
+            <div class="char-skill-box">
+              <strong>THUẬT THỨC: VÔ HẠ HẠN & LỤC NHÃN</strong>
+              Thao túng không gian tuyệt đối: Thương (Hút), Hách (Đẩy), Tử (Xóa sổ vật chất).
+            </div>
+            <p class="char-bio">Chú thuật sư mạnh nhất thời hiện đại, kẻ nắm giữ sự cân bằng của toàn bộ giới chú thuật toàn cầu.</p>
+          </div>
         </div>
-        <div class="project-badges">
-          <img src="https://img.shields.io/badge/Chrome_Extension-4285F4?style=flat-square&logo=googlechrome&logoColor=white" alt="Chrome">
-          <img src="https://img.shields.io/badge/Transformers-FF6F00?style=flat-square" alt="Transformers">
-          <img src="https://img.shields.io/badge/Edge_Computing-009688?style=flat-square" alt="Edge">
+
+        <!-- 2. Ryomen Sukuna -->
+        <div class="character-card">
+          <div class="char-img-wrap">
+            <span class="char-rank" style="color: var(--sukuna-red)">VUA LỜI NGUYỀN</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/character/large/b133701-rCQuDpHr3UZL.png" alt="Ryomen Sukuna">
+          </div>
+          <div class="char-info">
+            <h3 class="char-name-en">Ryomen Sukuna</h3>
+            <div class="char-name-jp">両面 宿儺</div>
+            <div class="char-skill-box">
+              <strong>THUẬT THỨC: TRẢM KÍCH & HỎA DIỄM</strong>
+              Trảm kích vô hình (Giải & Bát) cắt nát mọi vật và phóng ngọn lửa thiêu rụi thành phố.
+            </div>
+            <p class="char-bio">Chúa tể nguyền hồn ngàn năm từ thời Heian, tàn bạo, kiêu ngạo và đạt đến đỉnh cao tuyệt đối của sức mạnh.</p>
+          </div>
         </div>
+
+        <!-- 3. Itadori Yuji -->
+        <div class="character-card">
+          <div class="char-img-wrap">
+            <span class="char-rank">VẬT CHỨA SUKUNA</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/character/large/b127212-FVm2tD0erQ5B.png" alt="Itadori Yuji">
+          </div>
+          <div class="char-info">
+            <h3 class="char-name-en">Itadori Yuji</h3>
+            <div class="char-name-jp">虎杖 悠仁</div>
+            <div class="char-skill-box">
+              <strong>KÍNH ĐÌNH QUYỀN & HẮC THIỂM</strong>
+              Thể chất siêu phàm, kỹ thuật đấm trễ chú lực và kỷ lục tung Hắc Thiểm liên hoàn.
+            </div>
+            <p class="char-bio">Chàng trai trẻ với trái tim nhân hậu, mang số phận vật chứa của Sukuna và luôn chiến đấu vì đồng đội.</p>
+          </div>
+        </div>
+
+        <!-- 4. Fushiguro Megumi -->
+        <div class="character-card">
+          <div class="char-img-wrap">
+            <span class="char-rank">CẤP 2 • HUYẾT THỐNG ZENIN</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/character/large/b126635-L0y3I92JSUkN.png" alt="Fushiguro Megumi">
+          </div>
+          <div class="char-info">
+            <h3 class="char-name-en">Fushiguro Megumi</h3>
+            <div class="char-name-jp">伏黒 恵</div>
+            <div class="char-skill-box">
+              <strong>THẬP CHỦNG ẢNH PHÁP THUẬT</strong>
+              Triệu hồi 10 thức thần bóng tối cổ xưa và kích hoạt thức thần tối thượng Mahoraga.
+            </div>
+            <p class="char-bio">Thiên tài thầm lặng với tư duy chiến thuật nhạy bén, người sở hữu tiềm năng lớn khiến cả Sukuna khao khát.</p>
+          </div>
+        </div>
+
+        <!-- 5. Kugisaki Nobara -->
+        <div class="character-card">
+          <div class="char-img-wrap">
+            <span class="char-rank">CẤP 3 • NỮ CHIẾN BINH</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/character/large/b133700-f6sOO3TcgLV6.png" alt="Kugisaki Nobara">
+          </div>
+          <div class="char-info">
+            <h3 class="char-name-en">Kugisaki Nobara</h3>
+            <div class="char-name-jp">釘崎 野薔薇</div>
+            <div class="char-skill-box">
+              <strong>SÔ ĐAO THUẬT & CỘNG MINH</strong>
+              Sử dụng đinh búa và hình nhân rơm đánh xuyên thẳng vào căn nguyên linh hồn kẻ địch.
+            </div>
+            <p class="char-bio">Cô gái cá tính, mạnh mẽ đến từ Morioka, luôn kiêu hãnh chiến đấu và sống thật với chính bản thân mình.</p>
+          </div>
+        </div>
+
+        <!-- 6. Okkotsu Yuta -->
+        <div class="character-card">
+          <div class="char-img-wrap">
+            <span class="char-rank">ĐẶC CẤP • HẬU BỐI THIÊN TÀI</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/character/large/b129571-GHJk7gviHOOw.jpg" alt="Okkotsu Yuta">
+          </div>
+          <div class="char-info">
+            <h3 class="char-name-en">Okkotsu Yuta</h3>
+            <div class="char-name-jp">乙骨 憂太</div>
+            <div class="char-skill-box">
+              <strong>SAO CHÉP THUẬT THỨC & RIKA</strong>
+              Trữ lượng chú lực vô tận, làm chủ phản chuyển thuật thức và sao chép vô hạn chiêu thức.
+            </div>
+            <p class="char-bio">Nhân vật chính của Movie 0, hậu duệ của Sugawara no Michizane và là người kế tục vĩ đại của Gojo Satoru.</p>
+          </div>
+        </div>
+
+        <!-- 7. Nanami Kento -->
+        <div class="character-card">
+          <div class="char-img-wrap">
+            <span class="char-rank">CẤP 1 • CHÚ THUẬT SƯ 7:3</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/character/large/b133704-8wLTGjc234q2.png" alt="Nanami Kento">
+          </div>
+          <div class="char-info">
+            <h3 class="char-name-en">Nanami Kento</h3>
+            <div class="char-name-jp">七海 建人</div>
+            <div class="char-skill-box">
+              <strong>THẬP PHÂN CHÚ THUẬT (RATIO)</strong>
+              Tạo điểm yếu chí mạng tại tỷ lệ 7:3 trên cơ thể kẻ địch để tung đòn kết liễu uy lực.
+            </div>
+            <p class="char-bio">Cựu nhân viên văn phòng điềm đạm, người thầy mẫu mực luôn che chở và truyền dạy kinh nghiệm sống cho Yuji.</p>
+          </div>
+        </div>
+
+        <!-- 8. Toji Fushiguro -->
+        <div class="character-card">
+          <div class="char-img-wrap">
+            <span class="char-rank" style="color: var(--sukuna-red)">KẺ DIỆT CHÚ THUẬT SƯ</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/character/large/b162722-btzdghBizxKS.jpg" alt="Toji Fushiguro">
+          </div>
+          <div class="char-info">
+            <h3 class="char-name-en">Toji Fushiguro</h3>
+            <div class="char-name-jp">伏黒 甚爾</div>
+            <div class="char-skill-box">
+              <strong>THIÊN DỮ CHÚ PHƯỢC (0 CHÚ LỰC)</strong>
+              Thể chất đạt tới đỉnh cao tuyệt đối của nhân loại, giác quan siêu phàm và dùng Chú Cụ bậc thầy.
+            </div>
+            <p class="char-bio">Huyền thoại sát thủ gia tộc Zenin, người đàn ông duy nhất từng đánh bại cả Gojo Satoru thời trẻ.</p>
+          </div>
+        </div>
+
+        <!-- 9. Geto Suguru -->
+        <div class="character-card">
+          <div class="char-img-wrap">
+            <span class="char-rank">ĐẶC CẤP • CHÚ LINH THAO THUẬT</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/character/large/b133699-FCnXaISgazAi.png" alt="Geto Suguru">
+          </div>
+          <div class="char-info">
+            <h3 class="char-name-en">Geto Suguru</h3>
+            <div class="char-name-jp">夏油 傑</div>
+            <div class="char-skill-box">
+              <strong>CHÚ LINH THAO THUẬT & BÁCH QUỶ DẠ HÀNH</strong>
+              Hấp thụ và điều khiển hàng vạn nguyền hồn để thực hiện các cuộc tổng tấn công quy mô lớn.
+            </div>
+            <p class="char-bio">Từng là bạn thân chí cốt của Gojo Satoru trước khi rơi vào con đường bóng tối vì tư tưởng thanh trừng phi-chú-thuật-sư.</p>
+          </div>
+        </div>
+
+        <!-- 10. Mahito -->
+        <div class="character-card">
+          <div class="char-img-wrap">
+            <span class="char-rank" style="color: var(--sukuna-red)">ĐẶC CẤP • NGUYỀN HỒN NGƯỜI</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/character/large/b133702-Y7JRG5vAvjIL.png" alt="Mahito">
+          </div>
+          <div class="char-info">
+            <h3 class="char-name-en">Mahito</h3>
+            <div class="char-name-jp">真人</div>
+            <div class="char-skill-box">
+              <strong>VÔ VI CHUYỂN BIẾN (IDLE TRANSFIGURATION)</strong>
+              Chạm và biến dạng linh hồn đối phương, biến nạn nhân thành quái vật hoặc hồi phục thân thể vô hạn.
+            </div>
+            <p class="char-bio">Nguyền hồn sinh ra từ sự căm thù và ghê tởm lẫn nhau của con người, đối thủ truyền kiếp của Itadori Yuji.</p>
+          </div>
+        </div>
+
+        <!-- 11. Maki Zenin -->
+        <div class="character-card">
+          <div class="char-img-wrap">
+            <span class="char-rank">NỮ CHIẾN THẦN ZENIN</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/character/large/b134167-5TCytk45YByD.png" alt="Maki Zenin">
+          </div>
+          <div class="char-info">
+            <h3 class="char-name-en">Maki Zenin</h3>
+            <div class="char-name-jp">禪院 真希</div>
+            <div class="char-skill-box">
+              <strong>THIÊN DỮ HOÀN TOÀN & DU HỒN ĐAO</strong>
+              Sau khi thức tỉnh, sở hữu thể chất quái vật ngang hàng Toji Fushiguro, tiêu diệt cả gia tộc Zenin.
+            </div>
+            <p class="char-bio">Học viên năm hai kiên cường, vượt qua mọi sự khinh miệt của gia tộc phong kiến để trở thành nữ chiến binh số một.</p>
+          </div>
+        </div>
+
+        <!-- 12. Aoi Todo -->
+        <div class="character-card">
+          <div class="char-img-wrap">
+            <span class="char-rank">CẤP 1 • CAO TRUNG KYOTO</span>
+            <img src="https://s4.anilist.co/file/anilistcdn/character/large/b137975-6TH7PiLWJaqy.png" alt="Aoi Todo">
+          </div>
+          <div class="char-info">
+            <h3 class="char-name-en">Aoi Todo</h3>
+            <div class="char-name-jp">東堂 葵</div>
+            <div class="char-skill-box">
+              <strong>BẤT DĨ PHÁP THUẬT (BOOGIE WOOGIE)</strong>
+              Vỗ tay để hoán đổi vị trí của hai vật thể hoặc sinh vật chứa chú lực trong tích tắc.
+            </div>
+            <p class="char-bio">Võ sư thiên tài có IQ 530.000 (tự nhận), người bạn tri kỷ "Best Friend" đã hướng dẫn Yuji làm chủ Hắc Thiểm.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="lanh-dia">
+      <div class="heading-zone">
+        <span class="eyebrow">ĐỈNH CAO CHÚ THUẬT THUẬT THỨC</span>
+        <h2 class="main-title">Bành Trướng Lãnh Địa (Domain Expansion)</h2>
       </div>
 
-      <div class="project-card">
-        <div>
-          <h3>🚜 AgriTech — Precision System</h3>
-          <p>Giải pháp bản đồ hóa nông nghiệp thông minh, tích hợp mô-đun định vị chuẩn xác và mạng nơ-ron thị giác máy tính trên thiết bị cơ giới.</p>
+      <div class="domain-grid">
+
+        <div class="domain-box">
+          <div class="domain-watermark">無量空処</div>
+          <h3 class="domain-title-text">Vô Lượng Không Xứ (Unlimited Void)</h3>
+          <div class="domain-user-label">⚡ Gojo Satoru</div>
+          <p class="domain-desc-text">
+            Đưa nạn nhân vào thế giới bên trong của Vô Cực, nạp lượng thông tin tri thức vô tận vào não bộ khiến kẻ địch bị sốc phản vệ, tê liệt hoàn toàn không thể cử động.
+          </p>
         </div>
-        <div class="project-badges">
-          <img src="https://img.shields.io/badge/Computer_Vision-5C3EE8?style=flat-square&logo=opencv&logoColor=white" alt="CV">
-          <img src="https://img.shields.io/badge/Deep_Learning-FF6F00?style=flat-square" alt="DL">
-          <img src="https://img.shields.io/badge/High_Precision_GPS-10B981?style=flat-square" alt="GPS">
+
+        <div class="domain-box">
+          <div class="domain-watermark">伏魔御厨子</div>
+          <h3 class="domain-title-text">Phục Ma Ngự Khám (Malevolent Shrine)</h3>
+          <div class="domain-user-label">🔥 Ryomen Sukuna</div>
+          <p class="domain-desc-text">
+            Lãnh địa mở không kết giới với bán kính 200m ngoài đời thực. Liên tục phóng ra hàng triệu nhát chém Giải và Bát xé nát mọi sinh vật và phi sinh vật thành tro bụi.
+          </p>
+        </div>
+
+        <div class="domain-box">
+          <div class="domain-watermark">嵌合暗翳庭</div>
+          <h3 class="domain-title-text">Khảm Hợp Ám Di Cung (Chimera Shadow Garden)</h3>
+          <div class="domain-user-label">🌙 Fushiguro Megumi</div>
+          <p class="domain-desc-text">
+            Biến toàn bộ không gian xung quanh thành biển bóng tối lỏng vô tận, cho phép Megumi triệu hồi vô số phân thân Thức Thần tấn công bất ngờ từ các góc mù.
+          </p>
+        </div>
+
+        <div class="domain-box">
+          <div class="domain-watermark">自閉円頓裹</div>
+          <h3 class="domain-title-text">Tự Bế Viên Đốn Quả (Self-Embodiment of Perfection)</h3>
+          <div class="domain-user-label">💀 Mahito</div>
+          <p class="domain-desc-text">
+            Bao bọc kẻ địch bên trong lòng bàn tay khổng lồ, nơi thuật thức Vô Vi Chuyển Biến tự động chạm vào linh hồn của nạn nhân 100%, biến đổi hình dạng và kết liễu họ trong tích tắc.
+          </p>
+        </div>
+
+        <div class="domain-box">
+          <div class="domain-watermark">真贋相愛</div>
+          <h3 class="domain-title-text">Chân Ngụy Tương Ái (Authentic Mutual Love)</h3>
+          <div class="domain-user-label">🗡️ Okkotsu Yuta</div>
+          <p class="domain-desc-text">
+            Không gian cắm đầy vô số thanh kiếm chứa các thuật thức sao chép. Yuta có thể tùy ý rút bất kỳ thanh kiếm nào để kích hoạt thuật thức ngẫu nhiên không giới hạn.
+          </p>
+        </div>
+
+        <div class="domain-box">
+          <div class="domain-watermark">誅伏賜死</div>
+          <h3 class="domain-title-text">Tru Phục Tứ Tử (Deadly Sentencing)</h3>
+          <div class="domain-user-label">⚖️ Hiromi Higuruma</div>
+          <p class="domain-desc-text">
+            Tòa án pháp lý nghiêm cấm bạo lực. Thức thần Judgeman luận tội đối phương, nếu bị kết án tử hình, Higuruma sẽ nhận Thanh Kiếm Xử Tử một đòn đoạt mạng.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="he-thong" class="synopsis-card" style="margin-bottom: 30px;">
+      <div style="grid-column: 1 / -1;">
+        <div class="heading-zone" style="margin-bottom: 35px;">
+          <span class="eyebrow">QUY TẮC SỨC MẠNH</span>
+          <h2 class="main-title">Hệ Thống Năng Lực Cốt Lõi</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+          <div style="background: rgba(10, 14, 26, 0.9); padding: 22px; border-radius: 14px; border: 1px solid var(--border-glow);">
+            <h4 style="color: var(--murasaki); margin-bottom: 8px; font-family: var(--font-tech); font-size: 0.95rem;">⚡ CHÚ LỰC (CURSED ENERGY)</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Năng lượng sinh ra từ cảm xúc tiêu cực của con người, được các chú thuật sư tinh luyện như nhiên liệu vận hành thuật thức.</p>
+          </div>
+
+          <div style="background: rgba(10, 14, 26, 0.9); padding: 22px; border-radius: 14px; border: 1px solid var(--border-glow);">
+            <h4 style="color: var(--sukuna-red); margin-bottom: 8px; font-family: var(--font-tech); font-size: 0.95rem;">🖤 HẮC THIỂM (BLACK FLASH)</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Hiện tượng chú lực bùng nổ trong vòng 0.000001 giây khi va chạm, khuếch đại uy lực đòn đánh lên lũy thừa 2.5 lần.</p>
+          </div>
+
+          <div style="background: rgba(10, 14, 26, 0.9); padding: 22px; border-radius: 14px; border: 1px solid var(--border-glow);">
+            <h4 style="color: var(--cursed-blue); margin-bottom: 8px; font-family: var(--font-tech); font-size: 0.95rem;">✨ PHẢN CHUYỂN THUẬT THỨC</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Nhân hai luồng năng lượng âm để tạo ra năng lượng dương, chữa lành các vết thương chí mạng hoặc hồi phục cơ thể tức thì.</p>
+          </div>
+
+          <div style="background: rgba(10, 14, 26, 0.9); padding: 22px; border-radius: 14px; border: 1px solid var(--border-glow);">
+            <h4 style="color: var(--gold-star); margin-bottom: 8px; font-family: var(--font-tech); font-size: 0.95rem;">⛓️ THIÊN DỮ CHÚ PHƯỢC</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Khế ước bẩm sinh đánh đổi hoàn toàn chú lực bằng 0 để đổi lấy thể chất siêu phàm đạt ngưỡng đỉnh cao nhân loại (Toji & Maki).</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="project-card">
-        <div>
-          <h3>📊 IoT Smart Air Quality</h3>
-          <p>Hệ sinh thái quan trắc môi trường tự động sử dụng vi điều khiển ESP, cụm cảm biến khí và nhiệt độ; phân tích trạng thái và đồng bộ Google Sheets thời gian thực.</p>
-        </div>
-        <div class="project-badges">
-          <img src="https://img.shields.io/badge/ESP32%2FESP8266-E7352C?style=flat-square" alt="ESP">
-          <img src="https://img.shields.io/badge/IoT_Sensors-34A853?style=flat-square" alt="Sensors">
-          <img src="https://img.shields.io/badge/Cloud_Logging-FBBC05?style=flat-square" alt="Cloud">
-        </div>
-      </div>
+  </main>
 
-      <div class="project-card">
-        <div>
-          <h3>📝 Cuoiki-KTLT Testing System</h3>
-          <p>Hệ thống thi trắc nghiệm tiếng Anh với cơ sở dữ liệu quan hệ chặt chẽ, tối ưu thuật toán trộn đề thi và chấm điểm tự động.</p>
-        </div>
-        <div class="project-badges">
-          <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=flat-square&logo=c%2B%2B&logoColor=white" alt="C++">
-          <img src="https://img.shields.io/badge/Algorithms-6366F1?style=flat-square" alt="Algo">
-          <img src="https://img.shields.io/badge/GitHub_Repo-181717?style=flat-square&logo=github&logoColor=white" alt="Repo">
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div>
-          <h3>☕ LHU Smart Canteen Online</h3>
-          <p>Mô hình số hóa chuỗi dịch vụ đặt món nội bộ trường học, tối ưu quy trình order và quản lý thực đơn theo thời gian thực.</p>
-        </div>
-        <div class="project-badges">
-          <img src="https://img.shields.io/badge/Web_Application-0284C7?style=flat-square" alt="Web">
-          <img src="https://img.shields.io/badge/UI%2FUX-EC4899?style=flat-square" alt="UIUX">
-          <img src="https://img.shields.io/badge/LHU_Project-0052CC?style=flat-square" alt="LHU">
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Lộ trình phát triển -->
-  <section class="section">
-    <h2 class="section-title">
-      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Graduation%20Cap.png" alt="Cap">
-      Mục tiêu & Lộ trình phát triển (Roadmap)
-    </h2>
-    <div class="roadmap-box">
-[2025 - 2028] ───► 🎓 Tốt nghiệp Cử nhân CNTT (Đại học Lạc Hồng)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
-[2026 - 2028] ───► 🔬 Nghiên cứu AI / Edge Computing & Công bố bài báo NCKH<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
-[2028 - 2031] ───► 📚 Học Cao học (Thạc sĩ / Tiến sĩ chuyên ngành CNTT)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
-[2031+]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;───► 👨‍🏫 Giảng viên Đại học & Đào tạo chuyên sâu CNTT
-    </div>
-    
-    <div class="checklist">
-      <div class="checklist-item">
-        <div class="checkbox checked">✓</div>
-        <span>🌟 Hoàn thành xuất sắc các đồ án kỹ thuật lập trình & hệ thống.</span>
-      </div>
-      <div class="checklist-item">
-        <div class="checkbox unchecked"></div>
-        <span>🔬 Công bố công trình nghiên cứu khoa học sinh viên tại các hội nghị chuyên ngành.</span>
-      </div>
-      <div class="checklist-item">
-        <div class="checkbox unchecked"></div>
-        <span>🤖 Hoàn thiện các sản phẩm Edge AI ứng dụng thực tế.</span>
-      </div>
-      <div class="checklist-item">
-        <div class="checkbox unchecked"></div>
-        <span>🎓 Tốt nghiệp Cử nhân CNTT và theo học chương trình Sau Đại học (Master/Ph.D).</span>
-      </div>
-      <div class="checklist-item">
-        <div class="checkbox unchecked"></div>
-        <span>👨‍🏫 <strong>Trở thành Giảng viên Đại học tận tâm, truyền lửa công nghệ cho sinh viên.</strong></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- GitHub Stats -->
-  <section class="section">
-    <h2 class="section-title">
-      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png" alt="Stats">
-      GitHub Stats & Metrics
-    </h2>
-    <div class="stats-container">
-      <img src="https://github-profile-trophy.vercel.app/?username=denzxje157&theme=tokyonight&no-frame=true&no-bg=true&margin-w=4" alt="GitHub Trophies" style="max-width: 100%;">
-      
-      <div class="stats-row">
-        <a href="https://github.com/denzxje157" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api?username=denzxje157&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" alt="Stats" height="155">
-        </a>
-        <a href="https://github.com/denzxje157" target="_blank">
-          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=denzxje157&layout=compact&theme=tokyonight&hide_border=true" alt="Langs" height="155">
-        </a>
-      </div>
-
-      <a href="https://github.com/denzxje157" target="_blank">
-        <img src="https://streak-stats.demolab.com/?user=denzxje157&theme=tokyonight&hide_border=true" alt="Streak" style="max-width: 100%;">
-      </a>
-
-      <img src="https://komarev.com/ghpvc/?username=denzxje157&label=Profile%20Views&color=38BDF8&style=flat-square" alt="Views">
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer class="footer">
-    <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,18,24&height=100&section=footer" alt="Wave Footer" style="width: 100%; border-radius: 12px; margin-bottom: 12px;">
-    <p>Designed with ❤️ by <strong>Nguyễn Hoàng Anh</strong> | Lạc Hồng University (LHU) - Faculty of Information Technology</p>
+    <div class="footer-kanji">呪術廻戦 • JUJUTSU KAISEN</div>
+    <p class="footer-p">Bách khoa toàn thư Chú Thuật Hồi Chiến tổng hợp trọn bộ các mùa phim, nhân vật và bí thuật đỉnh cao do Gege Akutami sáng tác và MAPPA Studio sản xuất.</p>
+    <div class="footer-credits">© 2026 Jujutsu Kaisen Universe. Designed with Official Anime Visuals.</div>
   </footer>
-
-</div>
 
 </body>
 </html>

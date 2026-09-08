@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Cá Nhân | [Tên Của Bạn]</title>
+</head>
+<body>
+
+    <!-- 
+    Thẻ <header> đại diện cho phần đầu giới thiệu của trang web hoặc của một section. 
+    Tại sao dùng <header> thay vì <div>: Sử dụng thẻ semantic này giúp trình duyệt và công cụ tìm kiếm (SEO) dễ dàng nhận diện cấu trúc tổng thể, chỉ ra phần nào chứa logo, tiêu đề trang và thanh điều hướng chính, thay vì dùng một <div> không mang ý nghĩa ngữ nghĩa.
+    -->
+    <header>
+        <h1>Nguyễn Văn A</h1>
+
+        <!-- 
+        Thẻ <nav> đại diện cho một khu vực chứa các liên kết điều hướng chính của trang.
+        Tại sao dùng <nav> thay vì <div>: Thẻ này giúp các công nghệ hỗ trợ (như screen reader - trình đọc màn hình cho người khiếm thị) nhanh chóng tìm thấy menu điều hướng chính, bỏ qua các liên kết không quan trọng khác trên trang.
+        -->
+        <nav aria-label="Thanh điều hướng chính">
+            <ul>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 
+    Thẻ <main> đại diện cho nội dung chính, cốt lõi của tài liệu <body>. Chỉ có một thẻ <main> trong trang và nó không nên chứa nội dung được lặp lại nhiều trang như header, footer hay sidebar.
+    Tại sao dùng <main> thay vì <div>: Nó giúp máy tính (công cụ tìm kiếm) và thiết bị hỗ trợ đọc hiểu ngay lập tức đâu là phần nội dung quan trọng nhất mà người dùng muốn đọc khi truy cập trang web này.
+    -->
+    <main>
+
+        <!-- 
+        Thẻ <section> đại diện cho một phần độc lập chung của tài liệu, thường chứa một chủ đề cụ thể và luôn nên có một thẻ tiêu đề (h1-h6) đi kèm.
+        Tại sao dùng <section> thay vì <div>: Giúp phân chia nội dung trang web thành các khối logic có chủ đề rõ ràng (như chương của một cuốn sách), mang lại lợi ích lớn cho việc lập chỉ mục SEO và xây dựng cấu trúc dàn bài (outline) cho tài liệu.
+        -->
+        <section id="about">
+            <h2>Giới thiệu bản thân</h2>
+            <img src="placeholder-avatar.jpg" alt="Ảnh đại diện của [Tên Của Bạn]" width="200" height="200">
+            <p>Xin chào, tôi là <strong>[Tên Của Bạn]</strong>. Tôi là một lập trình viên đam mê tạo ra các sản phẩm chất lượng và tối ưu trải nghiệm người dùng.</p>
+            
+            <h3>Mục tiêu nghề nghiệp</h3>
+            <p>Phát triển chuyên sâu trong lĩnh vực lập trình Front-end và xây dựng các ứng dụng web mang lại giá trị thực tế cao.</p>
+        </section>
+
+        <!-- 
+        Thẻ <section> dùng để nhóm danh sách các dự án thành một khối có chủ đề riêng biệt.
+        -->
+        <section id="projects">
+            <h2>Các Dự Án Tiêu Biểu</h2>
+
+            <!-- 
+            Thẻ <article> đại diện cho một thành phần nội dung độc lập, có thể tách rời khỏi trang web hiện tại mà vẫn giữ nguyên ý nghĩa trọn vẹn (như một bài viết blog, bình luận, hoặc một thẻ dự án).
+            Tại sao dùng <article> thay vì <div>: Nó khai báo rằng nội dung bên trong là một thực thể hoàn chỉnh, độc lập. Trong trường hợp này, mỗi dự án là một thực thể riêng biệt có thông tin mô tả chi tiết đầy đủ.
+            -->
+            <article>
+                <h3>Dự án E-commerce Website</h3>
+                <img src="placeholder-project1.jpg" alt="Ảnh chụp màn hình giao diện dự án E-commerce">
+                <p>Một trang web thương mại điện tử đơn giản được xây dựng với HTML5, CSS3 và Vanilla JavaScript. Hỗ trợ giỏ hàng và thanh toán cơ bản.</p>
+                <a href="#">Xem chi tiết dự án 1</a>
+            </article>
+
+            <article>
+                <h3>Dự án Quản lý Công việc (Todo App)</h3>
+                <img src="placeholder-project2.jpg" alt="Ảnh chụp màn hình ứng dụng Todo App">
+                <p>Ứng dụng quản lý công việc cá nhân giúp theo dõi tiến độ, được xây dựng với ReactJS và lưu trữ dữ liệu với Local Storage.</p>
+                <a href="#">Xem chi tiết dự án 2</a>
+            </article>
+
+        </section>
+
+        <!-- 
+        Thẻ <section> phân vùng riêng dành cho chức năng biểu mẫu liên lạc.
+        -->
+        <section id="contact">
+            <h2>Liên Hệ</h2>
+            <p>Bạn có dự án cần hợp tác? Hãy để lại tin nhắn cho tôi!</p>
+            
+            <form action="#" method="POST">
+                <div>
+                    <label for="name">Họ và tên:</label><br>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                </div>
+                <div>
+                    <label for="email">Email của bạn:</label><br>
+                    <input type="email" id="email" name="email" required aria-required="true">
+                </div>
+                <div>
+                    <label for="message">Tin nhắn:</label><br>
+                    <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+                </div>
+                <button type="submit">Gửi Tin Nhắn</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- 
+    Thẻ <footer> đại diện cho phần chân trang của một trang web hoặc một section. Thường chứa thông tin bản quyền, thông tin tác giả, các liên kết hữu ích, hoặc liên kết mạng xã hội.
+    Tại sao dùng <footer> thay vì <div>: Cung cấp thông tin ngữ nghĩa rõ ràng, báo hiệu cho trình duyệt và các công cụ khác rằng đây là khu vực thông tin đính kèm kết thúc nội dung chính.
+    -->
+    <footer>
+        <p>&copy; 2026 [Tên Của Bạn]. Tất cả các quyền được bảo lưu.</p>
+        
+        <nav aria-label="Liên kết mạng xã hội">
+            <ul>
+                <li>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Trang GitHub cá nhân">GitHub</a>
+                </li>
+                <li>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Trang LinkedIn cá nhân">LinkedIn</a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,518 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio chuyên môn của Hà Văn Kiên - Kiến trúc sư Frontend Cao cấp &amp; Chuyên gia Tiêu chuẩn Ngữ nghĩa W3C, Trợ năng Web (A11y), WCAG 2.2 AAA.">
+  <meta name="author" content="Hà Văn Kiên">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://example.com/ha-van-kien">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:site_name" content="Hà Văn Kiên - Semantic Architecture Portfolio">
+  <meta property="og:title" content="Hà Văn Kiên | Kiến trúc sư Frontend Cao cấp &amp; Chuyên gia Tiêu chuẩn W3C">
+  <meta property="og:description" content="Khám phá kiến trúc web chuẩn accessibility WCAG 2.2 AAA, microdata Schema.org và kỹ thuật HTML5 ngữ nghĩa nguyên bản.">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://example.com/ha-van-kien">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&amp;auto=format&amp;fit=crop&amp;q=80">
+  <meta property="profile:first_name" content="Kiên">
+  <meta property="profile:last_name" content="Hà Văn">
+  <meta property="profile:username" content="kien_frontend_architect">
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hà Văn Kiên | Kiến trúc sư Frontend Cao cấp &amp; Chuyên gia Tiêu chuẩn W3C">
+  <meta name="twitter:description" content="Portfolio chuyên môn về kỹ nghệ Web Ngữ nghĩa, Khả năng tiếp cận Toàn diện và Cấu trúc Dữ liệu Tối ưu SEO.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&amp;auto=format&amp;fit=crop&amp;q=80">
+
+  <title>Hà Văn Kiên | Kiến trúc sư Frontend Cao cấp &amp; Chuyên gia Tiêu chuẩn W3C</title>
+</head>
+<body itemscope itemtype="https://schema.org/Person">
+
+  <!-- Liên kết bỏ qua điều hướng dành cho công nghệ hỗ trợ (Skip to Main Content) -->
+  <nav aria-label="Bỏ qua điều hướng">
+    <ul>
+      <li><a href="#main-content">Chuyển trực tiếp đến nội dung chính</a></li>
+      <li><a href="#projects">Chuyển đến danh sách dự án</a></li>
+      <li><a href="#contact">Chuyển đến biểu mẫu liên hệ</a></li>
+    </ul>
+  </nav>
+
+  <!-- Đầu trang: Định danh chuyên môn và Hệ thống điều hướng gốc -->
+  <header>
+    <h1 itemprop="name">Hà Văn Kiên</h1>
+    <p>
+      <strong itemprop="jobTitle">Kiến trúc sư Frontend Cao cấp</strong> | 
+      <span itemprop="knowsAbout">Chuyên gia Tiêu chuẩn Ngữ nghĩa <abbr title="World Wide Web Consortium">W3C</abbr></span> &amp; 
+      <span>Cố vấn Trợ năng Web (<abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2 AAA)</span>
+    </p>
+
+    <!-- Menu điều hướng nội bộ -->
+    <nav aria-label="Điều hướng chính toàn trang">
+      <h2>Mục lục Điều hướng</h2>
+      <ul>
+        <li><a href="#about">Giới thiệu &amp; Triết lý</a></li>
+        <li><a href="#projects">Dự án Tiêu biểu</a></li>
+        <li><a href="#experience">Lộ trình Sự nghiệp</a></li>
+        <li><a href="#skills">Ma trận Kỹ năng &amp; Chuẩn mực</a></li>
+        <li><a href="#multimedia">Diễn thuyết &amp; Hội thảo Media</a></li>
+        <li><a href="#contact">Khởi tạo Hợp tác &amp; Liên hệ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <hr>
+
+  <!-- Phần nội dung chính -->
+  <main id="main-content">
+
+    <!-- Hero & Giới thiệu chuyên môn -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">Giới thiệu &amp; Triết lý Kỹ nghệ</h2>
+      
+      <!-- Hộp thoại tương tác gốc hiển thị thông cáo chuyên môn -->
+      <dialog open id="architectural-notice">
+        <h3>Thông báo Kiểm toán Tài liệu Bản quyền</h3>
+        <p>Tài liệu này được xây dựng độc quyền bằng <abbr title="HyperText Markup Language 5">HTML5</abbr> ngữ nghĩa thuần túy, loại bỏ hoàn toàn các lớp trình bày phụ thuộc vào <abbr title="Cascading Style Sheets">CSS</abbr> và mã thi hành <abbr title="JavaScript">JS</abbr>, bảo đảm khả năng phân tích tối đa cho các công cụ thu thập dữ liệu tự động và bộ đọc màn hình (<abbr title="Assistive Technology">AT</abbr>).</p>
+        <form method="dialog">
+          <button type="submit">Xác nhận và Đóng Hộp thoại</button>
+        </form>
+      </dialog>
+
+      <p itemprop="description">
+        Với hơn <time datetime="P12Y">12 năm</time> nghiên cứu chuyên sâu về kiến trúc hệ thống giao diện người dùng, tôi định hình lại quy trình phát triển sản phẩm kỹ thuật số bằng cách lấy tính ngữ nghĩa bản địa, khả năng tương thích ngược và khả năng tiếp cận toàn cầu làm nền tảng cốt lõi. Sự nghiệp của tôi tập trung vào việc hiện thực hóa các chuẩn mực <abbr title="World Wide Web Consortium">W3C</abbr>, cấu trúc vi dữ liệu máy đọc được (<a href="https://schema.org" rel="external" itemprop="sameAs">Schema.org</a>), và loại bỏ sự phụ thuộc không cần thiết vào các thư viện bên thứ ba.
+      </p>
+
+      <figure>
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&amp;auto=format&amp;fit=crop&amp;q=80" media="(min-width: 768px)" type="image/jpeg">
+          <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=400&amp;auto=format&amp;fit=crop&amp;q=80" alt="Chân dung kiến trúc sư Hà Văn Kiên đang làm việc tại hội thảo kỹ thuật W3C" width="400" height="400" loading="lazy" decoding="async" itemprop="image">
+        </picture>
+        <figcaption>Ảnh chân dung chuyên môn: Hà Văn Kiên tại phiên điều trần tiêu chuẩn hóa Web mở năm <time datetime="2025">2025</time>.</figcaption>
+      </figure>
+
+      <aside aria-labelledby="quick-facts-heading">
+        <h3 id="quick-facts-heading">Dữ liệu Định danh Nhanh</h3>
+        <dl>
+          <dt>Tổ chức hiện tại:</dt>
+          <dd itemprop="worksFor" itemscope itemtype="https://schema.org/Organization">
+            <span itemprop="name">Viện Tiêu chuẩn Web Mở Toàn cầu (Global Open Web Standards)</span>
+          </dd>
+          <dt>Vị trí địa lý:</dt>
+          <dd itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+            <span itemprop="addressLocality">Hà Nội</span>, 
+            <span itemprop="addressCountry">Việt Nam</span>
+          </dd>
+          <dt>Khối lượng tri thức chuyên biệt:</dt>
+          <dd>
+            <ul>
+              <li><abbr title="Accessible Rich Internet Applications">ARIA</abbr> 1.3 &amp; Web Components Specifications</li>
+              <li>Hạ tầng Web Hiệu năng Cao Không Phụ thuộc Framework</li>
+              <li>Tối ưu hóa Công cụ Tìm kiếm Kỹ thuật (<abbr title="Technical Search Engine Optimization">Technical SEO</abbr>)</li>
+            </ul>
+          </dd>
+        </dl>
+      </aside>
+    </section>
+
+    <hr>
+
+    <!-- Dự án Nổi bật -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Dự án Kỹ thuật Tiêu biểu</h2>
+      <p>Các giải pháp quy mô lớn đã được chuyển giao vào môi trường sản xuất (<mark>Production-Ready</mark>), minh chứng cho sức mạnh kiến trúc của chuẩn Web nguyên bản.</p>
+
+      <!-- Dự án 1 -->
+      <article itemscope itemtype="https://schema.org/SoftwareSourceCode" id="project-w3c-ds">
+        <header>
+          <h3 itemprop="name">Hệ Thống Thiết Kế Tương Thích Tuyệt Đối WCAG 2.2 AAA</h3>
+          <p>
+            <span>Phân loại: <span itemprop="programmingLanguage">HTML5 Semantic Core</span></span> | 
+            <span>Ngày hoàn thành: <time datetime="2025-11-20" itemprop="datePublished">20 tháng 11, 2025</time></span>
+          </p>
+        </header>
+
+        <p itemprop="description">
+          Xây dựng bộ khung thành phần giao diện không rào cản (<abbr title="Design System">DS</abbr>) phục vụ 4 triệu công dân, đáp ứng toàn bộ 86 tiêu chí thành công của nguyên tắc tiếp cận nội dung web cấp độ cao nhất (<abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2 Cấp độ AAA).
+        </p>
+
+        <figure>
+          <img src="https://images.unsplash.com/photo-1581291518655-9523c932edcf?w=600&amp;auto=format&amp;fit=crop&amp;q=80" alt="Biểu đồ phân cấp ngữ nghĩa của các thành phần giao diện không rào cản" width="600" height="300" loading="lazy">
+          <figcaption>Sơ đồ kiến trúc cây phân cấp DOM và mối quan hệ Accessibility Tree.</figcaption>
+        </figure>
+
+        <!-- Tương tác bản địa: Khối chi tiết dự án -->
+        <details>
+          <summary>Xem Báo cáo Chi tiết Kiến trúc &amp; Kiểm định</summary>
+          <h4>Đặc tả Kỹ thuật Triển khai</h4>
+          <ul>
+            <li>Tái cấu trúc 100% các phần tử tương tác phi ngữ nghĩa (<code translate="no">&lt;div role="button"&gt;</code>) về nguyên thủy <code translate="no">&lt;button&gt;</code> bản địa.</li>
+            <li>Tích hợp hệ thống quản lý hội thoại đa phương thức sử dụng thẻ <code translate="no">&lt;dialog&gt;</code> kết hợp form phương thức <code translate="no">method="dialog"</code>.</li>
+            <li>Đạt điểm kiểm định tự động tuyệt đối 100/100 trên toàn bộ các công cụ kiểm toán mã nguồn mở.</li>
+          </ul>
+
+          <h4>Số đo Định lượng Trợ năng</h4>
+          <p>
+            Chỉ số tuân thủ tiêu chuẩn: 
+            <meter min="0" max="100" low="70" high="90" optimum="100" value="100">100% Hoàn hảo</meter>
+          </p>
+          <p>
+            Tỷ lệ phủ mã kiểm thử thiết bị hỗ trợ: 
+            <progress max="100" value="98">98% hoàn tất</progress>
+          </p>
+        </details>
+
+        <footer>
+          <p>
+            Mã nguồn kho lưu trữ: 
+            <a href="https://example.com/repositories/w3c-semantic-core" rel="external" itemprop="codeRepository">example.com/repositories/w3c-semantic-core</a>
+          </p>
+        </footer>
+      </article>
+
+      <hr>
+
+      <!-- Dự án 2 -->
+      <article itemscope itemtype="https://schema.org/SoftwareSourceCode" id="project-health-portal">
+        <header>
+          <h3 itemprop="name">Cổng Tra Cứu Y Tế Toàn Dân Tối Ưu Cho Trình Đọc Màn Hình</h3>
+          <p>
+            <span>Phân loại: <span itemprop="programmingLanguage">Web Accessibility Platform</span></span> | 
+            <span>Ngày cập nhật: <time datetime="2026-03-15" itemprop="dateModified">15 tháng 03, 2026</time></span>
+          </p>
+        </header>
+
+        <p itemprop="description">
+          Kiến trúc lại cổng thông tin y tế trực tuyến cấp quốc gia, giải quyết bài toán tiếp cận dữ liệu phân tích sức khỏe đa chiều thông qua các bảng cấu trúc dữ liệu nhiều tầng và trường liên kết định danh người dùng.
+        </p>
+
+        <figure>
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&amp;auto=format&amp;fit=crop&amp;q=80" alt="Màn hình giao diện bảng dữ liệu lâm sàng y tế với cấu trúc phân nhóm header" width="600" height="300" loading="lazy">
+          <figcaption>Giao diện trích xuất chỉ số xét nghiệm với thuộc tính tiêu đề đa lớp.</figcaption>
+        </figure>
+
+        <details>
+          <summary>Xem Giải pháp Xử lý Dữ liệu Phức hợp</summary>
+          <h4>Các Quyết định Kiến trúc Trọng yếu</h4>
+          <ol>
+            <li>Phân chia trường dữ liệu y tế bằng các khối <code translate="no">&lt;fieldset&gt;</code> chuyên biệt kết hợp các phần tử <code translate="no">&lt;legend&gt;</code> mang tính định hướng ngữ cảnh cao.</li>
+            <li>Sử dụng thuộc tính liên kết ngữ nghĩa <code translate="no">scope="rowgroup"</code> và <code translate="no">scope="colgroup"</code> giúp công nghệ hỗ trợ phát âm chính xác tọa độ dữ liệu.</li>
+            <li>Tối ưu hóa thời gian hiển thị đầu tiên (<abbr title="First Contentful Paint">FCP</abbr>) xuống dưới 200ms bằng cách loại bỏ triệt để việc render-blocking từ các tài nguyên ngoại tuyến.</li>
+          </ol>
+        </details>
+
+        <footer>
+          <p>
+            Mã nguồn kho lưu trữ: 
+            <a href="https://example.com/repositories/accessible-health-portal" rel="external" itemprop="codeRepository">example.com/repositories/accessible-health-portal</a>
+          </p>
+        </footer>
+      </article>
+    </section>
+
+    <hr>
+
+    <!-- Kinh nghiệm & Trục thời gian -->
+    <section id="experience" aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Lộ Trình Sự Nghiệp &amp; Cột Mốc Kỹ Thuật</h2>
+      <p>Tổng hợp quá trình công tác chuyên môn tại các vị trí dẫn dắt công nghệ web và ủy ban tiêu chuẩn hóa.</p>
+
+      <table>
+        <caption>Bảng lịch sử công tác và thành quả kỹ thuật từ năm 2014 đến nay</caption>
+        <colgroup>
+          <col span="1">
+          <col span="1">
+          <col span="1">
+          <col span="1">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">Giai đoạn</th>
+            <th scope="col">Đơn vị &amp; Tổ chức</th>
+            <th scope="col">Chức danh Đảm nhiệm</th>
+            <th scope="col">Đóng góp Kỹ thuật Nổi bật</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><time datetime="2022">2022</time> &ndash; Hiện tại</th>
+            <td>Open Web Standards Consortium</td>
+            <td>Principal Frontend Architect</td>
+            <td>Chủ trì soạn thảo hướng dẫn kiến trúc HTML5 ngữ nghĩa cho các hệ thống hành chính công.</td>
+          </tr>
+          <tr>
+            <th scope="row"><time datetime="2018">2018</time> &ndash; <time datetime="2022">2022</time></th>
+            <td>Enterprise Cloud Solutions Corp</td>
+            <td>Lead Accessibility Engineer</td>
+            <td>Nâng cấp toàn bộ hạ tầng cổng dịch vụ đám mây đạt chứng nhận tuân thủ Section 508 và EN 301 549.</td>
+          </tr>
+          <tr>
+            <th scope="row"><time datetime="2014">2014</time> &ndash; <time datetime="2018">2018</time></th>
+            <td>Semantic Web Engineering Ltd</td>
+            <td>Senior UI Developer</td>
+            <td>Tiên phong phát triển các thư viện vi dữ liệu Microdata tích hợp các thuật toán khai phá tri thức tự động.</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row" colspan="3">Tổng thời lượng kinh nghiệm tích lũy</th>
+            <td>Hơn 12 năm phụng sự hệ sinh thái Web Mở</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <hr>
+
+    <!-- Kỹ năng Chuyên môn & Định nghĩa -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Ma Trận Năng Lực &amp; Tiêu Chuẩn Thành Thạo</h2>
+      
+      <h3>Bảng Ma Trận Kỹ Năng Kỹ Thuật</h3>
+      <table>
+        <caption>Đánh giá mức độ thông thạo các nhóm năng lực tiêu chuẩn Web W3C</caption>
+        <thead>
+          <tr>
+            <th scope="col">Lĩnh vực Kỹ năng</th>
+            <th scope="col">Tiêu chuẩn Áp dụng</th>
+            <th scope="col">Mức độ Thành thạo</th>
+            <th scope="col">Phạm vi Ứng dụng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Ngữ nghĩa Cấu trúc DOM</th>
+            <td>HTML5 Living Standard / W3C Recommendation</td>
+            <td>Chuyên gia Cao cấp (Mastery)</td>
+            <td>Phân chia vùng tài liệu, cấu trúc micro-format và cây DOM phẳng tối ưu</td>
+          </tr>
+          <tr>
+            <th scope="row">Trợ năng &amp; Công nghệ Hỗ trợ</th>
+            <td>WAI-ARIA 1.3 / WCAG 2.2 AAA</td>
+            <td>Kiến trúc sư Trưởng (Auditor)</td>
+            <td>Phát triển tương tác màn hình mờ, bàn phím chuyên dụng và thiết bị xúc giác</td>
+          </tr>
+          <tr>
+            <th scope="row">Cấu trúc Dữ liệu Liên kết</th>
+            <td>Schema.org / JSON-LD / Microdata</td>
+            <td>Chuyên gia Cấp cao (Advanced)</td>
+            <td>Tối ưu hóa công cụ tìm kiếm ngữ nghĩa, Rich Snippets và đồ thị tri thức</td>
+          </tr>
+          <tr>
+            <th scope="row">Hiệu năng &amp; Bền vững</th>
+            <td>Web Core Vitals / Low-Carbon Web</td>
+            <td>Chuyên gia Tối ưu (Specialist)</td>
+            <td>Xây dựng website không hao tổn năng lượng tải, triệt tiêu JavaScript thừa</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Định Nghĩa Các Nguyên Lý Thiết Kế Ngữ Nghĩa</h3>
+      <dl>
+        <dt><dfn>HTML Ngữ Nghĩa (Semantic HTML)</dfn></dt>
+        <dd>Thực hành sử dụng các phần tử HTML theo đúng ý nghĩa thực tế và mục đích truyền tải của chúng thay vì sử dụng các phần tử trung tính (<code translate="no">&lt;div&gt;</code>, <code translate="no">&lt;span&gt;</code>) phục vụ hiển thị hình ảnh.</dd>
+
+        <dt><dfn>Luật Thang Tiêu Đề Nghiêm Ngặt (Heading Hierarchy Law)</dfn></dt>
+        <dd>Quy tắc bắt buộc các cấp thẻ từ <code translate="no">&lt;h1&gt;</code> đến <code translate="no">&lt;h6&gt;</code> phải giảm dần tuần tự không được ngắt quãng, tạo ra một mục lục hoàn hảo cho công nghệ hỗ trợ định vị tài liệu.</dd>
+
+        <dt><dfn>Khả năng Tự Phục vụ Bản địa (Native Functional Self-Sufficiency)</dfn></dt>
+        <dd>Khả năng của trang web thực thi đầy đủ các hành vi tương tác (như thu gọn/mở rộng qua <code translate="no">&lt;details&gt;</code>, hiển thị lớp phủ qua <code translate="no">&lt;dialog&gt;</code>, hoặc xác thực dữ liệu đầu vào qua <code translate="no">&lt;form&gt;</code>) mà không cần nạp bất kỳ dòng mã kịch bản nào.</dd>
+      </dl>
+    </section>
+
+    <hr>
+
+    <!-- Đa phương tiện & Thuyết trình -->
+    <section id="multimedia" aria-labelledby="multimedia-heading">
+      <h2 id="multimedia-heading">Tài Liệu Đa Phương Tiện &amp; Thuyết Trình Hội Nghị</h2>
+      <p>Các tài liệu kỹ thuật có kèm tệp phương tiện nghe nhìn với cơ chế dự phòng và phụ đề ngữ nghĩa chuẩn xác.</p>
+
+      <article id="conference-keynote">
+        <h3>Bài Diễn Thuyết: Kiến Trúc Web Không Rào Cản Tại W3C Summit</h3>
+        <figure>
+          <video controls preload="metadata" width="640" height="360" poster="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=640&amp;auto=format&amp;fit=crop&amp;q=80">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+            <track kind="subtitles" src="captions-vi.vtt" srclang="vi" label="Tiếng Việt (Chuẩn)" default>
+            <track kind="subtitles" src="captions-en.vtt" srclang="en" label="English">
+            <p>
+              Trình duyệt của quý vị không hỗ trợ phát trực tiếp phần tử video HTML5. 
+              Quý vị có thể tải về tệp tin video bài nói chuyện tại: 
+              <a href="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4">Liên kết tải tệp bài giảng (MP4)</a>.
+            </p>
+          </video>
+          <figcaption>Ghi hình toàn văn: Phiên thảo luận chuyên đề "Triệt tiêu rào cản thông tin qua cấu trúc HTML ngữ nghĩa nguyên thủy".</figcaption>
+        </figure>
+      </article>
+
+      <article id="podcast-episode">
+        <h3>Podcast Chuyên Sâu: Kỹ Nghệ Web Bền Vững &amp; Microdata</h3>
+        <figure>
+          <audio controls preload="metadata">
+            <source src="https://actions.google.com/sounds/v1/ambiences/outdoor_ambience.ogg" type="audio/ogg">
+            <p>
+              Trình duyệt hiện tại không hỗ trợ phát âm thanh trực tiếp. 
+              Vui lòng tải tệp âm thanh bản ghi tại: 
+              <a href="https://actions.google.com/sounds/v1/ambiences/outdoor_ambience.ogg">Liên kết tải tệp phát thanh (OGG)</a>.
+            </p>
+          </audio>
+          <figcaption>Tập Podcast #48: Trò chuyện cùng ban kỹ thuật W3C về tương lai của web máy đọc được.</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <hr>
+
+    <!-- Khu vực Bổ trợ (Aside) -->
+    <aside aria-labelledby="publications-heading">
+      <h2 id="publications-heading">Công Trình Xuất Bản &amp; Chứng Chỉ</h2>
+      
+      <h3>Sách Chuyên Khảo Đã Xuất Bản</h3>
+      <ul>
+        <li>
+          <cite>Kiến Trúc Ngữ Nghĩa HTML5 Cho Kỹ Sư Hiện Đại</cite> &ndash; Xuất bản bởi Nhà xuất bản Khoa học Kỹ thuật (<time datetime="2024">2024</time>).
+        </li>
+        <li>
+          <cite>Cẩm Nang Toàn Diện Về Kiểm Toán Tiếp Cận WCAG 2.2</cite> &ndash; Tạp chí Công nghệ Web Mở (<time datetime="2025">2025</time>).
+        </li>
+      </ul>
+
+      <h3>Chứng Chỉ Chuyên Ngành Quốc Tế</h3>
+      <ul>
+        <li><abbr title="Certified Professional in Accessibility Core Competencies">CPACC</abbr> &ndash; Cấp bởi Hiệp hội Chuyên gia Trợ năng Quốc tế (<abbr title="International Association of Accessibility Professionals">IAAP</abbr>).</li>
+        <li><abbr title="Web Accessibility Specialist">WAS</abbr> &ndash; Chuyên viên Trợ năng Kỹ thuật Web Cao cấp.</li>
+      </ul>
+    </aside>
+
+    <hr>
+
+    <!-- Biểu mẫu Liên hệ với Xác thực Ngữ nghĩa Nghiêm ngặt -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Khởi Tạo Hợp Tác &amp; Đăng Ký Tư Vấn</h2>
+      <p>Quý đối tác và đơn vị quan tâm vui lòng hoàn thành biểu mẫu bên dưới. Dữ liệu được xác thực trực tiếp thông qua các ràng buộc nguyên bản của tiêu chuẩn HTML5.</p>
+
+      <form action="https://httpbin.org/post" method="post">
+        
+        <!-- Nhóm 1: Thông tin người liên hệ -->
+        <fieldset>
+          <legend>Thông Tin Định Danh Khách Hàng / Đối Tác</legend>
+          
+          <p>
+            <label for="client-name">Họ và tên đầy đủ <abbr title="Trường bắt buộc nhập">*</abbr>:</label><br>
+            <input type="text" id="client-name" name="name" autocomplete="name" required minlength="2" maxlength="80" placeholder="Ví dụ: Trần Quốc Tuấn">
+          </p>
+
+          <p>
+            <label for="client-email">Thư điện tử doanh nghiệp <abbr title="Trường bắt buộc nhập">*</abbr>:</label><br>
+            <input type="email" id="client-email" name="email" autocomplete="email" required placeholder="tuantran@organization.org">
+          </p>
+
+          <p>
+            <label for="client-tel">Số điện thoại liên lạc trực tiếp:</label><br>
+            <input type="tel" id="client-tel" name="telephone" autocomplete="tel" pattern="[0-9]{10,11}" placeholder="0912345678 (10 đến 11 chữ số)">
+          </p>
+
+          <p>
+            <label for="client-url">Địa chỉ website đơn vị / Tổ chức hiện tại:</label><br>
+            <input type="url" id="client-url" name="website" autocomplete="url" placeholder="https://organization.org">
+          </p>
+        </fieldset>
+
+        <!-- Nhóm 2: Thông số dự án -->
+        <fieldset>
+          <legend>Thông Số Yêu Cầu Kỹ Thuật &amp; Tư Vấn Dự Án</legend>
+
+          <p>
+            <label for="consultation-type">Lĩnh vực tư vấn trọng tâm <abbr title="Trường bắt buộc nhập">*</abbr>:</label><br>
+            <select id="consultation-type" name="type" required>
+              <option value="">-- Vui lòng lựa chọn giải pháp cần tư vấn --</option>
+              <optgroup label="Kiểm định &amp; Tái cấu trúc">
+                <option value="wcag-audit">Kiểm toán Trợ năng WCAG 2.2 AAA Toàn diện</option>
+                <option value="semantic-refactor">Tái kiến trúc Ngữ nghĩa DOM &amp; Microdata</option>
+              </optgroup>
+              <optgroup label="Tối ưu hóa &amp; Đào tạo">
+                <option value="perf-audit">Tối ưu Tốc độ Tải Trang Không Phụ Thuộc Script</option>
+                <option value="standards-training">Tập huấn Kỹ sư Tiêu chuẩn W3C Chuyên sâu</option>
+              </optgroup>
+            </select>
+          </p>
+
+          <p>
+            <label for="target-date">Thời hạn mong muốn hoàn tất đánh giá:</label><br>
+            <input type="date" id="target-date" name="deadline" min="2026-09-08">
+          </p>
+
+          <p>
+            <label for="target-budget">Dự toán ngân sách phân bổ (Triệu đồng Việt Nam):</label><br>
+            <input type="number" id="target-budget" name="budget" min="20" max="2000" step="10" value="50">
+          </p>
+
+          <p>
+            <label for="project-description">Bản tóm tắt yêu cầu nghiệp vụ <abbr title="Trường bắt buộc nhập">*</abbr>:</label><br>
+            <textarea id="project-description" name="scope" rows="6" cols="60" required minlength="30" maxlength="3000" placeholder="Mô tả hiện trạng hệ sinh thái web, các rào cản tiếp cận đã ghi nhận và mục tiêu kỳ vọng..."></textarea>
+          </p>
+
+          <p>
+            <input type="checkbox" id="terms-consent" name="consent" required>
+            <label for="terms-consent">Tôi xác nhận cam kết tuân thủ các điều khoản hợp tác bảo mật kỹ thuật và bảo vệ quyền sở hữu trí tuệ <abbr title="Bắt buộc">*</abbr></label>
+          </p>
+        </fieldset>
+
+        <p>
+          <button type="submit">Xác Nhận &amp; Gửi Đăng Ký Tư Vấn</button>
+          <button type="reset">Đặt Lại Toàn Bộ Thông Tin Nhập Liệu</button>
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <hr>
+
+  <!-- Chân trang: Bản quyền, Pháp lý & Trợ năng -->
+  <footer>
+    <section aria-labelledby="footer-contact-info">
+      <h2 id="footer-contact-info">Thông Tin Liên Hệ Trực Tiếp</h2>
+      <address>
+        <p>Kênh trao đổi chuyên môn: <a href="mailto:kien.ha@example.com" itemprop="email">kien.ha@example.com</a></p>
+        <p>Đường dây hỗ trợ khẩn cấp: <a href="tel:+84912345678" itemprop="telephone">+84 (0) 91 234 5678</a></p>
+        <p>
+          Văn phòng đại diện: 
+          <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+            <span itemprop="streetAddress">Tầng 12, Tòa nhà Công nghệ Mở, Đường Cầu Giấy</span>, 
+            <span itemprop="addressLocality">Quận Cầu Giấy, Hà Nội</span>, 
+            <span itemprop="addressCountry">Việt Nam</span>.
+          </span>
+        </p>
+      </address>
+    </section>
+
+    <nav aria-label="Điều hướng chân trang và pháp lý">
+      <h3>Liên kết Bổ trợ &amp; Pháp lý</h3>
+      <ul>
+        <li><a href="#main-content">Trở về đầu trang (Back to top)</a></li>
+        <li><a href="https://example.com/accessibility-statement" rel="help">Tuyên bố Trợ năng Toàn diện (Accessibility Statement)</a></li>
+        <li><a href="https://example.com/privacy-policy" rel="privacy-policy">Chính sách Bảo mật Dữ liệu Riêng tư</a></li>
+        <li><a href="https://example.com/terms-of-service" rel="license">Điều khoản Cung cấp Dịch vụ Kỹ thuật</a></li>
+      </ul>
+    </nav>
+
+    <p>
+      <small>
+        &copy; <time datetime="2026">2026</time> Bản quyền thuộc về kiến trúc sư <span itemprop="copyrightHolder">Hà Văn Kiên</span>. 
+        Mọi nội dung được phát hành tuân thủ nguyên tắc mã nguồn mở theo giấy phép <a href="https://creativecommons.org/licenses/by/4.0/deed.vi" rel="license">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>.
+      </small>
+    </p>
+
+    <p>
+      <small>
+        Dấu mốc thời gian phát hành tài liệu: 
+        <time datetime="2026-09-08T16:07:01+07:00">Ngày 08 tháng 09 năm 2026, lúc 16:07 (Múi giờ Đông Dương - GMT+7)</time>.
+      </small>
+    </p>
+  </footer>
+
+</body>
+</html>
+```

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex & Grid Battle | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="layout-demo" id="flex-grid">
+    <div class="demo-heading">
+      <p class="eyebrow">Hoạt động 1</p>
+      <h1>Flex &amp; Grid Battle</h1>
+      <p>Hai cách bố cục hiện đại cho những giao diện gọn gàng và co giãn tốt.</p>
+    </div>
+
+    <div class="demo-grid">
+      <article class="demo-panel flex-panel">
+        <div>
+          <span class="panel-number">01 / FLEXBOX</span>
+          <h2>Căn giữa tức thì</h2>
+          <p>Flexbox phù hợp với việc căn chỉnh các đối tượng đơn lẻ theo cả hai chiều.</p>
+        </div>
+        <div class="center-stage">
+          <div class="center-box">Ở chính giữa</div>
+        </div>
+      </article>
+
+      <article class="demo-panel grid-panel">
+        <div>
+          <span class="panel-number">02 / CSS GRID</span>
+          <h2>Lưới ba cột</h2>
+          <p>Grid chia không gian thành các cột bằng nhau và tự co giãn theo màn hình.</p>
+        </div>
+        <div class="three-columns">
+          <div class="grid-tile">Cột 01</div>
+          <div class="grid-tile">Cột 02</div>
+          <div class="grid-tile">Cột 03</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <div class="portfolio-layout" id="portfolio">
+    <header class="site-header">
+      <a class="brand" href="#portfolio">HA<span>.</span></a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#about">Giới thiệu</a>
+        <a href="#skills">Kỹ năng</a>
+        <a href="#projects">Dự án</a>
+      </nav>
+      <a class="header-link" href="mailto:hello@example.com">Liên hệ <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <aside class="sidebar" id="about">
+      <div class="profile-mark">HA</div>
+      <p class="sidebar-label">Portfolio cá nhân</p>
+      <h2>Nguyễn<br>Hoàng Anh</h2>
+      <p class="role">Sinh viên Công nghệ thông tin<br>AI &amp; IoT enthusiast</p>
+      <div class="sidebar-meta">
+        <p><span>Địa điểm</span> Đồng Nai, Việt Nam</p>
+        <p><span>Trạng thái</span> Đang học và xây dựng</p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section class="intro-section">
+        <p class="eyebrow">Hoạt động 2 / Portfolio</p>
+        <h1>Thiết kế bằng<br><em>cấu trúc rõ ràng.</em></h1>
+        <p class="intro-copy">Tôi xây dựng những sản phẩm web dễ dùng, kết hợp tư duy hệ thống với sự tò mò về AI, dữ liệu và thiết bị thông minh.</p>
+      </section>
+
+      <section class="content-section" id="skills">
+        <div class="section-heading">
+          <span class="section-index">01</span>
+          <h2>Kỹ năng</h2>
+        </div>
+        <div class="skills-list">
+          <span class="skill-item">HTML5</span>
+          <span class="skill-item">CSS3</span>
+          <span class="skill-item">JavaScript</span>
+          <span class="skill-item">Python</span>
+          <span class="skill-item">C++</span>
+          <span class="skill-item">Arduino</span>
+          <span class="skill-item">ESP32</span>
+        </div>
+      </section>
+
+      <section class="content-section" id="projects">
+        <div class="section-heading">
+          <span class="section-index">02</span>
+          <h2>Dự án chọn lọc</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card project-card-wide">
+            <span class="project-type">Web / E-commerce</span>
+            <h3>Sắc Việt</h3>
+            <p>Nền tảng thương mại điện tử tôn vinh sản phẩm truyền thống Việt Nam.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="project-card project-card-dark">
+            <span class="project-type">IoT / Embedded</span>
+            <h3>Smart Air</h3>
+            <p>Quan trắc chất lượng không khí bằng ESP32 và cảm biến.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="project-card project-card-light">
+            <span class="project-type">AI / Research</span>
+            <h3>AI Detector</h3>
+            <p>Khám phá mô hình thị giác máy tính chạy tại thiết bị.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Nguyễn Hoàng Anh</span>
+      <span>Được xây dựng với Flexbox &amp; CSS Grid</span>
+    </footer>
+  </div>
+</body>
+</html>

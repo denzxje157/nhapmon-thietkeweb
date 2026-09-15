@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trần Hải Đăng — Học máy &amp; IoT</title>
+  <meta name="description" content="Portfolio của Trần Hải Đăng, sinh viên nghiên cứu học máy và hệ thống IoT.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#noi-dung">Bỏ qua, tới nội dung chính</a>
+
+  <!-- ===== HEADER: mặt nước ===== -->
+  <header class="site-header">
+    <p class="identity">Trần Hải Đăng</p>
+    <p class="role">Học máy &amp; hệ thống IoT</p>
+
+    <nav class="site-nav" aria-label="Điều hướng chính">
+      <ul>
+        <li><a href="#gioi-thieu">Giới thiệu</a></li>
+        <li><a href="#ky-nang">Kỹ năng</a></li>
+        <li><a href="#du-an">Dự án</a></li>
+        <li><a href="#hoc-van">Học vấn</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" aria-label="Thông tin liên hệ và công cụ">
+    <figure class="portrait">
+      <span class="portrait-mark" aria-hidden="true">HĐ</span>
+      <figcaption>Sinh viên năm 4, Đại học Bách khoa TP.HCM</figcaption>
+    </figure>
+
+    <section class="side-block">
+      <h2>Liên hệ</h2>
+      <ul class="contact-list">
+        <li><a href="mailto:haidang.tran@example.com">haidang.tran@example.com</a></li>
+        <li><a href="tel:+84900000000">0900 000 000</a></li>
+        <li><a href="https://github.com/">github.com/haidang-tran</a></li>
+        <li>Thành phố Hồ Chí Minh</li>
+      </ul>
+    </section>
+
+    <section class="side-block">
+      <h2>Công cụ hằng ngày</h2>
+      <ul class="tool-list">
+        <li>PyTorch, scikit-learn</li>
+        <li>ESP32, Raspberry Pi</li>
+        <li>MQTT, InfluxDB</li>
+        <li>Docker, Git</li>
+      </ul>
+    </section>
+
+    <section class="side-block">
+      <h2>Ngôn ngữ</h2>
+      <dl class="lang-list">
+        <dt>Tiếng Việt</dt>
+        <dd>Bản ngữ</dd>
+        <dt>Tiếng Anh</dt>
+        <dd>IELTS 7.0</dd>
+      </dl>
+    </section>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content" id="noi-dung">
+
+    <section id="gioi-thieu" class="block intro">
+      <div class="block-head">
+        <h2>Giới thiệu</h2>
+        <p class="depth">0 m</p>
+      </div>
+      <p class="lead">
+        Tôi xây dựng những hệ thống biết cảm nhận rồi tự suy luận: cảm biến thu dữ liệu ngoài thực địa,
+        mô hình học máy chạy ngay trên thiết bị, kết quả gửi về khi có sóng.
+      </p>
+      <p>
+        Hai năm qua tôi tập trung vào mảng học máy nhúng — làm sao nén một mô hình vài chục megabyte
+        xuống còn vài trăm kilobyte mà độ chính xác không sụp đổ. Bài toán tôi thấy thú vị nhất là
+        giám sát chất lượng nước và không khí ở những nơi điện chập chờn, mạng yếu, và không ai ra
+        bảo trì thiết bị trong sáu tháng liền.
+      </p>
+    </section>
+
+    <section id="ky-nang" class="block">
+      <div class="block-head">
+        <h2>Kỹ năng</h2>
+        <p class="depth">200 m</p>
+      </div>
+
+      <ul class="skills-list">
+        <li class="skill">Python</li>
+        <li class="skill">PyTorch</li>
+        <li class="skill">TensorFlow Lite</li>
+        <li class="skill">scikit-learn</li>
+        <li class="skill">C/C++ nhúng</li>
+        <li class="skill">ESP32</li>
+        <li class="skill">Raspberry Pi</li>
+        <li class="skill">MQTT</li>
+        <li class="skill">LoRaWAN</li>
+        <li class="skill">Node-RED</li>
+        <li class="skill">InfluxDB</li>
+        <li class="skill">Grafana</li>
+        <li class="skill">Docker</li>
+        <li class="skill">HTML5</li>
+        <li class="skill">CSS3</li>
+        <li class="skill">Git</li>
+      </ul>
+    </section>
+
+    <section id="du-an" class="block">
+      <div class="block-head">
+        <h2>Dự án</h2>
+        <p class="depth">1 000 m</p>
+      </div>
+
+      <div class="projects">
+        <article class="project">
+          <h3>Phao quan trắc chất lượng nước sông Sài Gòn</h3>
+          <p class="project-meta">Nghiên cứu khoa học sinh viên · 2025</p>
+          <p>
+            Sáu phao cảm biến đo pH, độ đục và oxy hòa tan, truyền dữ liệu qua LoRaWAN về trạm gốc.
+            Mô hình hồi quy chạy trên ESP32 phát hiện điểm bất thường trước khi gửi, nhờ đó giảm
+            được 80% lưu lượng truyền và phao chạy pin mặt trời suốt mùa khô.
+          </p>
+          <ul class="tags">
+            <li>ESP32</li>
+            <li>LoRaWAN</li>
+            <li>TinyML</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <h3>Nhận diện tiếng ho trên thiết bị biên</h3>
+          <p class="project-meta">Đồ án môn Học sâu · 2025</p>
+          <p>
+            Mạng CNN phân loại âm thanh ho từ phổ Mel, lượng tử hóa 8-bit rồi đưa xuống Raspberry Pi
+            Zero. Độ chính xác giữ ở mức 91% trong khi mô hình nhẹ đi mười lần; toàn bộ xử lý diễn ra
+            cục bộ nên không có file âm thanh nào rời khỏi thiết bị.
+          </p>
+          <ul class="tags">
+            <li>PyTorch</li>
+            <li>TFLite</li>
+            <li>Raspberry Pi</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <h3>Bảng điều khiển nhà kính</h3>
+          <p class="project-meta">Dự án cá nhân · 2024</p>
+          <p>
+            Hệ thống tưới tự động cho vườn dâu 200 m² ở Đà Lạt. Dữ liệu độ ẩm đất đi qua MQTT vào
+            InfluxDB, mô hình dự báo nhu cầu nước cho 24 giờ tới và Grafana hiển thị cho chủ vườn
+            trên điện thoại.
+          </p>
+          <ul class="tags">
+            <li>MQTT</li>
+            <li>InfluxDB</li>
+            <li>Grafana</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="hoc-van" class="block">
+      <div class="block-head">
+        <h2>Học vấn</h2>
+        <p class="depth">4 000 m</p>
+      </div>
+
+      <ol class="timeline">
+        <li>
+          <h3>Kỹ sư Khoa học Máy tính</h3>
+          <p class="project-meta">Đại học Bách khoa TP.HCM · 2022 – 2026</p>
+          <p>GPA 3.6/4.0. Hướng chuyên sâu: học máy và hệ thống nhúng.</p>
+        </li>
+        <li>
+          <h3>Trợ lý nghiên cứu, Phòng thí nghiệm IoT</h3>
+          <p class="project-meta">2024 – nay</p>
+          <p>Thiết kế firmware và pipeline huấn luyện cho các trạm quan trắc môi trường.</p>
+        </li>
+        <li>
+          <h3>Giải Nhì Sinh viên Nghiên cứu Khoa học cấp trường</h3>
+          <p class="project-meta">2025</p>
+          <p>Đề tài phao quan trắc chất lượng nước.</p>
+        </li>
+      </ol>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER: vực thẳm ===== -->
+  <footer class="site-footer">
+    <p class="footer-line">Viết tay bằng HTML và CSS, không dùng JavaScript.</p>
+    <p class="footer-line">© 2026 Trần Hải Đăng</p>
+  </footer>
+
+</body>
+</html>

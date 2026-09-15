@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox căn giữa &amp; CSS Grid 3 cột</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Phần 1: Flexbox căn giữa hoàn toàn, cao 100vh -->
+  <main class="container">
+    <section class="card-hero">
+      <h1>Căn giữa bằng Flexbox</h1>
+      <p>Thẻ này nằm chính giữa màn hình theo cả chiều dọc và chiều ngang.</p>
+    </section>
+  </main>
+
+  <!-- Phần 2: CSS Grid 3 cột bằng nhau, gap 20px -->
+  <section class="grid-section">
+    <header class="grid-header">
+      <h2>Bố cục lưới 3 cột</h2>
+      <p>Ba cột rộng bằng nhau, cách nhau 20px.</p>
+    </header>
+
+    <div class="grid">
+      <article class="card">
+        <h3>Cột một</h3>
+        <p>Nền xám nhạt, bo góc 10px.</p>
+      </article>
+
+      <article class="card">
+        <h3>Cột hai</h3>
+        <p>Chiều rộng chia đều nhờ <code>1fr</code>.</p>
+      </article>
+
+      <article class="card">
+        <h3>Cột ba</h3>
+        <p>Khoảng cách giữa các cột do <code>gap</code> quy định.</p>
+      </article>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>Bài tập CSS: Flexbox &amp; Grid</p>
+  </footer>
+
+</body>
+</html>

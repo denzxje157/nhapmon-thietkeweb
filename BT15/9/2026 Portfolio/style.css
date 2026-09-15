@@ -1,0 +1,418 @@
+/* =========================================================
+   Portfolio — Học máy & IoT
+   Bảng màu: dải độ sâu đại dương, từ mặt nước xuống vực thẳm
+   ========================================================= */
+
+:root {
+  --surface:   #0a2a42;  /* mặt nước  */
+  --deep:      #05192b;  /* tầng giữa */
+  --abyss:     #020a12;  /* vực thẳm  */
+  --bio:       #58e2c2;  /* phát quang sinh học — điểm nhấn duy nhất */
+  --foam:      #e4eef2;  /* chữ chính */
+  --muted:     #8aa8b6;  /* chữ phụ   */
+  --hairline:  rgba(138, 168, 182, 0.22);
+
+  --font-display: "Be Vietnam Pro", "Segoe UI", sans-serif;
+  --font-body:    "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================================================
+   1. BỐ CỤC TỔNG — CSS Grid với grid-template-areas
+   ========================================================= */
+
+body {
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 250px 1fr;   /* sidebar cố định 250px, main lấy phần còn lại */
+  grid-template-rows: auto 1fr auto;  /* header, thân trang co giãn, footer */
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--foam);
+
+  /* Dải màu chạy suốt trang: càng xuống dưới càng sâu */
+  background-color: var(--deep);
+  background-image: linear-gradient(
+    180deg,
+    var(--surface) 0%,
+    var(--deep)   45%,
+    var(--abyss) 100%
+  );
+  background-attachment: fixed;
+}
+
+.site-header  { grid-area: header;  }
+.sidebar      { grid-area: sidebar; }
+.main-content { grid-area: main;    }
+.site-footer  { grid-area: footer;  }
+
+/* =========================================================
+   2. TYPO CHUNG
+   ========================================================= */
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+a {
+  color: var(--bio);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+a:hover {
+  border-bottom-color: var(--bio);
+}
+
+a:focus-visible,
+.skill:focus-visible {
+  outline: 2px solid var(--bio);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+  z-index: 10;
+  background: var(--bio);
+  color: var(--abyss);
+  padding: 10px 16px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   3. HEADER
+   ========================================================= */
+
+.site-header {
+  padding: 48px 40px 28px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.identity {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  letter-spacing: -0.02em;
+  color: var(--foam);
+}
+
+.role {
+  color: var(--bio);
+  font-size: 1.05rem;
+  margin-top: 4px;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  list-style: none;
+  margin-top: 24px;
+}
+
+.site-nav a {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.site-nav a:hover {
+  color: var(--foam);
+  border-bottom-color: var(--muted);
+}
+
+/* =========================================================
+   4. SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  padding: 40px 28px;
+  border-right: 1px solid var(--hairline);
+  font-size: 0.9rem;
+}
+
+.portrait {
+  margin-bottom: 36px;
+}
+
+.portrait-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  border: 1px solid var(--bio);
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--bio);
+}
+
+.portrait figcaption {
+  margin-top: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.side-block {
+  margin-bottom: 32px;
+}
+
+.side-block h2 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.contact-list,
+.tool-list {
+  list-style: none;
+}
+
+.contact-list li,
+.tool-list li {
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.tool-list li {
+  color: var(--muted);
+}
+
+.lang-list dt {
+  font-weight: 500;
+}
+
+.lang-list dd {
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+/* =========================================================
+   5. MAIN CONTENT
+   ========================================================= */
+
+.main-content {
+  padding: 48px 40px 64px;
+  max-width: 78ch;
+}
+
+.block {
+  margin-bottom: 64px;
+}
+
+.block:last-child {
+  margin-bottom: 0;
+}
+
+.block-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 10px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.block-head h2 {
+  font-size: 1.5rem;
+}
+
+/* Mốc độ sâu — đánh dấu vị trí của khối trong hành trình xuống đáy */
+.depth {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.lead {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.intro p + p {
+  color: #c3d6de;
+}
+
+/* =========================================================
+   6. KỸ NĂNG — Flexbox, tự xuống dòng
+   ========================================================= */
+
+.skills-list {
+  display: flex;          /* xếp thành hàng ngang        */
+  flex-wrap: wrap;        /* hết chỗ thì tự xuống dòng   */
+  gap: 15px;              /* khoảng cách giữa các item   */
+  justify-content: center;/* căn giữa theo chiều ngang   */
+  list-style: none;
+}
+
+.skill {
+  padding: 8px 18px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background-color: rgba(88, 226, 194, 0.06);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   7. DỰ ÁN
+   ========================================================= */
+
+.projects {
+  display: grid;
+  gap: 28px;
+}
+
+.project {
+  padding-left: 20px;
+  border-left: 2px solid var(--bio);
+}
+
+.project h3 {
+  font-size: 1.15rem;
+}
+
+.project-meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 4px 0 10px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin-top: 12px;
+}
+
+.tags li {
+  color: var(--muted);
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+}
+
+/* =========================================================
+   8. HỌC VẤN
+   ========================================================= */
+
+.timeline {
+  list-style: none;
+  counter-reset: moc;
+}
+
+.timeline li {
+  position: relative;
+  padding-left: 24px;
+  padding-bottom: 28px;
+  border-left: 1px solid var(--hairline);
+}
+
+.timeline li:last-child {
+  border-left-color: transparent;
+  padding-bottom: 0;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 10px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--bio);
+}
+
+.timeline h3 {
+  font-size: 1.05rem;
+}
+
+/* =========================================================
+   9. FOOTER
+   ========================================================= */
+
+.site-footer {
+  padding: 32px 40px 40px;
+  border-top: 1px solid var(--hairline);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.footer-line + .footer-line {
+  margin-top: 4px;
+}
+
+/* =========================================================
+   10. RESPONSIVE — màn hình hẹp xếp chồng một cột
+   ========================================================= */
+
+@media (max-width: 860px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "header"
+      "main"
+      "sidebar"
+      "footer";
+  }
+
+  .sidebar {
+    border-right: none;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .site-header,
+  .main-content,
+  .sidebar,
+  .site-footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
+}

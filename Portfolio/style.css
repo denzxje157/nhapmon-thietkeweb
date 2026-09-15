@@ -1,0 +1,59 @@
+/* ==========================================================================
+   RESET CƠ BẢN
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    color: #222;
+}
+
+/* ==========================================================================
+   1. FLEXBOX: CĂN GIỮA .container THEO CẢ CHIỀU DỌC VÀ CHIỀU NGANG
+   - Chiều cao .container = 100vh (toàn màn hình)
+   - Nội dung bên trong được căn giữa hoàn hảo bằng Flexbox
+   ========================================================================== */
+.container {
+    height: 100vh;               /* Chiều cao toàn màn hình */
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;      /* Nội dung con xếp theo chiều dọc */
+    align-items: center;         /* Căn giữa theo chiều ngang */
+    justify-content: center;     /* Căn giữa theo chiều dọc */
+
+    text-align: center;
+    padding: 20px;
+}
+
+/* ==========================================================================
+   2. CSS GRID: BỐ CỤC LƯỚI 3 CỘT BẰNG NHAU, KHOẢNG CÁCH 20px
+   - Mỗi cột chứa một thẻ (card) nền xám nhạt, bo góc 10px
+   ========================================================================== */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cột bằng nhau */
+    gap: 20px;                             /* Khoảng cách giữa các cột/hàng */
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.grid-item {
+    background-color: #f0f0f0;   /* Màu nền xám nhạt */
+    border-radius: 10px;         /* Bo góc 10px */
+    padding: 24px;
+}
+
+/* Responsive: chuyển về 1 cột trên màn hình nhỏ */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}

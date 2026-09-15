@@ -23,6 +23,7 @@
 </head>
 <body>
     <!-- LIÊN KẾT NHẢY NHANH ĐẾN NỘI DUNG CHÍNH (HỖ TRỢ TRUY CẬP CHO TRÌNH ĐỌC MÀN HÌNH VÀ PHÍM TAB) -->
+    <link rel="stylesheet" href="style.css">
     <a href="#main-content">Chuyển đến nội dung chính</a>
 
     <!-- HEADER: Đại diện cho phần đầu của trang (Page Header), có nhiệm vụ định danh thương hiệu cá nhân của sinh viên và cung cấp khu vực điều hướng chính cho toàn bộ website. Sử dụng thẻ ngữ nghĩa <header> thay vì <div> để công cụ tìm kiếm và công nghệ hỗ trợ xác định rõ đây là phần mở đầu tài liệu. -->
@@ -49,7 +50,7 @@
     <main id="main-content">
 
         <!-- SECTION (Hero / About): Phân đoạn mở đầu giới thiệu thông tin cá nhân, chức danh sinh viên năm 2 và định hướng nghề nghiệp. Thẻ <section> được sử dụng vì đây là một khối nội dung độc lập theo chủ đề có tiêu đề phân cấp <h1> đại diện cho toàn bộ trang web. -->
-        <section id="about" aria-labelledby="hero-title">
+        <section id="about" class="container" aria-labelledby="hero-title">
             <p><em>Sinh viên Năm 2 &bull; Ngành Công nghệ Thông tin</em></p>
             <!-- H1: Tiêu đề quan trọng nhất trên trang, xác định rõ danh tính cá nhân của chủ sở hữu Portfolio -->
             <h1 id="hero-title">Trần Quang Huy</h1>
@@ -71,37 +72,39 @@
                 <p>Bộ công cụ và kiến thức tôi tích lũy qua các môn học trên giảng đường, dự án game cá nhân và các kỳ Game Jam.</p>
             </header>
 
-            <!-- Danh mục kỹ năng 1 -->
-            <div>
-                <h3>1. Game Engines &amp; Frameworks</h3>
+            <div class="grid-container">
+                <!-- Danh mục kỹ năng 1 -->
+                <div class="grid-item">
+                    <h3>1. Game Engines &amp; Frameworks</h3>
                 <ul>
                     <li>Unity 2D/3D (C# Scripting, Rigidbody Physics, UI Toolkit, Tilemap)</li>
                     <li>Godot Engine 4 (GDScript, Kiến trúc Scene &amp; Node, Signals)</li>
                     <li>Phaser.js &amp; HTML5 Canvas (Lập trình game 2D trên trình duyệt web)</li>
                     <li>Unreal Engine 5 (Làm quen hệ thống Blueprints cơ bản)</li>
                 </ul>
-            </div>
+                </div>
 
-            <!-- Danh mục kỹ năng 2 -->
-            <div>
-                <h3>2. Ngôn ngữ &amp; Nền tảng Thuật toán</h3>
+                <!-- Danh mục kỹ năng 2 -->
+                <div class="grid-item">
+                    <h3>2. Ngôn ngữ &amp; Nền tảng Thuật toán</h3>
                 <ul>
                     <li>C / C++ (Cấu trúc dữ liệu nâng cao, giải thuật tối ưu &amp; lập trình thi đấu)</li>
                     <li>C# (.NET, Lập trình hướng đối tượng OOP, Design Patterns thông dụng trong Game)</li>
                     <li>Python (Xử lý dữ liệu, viết kịch bản script tự động hóa)</li>
                     <li>Toán học ứng dụng trong Game: Đại số tuyến tính, Hệ trục tọa độ, Vector, Thuật toán tìm đường A*</li>
                 </ul>
-            </div>
+                </div>
 
-            <!-- Danh mục kỹ năng 3 -->
-            <div>
-                <h3>3. Công cụ &amp; Thiết kế Game</h3>
+                <!-- Danh mục kỹ năng 3 -->
+                <div class="grid-item">
+                    <h3>3. Công cụ &amp; Thiết kế Game</h3>
                 <ul>
                     <li>Git / GitHub (Quản lý phiên bản mã nguồn khi làm việc nhóm Game Jam)</li>
                     <li>Aseprite (Vẽ đồ họa Pixel Art, thiết kế Sprite Sheet &amp; Animation 2D)</li>
                     <li>Blender (Dựng hình 3D phong cách Low-poly cơ bản)</li>
                     <li>Nền tảng phân phối itch.io (Đóng gói và phát hành game thử nghiệm)</li>
                 </ul>
+                </div>
             </div>
         </section>
 

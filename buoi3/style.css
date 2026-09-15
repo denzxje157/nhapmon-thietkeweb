@@ -1,5 +1,8 @@
 /* ==========================================================================
-   RESET CƠ BẢN
+   1. RESET CƠ BẢN
+   - Loại bỏ margin/padding mặc định của trình duyệt để toàn bộ khoảng cách
+     trong trang được kiểm soát chủ động bằng "gap" (Flexbox/Grid), không
+     phụ thuộc vào margin mặc định của từng thẻ (p, ul, h1, hr...).
    ========================================================================== */
 * {
     margin: 0;
@@ -13,47 +16,168 @@ body {
     color: #222;
 }
 
+a {
+    color: inherit;
+}
+
 /* ==========================================================================
-   1. FLEXBOX: CĂN GIỮA .container THEO CẢ CHIỀU DỌC VÀ CHIỀU NGANG
-   - Chiều cao .container = 100vh (toàn màn hình)
-   - Nội dung bên trong được căn giữa hoàn hảo bằng Flexbox
+   2. CSS GRID CHO BỐ CỤC CHÍNH CỦA TRANG
+   - <body> là Grid 3 hàng: header / main / footer.
+   - <main class="page-main"> là Grid xếp các <section> theo chiều dọc,
+     khoảng cách giữa các section dùng "gap" thay vì margin.
+   ========================================================================== */
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* header - main (co giãn) - footer */
+    min-height: 100vh;
+}
+
+.page-main {
+    display: grid;
+    gap: 60px;          /* khoảng cách giữa các section */
+    padding: 60px 20px;
+}
+
+/* ==========================================================================
+   3. FLEXBOX CHO CÁC THÀNH PHẦN CON: MENU
+   - .site-header-inner: đặt logo và menu trên cùng một hàng.
+   - .nav-menu: dùng chung cho menu điều hướng ở header lẫn footer.
+   ========================================================================== */
+.site-header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    list-style: none; /* Flexbox đã ẩn marker mặc định, khai báo tường minh cho rõ ràng */
+}
+
+.nav-menu a {
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   4. HERO (.container): FLEXBOX CĂN GIỮA TOÀN MÀN HÌNH
    ========================================================================== */
 .container {
-    height: 100vh;               /* Chiều cao toàn màn hình */
-    width: 100%;
-
+    height: 100vh;
     display: flex;
-    flex-direction: column;      /* Nội dung con xếp theo chiều dọc */
-    align-items: center;         /* Căn giữa theo chiều ngang */
-    justify-content: center;     /* Căn giữa theo chiều dọc */
-
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    gap: 12px;   /* khoảng cách giữa các dòng thay cho margin của từng <p> */
     padding: 20px;
 }
 
 /* ==========================================================================
-   2. CSS GRID: BỐ CỤC LƯỚI 3 CỘT BẰNG NHAU, KHOẢNG CÁCH 20px
-   - Mỗi cột chứa một thẻ (card) nền xám nhạt, bo góc 10px
+   5. FLEXBOX CHO CÁC THÀNH PHẦN CON: CARD
+   - .cards-row: hàng chứa nhiều thẻ (kỹ năng, dự án, học vấn...), tự xuống
+     dòng khi màn hình hẹp, khoảng cách giữa các thẻ dùng gap.
+   - .card: mỗi thẻ tự sắp xếp nội dung bên trong (tiêu đề, đoạn văn, danh
+     sách) theo cột dọc bằng Flexbox, khoảng cách nội bộ cũng dùng gap.
    ========================================================================== */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 cột bằng nhau */
-    gap: 20px;                             /* Khoảng cách giữa các cột/hàng */
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px;
+.cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.grid-item {
-    background-color: #f0f0f0;   /* Màu nền xám nhạt */
-    border-radius: 10px;         /* Bo góc 10px */
+.card {
+    flex: 1 1 280px;      /* co giãn đều, tối thiểu 280px trước khi xuống dòng */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;            /* khoảng cách giữa heading/đoạn văn/danh sách bên trong thẻ */
+    background: #f0f0f0;
+    border-radius: 10px;
     padding: 24px;
 }
 
-/* Responsive: chuyển về 1 cột trên màn hình nhỏ */
-@media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: 1fr;
+.card ul {
+    padding-left: 20px;   /* chỉ giữ lại khoảng thụt lề cần thiết cho bullet, không dùng margin */
+}
+
+/* ==========================================================================
+   6. TIMELINE (Cuộc thi & Giải thưởng): FLEXBOX CỘT DỌC
+   - <ol> vẫn giữ ngữ nghĩa danh sách có thứ tự, chỉ đổi cách trình bày
+     trực quan sang Flexbox, khoảng cách giữa các mốc thời gian dùng gap.
+   ========================================================================== */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+}
+
+/* ==========================================================================
+   7. LIÊN HỆ: FLEXBOX 2 CỘT (THÔNG TIN + FORM)
+   ========================================================================== */
+.contact-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact-layout > * {
+    flex: 1 1 320px;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: none;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field input,
+.form-field textarea {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font: inherit;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 600px) {
+    .site-header-inner {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

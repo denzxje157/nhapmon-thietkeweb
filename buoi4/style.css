@@ -1,0 +1,800 @@
+/* ==========================================================================
+   BÀI 04: DESIGN SYSTEM VÀ TƯ DUY RESPONSIVE (MOBILE FIRST)
+   ==========================================================================
+   Mục tiêu:
+   - Xây dựng bộ quy tắc giao diện nhất quán (Design System) qua CSS Variables.
+   - Áp dụng phương pháp luận Mobile First: code cho mobile trước, mở rộng dần
+     bằng @media (min-width: ...).
+   - Thiết lập hệ thống Breakpoint chuẩn công nghiệp (Mobile, Tablet, Desktop).
+   - Nắm vững quy trình kiểm thử Responsive bằng Chrome DevTools.
+   ========================================================================== */
+
+/* ==========================================================================
+   Ý CHÍNH 1: DESIGN SYSTEM VỚI CSS VARIABLES
+   Quản lý tập trung Color Palette, Typography Scale, Spacing Scale, Radius & Shadow
+   ========================================================================== */
+:root {
+    /* 1.1 PALETTE MÀU SẮC (COLOR TOKENS) */
+    --color-primary-50:  #f0f9ff;
+    --color-primary-100: #e0f2fe;
+    --color-primary-200: #bae6fd;
+    --color-primary-500: #0ea5e9;
+    --color-primary-600: #0284c7;
+    --color-primary-700: #0369a1;
+    --color-primary-900: #0c4a6e;
+
+    --color-secondary-50:  #f0fdfa;
+    --color-secondary-100: #ccfbf1;
+    --color-secondary-500: #14b8a6;
+    --color-secondary-600: #0d9488;
+    --color-secondary-700: #0f766e;
+
+    --color-accent-50:  #ecfdf5;
+    --color-accent-100: #d1fae5;
+    --color-accent-600: #059669;
+    --color-accent-800: #065f46;
+
+    --color-gray-50:  #f8fafc;
+    --color-gray-100: #f1f5f9;
+    --color-gray-200: #e2e8f0;
+    --color-gray-300: #cbd5e1;
+    --color-gray-400: #94a3b8;
+    --color-gray-500: #64748b;
+    --color-gray-600: #475569;
+    --color-gray-700: #334155;
+    --color-gray-800: #1e293b;
+    --color-gray-900: #0f172a;
+
+    /* Semantic Color Aliases (Biến màu theo ngữ nghĩa sử dụng) */
+    --bg-page:           var(--color-gray-50);
+    --bg-surface:        #ffffff;
+    --bg-card:           var(--color-gray-100);
+    --bg-card-hover:     var(--color-gray-200);
+    --text-primary:      var(--color-gray-900);
+    --text-secondary:    var(--color-gray-700);
+    --text-muted:        var(--color-gray-500);
+    --text-inverse:      #ffffff;
+    --border-color:      var(--color-gray-300);
+    --border-color-dark: var(--color-gray-400);
+
+    /* 1.2 HỆ THỐNG TYPOGRAPHY (TYPOGRAPHY SCALE) */
+    --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    
+    --font-size-xs:   0.75rem;    /* 12px */
+    --font-size-sm:   0.875rem;   /* 14px */
+    --font-size-base: 1rem;       /* 16px */
+    --font-size-md:   1.125rem;   /* 18px */
+    --font-size-lg:   1.25rem;    /* 20px */
+    --font-size-xl:   1.5rem;     /* 24px */
+    --font-size-2xl:  1.875rem;   /* 30px */
+    --font-size-3xl:  2.25rem;    /* 36px */
+
+    --font-weight-regular:  400;
+    --font-weight-medium:   500;
+    --font-weight-semibold: 600;
+    --font-weight-bold:     700;
+
+    --line-height-tight:   1.25;
+    --line-height-normal:  1.5;
+    --line-height-relaxed: 1.65;
+
+    /* 1.3 HỆ THỐNG KHOẢNG CÁCH (SPACING SCALE - 4px/8px Grid) */
+    --space-1:  0.25rem;  /* 4px */
+    --space-2:  0.5rem;   /* 8px */
+    --space-3:  0.75rem;  /* 12px */
+    --space-4:  1rem;     /* 16px */
+    --space-5:  1.25rem;  /* 20px */
+    --space-6:  1.5rem;   /* 24px */
+    --space-8:  2rem;     /* 32px */
+    --space-10: 2.5rem;   /* 40px */
+    --space-12: 3rem;     /* 48px */
+    --space-16: 4rem;     /* 64px */
+
+    /* 1.4 COMPONENT TOKENS (RADIUS, SHADOW, TRANSITION) */
+    --radius-sm:   4px;
+    --radius-md:   8px;
+    --radius-lg:   12px;
+    --radius-xl:   16px;
+    --radius-full: 9999px;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+}
+
+/* ==========================================================================
+   RESET & CHUẨN HÓA BOX MODEL
+   ========================================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: var(--text-primary);
+    background-color: var(--bg-page);
+    min-height: 100vh;
+}
+
+a {
+    color: var(--color-primary-600);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary-700);
+    text-decoration: underline;
+}
+
+/* Skip link hỗ trợ Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: var(--space-3);
+    background: var(--color-gray-900);
+    color: var(--text-inverse);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    z-index: 1000;
+    font-size: var(--font-size-sm);
+}
+
+.skip-link:focus {
+    top: var(--space-3);
+}
+
+/* ==========================================================================
+   Ý CHÍNH 2: TƯ DUY MOBILE FIRST (BASE STYLES: DÀNH CHO MÀN HÌNH NHỎ NHẤT)
+   - Tất cả CSS bên dưới KHÔNG nằm trong media query -> áp dụng mặc định cho Mobile!
+   - Bố cục mặc định: 1 cột duy nhất xếp chồng (Single Column Stack).
+   - Kích thước chạm (Touch target) tối thiểu 44px cho thao tác ngón tay.
+   ========================================================================== */
+
+/* Layout tổng thể trên Mobile: 1 cột dọc thẳng đứng */
+body {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "main"
+        "sidebar"
+        "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto auto;
+}
+
+.site-header  { grid-area: header; }
+.page-main    { grid-area: main; }
+.site-sidebar { grid-area: sidebar; }
+.site-footer  { grid-area: footer; }
+
+/* 2.1 HEADER TRÊN MOBILE */
+.site-header {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+}
+
+.site-header-inner {
+    padding: var(--space-3) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.site-branding .site-logo {
+    display: flex;
+    flex-direction: column;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.site-logo strong {
+    font-size: var(--font-size-md);
+    color: var(--color-primary-700);
+}
+
+.logo-role {
+    font-size: var(--font-size-xs);
+    color: var(--color-secondary-600);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Menu điều hướng trên Mobile: cuộn ngang hoặc dàn dòng gọn gàng */
+.site-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--space-1);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    list-style: none;
+    white-space: nowrap;
+}
+
+.nav-menu a {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    min-height: 40px; /* Thân thiện với cảm ứng ngón tay */
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-menu a:hover {
+    background-color: var(--bg-card);
+    color: var(--color-primary-600);
+    text-decoration: none;
+}
+
+/* 2.2 MAIN CONTENT TRÊN MOBILE */
+.page-main {
+    display: grid;
+    gap: var(--space-8);
+    padding: var(--space-6) var(--space-4);
+}
+
+.section-block {
+    display: grid;
+    gap: var(--space-4);
+}
+
+.section-header h2 {
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+    line-height: var(--line-height-tight);
+    border-bottom: 2px solid var(--color-primary-600);
+    display: inline-block;
+    padding-bottom: var(--space-1);
+    margin-bottom: var(--space-2);
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+}
+
+/* 2.3 HERO SECTION TRÊN MOBILE */
+.hero-section {
+    background: linear-gradient(135deg, var(--color-primary-100) 0%, var(--color-secondary-50) 100%);
+    border: 1px solid var(--color-primary-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6) var(--space-4);
+    box-shadow: var(--shadow-sm);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.hero-badge {
+    font-size: var(--font-size-xs);
+    color: var(--color-secondary-700);
+    font-weight: var(--font-weight-semibold);
+}
+
+.hero-content h1 {
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-tight);
+    color: var(--color-primary-700);
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-gray-700);
+}
+
+.hero-description {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Button Group trên Mobile: nút mở rộng 100% để dễ chạm */
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+    text-decoration: none;
+    min-height: 44px; /* Chuẩn tiếp cận ngón tay Mobile W3C */
+    width: 100%;
+    text-align: center;
+}
+
+.btn:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+    background-color: var(--color-primary-600);
+    color: var(--text-inverse);
+}
+.btn-primary:hover {
+    background-color: var(--color-primary-700);
+    color: var(--text-inverse);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary-600);
+    color: var(--text-inverse);
+}
+.btn-secondary:hover {
+    background-color: var(--color-secondary-700);
+    color: var(--text-inverse);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+.btn-outline:hover {
+    background-color: var(--bg-surface);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* 2.4 GALLERY & CARDS TRÊN MOBILE (1 CỘT DUY NHẤT) */
+.grid-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+}
+
+.card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+    border-color: var(--border-color-dark);
+    box-shadow: var(--shadow-md);
+}
+
+.card-title {
+    font-size: var(--font-size-md);
+    color: var(--text-primary);
+    line-height: var(--line-height-tight);
+}
+
+.card-desc {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    flex-grow: 1;
+}
+
+.card-badge {
+    align-self: flex-start;
+    background-color: var(--color-primary-50);
+    color: var(--color-primary-700);
+    border: 1px solid var(--color-primary-200);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+}
+
+.card-list {
+    padding-left: var(--space-5);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.card-list li {
+    margin-bottom: var(--space-1);
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    list-style: none;
+    margin-top: var(--space-1);
+}
+
+.tag-list li {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 2px var(--space-2);
+    font-size: var(--font-size-xs);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+}
+
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+    padding-top: var(--space-3);
+    border-top: 1px dashed var(--border-color);
+}
+
+.link-btn {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* 2.5 TIMELINE TRÊN MOBILE */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    list-style: none;
+}
+
+.timeline-item {
+    border-left: 4px solid var(--color-primary-600);
+}
+
+.timeline-meta {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    font-weight: var(--font-weight-medium);
+}
+
+/* 2.6 CONTACT & FORM TRÊN MOBILE */
+.contact-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+    font-size: var(--font-size-sm);
+}
+
+.contact-form fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.contact-form legend {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-2);
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.form-field label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-secondary);
+}
+
+.form-field input,
+.form-field textarea {
+    padding: var(--space-3);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    background-color: var(--bg-surface);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--color-primary-600);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+/* 2.7 SIDEBAR TRÊN MOBILE (NẰM DƯỚI NỘI DUNG CHÍNH) */
+.site-sidebar {
+    background-color: var(--color-gray-100);
+    border-top: 1px solid var(--border-color);
+    padding: var(--space-6) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.sidebar-widget {
+    background-color: var(--bg-surface);
+}
+
+.widget-title {
+    font-size: var(--font-size-md);
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--space-2);
+    margin-bottom: var(--space-1);
+}
+
+.profile-summary p {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-1);
+}
+
+.sidebar-list {
+    padding-left: var(--space-4);
+    font-size: var(--font-size-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.sidebar-quote {
+    border-left: 3px solid var(--color-secondary-600);
+    padding-left: var(--space-3);
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.sidebar-quote footer {
+    font-style: normal;
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    margin-top: var(--space-1);
+}
+
+.cta-card {
+    background: linear-gradient(135deg, var(--color-accent-50) 0%, var(--color-secondary-50) 100%);
+    border-color: var(--color-accent-100);
+}
+
+.cta-card .widget-title {
+    color: var(--color-accent-800);
+    border-bottom-color: var(--color-accent-100);
+}
+
+/* 2.8 FOOTER TRÊN MOBILE */
+.site-footer {
+    background-color: var(--color-gray-900);
+    color: var(--color-gray-200);
+    border-top: 1px solid var(--color-gray-800);
+}
+
+.site-footer a {
+    color: var(--color-primary-200);
+}
+.site-footer a:hover {
+    color: var(--text-inverse);
+}
+
+.site-footer-inner {
+    padding: var(--space-6) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: center;
+}
+
+.site-footer-inner .nav-menu {
+    justify-content: center;
+}
+
+.footer-info small {
+    color: var(--color-gray-400);
+    font-size: var(--font-size-xs);
+}
+
+/* ==========================================================================
+   Ý CHÍNH 3: HỆ THỐNG BREAKPOINT (MỞ RỘNG BẰNG MIN-WIDTH)
+   - Breakpoint 1 (Tablet / SM): >= 640px
+   - Breakpoint 2 (Laptop & Desktop / MD-LG): >= 1024px
+   - Breakpoint 3 (Wide Desktop / XL): >= 1280px
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   BREAKPOINT 1: TABLET (MÀN HÌNH >= 640px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 640px) {
+    .site-header-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--space-4) var(--space-6);
+    }
+
+    .site-nav {
+        padding-bottom: 0;
+        overflow-x: visible;
+    }
+
+    .page-main {
+        padding: var(--space-8) var(--space-6);
+        gap: var(--space-10);
+    }
+
+    .hero-section {
+        padding: var(--space-8) var(--space-6);
+    }
+
+    .hero-content h1 {
+        font-size: var(--font-size-3xl);
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-md);
+    }
+
+    /* Nhóm nút trở lại hàng ngang trên Tablet */
+    .btn-group {
+        flex-direction: row;
+        width: auto;
+    }
+
+    .btn {
+        width: auto;
+    }
+
+    /* Lưới Gallery chuyển thành 2 cột */
+    .grid-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-5);
+    }
+
+    /* Contact layout chuyển thành 2 cột */
+    .contact-layout {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--space-6);
+    }
+
+    .contact-layout > * {
+        flex: 1 1 280px;
+    }
+
+    .site-footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        padding: var(--space-6);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   BREAKPOINT 2: DESKTOP & LAPTOP (MÀN HÌNH >= 1024px)
+   - Kích hoạt Layout 2 chiều toàn trang: Main (trái) + Sidebar (phải cố định 340px)
+   - Bố cục lưới Gallery thích ứng 3 cột
+   -------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+    body {
+        grid-template-areas:
+            "header   header"
+            "main     sidebar"
+            "footer   footer";
+        grid-template-columns: minmax(0, 1fr) 340px;
+        grid-template-rows: auto 1fr auto;
+    }
+
+    .site-header-inner {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--space-4) var(--space-8);
+    }
+
+    .page-main {
+        padding: var(--space-10) var(--space-8);
+        gap: var(--space-12);
+        max-width: 1100px;
+    }
+
+    .hero-section {
+        padding: var(--space-10) var(--space-8);
+    }
+
+    .hero-content h1 {
+        font-size: var(--font-size-3xl);
+    }
+
+    .hero-description {
+        font-size: var(--font-size-base);
+    }
+
+    /* Grid Gallery tự động co giãn 2 hoặc 3 cột tối ưu */
+    .grid-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--space-6);
+    }
+
+    /* Sidebar chuyển về dạng cột bên phải với border-left */
+    .site-sidebar {
+        border-top: none;
+        border-left: 1px solid var(--border-color);
+        padding: var(--space-10) var(--space-6);
+        gap: var(--space-6);
+    }
+
+    .site-footer-inner {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--space-6) var(--space-8);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   BREAKPOINT 3: WIDE DESKTOP (MÀN HÌNH >= 1280px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1280px) {
+    .page-main {
+        padding: var(--space-12) var(--space-10);
+    }
+
+    .hero-content h1 {
+        font-size: 2.75rem;
+    }
+}
+
+/* ==========================================================================
+   Ý CHÍNH 4: CẨM NANG KIỂM THỬ RESPONSIVE VỚI CHROME/EDGE DEVTOOLS
+   ==========================================================================
+   1. Bật Device Mode:
+      - Nhấn phím F12 (hoặc Ctrl + Shift + I).
+      - Nhấn tổ hợp Ctrl + Shift + M để chuyển sang chế độ Device Toolbar.
+
+   2. Thử nghiệm trên các kích thước chuẩn:
+      - Mobile Small (320px - 375px): iPhone SE, Galaxy S8 (kiểm tra không bị vỡ chữ, không tràn ngang).
+      - Mobile Medium / Large (390px - 430px): iPhone 14/15 Pro Max.
+      - Tablet (768px - 820px): iPad Air, iPad Mini (menu dàn hàng ngang, grid 2 cột).
+      - Laptop/Desktop (1024px - 1440px): Sidebar xuất hiện bên phải, bố cục cân đối.
+
+   3. Kiểm tra lỗi vỡ bố cục và tràn ngang (Horizontal Overflow):
+      - Đảm bảo thanh cuộn ngang KHÔNG xuất hiện trên thiết bị di động.
+      - Thử xoay ngang thiết bị (nút Rotate bên cạnh thanh kích thước).
+      - Kiểm tra tốc độ phản hồi touch target (tối thiểu 44px x 44px).
+   ========================================================================== */

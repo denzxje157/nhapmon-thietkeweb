@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio chuyên môn của Hà Văn Kiên - Sinh viên IT đam mê Web, AI & IoT tại Đại học Lạc Hồng.">
+  <meta name="author" content="Hà Văn Kiên">
+  <title>Hà Văn Kiên | Lập trình viên Web, AI & Nhúng</title>
+  
+  <style>
+    /* ==========================================================================
+       BẢNG MÃ MÀU THÔNG MINH (DESIGN SYSTEM) - LIGHT MODE (MẶC ĐỊNH)
+       ========================================================================== */
+    :root {
+      --primary: #1e293b;
+      --secondary: #3b82f6;
+      --bg-color: #f8fafc;
+      --bg-card: #ffffff;
+      
+      --gray-light: #f1f5f9;
+      --gray-medium: #cbd5e1;
+      --gray-dark: #64748b;     
+
+      --text-main: #334155;
+      
+      --font-base: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 1rem;
+      --spacing-md: 1.5rem;
+      --spacing-lg: 2.5rem;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --transition: 0.3s ease-in-out;
+    }
+
+    /* ==========================================================================
+       DARK MODE VARIABLES (GHI ĐÈ KHI THÊM CLASS .dark-mode VÀO BODY)
+       ========================================================================== */
+    body.dark-mode {
+      --primary: #60a5fa;       /* Chuyển xanh dương nhạt để nổi trên nền tối */
+      --secondary: #38bdf8;
+      --bg-color: #0f172a;      /* Nền xám đen đậm */
+      --bg-card: #1e293b;       /* Nền khối nổi màu xám đen nhạt hơn */
+      
+      --gray-light: #334155;
+      --gray-medium: #475569;
+      --gray-dark: #94a3b8;     
+
+      --text-main: #f1f5f9;     /* Chữ màu trắng sáng */
+    }
+
+    @media (min-width: 768px) {
+      :root {
+        --spacing-md: 2rem;
+        --spacing-lg: 4rem;
+      }
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-base);
+      color: var(--text-main);
+      background-color: var(--bg-color);
+      line-height: 1.7;
+      font-size: 1rem;
+      /* Thêm hiệu ứng chuyển đổi mượt khi đổi màu nền */
+      transition: background-color var(--transition), color var(--transition);
+    }
+
+    @media (min-width: 768px) {
+      body { font-size: 1.125rem; }
+    }
+
+    hr { border: 0; height: 1px; background: var(--gray-medium); margin-block: var(--spacing-lg); }
+
+    header, main, footer { 
+      width: 100%;
+      max-width: 1100px; 
+      margin: 0 auto; 
+      padding-inline: 1.25rem; 
+    }
+    
+    header { padding-block: var(--spacing-lg) var(--spacing-md); text-align: center; }
+    main { padding-block: var(--spacing-md); }
+    footer { padding-block: var(--spacing-lg); background-color: var(--bg-card); border-top: 1px solid var(--gray-medium); color: var(--text-main); text-align: center; transition: background-color var(--transition);}
+
+    h1, h2, h3, h4 { color: var(--primary); line-height: 1.3; margin-top: 0; transition: color var(--transition); }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: var(--spacing-xs); }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); border-bottom: 3px solid var(--secondary); padding-bottom: var(--spacing-xs); margin-bottom: var(--spacing-md); display: inline-block; }
+    h3 { font-size: 1.25rem; margin-top: var(--spacing-sm); margin-bottom: var(--spacing-xs); color: var(--secondary); }
+
+    p { margin-bottom: var(--spacing-sm); }
+
+    a { color: var(--secondary); text-decoration: none; font-weight: 600; transition: color var(--transition); }
+    a:hover { color: var(--primary); }
+
+    img { 
+      width: 100%; 
+      max-width: 100%;
+      height: auto; 
+      object-fit: cover; 
+      border-radius: var(--radius-md); 
+      display: block; 
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .img-caption { text-align: center; font-size: 0.9rem; color: var(--gray-dark); margin-top: var(--spacing-xs); font-style: italic; }
+
+    nav ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; list-style: none; padding: 0; margin-block: var(--spacing-md); }
+    nav a { 
+      display: inline-block; 
+      padding: 0.5rem 1rem; 
+      background-color: var(--bg-card); 
+      border: 1px solid var(--gray-medium); 
+      border-radius: var(--radius-md); 
+      color: var(--text-main); 
+      font-size: 0.95rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+    }
+    nav a:hover { background-color: var(--secondary); color: #fff; border-color: var(--secondary); }
+
+    ul.tech-list { padding-left: 1.25rem; }
+    ul.tech-list li { margin-bottom: 0.5rem; }
+
+    /* ==========================================================================
+       MOBILE-FIRST LAYOUTS
+       ========================================================================== */
+    .portfolio-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+      align-items: start;
+    }
+
+    .portfolio-layout > div, .portfolio-layout > aside {
+      background-color: var(--bg-card);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-medium);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: background-color var(--transition), border-color var(--transition);
+    }
+
+    @media (min-width: 900px) {
+      .portfolio-layout { grid-template-columns: 2fr 1fr; }
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .service-card {
+      background-color: var(--bg-card);
+      padding: var(--spacing-md) var(--spacing-sm);
+      text-align: center;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-medium);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition), border-color var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.15); border-color: var(--secondary); }
+    .service-card img { width: 56px; height: 56px; margin-bottom: var(--spacing-sm); box-shadow: none; border-radius: 0; }
+
+    @media (min-width: 600px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .project-article {
+      background-color: var(--bg-card);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-medium);
+      margin-bottom: var(--spacing-md);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: background-color var(--transition), border-color var(--transition);
+    }
+
+    /* Nút Toggle Sáng/Tối */
+    .theme-toggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background-color: var(--primary);
+      color: var(--bg-color);
+      border: none;
+      border-radius: 50%;
+      width: 3.5rem;
+      height: 3.5rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--transition), background-color var(--transition);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nút chuyển đổi Dark/Light Mode -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Đổi giao diện Sáng/Tối">
+    <span id="theme-icon">🌙</span>
+  </button>
+
+  <header>
+    <h1>Hà Văn Kiên</h1>
+    <p>
+      <strong>Sinh viên năm nhất CNTT - Đại học Lạc Hồng</strong><br>
+      Đam mê AI Agents, Computer Vision & Kiến trúc Hệ thống
+    </p>
+
+    <nav aria-label="Điều hướng chính">
+      <ul>
+        <li><a href="#about">Giới thiệu bản thân</a></li>
+        <li><a href="#services">Kỹ năng cốt lõi</a></li>
+        <li><a href="#projects">Dự án Độc lập & Nhóm</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <section id="about" class="portfolio-layout">
+      <div>
+        <h2>Về bản thân tôi</h2>
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1000&auto=format&fit=crop&q=80" alt="Màn hình code với Visual Studio Code">
+        <p class="img-caption">Không gian làm việc phát triển phần mềm quen thuộc của tôi.</p>
+        
+        <p>
+          Chào bạn, tôi là <strong>Hà Văn Kiên</strong> (sinh ngày 14/01/2007). Hiện tại, tôi là sinh viên năm nhất đang theo học ngành Công nghệ Thông tin tại trường <strong>Đại học Lạc Hồng</strong>. Tôi tự hào đã đạt điểm trung bình <strong>9.06/10</strong> trong năm vừa qua, lọt vào top 6 của Khoa CNTT.
+        </p>
+        <p>
+          Định hướng kỹ thuật của tôi trải dài từ hạ tầng phần mềm đến trí tuệ nhân tạo. Tôi dành nhiều thời gian nghiên cứu các domain kỹ thuật như <em>AI Agent, TinyML, Computer Vision, và các kiến trúc hệ thống RAG (Retrieval-Augmented Generation)</em>. Để tối ưu năng suất làm việc, tôi thiết lập không gian code cá nhân với các công cụ như Visual Studio Code, Cursor, Google Colab, Docker và Antigravity.
+        </p>
+        <p>
+          Ngoài những giờ code căng thẳng, tôi thường xuyên ra sân đá bóng để rèn luyện sức khỏe và duy trì năng lượng tích cực.
+        </p>
+      </div>
+
+      <aside>
+        <h3>Đội ngũ & Mạng lưới</h3>
+        <p>
+          Tôi là thành viên đầy nhiệt huyết của <strong>Team ADLEY</strong>. Quá trình làm việc nhóm giúp tôi học hỏi và hoàn thiện các dự án từ lên ý tưởng, chuẩn bị Business Canvas đến triển khai kỹ thuật.
+        </p>
+        <p><em>Những người đồng đội:</em> Hoàng Anh, Minh Phát, Quang Huy, Bùi Cảnh, Văn Trận, Ngô Nam, và Đặng Thị Tố Ngân.</p>
+        
+        <h3>Công nghệ & Cảnh quan</h3>
+        <ul class="tech-list">
+          <li><strong>Frontend:</strong> React, Next.js, Vite</li>
+          <li><strong>Backend/Database:</strong> NestJS, FastAPI, Supabase, PostgreSQL, ChromaDB</li>
+          <li><strong>AI/ML:</strong> PyTorch, YOLOv8, ONNX, LLM & RAG Pipelines</li>
+          <li><strong>IoT:</strong> ESP32, MQ-135/DHT11, Alpha Mini</li>
+        </ul>
+      </aside>
+    </section>
+
+    <hr>
+
+    <section id="services">
+      <h2>Miền Kỹ năng Chuyên sâu</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/1055/1055666.png" alt="Icon AI">
+          <h3>Trí tuệ Nhân tạo</h3>
+          <p>Xây dựng hệ thống RAG, huấn luyện YOLOv8 và xuất ONNX.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3242/3242120.png" alt="Icon Web">
+          <h3>Phát triển Web</h3>
+          <p>Kiến trúc Frontend Next.js và Backend FastAPI/NestJS.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/2103/2103131.png" alt="Icon Database">
+          <h3>Cơ sở dữ liệu</h3>
+          <p>Vận hành Supabase, PostgreSQL và Vector Embedding.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/4343/4343015.png" alt="Icon IoT">
+          <h3>IoT & Vi điều khiển</h3>
+          <p>Phát triển TinyML và thiết kế mạch cảm biến ESP32.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <section id="projects">
+      <h2>Dự án Thực chiến Tiêu biểu</h2>
+
+      <div class="project-article">
+        <h3>1. Hệ sinh thái Web "Sắc Việt" & SmartFin-Guard AI</h3>
+        <p>
+          <strong>Sắc Việt (04/2026):</strong> Xây dựng giao diện bằng React/Next.js và triển khai đám mây trên nền tảng Vercel.<br>
+          <strong>SmartFin-Guard AI (07/2026):</strong> Chrome extension kết nối Backend NestJS, container hóa bằng Docker Compose để xác thực tài liệu.
+        </p>
+      </div>
+
+      <div class="project-article">
+        <h3>2. Các kiến trúc AI & RAG</h3>
+        <p>
+          <strong>Gia Sư Ảo (05/2026):</strong> Data pipeline trích xuất nội dung đề thi, lưu trữ vector bằng Supabase.<br>
+          <strong>Trợ lý Tài liệu (09/2026):</strong> Hệ thống RAG dùng ChromaDB, API Gemini và nền tảng robot Alpha Mini.
+        </p>
+      </div>
+
+      <div class="project-article">
+        <h3>3. Computer Vision & IoT Nông nghiệp</h3>
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&auto=format&fit=crop&q=80" alt="Bảng mạch điện tử IoT">
+        <p class="img-caption">Thiết kế phần cứng và lập trình xử lý tín hiệu.</p>
+        <p>
+          <strong>EdgeAI_PlantDisease:</strong> Huấn luyện YOLOv8 nhận diện bệnh cây trồng, tối ưu ONNX cho Xe trinh sát nông nghiệp tự hành.<br>
+          <strong>Xử lý mùi hôi (04/2026):</strong> ESP32 kết hợp MQ-135/DHT11 tự động điều khiển rơ-le bơm nước.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <section>
+      <h2>Kết nối với tôi</h2>
+      <p>Quan tâm đến các dự án AI, lập trình nhúng hoặc kiến trúc Web?</p>
+      <address>
+        <a href="mailto:kien.ha@example.com">kien.ha@example.com</a>
+      </address>
+    </section>
+  </footer>
+
+  <!-- Script xử lý Logic Dark Mode -->
+  <script>
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    // 1. Kiểm tra trạng thái đã lưu trong Local Storage khi load trang
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+      body.classList.add('dark-mode');
+      themeIcon.textContent = '☀️';
+    }
+
+    // 2. Xử lý sự kiện khi người dùng click vào nút
+    themeToggleBtn.addEventListener('click', () => {
+      // Bật/tắt class dark-mode trên thẻ body
+      body.classList.toggle('dark-mode');
+
+      // Thay đổi icon và lưu lại lựa chọn vào Local Storage
+      if (body.classList.contains('dark-mode')) {
+        themeIcon.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        themeIcon.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+
+</body>
+</html>

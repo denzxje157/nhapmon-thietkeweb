@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW CSS - Giao Diện Thực Hành Flexbox & CSS Grid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TOP NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-icon">⚡</div>
+                <div class="brand-text">
+                    <span class="brand-title">CSS Master Lab</span>
+                    <span class="brand-subtitle">TKW_CSS Workspace</span>
+                </div>
+            </div>
+
+            <!-- Quick file launch links -->
+            <div class="quick-files">
+                <a href="flexbox.html" target="_blank" class="file-link" title="Mở trang Flexbox độc lập">
+                    <span class="file-icon">📄</span> flexbox.html
+                </a>
+                <a href="grid.html" target="_blank" class="file-link" title="Mở trang CSS Grid độc lập">
+                    <span class="file-icon">📄</span> grid.html
+                </a>
+                <a href="target.html" target="_blank" class="file-link highlight" title="Mở bài Cái bia đổi màu">
+                    <span class="file-icon">🎯</span> target.html
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-badge">🎨 Bài Thực Hành Thiết Kế Web CSS</div>
+        <h1 class="hero-title">Tối Ưu Giao Diện: Flexbox, CSS Grid & Hiệu Ứng Hover</h1>
+        <p class="hero-desc">
+            Trải nghiệm trực quan các bài tập bố cục CSS hiện đại, căn giữa toàn màn hình <code>100vh</code>, 
+            hệ thống lưới <code>CSS Grid</code> 3 cột và tương tác <code>:hover</code> đổi màu hình cái bia.
+        </p>
+
+        <!-- Category Tabs -->
+        <div class="filter-tabs">
+            <button class="tab-btn active" data-target="all">Tất cả bài tập</button>
+            <button class="tab-btn" data-target="target-section">🎯 Cái bia (Đỏ ➜ Xanh)</button>
+            <button class="tab-btn" data-target="flexbox-section">📦 Flexbox (100vh)</button>
+            <button class="tab-btn" data-target="grid-section">📐 CSS Grid (3 Cột)</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="main-wrapper">
+
+        <!-- ==============================================================
+             BÀI TẬP 1: HIỆU ỨNG CÁI BIA (HOVER ĐỔI MÀU: ĐỎ -> XANH LÁ)
+             ============================================================== -->
+        <section id="target-section" class="showcase-card featured-card">
+            <div class="card-header">
+                <div class="header-meta">
+                    <span class="pill pill-target">🎯 Tương Tác Hover</span>
+                    <span class="status-indicator-inline">
+                        <span class="status-dot"></span>
+                        <span id="hoverStatusText">Rê chuột vào cái bia để thử</span>
+                    </span>
+                </div>
+                <h2>Hiệu Ứng Hình Cái Bia: Chưa Chạm Màu Đỏ – Rê Chuột Màu Xanh Lá Cây</h2>
+                <p class="card-prompt">
+                    <strong>Yêu cầu:</strong> "Khi di chuyển chuột vào hình cái bia sẽ hiện màu xanh lá cây, còn không chạm vào là màu đỏ."
+                </p>
+            </div>
+
+            <div class="demo-stage target-stage">
+                <div class="target-interactive-box" id="targetBox">
+                    <p class="hint-text">👇 Di chuyển chuột lên hình cái bia bên dưới</p>
+                    
+                    <!-- HÌNH CÁI BIA (SVG TÂM NGẮN) -->
+                    <div class="bullseye-wrapper">
+                        <svg class="bullseye" viewBox="0 0 200 200" width="190" height="190" id="bullseyeSvg">
+                            <!-- Vòng 1 (Vòng ngoài) -->
+                            <circle class="ring-colored" cx="100" cy="100" r="92" />
+                            <!-- Vòng trắng 1 -->
+                            <circle class="ring-white" cx="100" cy="100" r="74" />
+                            <!-- Vòng 2 (Vòng giữa) -->
+                            <circle class="ring-colored" cx="100" cy="100" r="56" />
+                            <!-- Vòng trắng 2 -->
+                            <circle class="ring-white" cx="100" cy="100" r="38" />
+                            <!-- Vòng 3 (Tâm bia) -->
+                            <circle class="ring-colored" cx="100" cy="100" r="20" />
+                            
+                            <!-- Đường tâm ngắm -->
+                            <line class="crosshair" x1="100" y1="2" x2="100" y2="198" />
+                            <line class="crosshair" x1="2" y1="100" x2="198" y2="100" />
+                        </svg>
+                    </div>
+
+                    <!-- THẺ TRẠNG THÁI TRỰC QUAN -->
+                    <div class="color-states">
+                        <div class="state-chip state-red active-state" id="chipRed">
+                            <span class="dot dot-red"></span>
+                            <span>Không chạm: <strong>Màu Đỏ</strong></span>
+                        </div>
+                        <span class="state-arrow">➜</span>
+                        <div class="state-chip state-green" id="chipGreen">
+                            <span class="dot dot-green"></span>
+                            <span>Rê chuột vào (:hover): <strong>Màu Xanh Lá</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CODE DISPLAY -->
+            <div class="code-panel">
+                <div class="code-header">
+                    <span class="code-title">CSS Code (Hiệu ứng Hover Cái Bia)</span>
+                    <button class="btn-copy" onclick="copyCode('code-target', this)">📋 Sao chép mã</button>
+                </div>
+                <pre><code id="code-target">/* 1. Trạng thái bình thường (không chạm chuột): MÀU ĐỎ */
+.ring-colored {
+    fill: #ef4444;                 /* Màu đỏ */
+    transition: fill 0.3s ease;    /* Chuyển màu mượt mà */
+}
+
+/* 2. Khi di chuyển chuột vào (:hover): MÀU XANH LÁ CÂY */
+.bullseye:hover .ring-colored {
+    fill: #22c55e;                 /* Đổi sang màu xanh lá cây */
+}
+
+/* Tùy chọn: Thêm hiệu ứng phóng to nhẹ khi hover */
+.bullseye:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 10px 20px rgba(34, 197, 94, 0.4));
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- ==============================================================
+             BÀI TẬP 2: FLEXBOX CĂN GIỮA TOÀN MÀN HÌNH (100VH)
+             ============================================================== -->
+        <section id="flexbox-section" class="showcase-card">
+            <div class="card-header">
+                <div class="header-meta">
+                    <span class="pill pill-flex">📦 CSS Flexbox</span>
+                    <span class="pill pill-muted">height: 100vh</span>
+                </div>
+                <h2>Căn Giữa Thẻ '.container' Toàn Màn Hình Cả Chiều Dọc & Chiều Ngang</h2>
+                <p class="card-prompt">
+                    <strong>Yêu cầu:</strong> "Hãy viết mã CSS sử dụng Flexbox để căn giữa một thẻ có class là 'container' vào chính giữa trang web theo cả chiều dọc và chiều ngang. Đảm bảo 'container' có chiều cao toàn màn hình (100vh)."
+                </p>
+            </div>
+
+            <!-- DEMO STAGE -->
+            <div class="demo-stage">
+                <!-- Mô phỏng viewport 100vh -->
+                <div class="viewport-mockup">
+                    <div class="viewport-bar">
+                        <span class="vp-dot vp-red"></span>
+                        <span class="vp-dot vp-yellow"></span>
+                        <span class="vp-dot vp-green"></span>
+                        <span class="vp-title">Mô phỏng Viewport (100vh) - .container</span>
+                    </div>
+
+                    <!-- THỰC THI CHÍNH XÁC CLASS .container -->
+                    <div class="container flex-demo-container">
+                        <div class="flex-box-content">
+                            <div class="box-badge">🎯 Căn Giữa Hoàn Hảo</div>
+                            <h3>Nội Dung Nằm Chính Giữa Màn Hình</h3>
+                            <p>Phần tử được canh giữa đồng thời theo cả trục ngang (X) và trục dọc (Y).</p>
+                            
+                            <div class="property-badges">
+                                <code>display: flex;</code>
+                                <code>justify-content: center;</code>
+                                <code>align-items: center;</code>
+                                <code>height: 100vh;</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CODE DISPLAY -->
+            <div class="code-panel">
+                <div class="code-header">
+                    <span class="code-title">CSS Code (Flexbox Căn Giữa 100vh)</span>
+                    <button class="btn-copy" onclick="copyCode('code-flexbox', this)">📋 Sao chép mã</button>
+                </div>
+                <pre><code id="code-flexbox">/* Mã CSS căn giữa toàn màn hình bằng Flexbox */
+.container {
+    display: flex;             /* Kích hoạt Flexbox */
+    justify-content: center;   /* Căn giữa theo chiều ngang (trục chính) */
+    align-items: center;       /* Căn giữa theo chiều dọc (trục phụ) */
+    height: 100vh;             /* Chiều cao 100% chiều cao màn hình */
+    width: 100%;               /* Chiều rộng toàn màn hình */
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- ==============================================================
+             BÀI TẬP 3: BỐ CỤC LƯỚI CSS GRID 3 CỘT
+             ============================================================== -->
+        <section id="grid-section" class="showcase-card">
+            <div class="card-header">
+                <div class="header-meta">
+                    <span class="pill pill-grid">📐 CSS Grid</span>
+                    <span class="pill pill-muted">gap: 20px | border-radius: 10px</span>
+                </div>
+                <h2>Bố Cục Lưới 3 Cột Bằng Nhau, Khoảng Cách 20px, Bo Góc 10px</h2>
+                <p class="card-prompt">
+                    <strong>Yêu cầu:</strong> "Tạo một bố cục lưới (CSS Grid) gồm 3 cột bằng nhau, khoảng cách giữa các cột là 20px. Mỗi cột chứa một thẻ có màu nền xám nhạt và bo góc 10px."
+                </p>
+            </div>
+
+            <!-- DEMO STAGE -->
+            <div class="demo-stage">
+                <!-- THỰC THI CHÍNH XÁC CLASS .grid-container & .grid-item -->
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div class="item-header">
+                            <span class="item-num">01</span>
+                            <span class="item-icon">🚀</span>
+                        </div>
+                        <h3>Cột Số 1</h3>
+                        <p>Kích thước <code>1fr</code> chia đều 1/3 chiều rộng lưới. Bo góc <code>10px</code> tinh tế.</p>
+                        <span class="card-subtag">background: #f0f0f0</span>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="item-header">
+                            <span class="item-num">02</span>
+                            <span class="item-icon">💎</span>
+                        </div>
+                        <h3>Cột Số 2</h3>
+                        <p>Khoảng cách giữa các cột được thiết lập chính xác là <code>20px</code> bằng thuộc tính <code>gap</code>.</p>
+                        <span class="card-subtag">gap: 20px</span>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="item-header">
+                            <span class="item-num">03</span>
+                            <span class="item-icon">⚡</span>
+                        </div>
+                        <h3>Cột Số 3</h3>
+                        <p>Màu nền xám nhạt dịu mắt, tương thích hoàn hảo trên các kích cỡ màn hình.</p>
+                        <span class="card-subtag">border-radius: 10px</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CODE DISPLAY -->
+            <div class="code-panel">
+                <div class="code-header">
+                    <span class="code-title">CSS Code (CSS Grid 3 Cột)</span>
+                    <button class="btn-copy" onclick="copyCode('code-grid', this)">📋 Sao chép mã</button>
+                </div>
+                <pre><code id="code-grid">/* Bố cục lưới CSS Grid 3 cột bằng nhau */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 cột độ rộng bằng nhau */
+    gap: 20px;                              /* Khoảng cách giữa các cột là 20px */
+}
+
+/* Mỗi thẻ: nền xám nhạt và bo góc 10px */
+.grid-item {
+    background-color: #f0f0f0;             /* Màu nền xám nhạt */
+    border-radius: 10px;                   /* Bo góc 10px */
+    padding: 24px;
+}</code></pre>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <p><strong>TKW_CSS Workspace</strong> • Đầy đủ mã nguồn HTML/CSS theo chuẩn W3C</p>
+            <p class="footer-links">
+                <a href="flexbox.html" target="_blank">flexbox.html</a> • 
+                <a href="grid.html" target="_blank">grid.html</a> • 
+                <a href="target.html" target="_blank">target.html</a> • 
+                <a href="style.css" target="_blank">style.css</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast">Đã sao chép mã CSS vào bộ nhớ tạm! ✨</div>
+
+    <!-- JAVASCRIPT TỐI ƯU TƯƠNG TÁC -->
+    <script>
+        // Xử lý nút Copy mã nguồn
+        function copyCode(elementId, btn) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                btn.innerText = '✅ Đã sao chép!';
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    btn.innerText = '📋 Sao chép mã';
+                }, 2000);
+            });
+        }
+
+        // Lắng nghe tương tác hover trên cái bia để cập nhật trạng thái
+        const bullseyeSvg = document.getElementById('bullseyeSvg');
+        const chipRed = document.getElementById('chipRed');
+        const chipGreen = document.getElementById('chipGreen');
+        const hoverStatusText = document.getElementById('hoverStatusText');
+
+        if (bullseyeSvg) {
+            bullseyeSvg.addEventListener('mouseenter', () => {
+                chipRed.classList.remove('active-state');
+                chipGreen.classList.add('active-state');
+                hoverStatusText.innerText = '🟢 Đang chạm chuột: MÀU XANH LÁ CÂY';
+                hoverStatusText.style.color = '#16a34a';
+            });
+
+            bullseyeSvg.addEventListener('mouseleave', () => {
+                chipGreen.classList.remove('active-state');
+                chipRed.classList.add('active-state');
+                hoverStatusText.innerText = '🔴 Không chạm chuột: MÀU ĐỎ';
+                hoverStatusText.style.color = '#dc2626';
+            });
+        }
+
+        // Lọc bài tập theo Tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const sections = document.querySelectorAll('.showcase-card');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const target = btn.getAttribute('data-target');
+                if (target === 'all') {
+                    sections.forEach(s => s.style.display = 'block');
+                } else {
+                    sections.forEach(s => {
+                        s.style.display = (s.id === target) ? 'block' : 'none';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

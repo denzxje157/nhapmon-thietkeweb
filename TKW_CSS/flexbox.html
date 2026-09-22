@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Tập Flexbox - Căn Giữa 100vh & Cái Bia Hover</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="flexbox.css">
+</head>
+<body>
+
+    <!-- THẺ CONTAINER CĂN GIỮA TOÀN MÀN HÌNH (100VH) BẰNG FLEXBOX -->
+    <div class="container">
+        <div class="box">
+            <!-- HÌNH CÁI BIA: KHÔNG CHẠM LÀ MÀU ĐỎ - RÊ CHUỘT LÀ MÀU XANH LÁ CÂY -->
+            <div class="target-wrapper">
+                <svg class="bullseye" viewBox="0 0 200 200" width="140" height="140">
+                    <circle class="ring-colored" cx="100" cy="100" r="90" />
+                    <circle class="ring-white" cx="100" cy="100" r="70" />
+                    <circle class="ring-colored" cx="100" cy="100" r="50" />
+                    <circle class="ring-white" cx="100" cy="100" r="30" />
+                    <circle class="ring-colored" cx="100" cy="100" r="14" />
+                    <line class="crosshair" x1="100" y1="5" x2="100" y2="195" />
+                    <line class="crosshair" x1="5" y1="100" x2="195" y2="100" />
+                </svg>
+            </div>
+
+            <h2>Nội Dung Được Căn Chính Giữa</h2>
+            <p class="desc">
+                Sử dụng <strong>Flexbox</strong> để căn giữa theo cả chiều dọc (Y) và chiều ngang (X). 
+                Chiều cao toàn màn hình <code>100vh</code>.
+            </p>
+
+            <p class="target-hint">🎯 <em>Rê chuột vào hình cái bia để đổi sang màu xanh lá cây</em></p>
+
+            <div class="code-snippet">
+                <code>display: flex; justify-content: center; align-items: center; height: 100vh;</code>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">← Về trang tổng hợp</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

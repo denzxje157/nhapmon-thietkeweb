@@ -1,0 +1,165 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    padding: 50px 20px;
+}
+
+.page-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.badge {
+    display: inline-block;
+    background-color: #fef3c7;
+    color: #b45309;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #64748b;
+    font-size: 15px;
+}
+
+.subtitle code {
+    background: #e2e8f0;
+    color: #334155;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+}
+
+/* =========================================================
+   ĐÚNG YÊU CẦU ĐỀ BÀI:
+   - CSS Grid 3 cột bằng nhau: repeat(3, 1fr)
+   - Khoảng cách giữa các cột: gap: 20px
+   ========================================================= */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 cột độ rộng bằng nhau */
+    gap: 20px;                              /* Khoảng cách giữa các cột là 20px */
+}
+
+/* =========================================================
+   MỖI CỘT CHỨA MỘT THẺ:
+   - Màu nền xám nhạt: #f0f0f0
+   - Bo góc 10px: border-radius: 10px
+   ========================================================= */
+.grid-item {
+    background-color: #f0f0f0;              /* Màu nền xám nhạt */
+    border-radius: 10px;                    /* Bo góc 10px */
+    padding: 28px 24px;                     /* Khoảng đệm bên trong */
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.item-badge {
+    font-size: 13px;
+    font-weight: 800;
+    color: #6b7280;
+    background-color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.icon {
+    font-size: 22px;
+}
+
+.grid-item h3 {
+    font-size: 1.2rem;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.grid-item p {
+    color: #4b5563;
+    line-height: 1.6;
+    font-size: 14.5px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.grid-item code {
+    background: #e2e8f0;
+    color: #1f2937;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+}
+
+.item-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11.5px;
+    color: #6b7280;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 12px;
+}
+
+.page-footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.back-link {
+    color: #4f46e5;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive khi xem trên điện thoại */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}

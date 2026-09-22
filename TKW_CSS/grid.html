@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Tập CSS Grid - Bố Cục 3 Cột Chuẩn W3C</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="grid.css">
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <header class="page-header">
+            <span class="badge">CSS Grid Layout</span>
+            <h1>Bố Cục Lưới 3 Cột Bằng Nhau</h1>
+            <p class="subtitle">Khoảng cách giữa các cột <code>gap: 20px</code> • Nền xám nhạt • Bo góc <code>10px</code></p>
+        </header>
+        
+        <!-- BỐ CỤC LƯỚI CSS GRID: 3 CỘT BẰNG NHAU -->
+        <div class="grid-container">
+            <div class="grid-item">
+                <div class="item-header">
+                    <span class="item-badge">01</span>
+                    <span class="icon">🚀</span>
+                </div>
+                <h3>Cột Số 1</h3>
+                <p>Nội dung cột số 1. Nền màu xám nhạt chuẩn <code>#f0f0f0</code>, bốn góc bo tròn <code>10px</code>.</p>
+                <div class="item-meta">
+                    <span>1fr</span>
+                    <span>border-radius: 10px</span>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <div class="item-header">
+                    <span class="item-badge">02</span>
+                    <span class="icon">💎</span>
+                </div>
+                <h3>Cột Số 2</h3>
+                <p>Nội dung cột số 2. Khoảng cách (khoảng trống) giữa các cột được thiết lập chính xác là <code>20px</code>.</p>
+                <div class="item-meta">
+                    <span>1fr</span>
+                    <span>gap: 20px</span>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <div class="item-header">
+                    <span class="item-badge">03</span>
+                    <span class="icon">⚡</span>
+                </div>
+                <h3>Cột Số 3</h3>
+                <p>Nội dung cột số 3. Bố cục 3 cột chia đều tỷ lệ bằng nhau hoàn hảo với <code>repeat(3, 1fr)</code>.</p>
+                <div class="item-meta">
+                    <span>1fr</span>
+                    <span>background: #f0f0f0</span>
+                </div>
+            </div>
+        </div>
+
+        <footer class="page-footer">
+            <a href="index.html" class="back-link">← Quay lại trang tổng hợp (index.html)</a>
+        </footer>
+    </div>
+
+</body>
+</html>

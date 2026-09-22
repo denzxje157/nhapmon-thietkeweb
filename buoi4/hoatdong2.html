@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoạt động 2 | Anime Responsive Portfolio (< 768px)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hoatdong2.css">
+</head>
+<body>
+  <!-- Thanh thông báo kiểm tra DevTools Responsive -->
+  <div class="breakpoint-tester-bar" aria-live="polite">
+    <span class="desktop-badge">🖥️ Desktop Mode (≥ 768px): Bố cục Anime 2 Cột (Sidebar + Main Content)</span>
+    <span class="mobile-badge">📱 Mobile Mode (&lt; 768px): Media Query chuyển thành 1 Cột tối ưu di động</span>
+  </div>
+
+  <div class="portfolio-layout">
+    <!-- Header -->
+    <header class="site-header">
+      <a class="brand" href="#portfolio">
+        <img src="logo.png" alt="Logo" class="brand-img">
+      </a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#about">Giới thiệu</a>
+        <a href="#anime-favorites">Anime yêu thích</a>
+        <a href="#responsive-info">Responsive Rule</a>
+        <a href="#skills">Kỹ năng</a>
+        <a href="#projects">Dự án</a>
+      </nav>
+      <div class="header-actions">
+        <!-- Nút chuyển đổi Dark / Light Mode -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Chuyển chế độ sáng/tối" title="Chuyển đổi giao diện Sáng / Tối">
+          <span class="theme-toggle-icon">🌙</span>
+          <span class="theme-toggle-text">Dark Mode</span>
+        </button>
+        <a class="header-link" href="mailto:hello@example.com">Liên hệ <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <!-- Sidebar cá nhân Anime Aesthetic -->
+    <aside class="sidebar" id="about">
+      <div class="profile-mark">
+        <img src="anh.png" alt="Ảnh chân dung Nguyễn Hoàng Anh" class="avatar-img">
+      </div>
+      <p class="sidebar-label">Otaku &amp; Developer</p>
+      <h1>Nguyễn<br>Hoàng Anh</h1>
+      <p class="role">Sinh viên CNTT • AI Enthusiast<br><span class="anime-sub">アニメファン • Anime Lover</span></p>
+      <div class="sidebar-meta">
+        <p><span>Địa điểm</span> Đồng Nai, Việt Nam</p>
+        <p><span>Trạng thái</span> Đang học &amp; Cày Anime 🌸</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="portfolio">
+      <section class="intro-section">
+        <p class="eyebrow">Hoạt động 2 / Responsive &amp; Anime Aesthetics</p>
+        <h2>Responsive Portfolio<br><em>Thế giới Anime trên mọi màn hình 🌸</em></h2>
+        <p class="intro-copy">Sử dụng phông chữ <strong>Roboto</strong> và <strong>Media Queries</strong> tại ngưỡng <code>768px</code> để biến bố cục 2 cột Desktop thành 1 cột mượt mà trên Mobile, hiển thị sắc nét các bộ anime yêu thích.</p>
+      </section>
+
+      <!-- KHU VỰC NHỮNG BỘ PHIM ANIME YÊU THÍCH -->
+      <section class="content-section" id="anime-favorites">
+        <div class="section-heading">
+          <span class="section-index">01</span>
+          <div>
+            <h2>Những bộ phim Anime yêu thích</h2>
+            <p class="section-subheading">Tự động co giãn 1 cột trên Mobile để thưởng thức trọn vẹn poster</p>
+          </div>
+        </div>
+
+        <div class="anime-card-grid">
+          <!-- Anime 1: One Piece -->
+          <article class="anime-card">
+            <div class="anime-poster-wrapper">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVWPW1XBbKeO0dafOCAVmxcOeqPG8bcX9wmAU8K9iWJOD3k-eM_BPyF58&s=10" alt="One Piece" class="anime-poster" loading="lazy">
+              <span class="anime-badge-score">⭐ 9.0</span>
+              <span class="anime-badge-genre">Eiichiro Oda</span>
+            </div>
+            <div class="anime-card-body">
+              <span class="anime-jp-title">ワンピース • Vua Hải Tặc</span>
+              <h3>One Piece (1999 - Nay)</h3>
+              <p class="anime-quote">"Tôi là Monkey D. Luffy, người sẽ trở thành Vua Hải Tặc và tìm thấy kho báu One Piece!"</p>
+              <div class="anime-tags">
+                <span>Shonen</span>
+                <span>Hải tặc</span>
+                <span>Toei</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Anime 2: Naruto -->
+          <article class="anime-card">
+            <div class="anime-poster-wrapper">
+              <img src="https://image.tmdb.org/t/p/w500/xppeysfvDKVx775MFuH8Z9BlpMk.jpg" alt="Naruto" class="anime-poster" loading="lazy">
+              <span class="anime-badge-score">⭐ 8.8</span>
+              <span class="anime-badge-genre">Masashi Kishimoto</span>
+            </div>
+            <div class="anime-card-body">
+              <span class="anime-jp-title">ナルト • Nhẫn Giả Làng Lá</span>
+              <h3>Naruto (2002 - 2017)</h3>
+              <p class="anime-quote">"Tôi sẽ không bao giờ rút lại lời nói của mình, vì đó chính là nhẫn đạo của tôi!"</p>
+              <div class="anime-tags">
+                <span>Ninja</span>
+                <span>Hokage</span>
+                <span>Pierrot</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Anime 3: Jujutsu Kaisen -->
+          <article class="anime-card">
+            <div class="anime-poster-wrapper">
+              <img src="https://image.tmdb.org/t/p/w500/6qQzMJG27XOJsyAEEIisoJB45j2.jpg" alt="Jujutsu Kaisen" class="anime-poster" loading="lazy">
+              <span class="anime-badge-score">⭐ 8.9</span>
+              <span class="anime-badge-genre">Gege Akutami</span>
+            </div>
+            <div class="anime-card-body">
+              <span class="anime-jp-title">呪術廻戦 • Chú Thuật Hồi Chiến</span>
+              <h3>Jujutsu Kaisen (2020 - Nay)</h3>
+              <p class="anime-quote">"Đừng lo lắng, bởi vì thầy là kẻ mạnh nhất thế giới này! Lãnh Địa Vô Lượng Không Xứ!"</p>
+              <div class="anime-tags">
+                <span>Chú thuật</span>
+                <span>MAPPA</span>
+                <span>Gojo</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Giải thích chi tiết Media Queries -->
+      <section class="content-section" id="responsive-info">
+        <div class="section-heading">
+          <span class="section-index">02</span>
+          <div>
+            <h2>Quy tắc Media Query (&lt; 768px)</h2>
+            <p class="section-subheading">Kiểm tra thay đổi bố cục linh hoạt bằng DevTools (F12)</p>
+          </div>
+        </div>
+        <div class="responsive-card-grid">
+          <div class="info-card">
+            <span class="info-icon">🖥️</span>
+            <h3>Desktop (≥ 768px)</h3>
+            <p>Sử dụng CSS Grid 2 cột: <code>grid-template-columns: 290px 1fr</code></p>
+            <ul>
+              <li>Sidebar cố định độ rộng 290px bên trái</li>
+              <li>Thẻ phim Anime hiển thị dạng lưới 3 cột hiện đại</li>
+              <li>Project cards hiển thị 2 cột song song</li>
+            </ul>
+          </div>
+          <div class="info-card info-card-active">
+            <span class="info-icon">📱</span>
+            <h3>Mobile (&lt; 768px)</h3>
+            <p>Media query: <code>@media (max-width: 767.98px)</code></p>
+            <ul>
+              <li>Chuyển toàn bộ bố cục sang 1 cột duy nhất (<code>1fr</code>)</li>
+              <li>Sidebar nằm trên, Main content nằm dưới theo thứ tự đọc tự nhiên</li>
+              <li>Thẻ Anime và Project tự động xếp chồng 1 cột mượt mà</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kỹ năng -->
+      <section class="content-section" id="skills">
+        <div class="section-heading">
+          <span class="section-index">03</span>
+          <h2>Kỹ năng công nghệ</h2>
+        </div>
+        <div class="skills-list">
+          <span class="skill-item">HTML5 Semantic</span>
+          <span class="skill-item">CSS Grid</span>
+          <span class="skill-item">Flexbox</span>
+          <span class="skill-item">Font Roboto</span>
+          <span class="skill-item">Dark / Light Mode</span>
+          <span class="skill-item">Media Queries &lt; 768px</span>
+          <span class="skill-item">Anime UI Design</span>
+        </div>
+      </section>
+
+      <!-- Dự án chọn lọc -->
+      <section class="content-section" id="projects">
+        <div class="section-heading">
+          <span class="section-index">04</span>
+          <h2>Dự án chọn lọc</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card project-card-wide">
+            <span class="project-type">Web / E-commerce</span>
+            <h3>Sắc Việt</h3>
+            <p>Nền tảng thương mại điện tử tôn vinh sản phẩm truyền thống Việt Nam. Tối ưu hoàn hảo trên cả Desktop và Mobile.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="project-card project-card-dark">
+            <span class="project-type">IoT / Embedded</span>
+            <h3>Smart Air</h3>
+            <p>Quan trắc chất lượng không khí bằng ESP32 và cảm biến vi khí hậu.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="project-card project-card-light">
+            <span class="project-type">AI / Research</span>
+            <h3>AI Anime Vision</h3>
+            <p>Khám phá mô hình thị giác máy tính nhận diện nhân vật Anime chạy trực tiếp tại thiết bị di động.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <span>© 2026 Nguyễn Hoàng Anh • Designed with Anime Spirit 🌸</span>
+      <span>HĐ 2 — Anime Responsive Portfolio: Desktop 2 Cột ➔ Mobile 1 Cột</span>
+    </footer>
+  </div>
+
+  <!-- Script chuyển đổi Theme -->
+  <script>
+    const toggleBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('app-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateToggleBtn(savedTheme);
+
+    toggleBtn?.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('app-theme', nextTheme);
+      updateToggleBtn(nextTheme);
+    });
+
+    function updateToggleBtn(theme) {
+      if (!toggleBtn) return;
+      const icon = toggleBtn.querySelector('.theme-toggle-icon');
+      const text = toggleBtn.querySelector('.theme-toggle-text');
+      if (theme === 'dark') {
+        if (icon) icon.textContent = '☀️';
+        if (text) text.textContent = 'Light Mode';
+      } else {
+        if (icon) icon.textContent = '🌙';
+        if (text) text.textContent = 'Dark Mode';
+      }
+    }
+  </script>
+</body>
+</html>

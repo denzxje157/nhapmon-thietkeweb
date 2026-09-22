@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoạt động 4 | Anime Design System Refactoring</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hoatdong4.css">
+</head>
+<body>
+  <!-- Thanh thông báo Design System -->
+  <div class="system-status-bar">
+    <span>🌸 Anime Design System: Phông chữ Roboto &amp; 100% Biến CSS Tokens tại <code>:root</code> (Hỗ trợ Dark/Light Mode)</span>
+  </div>
+
+  <div class="portfolio-layout">
+    <!-- Header -->
+    <header class="site-header">
+      <a class="brand" href="#portfolio">
+        <img src="logo.png" alt="Logo" class="brand-img">
+      </a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#about">Giới thiệu</a>
+        <a href="#anime-showcase">Anime Masterpieces</a>
+        <a href="#tokens">Design Tokens</a>
+        <a href="#services">Dịch vụ</a>
+        <a href="#skills">Kỹ năng</a>
+        <a href="#projects">Dự án</a>
+      </nav>
+      <div class="header-actions">
+        <!-- Nút chuyển đổi Dark / Light Mode -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Chuyển chế độ sáng/tối" title="Chuyển đổi giao diện Sáng / Tối">
+          <span class="theme-toggle-icon">🌙</span>
+          <span class="theme-toggle-text">Dark Mode</span>
+        </button>
+        <a class="header-link" href="mailto:hello@example.com">Liên hệ <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <!-- Sidebar cá nhân Anime Aesthetic -->
+    <aside class="sidebar" id="about">
+      <div class="profile-mark">
+        <img src="anh.png" alt="Ảnh chân dung Nguyễn Hoàng Anh" class="avatar-img">
+      </div>
+      <p class="sidebar-label">Otaku &amp; Developer</p>
+      <h1>Nguyễn<br>Hoàng Anh</h1>
+      <p class="role">Sinh viên CNTT • AI Enthusiast<br><span class="anime-sub">アニメファン • Anime Lover</span></p>
+      <div class="sidebar-meta">
+        <p><span>Địa điểm</span> Đồng Nai, Việt Nam</p>
+        <p><span>Trạng thái</span> Đang học &amp; Cày Anime 🌸</p>
+      </div>
+    </aside>
+
+    <!-- Nội dung chính -->
+    <main class="main-content" id="portfolio">
+      <section class="intro-section">
+        <p class="eyebrow">Hoạt động 4 / Anime Design System Refactoring</p>
+        <h2>Anime Design System<br><em>Chuẩn hóa Toàn Diện 🌸</em></h2>
+        <p class="intro-copy">Giao diện sử dụng phông chữ <strong>Roboto</strong>. Toàn bộ mã màu Anime Aesthetic (Cyber Indigo, Sakura Rose), thang khoảng cách (Spacing Scale 4px–80px), bán kính bo góc và độ bóng đã được trích xuất hoàn toàn thành các biến Design System tại <code>:root</code>.</p>
+      </section>
+
+      <!-- KHU VỰC 1: ANIME MASTERPIECES SHOWCASE -->
+      <section class="content-section" id="anime-showcase">
+        <div class="section-heading">
+          <span class="section-index">01</span>
+          <div>
+            <h2>Những bộ phim Anime yêu thích (Masterpieces)</h2>
+            <p class="section-subheading">Nguồn cảm hứng sáng tạo công nghệ và thiết kế giao diện</p>
+          </div>
+        </div>
+
+        <div class="anime-card-grid">
+          <!-- Anime 1: One Piece -->
+          <article class="anime-card">
+            <div class="anime-poster-wrapper">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVWPW1XBbKeO0dafOCAVmxcOeqPG8bcX9wmAU8K9iWJOD3k-eM_BPyF58&s=10" alt="One Piece" class="anime-poster" loading="lazy">
+              <span class="anime-badge-score">⭐ 9.0</span>
+              <span class="anime-badge-genre">Eiichiro Oda</span>
+            </div>
+            <div class="anime-card-body">
+              <span class="anime-jp-title">ワンピース • Vua Hải Tặc</span>
+              <h3>One Piece (1999 - Nay)</h3>
+              <p class="anime-quote">"Tôi là Monkey D. Luffy, người sẽ trở thành Vua Hải Tặc và tìm thấy kho báu One Piece!"</p>
+              <div class="anime-tags">
+                <span>Shonen</span>
+                <span>Hải tặc</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Anime 2: Naruto -->
+          <article class="anime-card">
+            <div class="anime-poster-wrapper">
+              <img src="https://image.tmdb.org/t/p/w500/xppeysfvDKVx775MFuH8Z9BlpMk.jpg" alt="Naruto" class="anime-poster" loading="lazy">
+              <span class="anime-badge-score">⭐ 8.8</span>
+              <span class="anime-badge-genre">Masashi Kishimoto</span>
+            </div>
+            <div class="anime-card-body">
+              <span class="anime-jp-title">ナルト • Nhẫn Giả Làng Lá</span>
+              <h3>Naruto (2002 - 2017)</h3>
+              <p class="anime-quote">"Tôi sẽ không bao giờ rút lại lời nói của mình, vì đó chính là nhẫn đạo của tôi!"</p>
+              <div class="anime-tags">
+                <span>Ninja</span>
+                <span>Hokage</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Anime 3: Jujutsu Kaisen -->
+          <article class="anime-card">
+            <div class="anime-poster-wrapper">
+              <img src="https://image.tmdb.org/t/p/w500/6qQzMJG27XOJsyAEEIisoJB45j2.jpg" alt="Jujutsu Kaisen" class="anime-poster" loading="lazy">
+              <span class="anime-badge-score">⭐ 8.9</span>
+              <span class="anime-badge-genre">Gege Akutami</span>
+            </div>
+            <div class="anime-card-body">
+              <span class="anime-jp-title">呪術廻戦 • Chú Thuật Hồi Chiến</span>
+              <h3>Jujutsu Kaisen (2020 - Nay)</h3>
+              <p class="anime-quote">"Đừng lo lắng, bởi vì thầy là kẻ mạnh nhất thế giới này! Lãnh Địa Vô Lượng Không Xứ!"</p>
+              <div class="anime-tags">
+                <span>Chú thuật</span>
+                <span>Gojo Satoru</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- KHU VỰC 2: SHOWCASE DESIGN SYSTEM TOKENS ĐÃ TRÍCH XUẤT -->
+      <section class="content-section" id="tokens">
+        <div class="section-heading">
+          <span class="section-index">02</span>
+          <div>
+            <h2>Hệ thống Tokens (:root)</h2>
+            <p class="section-subheading">Bảng tra cứu biến đã refactor từ giá trị cứng (Tự đổi màu theo Dark/Light Mode)</p>
+          </div>
+        </div>
+
+        <!-- 1. Color Tokens -->
+        <h3 class="token-group-title">1. Color Tokens (Mã màu trích xuất)</h3>
+        <div class="token-color-grid">
+          <div class="token-card">
+            <div class="color-sample" style="background: var(--color-primary);"></div>
+            <div class="token-meta">
+              <code>--color-primary</code>
+              <small>Cyber Indigo</small>
+            </div>
+          </div>
+          <div class="token-card">
+            <div class="color-sample" style="background: var(--color-secondary);"></div>
+            <div class="token-meta">
+              <code>--color-secondary</code>
+              <small>Sakura Rose</small>
+            </div>
+          </div>
+          <div class="token-card">
+            <div class="color-sample" style="background: var(--color-gray-100); border: 1px solid var(--color-border-light);"></div>
+            <div class="token-meta">
+              <code>--color-gray-100</code>
+              <small>Nền phụ / Chip</small>
+            </div>
+          </div>
+          <div class="token-card">
+            <div class="color-sample" style="background: var(--color-gray-300);"></div>
+            <div class="token-meta">
+              <code>--color-gray-300</code>
+              <small>Đường viền</small>
+            </div>
+          </div>
+          <div class="token-card">
+            <div class="color-sample" style="background: var(--color-gray-700);"></div>
+            <div class="token-meta">
+              <code>--color-gray-700</code>
+              <small>Chữ thứ cấp</small>
+            </div>
+          </div>
+          <div class="token-card">
+            <div class="color-sample" style="background: var(--color-gray-900);"></div>
+            <div class="token-meta">
+              <code>--color-gray-900</code>
+              <small>Chữ tiêu đề</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Spacing Scale Tokens -->
+        <h3 class="token-group-title" style="margin-top: var(--space-6);">2. Spacing Scale Tokens (Thang khoảng cách trích xuất)</h3>
+        <div class="token-spacing-grid">
+          <div class="spacing-bar-item">
+            <div class="spacing-visual" style="width: var(--space-2);"></div>
+            <span><code>--space-2</code> (8px)</span>
+          </div>
+          <div class="spacing-bar-item">
+            <div class="spacing-visual" style="width: var(--space-4);"></div>
+            <span><code>--space-4</code> (16px)</span>
+          </div>
+          <div class="spacing-bar-item">
+            <div class="spacing-visual" style="width: var(--space-6);"></div>
+            <span><code>--space-6</code> (24px)</span>
+          </div>
+          <div class="spacing-bar-item">
+            <div class="spacing-visual" style="width: var(--space-8);"></div>
+            <span><code>--space-8</code> (32px)</span>
+          </div>
+          <div class="spacing-bar-item">
+            <div class="spacing-visual" style="width: var(--space-12);"></div>
+            <span><code>--space-12</code> (48px)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- KHU VỰC 3: DỊCH VỤ VỚI CÁC BIẾN DESIGN SYSTEM MỚI -->
+      <section class="content-section" id="services">
+        <div class="section-heading">
+          <span class="section-index">03</span>
+          <div>
+            <h2>Khu vực Dịch vụ (Refactored)</h2>
+            <p class="section-subheading">Áp dụng 100% Spacing Scale và Color Tokens</p>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-top">
+              <span class="service-num">01</span>
+              <span class="service-icon">🎨</span>
+            </div>
+            <h3>Thiết kế UI/UX Anime</h3>
+            <p>Xây dựng giao diện trực quan, wireframe, prototype trên Figma với hệ thống Design System đồng bộ.</p>
+            <div class="service-tags">
+              <span>Figma</span>
+              <span>Wireframing</span>
+            </div>
+          </div>
+
+          <div class="service-card service-featured">
+            <div class="service-top">
+              <span class="service-num">02</span>
+              <span class="service-icon">💻</span>
+            </div>
+            <h3>Web Frontend</h3>
+            <p>Phát triển website chuẩn SEO, responsive linh hoạt bằng HTML5, CSS Grid, Flexbox và JS thuần.</p>
+            <div class="service-tags">
+              <span>HTML5/CSS3</span>
+              <span>Design System</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-top">
+              <span class="service-num">03</span>
+              <span class="service-icon">⚡</span>
+            </div>
+            <h3>Hệ thống IoT</h3>
+            <p>Lập trình vi điều khiển ESP32 kết nối cảm biến và giám sát số liệu đám mây thời gian thực.</p>
+            <div class="service-tags">
+              <span>ESP32</span>
+              <span>Sensors</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-top">
+              <span class="service-num">04</span>
+              <span class="service-icon">🤖</span>
+            </div>
+            <h3>Ứng dụng AI</h3>
+            <p>Triển khai các mô hình thị giác máy tính và học sâu nhận diện nhân vật Anime trên thiết bị cục bộ.</p>
+            <div class="service-tags">
+              <span>Edge AI</span>
+              <span>Python</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KHU VỰC 4: KỸ NĂNG -->
+      <section class="content-section" id="skills">
+        <div class="section-heading">
+          <span class="section-index">04</span>
+          <h2>Kỹ năng công nghệ</h2>
+        </div>
+        <div class="skills-list">
+          <span class="skill-item">Font Roboto</span>
+          <span class="skill-item">Dark / Light Mode</span>
+          <span class="skill-item">Design System Tokens</span>
+          <span class="skill-item">Spacing Scale</span>
+          <span class="skill-item">Anime UI Aesthetics</span>
+          <span class="skill-item">Clean Architecture</span>
+        </div>
+      </section>
+
+      <!-- KHU VỰC 5: DỰ ÁN TIÊU BIỂU -->
+      <section class="content-section" id="projects">
+        <div class="section-heading">
+          <span class="section-index">05</span>
+          <h2>Dự án chọn lọc</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card project-card-wide">
+            <span class="project-type">Web / E-commerce</span>
+            <h3>Sắc Việt</h3>
+            <p>Nền tảng thương mại điện tử tôn vinh sản phẩm truyền thống Việt Nam. Hoàn thiện theo chuẩn Design System hiện đại.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="project-card project-card-dark">
+            <span class="project-type">IoT / Embedded</span>
+            <h3>Smart Air</h3>
+            <p>Quan trắc chất lượng không khí bằng ESP32 và cảm biến thời gian thực.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="project-card project-card-light">
+            <span class="project-type">AI / Research</span>
+            <h3>AI Anime Detector</h3>
+            <p>Khám phá mô hình thị giác máy tính nhận diện nghệ thuật Anime tại thiết bị.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <span>© 2026 Nguyễn Hoàng Anh • Designed with Anime Spirit 🌸</span>
+      <span>HĐ 4 — Anime Design System Refactoring (Font Roboto &amp; Dark/Light Mode)</span>
+    </footer>
+  </div>
+
+  <!-- Script chuyển đổi Theme -->
+  <script>
+    const toggleBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('app-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateToggleBtn(savedTheme);
+
+    toggleBtn?.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('app-theme', nextTheme);
+      updateToggleBtn(nextTheme);
+    });
+
+    function updateToggleBtn(theme) {
+      if (!toggleBtn) return;
+      const icon = toggleBtn.querySelector('.theme-toggle-icon');
+      const text = toggleBtn.querySelector('.theme-toggle-text');
+      if (theme === 'dark') {
+        if (icon) icon.textContent = '☀️';
+        if (text) text.textContent = 'Light Mode';
+      } else {
+        if (icon) icon.textContent = '🌙';
+        if (text) text.textContent = 'Dark Mode';
+      }
+    }
+  </script>
+</body>
+</html>

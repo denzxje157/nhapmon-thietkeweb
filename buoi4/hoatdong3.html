@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoạt động 3 | Anime Breakpoint Challenge (4 ➔ 2 ➔ 1 Cột)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hoatdong3.css">
+</head>
+<body>
+  <!-- Thanh hiển thị trạng thái Breakpoint Challenge -->
+  <div class="breakpoint-tester-bar" aria-live="polite">
+    <span class="badge-desktop">🖥️ Desktop (≥ 1024px): Khu vực Anime Showcase hiển thị <strong>4 CỘT</strong></span>
+    <span class="badge-tablet">💻 Tablet (768px - 1023px): Khu vực Anime Showcase hiển thị <strong>2 CỘT</strong></span>
+    <span class="badge-mobile">📱 Mobile (&lt; 768px): Khu vực Anime Showcase hiển thị <strong>1 CỘT</strong></span>
+  </div>
+
+  <div class="portfolio-layout">
+    <!-- Header -->
+    <header class="site-header">
+      <a class="brand" href="#portfolio">
+        <img src="logo.png" alt="Logo" class="brand-img">
+      </a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#about">Giới thiệu</a>
+        <a href="#anime-showcase">Anime 4 Cột</a>
+        <a href="#services">Dịch vụ</a>
+        <a href="#skills">Kỹ năng</a>
+        <a href="#projects">Dự án</a>
+      </nav>
+      <div class="header-actions">
+        <!-- Nút chuyển đổi Dark / Light Mode -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Chuyển chế độ sáng/tối" title="Chuyển đổi giao diện Sáng / Tối">
+          <span class="theme-toggle-icon">🌙</span>
+          <span class="theme-toggle-text">Dark Mode</span>
+        </button>
+        <a class="header-link" href="mailto:hello@example.com">Liên hệ <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <!-- Sidebar cá nhân Anime Aesthetic -->
+    <aside class="sidebar" id="about">
+      <div class="profile-mark">
+        <img src="anh.png" alt="Ảnh chân dung Nguyễn Hoàng Anh" class="avatar-img">
+      </div>
+      <p class="sidebar-label">Otaku &amp; Developer</p>
+      <h1>Nguyễn<br>Hoàng Anh</h1>
+      <p class="role">Sinh viên CNTT • AI Enthusiast<br><span class="anime-sub">アニメファン • Anime Lover</span></p>
+      <div class="sidebar-meta">
+        <p><span>Địa điểm</span> Đồng Nai, Việt Nam</p>
+        <p><span>Trạng thái</span> Đang học &amp; Cày Anime 🌸</p>
+      </div>
+    </aside>
+
+    <!-- Nội dung chính -->
+    <main class="main-content" id="portfolio">
+      <section class="intro-section">
+        <p class="eyebrow">Hoạt động 3 / Breakpoint Challenge &amp; Anime Showcase</p>
+        <h2>Thử thách Breakpoint<br><em>Anime Kiệt Tác Đa Ngưỡng 🌸</em></h2>
+        <p class="intro-copy">Khu vực <strong>"Bộ phim Anime yêu thích"</strong> và <strong>"Dịch vụ"</strong> được thiết kế theo thử thách Breakpoint: <strong>4 cột trên Desktop</strong> (≥ 1024px), chuyển thành <strong>2 cột trên Tablet</strong> (768px – 1023px) và tinh gọn về <strong>1 cột trên Mobile</strong> (&lt; 768px).</p>
+      </section>
+
+      <!-- KHU VỰC 1: BREAKPOINT CHALLENGE ANIME 4 CỘT -->
+      <section class="content-section" id="anime-showcase">
+        <div class="section-heading">
+          <span class="section-index">01</span>
+          <div>
+            <h2>Top 4 Siêu Phẩm Anime Yêu Thích (Breakpoint Challenge)</h2>
+            <p class="section-subheading">Thử nghiệm CSS Grid: 4 Cột (Desktop) ➔ 2 Cột (Tablet) ➔ 1 Cột (Mobile)</p>
+          </div>
+        </div>
+
+        <div class="anime-grid-4cols">
+          <!-- Anime 1: One Piece -->
+          <article class="anime-card">
+            <div class="anime-poster-wrapper">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVWPW1XBbKeO0dafOCAVmxcOeqPG8bcX9wmAU8K9iWJOD3k-eM_BPyF58&s=10" alt="One Piece" class="anime-poster" loading="lazy">
+              <span class="anime-badge-score">⭐ 9.0</span>
+              <span class="anime-badge-genre">Oda</span>
+            </div>
+            <div class="anime-card-body">
+              <span class="anime-jp-title">ワンピース</span>
+              <h3>One Piece</h3>
+              <p class="anime-quote">"Tôi sẽ trở thành Vua Hải Tặc vĩ đại nhất đại dương này!"</p>
+              <div class="anime-tags">
+                <span>Luffy</span>
+                <span>Hải tặc</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Anime 2: Naruto -->
+          <article class="anime-card">
+            <div class="anime-poster-wrapper">
+              <img src="https://image.tmdb.org/t/p/w500/xppeysfvDKVx775MFuH8Z9BlpMk.jpg" alt="Naruto" class="anime-poster" loading="lazy">
+              <span class="anime-badge-score">⭐ 8.8</span>
+              <span class="anime-badge-genre">Kishimoto</span>
+            </div>
+            <div class="anime-card-body">
+              <span class="anime-jp-title">ナルト 疾風伝</span>
+              <h3>Naruto</h3>
+              <p class="anime-quote">"Tôi sẽ không bao giờ bỏ cuộc, vì đó là nhẫn đạo của tôi!"</p>
+              <div class="anime-tags">
+                <span>Ninja</span>
+                <span>Hokage</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Anime 3: Jujutsu Kaisen -->
+          <article class="anime-card">
+            <div class="anime-poster-wrapper">
+              <img src="https://image.tmdb.org/t/p/w500/6qQzMJG27XOJsyAEEIisoJB45j2.jpg" alt="Jujutsu Kaisen" class="anime-poster" loading="lazy">
+              <span class="anime-badge-score">⭐ 8.9</span>
+              <span class="anime-badge-genre">Akutami</span>
+            </div>
+            <div class="anime-card-body">
+              <span class="anime-jp-title">呪術廻戦</span>
+              <h3>Jujutsu Kaisen</h3>
+              <p class="anime-quote">"Đừng lo, thầy là kẻ mạnh nhất mà! Vô Lượng Không Xứ!"</p>
+              <div class="anime-tags">
+                <span>Gojo</span>
+                <span>Chú thuật</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Anime 4: Demon Slayer -->
+          <article class="anime-card">
+            <div class="anime-poster-wrapper">
+              <img src="https://image.tmdb.org/t/p/w500/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg" alt="Demon Slayer" class="anime-poster" loading="lazy">
+              <span class="anime-badge-score">⭐ 8.7</span>
+              <span class="anime-badge-genre">Gotouge</span>
+            </div>
+            <div class="anime-card-body">
+              <span class="anime-jp-title">鬼滅の刃</span>
+              <h3>Demon Slayer</h3>
+              <p class="anime-quote">"Hãy giữ cho ngọn lửa nhiệt huyết luôn bùng cháy trong tim!"</p>
+              <div class="anime-tags">
+                <span>Tanjiro</span>
+                <span>Diệt quỷ</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- KHU VỰC 2: DỊCH VỤ CHUYÊN MÔN (ĐÁP ỨNG ĐỀ BÀI HĐ 3) -->
+      <section class="content-section" id="services">
+        <div class="section-heading">
+          <span class="section-index">02</span>
+          <div>
+            <h2>Khu vực Dịch vụ (4 Cột ➔ 2 Cột ➔ 1 Cột)</h2>
+            <p class="section-subheading">Khu vực Dịch vụ chuyên môn đáp ứng đúng 100% đề bài HĐ 3</p>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-top">
+              <span class="service-num">01</span>
+              <span class="service-icon">🎨</span>
+            </div>
+            <h3>Thiết kế UI/UX Anime</h3>
+            <p>Giao diện hiện đại, phối màu Anime tinh tế, tương thích đa thiết bị.</p>
+            <div class="service-tags">
+              <span>Figma</span>
+              <span>Design System</span>
+            </div>
+          </div>
+
+          <div class="service-card service-featured">
+            <div class="service-top">
+              <span class="service-num">02</span>
+              <span class="service-icon">💻</span>
+            </div>
+            <h3>Web Frontend</h3>
+            <p>Phát triển website chuẩn SEO, responsive với CSS Grid, Flexbox và JS thuần.</p>
+            <div class="service-tags">
+              <span>CSS Grid</span>
+              <span>Flexbox</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-top">
+              <span class="service-num">03</span>
+              <span class="service-icon">⚡</span>
+            </div>
+            <h3>Hệ thống IoT</h3>
+            <p>Lập trình vi điều khiển ESP32 kết nối cảm biến và giám sát đám mây.</p>
+            <div class="service-tags">
+              <span>ESP32</span>
+              <span>Cloud API</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-top">
+              <span class="service-num">04</span>
+              <span class="service-icon">🤖</span>
+            </div>
+            <h3>Ứng dụng AI</h3>
+            <p>Triển khai các mô hình thị giác máy tính và học sâu trên thiết bị cục bộ.</p>
+            <div class="service-tags">
+              <span>Edge AI</span>
+              <span>OpenCV</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kỹ năng -->
+      <section class="content-section" id="skills">
+        <div class="section-heading">
+          <span class="section-index">03</span>
+          <h2>Kỹ năng công nghệ</h2>
+        </div>
+        <div class="skills-list">
+          <span class="skill-item">CSS Grid (repeat / minmax)</span>
+          <span class="skill-item">Desktop 4 Cols</span>
+          <span class="skill-item">Tablet 2 Cols</span>
+          <span class="skill-item">Mobile 1 Col</span>
+          <span class="skill-item">Font Roboto</span>
+          <span class="skill-item">Dark / Light Mode</span>
+        </div>
+      </section>
+
+      <!-- Dự án chọn lọc -->
+      <section class="content-section" id="projects">
+        <div class="section-heading">
+          <span class="section-index">04</span>
+          <h2>Dự án chọn lọc</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card project-card-wide">
+            <span class="project-type">Web / E-commerce</span>
+            <h3>Sắc Việt</h3>
+            <p>Nền tảng thương mại điện tử tôn vinh sản phẩm truyền thống Việt Nam.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="project-card project-card-dark">
+            <span class="project-type">IoT / Embedded</span>
+            <h3>Smart Air</h3>
+            <p>Quan trắc chất lượng không khí bằng ESP32 và cảm biến.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="project-card project-card-light">
+            <span class="project-type">AI / Research</span>
+            <h3>AI Detector</h3>
+            <p>Khám phá mô hình thị giác máy tính chạy tại thiết bị.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <span>© 2026 Nguyễn Hoàng Anh • Designed with Anime Spirit 🌸</span>
+      <span>HĐ 3 — Anime Breakpoint Challenge: 4 Cột ➔ 2 Cột ➔ 1 Cột</span>
+    </footer>
+  </div>
+
+  <!-- Script chuyển đổi Theme -->
+  <script>
+    const toggleBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('app-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateToggleBtn(savedTheme);
+
+    toggleBtn?.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('app-theme', nextTheme);
+      updateToggleBtn(nextTheme);
+    });
+
+    function updateToggleBtn(theme) {
+      if (!toggleBtn) return;
+      const icon = toggleBtn.querySelector('.theme-toggle-icon');
+      const text = toggleBtn.querySelector('.theme-toggle-text');
+      if (theme === 'dark') {
+        if (icon) icon.textContent = '☀️';
+        if (text) text.textContent = 'Light Mode';
+      } else {
+        if (icon) icon.textContent = '🌙';
+        if (text) text.textContent = 'Dark Mode';
+      }
+    }
+  </script>
+</body>
+</html>

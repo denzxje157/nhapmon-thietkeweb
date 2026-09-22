@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoạt động 1 | Anime Portfolio & Bảng mã màu thông minh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hoatdong1.css">
+</head>
+<body>
+  <div class="portfolio-layout">
+    <!-- Header -->
+    <header class="site-header">
+      <a class="brand" href="#portfolio">
+        <img src="logo.png" alt="Logo" class="brand-img">
+      </a>
+      <nav aria-label="Điều hướng chính">
+        <a href="#about">Giới thiệu</a>
+        <a href="#anime-favorites">Phim yêu thích</a>
+        <a href="#palette">Bảng màu</a>
+        <a href="#skills">Kỹ năng</a>
+        <a href="#projects">Dự án</a>
+      </nav>
+      <div class="header-actions">
+        <!-- Nút chuyển đổi Dark / Light Mode -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Chuyển chế độ sáng/tối" title="Chuyển đổi giao diện Sáng / Tối">
+          <span class="theme-toggle-icon">🌙</span>
+          <span class="theme-toggle-text">Dark Mode</span>
+        </button>
+        <a class="header-link" href="mailto:hello@example.com">Liên hệ <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+
+    <!-- Sidebar cá nhân Anime Aesthetic -->
+    <aside class="sidebar" id="about">
+      <div class="profile-mark">
+        <img src="anh.png" alt="Ảnh chân dung Nguyễn Hoàng Anh" class="avatar-img">
+      </div>
+      <p class="sidebar-label">Otaku &amp; Developer</p>
+      <h1>Nguyễn<br>Hoàng Anh</h1>
+      <p class="role">Sinh viên CNTT • AI Enthusiast<br><span class="anime-sub">アニメファン • Anime Lover</span></p>
+      <div class="sidebar-meta">
+        <p><span>Địa điểm</span> Đồng Nai, Việt Nam</p>
+        <p><span>Trạng thái</span> Đang học &amp; Cày Anime 🌸</p>
+      </div>
+    </aside>
+
+    <!-- Nội dung chính -->
+    <main class="main-content" id="portfolio">
+      <!-- Intro Hero Banner Anime -->
+      <section class="intro-section">
+        <p class="eyebrow">Hoạt động 1 / Anime Portfolio &amp; CSS Variables</p>
+        <h2>Sáng tạo công nghệ<br><em>với cảm hứng Anime 🌸</em></h2>
+        <p class="intro-copy">Kết hợp tư duy lập trình hệ thống hiện đại với niềm đam mê nghệ thuật hoạt hình Nhật Bản. Toàn bộ bảng màu lấy cảm hứng từ các siêu phẩm Anime kinh điển được định nghĩa bằng biến CSS Variables tại <code>:root</code>.</p>
+      </section>
+
+      <!-- KHU VỰC NHỮNG BỘ PHIM ANIME YÊU THÍCH -->
+      <section class="content-section" id="anime-favorites">
+        <div class="section-heading">
+          <span class="section-index">01</span>
+          <div>
+            <h2>Những bộ phim Anime yêu thích</h2>
+            <p class="section-subheading">Nguồn cảm hứng vô tận về đồ họa, cốt truyện và công nghệ</p>
+          </div>
+        </div>
+
+        <div class="anime-card-grid">
+          <!-- Anime 1: One Piece -->
+          <article class="anime-card">
+            <div class="anime-poster-wrapper">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVWPW1XBbKeO0dafOCAVmxcOeqPG8bcX9wmAU8K9iWJOD3k-eM_BPyF58&s=10" alt="One Piece" class="anime-poster" loading="lazy">
+              <span class="anime-badge-score">⭐ 9.0</span>
+              <span class="anime-badge-genre">Eiichiro Oda</span>
+            </div>
+            <div class="anime-card-body">
+              <span class="anime-jp-title">ワンピース • Vua Hải Tặc</span>
+              <h3>One Piece (1999 - Nay)</h3>
+              <p class="anime-quote">"Tôi là Monkey D. Luffy, người sẽ trở thành Vua Hải Tặc và tìm thấy kho báu One Piece!"</p>
+              <div class="anime-tags">
+                <span>Shonen</span>
+                <span>Hải tặc</span>
+                <span>Toei Animation</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Anime 2: Naruto -->
+          <article class="anime-card">
+            <div class="anime-poster-wrapper">
+              <img src="https://image.tmdb.org/t/p/w500/xppeysfvDKVx775MFuH8Z9BlpMk.jpg" alt="Naruto" class="anime-poster" loading="lazy">
+              <span class="anime-badge-score">⭐ 8.8</span>
+              <span class="anime-badge-genre">Masashi Kishimoto</span>
+            </div>
+            <div class="anime-card-body">
+              <span class="anime-jp-title">ナルト • Nhẫn Giả Làng Lá</span>
+              <h3>Naruto (2002 - 2017)</h3>
+              <p class="anime-quote">"Tôi sẽ không bao giờ rút lại lời nói của mình, vì đó chính là nhẫn đạo của tôi!"</p>
+              <div class="anime-tags">
+                <span>Ninja</span>
+                <span>Hokage</span>
+                <span>Studio Pierrot</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Anime 3: Jujutsu Kaisen -->
+          <article class="anime-card">
+            <div class="anime-poster-wrapper">
+              <img src="https://image.tmdb.org/t/p/w500/6qQzMJG27XOJsyAEEIisoJB45j2.jpg" alt="Jujutsu Kaisen" class="anime-poster" loading="lazy">
+              <span class="anime-badge-score">⭐ 8.9</span>
+              <span class="anime-badge-genre">Gege Akutami</span>
+            </div>
+            <div class="anime-card-body">
+              <span class="anime-jp-title">呪術廻戦 • Chú Thuật Hồi Chiến</span>
+              <h3>Jujutsu Kaisen (2020 - Nay)</h3>
+              <p class="anime-quote">"Đừng lo lắng, bởi vì thầy là kẻ mạnh nhất thế giới này! Lãnh Địa Vô Lượng Không Xứ!"</p>
+              <div class="anime-tags">
+                <span>Chú thuật</span>
+                <span>MAPPA</span>
+                <span>Gojo Satoru</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- KHU VỰC BẢNG MÃ MÀU THÔNG MINH CỦA HĐ 1 -->
+      <section class="content-section" id="palette">
+        <div class="section-heading">
+          <span class="section-index">02</span>
+          <div>
+            <h2>Bảng mã màu thông minh (:root Variables)</h2>
+            <p class="section-subheading">Hệ thống màu sắc Anime Aesthetic đổi màu mượt mà theo Dark/Light Mode</p>
+          </div>
+        </div>
+        <div class="color-palette-grid">
+          <div class="color-swatch-card">
+            <div class="swatch-color swatch-primary"></div>
+            <div class="swatch-info">
+              <strong>--primary-color</strong>
+              <span>Indigo Cyber (Chủ đạo)</span>
+            </div>
+          </div>
+          <div class="color-swatch-card">
+            <div class="swatch-color swatch-secondary"></div>
+            <div class="swatch-info">
+              <strong>--secondary-color</strong>
+              <span>Sakura Coral (Điểm nhấn)</span>
+            </div>
+          </div>
+          <div class="color-swatch-card">
+            <div class="swatch-color swatch-gray-light"></div>
+            <div class="swatch-info">
+              <strong>--gray-light</strong>
+              <span>Mức xám 1 (Thẻ / Nền phụ)</span>
+            </div>
+          </div>
+          <div class="color-swatch-card">
+            <div class="swatch-color swatch-gray-medium"></div>
+            <div class="swatch-info">
+              <strong>--gray-medium</strong>
+              <span>Mức xám 2 (Đường viền)</span>
+            </div>
+          </div>
+          <div class="color-swatch-card">
+            <div class="swatch-color swatch-gray-dark"></div>
+            <div class="swatch-info">
+              <strong>--gray-dark</strong>
+              <span>Mức xám 3 (Chữ thứ cấp)</span>
+            </div>
+          </div>
+          <div class="color-swatch-card">
+            <div class="swatch-color swatch-bg"></div>
+            <div class="swatch-info">
+              <strong>--bg-color</strong>
+              <span>Màu nền toàn trang</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kỹ năng -->
+      <section class="content-section" id="skills">
+        <div class="section-heading">
+          <span class="section-index">03</span>
+          <h2>Kỹ năng công nghệ</h2>
+        </div>
+        <div class="skills-list">
+          <span class="skill-item">HTML5 Semantic</span>
+          <span class="skill-item">CSS Grid &amp; Flexbox</span>
+          <span class="skill-item">Font Roboto</span>
+          <span class="skill-item">Anime UI/UX</span>
+          <span class="skill-item">Dark / Light Mode</span>
+          <span class="skill-item">JavaScript</span>
+          <span class="skill-item">Python AI</span>
+        </div>
+      </section>
+
+      <!-- Dự án chọn lọc -->
+      <section class="content-section" id="projects">
+        <div class="section-heading">
+          <span class="section-index">04</span>
+          <h2>Dự án chọn lọc</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card project-card-wide">
+            <span class="project-type">Web / E-commerce</span>
+            <h3>Sắc Việt</h3>
+            <p>Nền tảng thương mại điện tử tôn vinh sản phẩm truyền thống Việt Nam với giao diện chuẩn Anime Aesthetic.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="project-card project-card-dark">
+            <span class="project-type">IoT / Embedded</span>
+            <h3>Smart Air</h3>
+            <p>Quan trắc chất lượng không khí bằng ESP32 và cảm biến thời gian thực.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="project-card project-card-light">
+            <span class="project-type">AI / Research</span>
+            <h3>AI Anime Detector</h3>
+            <p>Khám phá mô hình thị giác máy tính nhận diện phong cách Anime Art trên thiết bị di động.</p>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <span>© 2026 Nguyễn Hoàng Anh • Designed with Anime Spirit 🌸</span>
+      <span>HĐ 1 — Anime Portfolio &amp; Bảng mã màu thông minh CSS Variables</span>
+    </footer>
+  </div>
+
+  <!-- Script chuyển đổi Theme -->
+  <script>
+    const toggleBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('app-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateToggleBtn(savedTheme);
+
+    toggleBtn?.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('app-theme', nextTheme);
+      updateToggleBtn(nextTheme);
+    });
+
+    function updateToggleBtn(theme) {
+      if (!toggleBtn) return;
+      const icon = toggleBtn.querySelector('.theme-toggle-icon');
+      const text = toggleBtn.querySelector('.theme-toggle-text');
+      if (theme === 'dark') {
+        if (icon) icon.textContent = '☀️';
+        if (text) text.textContent = 'Light Mode';
+      } else {
+        if (icon) icon.textContent = '🌙';
+        if (text) text.textContent = 'Dark Mode';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,128 +1,414 @@
 /* ==========================================================================
-   1. RESET CƠ BẢN
-   - Loại bỏ margin/padding mặc định của trình duyệt để toàn bộ khoảng cách
-     trong trang được kiểm soát chủ động bằng "gap" (Flexbox/Grid), không
-     phụ thuộc vào margin mặc định của từng thẻ (p, ul, h1, hr...).
+   BÀI 03: CSS LAYOUT SYSTEM (BOX MODEL, FLEXBOX VÀ CSS GRID)
+   Mục tiêu:
+   - Làm chủ mô hình Box Model (Margin, Border, Padding, Content, box-sizing).
+   - Dựng Layout tổng thể 2 chiều (Header, Sidebar, Main, Footer) bằng CSS Grid.
+   - Dựng Gallery/Cards Grid 2 chiều bằng CSS Grid.
+   - Căn chỉnh thành phần con (Menu, Card nội bộ, Nhóm nút, Form) bằng Flexbox.
+   - Nắm vững kỹ thuật Debug layout qua trình duyệt (DevTools).
    ========================================================================== */
-* {
+
+/* ==========================================================================
+   Ý CHÍNH 1: BOX MODEL & RESET CƠ BẢN
+   - Mặc định của trình duyệt: box-sizing: content-box (width = chỉ tính content,
+     khi cộng thêm padding và border sẽ làm phần tử phình to ra và vỡ layout).
+   - Giải pháp chuẩn công nghiệp: box-sizing: border-box (width/height đã bao
+     gồm cả content + padding + border, giúp kiểm soát kích thước tuyệt đối).
+   - Margin: Khoảng cách bên ngoài đường viền (giữa các phần tử).
+   - Border: Đường viền bao quanh phần tử.
+   - Padding: Khoảng đệm bên trong giữa border và content.
+   - Content: Vùng chứa nội dung thực tế (chữ, ảnh, icon).
+   ========================================================================== */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Chuẩn hóa Box Model cho toàn bộ tài liệu */
+}
+
+:root {
+    --bg-page: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-card: #f1f5f9;
+    --bg-card-hover: #e2e8f0;
+    --color-text: #0f172a;
+    --color-muted: #64748b;
+    --color-primary: #0284c7;
+    --color-primary-dark: #0369a1;
+    --color-secondary: #0d9488;
+    --border-color: #cbd5e1;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
-    color: #222;
+    color: var(--color-text);
+    background-color: var(--bg-page);
 }
 
 a {
-    color: inherit;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+/* Accessibility: Skip link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 10px;
+    background: #000;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    z-index: 1000;
+}
+.skip-link:focus {
+    top: 10px;
 }
 
 /* ==========================================================================
-   2. CSS GRID CHO BỐ CỤC CHÍNH CỦA TRANG
-   - <body> là Grid 3 hàng: header / main / footer.
-   - <main class="page-main"> là Grid xếp các <section> theo chiều dọc,
-     khoảng cách giữa các section dùng "gap" thay vì margin.
+   Ý CHÍNH 3 & KẾT QUẢ CẦN ĐẠT:
+   CSS GRID CHO BỐ CỤC CHÍNH CỦA TRANG (HEADER - SIDEBAR - MAIN - FOOTER)
+   - Layout 2 chiều định hình khung sườn trang web bằng `grid-template-areas`.
+   - Cột 1 (Main content): minmax(0, 1fr) - linh hoạt co giãn không tràn.
+   - Cột 2 (Sidebar): 340px - cố định chiều ngang cho các widget phụ trợ.
+   - Hàng: header (auto) -> main/sidebar (1fr chiếm hết không gian còn lại) -> footer (auto).
    ========================================================================== */
 body {
     display: grid;
-    grid-template-rows: auto 1fr auto; /* header - main (co giãn) - footer */
+    grid-template-areas:
+        "header   header"
+        "main     sidebar"
+        "footer   footer";
+    grid-template-columns: minmax(0, 1fr) 340px;
+    grid-template-rows: auto 1fr auto;
     min-height: 100vh;
 }
 
-.page-main {
-    display: grid;
-    gap: 60px;          /* khoảng cách giữa các section */
-    padding: 60px 20px;
-}
+.site-header  { grid-area: header; }
+.page-main    { grid-area: main; }
+.site-sidebar { grid-area: sidebar; }
+.site-footer  { grid-area: footer; }
 
 /* ==========================================================================
-   3. FLEXBOX CHO CÁC THÀNH PHẦN CON: MENU
-   - .site-header-inner: đặt logo và menu trên cùng một hàng.
-   - .nav-menu: dùng chung cho menu điều hướng ở header lẫn footer.
+   Ý CHÍNH 2: FLEXBOX CĂN CHỈNH THÀNH PHẦN 1 CHIỀU: HEADER & MENU
+   - .site-header-inner: Flexbox dàn hàng ngang (logo bên trái, menu bên phải).
+   - .nav-menu: Flexbox dàn các nút liên kết ngang, căn chỉnh khoảng cách bằng gap.
    ========================================================================== */
+.site-header {
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+}
+
 .site-header-inner {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+}
+
+.site-logo {
+    font-size: 1.05rem;
+    color: var(--color-text);
 }
 
 .nav-menu {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 16px;
-    list-style: none; /* Flexbox đã ẩn marker mặc định, khai báo tường minh cho rõ ràng */
+    list-style: none;
 }
 
 .nav-menu a {
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+}
+
+.nav-menu a:hover {
+    background: var(--bg-card);
     text-decoration: none;
 }
 
 /* ==========================================================================
-   4. HERO (.container): FLEXBOX CĂN GIỮA TOÀN MÀN HÌNH
+   MAIN CONTENT AREA
+   - Bố cục các Section xếp dọc bằng CSS Grid với `gap: 48px`.
    ========================================================================== */
-.container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 12px;   /* khoảng cách giữa các dòng thay cho margin của từng <p> */
-    padding: 20px;
+.page-main {
+    display: grid;
+    gap: 48px;
+    padding: 40px 32px;
+    max-width: 1100px;
 }
 
-/* ==========================================================================
-   5. FLEXBOX CHO CÁC THÀNH PHẦN CON: CARD
-   - .cards-row: hàng chứa nhiều thẻ (kỹ năng, dự án, học vấn...), tự xuống
-     dòng khi màn hình hẹp, khoảng cách giữa các thẻ dùng gap.
-   - .card: mỗi thẻ tự sắp xếp nội dung bên trong (tiêu đề, đoạn văn, danh
-     sách) theo cột dọc bằng Flexbox, khoảng cách nội bộ cũng dùng gap.
-   ========================================================================== */
-.cards-row {
-    display: flex;
-    flex-wrap: wrap;
+.section-block {
+    display: grid;
     gap: 20px;
 }
 
-.card {
-    flex: 1 1 280px;      /* co giãn đều, tối thiểu 280px trước khi xuống dòng */
-    display: flex;
-    flex-direction: column;
-    gap: 12px;            /* khoảng cách giữa heading/đoạn văn/danh sách bên trong thẻ */
-    background: #f0f0f0;
-    border-radius: 10px;
-    padding: 24px;
+.section-header h2 {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+    color: var(--color-text);
+    border-bottom: 2px solid var(--color-primary);
+    display: inline-block;
+    padding-bottom: 4px;
 }
 
-.card ul {
-    padding-left: 20px;   /* chỉ giữ lại khoảng thụt lề cần thiết cho bullet, không dùng margin */
+.section-header p {
+    color: var(--color-muted);
+    font-size: 0.95rem;
 }
 
 /* ==========================================================================
-   6. TIMELINE (Cuộc thi & Giải thưởng): FLEXBOX CỘT DỌC
-   - <ol> vẫn giữ ngữ nghĩa danh sách có thứ tự, chỉ đổi cách trình bày
-     trực quan sang Flexbox, khoảng cách giữa các mốc thời gian dùng gap.
+   Ý CHÍNH 2: FLEXBOX TRONG HERO SECTION & NHÓM NÚT (BUTTON GROUP)
+   - .hero-section: Flexbox căn giữa hoặc căn dọc nội dung.
+   - .btn-group: Căn chỉnh nhóm nút hành động theo chiều ngang bằng Flexbox.
+   ========================================================================== */
+.hero-section {
+    background: linear-gradient(135deg, #e0f2fe 0%, #f0fdfa 100%);
+    border: 1px solid #bae6fd;
+    border-radius: var(--radius-lg);
+    padding: 48px 36px;
+    box-shadow: var(--shadow-sm);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.hero-badge {
+    color: var(--color-secondary);
+    font-weight: 600;
+}
+
+.hero-content h1 {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    color: #0369a1;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: #334155;
+}
+
+.hero-description {
+    font-size: 1.02rem;
+    color: #475569;
+    max-width: 800px;
+}
+
+/* Nhóm nút (Button group) dùng Flexbox 1 chiều */
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    text-decoration: none;
+}
+
+.btn:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: #ffffff;
+}
+.btn-primary:hover {
+    background: var(--color-primary-dark);
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background: var(--color-secondary);
+    color: #ffffff;
+}
+.btn-secondary:hover {
+    background: #0f766e;
+    color: #ffffff;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--border-color);
+}
+.btn-outline:hover {
+    background: var(--bg-surface);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* ==========================================================================
+   Ý CHÍNH 3: CSS GRID CHO BỐ CỤC 2 CHIỀU (GALLERY / CARDS GRID)
+   - .grid-gallery: Bố cục lưới 2 chiều tự động co giãn theo số cột tối ưu
+     bằng `repeat(auto-fit, minmax(280px, 1fr))` và `gap: 20px`.
+   - Đáp ứng trọn vẹn yêu cầu thiết kế bố cục 2 chiều cho dashboard/gallery.
+   ========================================================================== */
+.grid-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* ==========================================================================
+   Ý CHÍNH 2: FLEXBOX CĂN CHỈNH NỘI DUNG BÊN TRONG CARD
+   - .card: Box Model hoàn chỉnh với padding, border, border-radius và shadow.
+   - Sắp xếp nội dung con (title, desc, tags, actions) theo cột dọc bằng Flexbox.
+   ========================================================================== */
+.card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: #94a3b8;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    color: var(--color-text);
+}
+
+.card-desc {
+    color: #334155;
+    font-size: 0.95rem;
+    flex-grow: 1; /* Đẩy các nút hành vi xuống đáy thẻ để cân đối */
+}
+
+.card-badge {
+    align-self: flex-start;
+    background: #dbeafe;
+    color: #1e40af;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.card-list {
+    padding-left: 20px;
+    color: #334155;
+    font-size: 0.92rem;
+}
+
+.card-list li {
+    margin-bottom: 6px;
+}
+
+/* Thẻ tags công nghệ dùng Flexbox dàn hàng ngang */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    list-style: none;
+    margin-top: 6px;
+}
+
+.tag-list li {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 2px 8px;
+    font-size: 0.82rem;
+    border-radius: 4px;
+    color: #475569;
+}
+
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.link-btn {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   TIMELINE (CUỘC THI): FLEXBOX CỘT DỌC
    ========================================================================== */
 .timeline {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
     list-style: none;
 }
 
+.timeline-item {
+    border-left: 4px solid var(--color-primary);
+}
+
+.timeline-meta {
+    font-size: 0.88rem;
+    color: var(--color-muted);
+    font-weight: 500;
+}
+
 /* ==========================================================================
-   7. LIÊN HỆ: FLEXBOX 2 CỘT (THÔNG TIN + FORM)
+   CONTACT SECTION: BỐ CỤC 2 CỘT BẰNG FLEXBOX
+   - .contact-layout: dàn thông tin và form liên hệ thành 2 cột co giãn linh hoạt.
    ========================================================================== */
 .contact-layout {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 24px;
 }
 
 .contact-layout > * {
@@ -130,22 +416,25 @@ body {
 }
 
 .contact-list {
+    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    list-style: none;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
+    margin-top: 8px;
 }
 
 .contact-form fieldset {
+    border: none;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    border: none;
+    gap: 14px;
+}
+
+.contact-form legend {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--color-text);
 }
 
 .form-field {
@@ -154,30 +443,183 @@ body {
     gap: 6px;
 }
 
-.form-field input,
-.form-field textarea {
-    padding: 8px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font: inherit;
+.form-field label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #334155;
 }
 
-button[type="submit"] {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    background: #222;
-    color: #fff;
-    cursor: pointer;
-    font: inherit;
+.form-field input,
+.form-field textarea {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: #ffffff;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
 }
 
 /* ==========================================================================
-   8. RESPONSIVE
+   Ý CHÍNH 2 & 3: SIDEBAR (<aside>)
+   - Nằm ở cột 2 của Grid toàn trang.
+   - Căn chỉnh các Widget con bên trong bằng Flexbox theo chiều dọc.
    ========================================================================== */
-@media (max-width: 600px) {
-    .site-header-inner {
+.site-sidebar {
+    background: #f1f5f9;
+    border-left: 1px solid var(--border-color);
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sidebar-widget {
+    background: var(--bg-surface);
+}
+
+.widget-title {
+    font-size: 1.15rem;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+}
+
+.profile-summary p {
+    font-size: 0.92rem;
+    margin-bottom: 6px;
+}
+
+.sidebar-list {
+    padding-left: 18px;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-quote {
+    border-left: 3px solid var(--color-secondary);
+    padding-left: 12px;
+    font-style: italic;
+    color: #334155;
+    font-size: 0.92rem;
+}
+
+.sidebar-quote footer {
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-top: 4px;
+}
+
+.cta-card {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+    border-color: #a7f3d0;
+}
+
+.cta-card .widget-title {
+    color: #065f46;
+    border-bottom-color: #a7f3d0;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-top: 1px solid #1e293b;
+}
+
+.site-footer a {
+    color: #93c5fd;
+}
+.site-footer a:hover {
+    color: #ffffff;
+}
+
+.site-footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.footer-info small {
+    color: #94a3b8;
+}
+
+/* ==========================================================================
+   Ý CHÍNH 4: HƯỚNG DẪN DEBUG LAYOUT VỚI DEVTOOLS
+   - Cách kiểm tra Box Model:
+     1. Mở DevTools (F12 hoặc Chuột phải -> Inspect).
+     2. Tab Elements: Click vào một phần tử bất kỳ.
+     3. Nhìn xuống sơ đồ Box Model ở góc dưới (Styles panel):
+        + Xanh dương: Content.
+        + Xanh lá: Padding.
+        + Vàng cam: Border.
+        + Cam đậm: Margin.
+   - Cách kiểm tra CSS Grid & Flexbox:
+     1. Tìm các thẻ có huy hiệu [grid] hoặc [flex] trong cây DOM.
+     2. Click vào huy hiệu để bật đường viền kẻ ô (Grid overlay) hoặc trục (Flex lines).
+     3. Mở tab "Layout" trong DevTools để tinh chỉnh Grid overlays và Gap.
+   ========================================================================== */
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (BREAKPOINTS)
+   - Mobile & Tablet: Chuyển Grid 2 cột (Main - Sidebar) thành 1 cột xếp chồng.
+   ========================================================================== */
+@media (max-width: 960px) {
+    body {
+        grid-template-areas:
+            "header"
+            "main"
+            "sidebar"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+
+    .site-sidebar {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        padding: 32px 20px;
+    }
+
+    .page-main {
+        padding: 32px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .site-header-inner,
+    .site-footer-inner {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-group .btn {
+        width: 100%;
     }
 }

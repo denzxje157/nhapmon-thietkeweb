@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành Buổi 5 - Thiết kế Web</title>
+    <!-- [HOẠT ĐỘNG 3] Nhúng CSS của thư viện AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Nhúng file CSS của bạn -->
+    <link rel="stylesheet" href="hd1.css">
+</head>
+<body>
+    <h1 style="text-align: center; color: #1f2937;">THỰC HÀNH BUỔI 5: TỔNG HỢP HOẠT ĐỘNG</h1>
+    <!-- ==========================================
+         [HOẠT ĐỘNG 1] Nút bấm cảm xúc
+         ========================================== -->
+    <div class="hoat-dong-section">
+        <h2>Hoạt động 1: Micro-interactions (Nút bấm)</h2>
+        <p>Di chuột (hover) và click (active) vào nút bên dưới để xem hiệu ứng.</p>
+        <button class="btn-send">Gửi tin nhắn</button>
+    </div>
+    <!-- ==========================================
+         [HOẠT ĐỘNG 2] Loading Master (Spinner)
+         ========================================== -->
+    <div class="hoat-dong-section">
+        <h2>Hoạt động 2: Loading Master (Vòng tròn CSS)</h2>
+        <p>Sử dụng @keyframes xoay 360 độ vô hạn.</p>
+        <div class="portfolio-loader"></div>
+    </div>
+    <!-- ==========================================
+         [HOẠT ĐỘNG 4] Refactoring Performance
+         ========================================== -->
+    <div class="hoat-dong-section">
+        <h2>Hoạt động 4: Tối ưu hiệu năng (GPU)</h2>
+        <p>Di chuột vào thẻ bên dưới. Thẻ này được tối ưu bằng <code>transform: translateY</code> thay vì dùng các thuộc tính như <code>top</code> hay <code>margin-top</code> để chống giật lag.</p>
+        <div class="performance-card">
+            Thẻ thông tin tối ưu (Hover Me)
+        </div>
+    </div>
+    <!-- ==========================================
+         [HOẠT ĐỘNG 3] AOS - Scroll Reveal
+         ========================================== -->
+    <div class="hoat-dong-section" style="min-height: 800px;">
+        <h2>Hoạt động 3: AOS - Hiệu ứng cuộn (Scroll)</h2>
+        <p>Vui lòng cuộn trang xuống từ từ để xem các khối hiện ra.</p>
+        
+        <div style="margin-top: 100px;">
+            <div class="aos-box" data-aos="fade-up" data-aos-duration="1000">
+                Khối này trượt từ dưới lên (fade-up)
+            </div>
+            
+            <div class="aos-box" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000">
+                Khối này trượt từ trái sang với độ trễ 300ms (fade-right)
+            </div>
+            
+            <div class="aos-box" data-aos="zoom-in" data-aos-delay="600" data-aos-duration="1000">
+                Khối này phóng to dần (zoom-in)
+            </div>
+        </div>
+    </div>
+    <!-- ==========================================
+         [HOẠT ĐỘNG 3] Script khởi tạo AOS
+         ========================================== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: false, 
+            offset: 100  
+        });
+    </script>
+</body>
+</html>

@@ -1,121 +1,212 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Cá Nhân | [Tên Của Bạn]</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tích Hợp AOS (Animate On Scroll) Vào Website</title>
+
+  <!-- ==============================================================
+       BƯỚC 1: TÍCH HỢP AOS CSS TỪ CDN (Đặt trong thẻ <head>)
+       ============================================================== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+  <style>
+    /* Reset & Căn chỉnh cơ bản */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0b0f19;
+      color: #f1f5f9;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header chào mừng */
+    header {
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      background: radial-gradient(circle at center, #1e293b 0%, #0b0f19 100%);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      color: #38bdf8;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 600px;
+    }
+
+    .scroll-down-hint {
+      margin-top: 40px;
+      font-size: 0.95rem;
+      color: #38bdf8;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    /* Định kiểu chung cho các section */
+    section {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+    }
+
+    /* Thẻ hiển thị nội dung bên trong section */
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .card h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      color: #f8fafc;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-family: monospace;
+      margin-bottom: 16px;
+    }
+
+    .card p {
+      color: #94a3b8;
+      font-size: 1.05rem;
+    }
+
+    /* Hiệu ứng loading spinner */
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 5px solid rgba(255, 255, 255, 0.15);
+      border-top-color: #38bdf8;
+      animation: spin 1s linear infinite;
+      margin: 20px auto 0;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #070a10;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- 
-    Thẻ <header> đại diện cho phần đầu giới thiệu của trang web hoặc của một section. 
-    Tại sao dùng <header> thay vì <div>: Sử dụng thẻ semantic này giúp trình duyệt và công cụ tìm kiếm (SEO) dễ dàng nhận diện cấu trúc tổng thể, chỉ ra phần nào chứa logo, tiêu đề trang và thanh điều hướng chính, thay vì dùng một <div> không mang ý nghĩa ngữ nghĩa.
-    -->
-    <header>
-        <h1>Nguyễn lê đông </h1>
+  <!-- Phần giới thiệu đầu trang -->
+  <header>
+    <h1>Tích Hợp Thư Viện AOS</h1>
+    <p>Cuộn chuột xuống phía dưới để xem các hiệu ứng animation mượt mà khi các thẻ section xuất hiện trên màn hình!</p>
+    <div class="scroll-down-hint">⬇ Cuộn xuống để xem hiệu ứng ⬇</div>
+  </header>
 
-        <!-- 
-        Thẻ <nav> đại diện cho một khu vực chứa các liên kết điều hướng chính của trang.
-        Tại sao dùng <nav> thay vì <div>: Thẻ này giúp các công nghệ hỗ trợ (như screen reader - trình đọc màn hình cho người khiếm thị) nhanh chóng tìm thấy menu điều hướng chính, bỏ qua các liên kết không quan trọng khác trên trang.
-        -->
-        <nav aria-label="Thanh điều hướng chính">
-            <ul>
-                <li><a href="#about">Giới thiệu</a></li>
-                <li><a href="#projects">Dự án</a></li>
-                <li><a href="#contact">Liên hệ</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- ==============================================================
+       BƯỚC 2: THÊM THUỘC TÍNH data-aos VÀO CÁC THẺ SECTION
+       ============================================================== -->
 
-    <!-- 
-    Thẻ <main> đại diện cho nội dung chính, cốt lõi của tài liệu <body>. Chỉ có một thẻ <main> trong trang và nó không nên chứa nội dung được lặp lại nhiều trang như header, footer hay sidebar.
-    Tại sao dùng <main> thay vì <div>: Nó giúp máy tính (công cụ tìm kiếm) và thiết bị hỗ trợ đọc hiểu ngay lập tức đâu là phần nội dung quan trọng nhất mà người dùng muốn đọc khi truy cập trang web này.
-    -->
-    <main>
+  <!-- Section 1: Hiệu ứng trồi lên (fade-up) -->
+  <section data-aos="fade-up" data-aos-duration="1000">
+    <div class="card">
+      <span class="badge">data-aos="fade-up"</span>
+      <h2>Section 1: Bay từ dưới lên</h2>
+      <p>Thẻ section này sử dụng hiệu ứng <code>fade-up</code> kết hợp với thời gian chuyển động <code>data-aos-duration="1000"</code> (1 giây).</p>
+    </div>
+  </section>
 
-        <!-- 
-        Thẻ <section> đại diện cho một phần độc lập chung của tài liệu, thường chứa một chủ đề cụ thể và luôn nên có một thẻ tiêu đề (h1-h6) đi kèm.
-        Tại sao dùng <section> thay vì <div>: Giúp phân chia nội dung trang web thành các khối logic có chủ đề rõ ràng (như chương của một cuốn sách), mang lại lợi ích lớn cho việc lập chỉ mục SEO và xây dựng cấu trúc dàn bài (outline) cho tài liệu.
-        -->
-        <section id="about">
-            <h2>Giới thiệu bản thân</h2>
-            <img src="placeholder-avatar.jpg" alt="Ảnh đại diện của [Tên Của Bạn]" width="200" height="200">
-            <p>Xin chào, tôi là <strong>[Tên Của Bạn]</strong>. Tôi là một lập trình viên đam mê tạo ra các sản phẩm chất lượng và tối ưu trải nghiệm người dùng.</p>
-            
-            <h3>Mục tiêu nghề nghiệp</h3>
-            <p>Phát triển chuyên sâu trong lĩnh vực lập trình Front-end và xây dựng các ứng dụng web mang lại giá trị thực tế cao.</p>
-        </section>
+  <!-- Section 2: Hiệu ứng từ bên trái bay vào (fade-right) -->
+  <section data-aos="fade-right" data-aos-duration="1000">
+    <div class="card">
+      <span class="badge">data-aos="fade-right"</span>
+      <h2>Section 2: Lướt từ bên trái sang</h2>
+      <p>Khi cuộn tới vị trí của thẻ section này, nội dung sẽ mượt mà lướt từ phía bên trái vào giữa màn hình.</p>
+    </div>
+  </section>
 
-        <!-- 
-        Thẻ <section> dùng để nhóm danh sách các dự án thành một khối có chủ đề riêng biệt.
-        -->
-        <section id="projects">
-            <h2>Các Dự Án Tiêu Biểu</h2>
+  <!-- Section 3: Hiệu ứng từ bên phải bay vào (fade-left) -->
+  <section data-aos="fade-left" data-aos-duration="1000">
+    <div class="card">
+      <span class="badge">data-aos="fade-left"</span>
+      <h2>Section 3: Lướt từ bên phải sang</h2>
+      <p>Thẻ section này xuất hiện từ mép phải màn hình khi bạn cuộn trang xuống.</p>
+    </div>
+  </section>
 
-            <!-- 
-            Thẻ <article> đại diện cho một thành phần nội dung độc lập, có thể tách rời khỏi trang web hiện tại mà vẫn giữ nguyên ý nghĩa trọn vẹn (như một bài viết blog, bình luận, hoặc một thẻ dự án).
-            Tại sao dùng <article> thay vì <div>: Nó khai báo rằng nội dung bên trong là một thực thể hoàn chỉnh, độc lập. Trong trường hợp này, mỗi dự án là một thực thể riêng biệt có thông tin mô tả chi tiết đầy đủ.
-            -->
-            <article>
-                <h3>Dự án E-commerce Website</h3>
-                <img src="placeholder-project1.jpg" alt="Ảnh chụp màn hình giao diện dự án E-commerce">
-                <p>Một trang web thương mại điện tử đơn giản được xây dựng với HTML5, CSS3 và Vanilla JavaScript. Hỗ trợ giỏ hàng và thanh toán cơ bản.</p>
-                <a href="#">Xem chi tiết dự án 1</a>
-            </article>
+  <!-- Section 4: Hiệu ứng phóng to (zoom-in) -->
+  <section data-aos="zoom-in" data-aos-duration="1000">
+    <div class="card">
+      <span class="badge">data-aos="zoom-in"</span>
+      <h2>Section 4: Phóng to (Zoom In)</h2>
+      <p>Kèm theo spinner loading xoay 360 độ bằng CSS animation:</p>
+      <div class="spinner"></div>
+    </div>
+  </section>
 
-            <article>
-                <h3>Dự án Quản lý Công việc (Todo App)</h3>
-                <img src="placeholder-project2.jpg" alt="Ảnh chụp màn hình ứng dụng Todo App">
-                <p>Ứng dụng quản lý công việc cá nhân giúp theo dõi tiến độ, được xây dựng với ReactJS và lưu trữ dữ liệu với Local Storage.</p>
-                <a href="#">Xem chi tiết dự án 2</a>
-            </article>
+  <!-- Section 5: Hiệu ứng lật lên (flip-up) -->
+  <section data-aos="flip-up" data-aos-duration="1000">
+    <div class="card">
+      <span class="badge">data-aos="flip-up"</span>
+      <h2>Section 5: Lật 3D từ dưới lên</h2>
+      <p>AOS hỗ trợ rất nhiều hiệu ứng 3D như <code>flip-up</code>, <code>flip-down</code>, <code>flip-left</code>, <code>flip-right</code>.</p>
+    </div>
+  </section>
 
-        </section>
+  <footer>
+    <p>Hoàn thành tích hợp AOS thông qua CDN • Tự động kích hoạt khi cuộn chuột</p>
+  </footer>
 
-        <!-- 
-        Thẻ <section> phân vùng riêng dành cho chức năng biểu mẫu liên lạc.
-        -->
-        <section id="contact">
-            <h2>Liên Hệ</h2>
-            <p>Bạn có dự án cần hợp tác? Hãy để lại tin nhắn cho tôi!</p>
-            
-            <form action="#" method="POST">
-                <div>
-                    <label for="name">Họ và tên:</label><br>
-                    <input type="text" id="name" name="name" required aria-required="true">
-                </div>
-                <div>
-                    <label for="email">Email của bạn:</label><br>
-                    <input type="email" id="email" name="email" required aria-required="true">
-                </div>
-                <div>
-                    <label for="message">Tin nhắn:</label><br>
-                    <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
-                </div>
-                <button type="submit">Gửi Tin Nhắn</button>
-            </form>
-        </section>
-
-    </main>
-
-    <!-- 
-    Thẻ <footer> đại diện cho phần chân trang của một trang web hoặc một section. Thường chứa thông tin bản quyền, thông tin tác giả, các liên kết hữu ích, hoặc liên kết mạng xã hội.
-    Tại sao dùng <footer> thay vì <div>: Cung cấp thông tin ngữ nghĩa rõ ràng, báo hiệu cho trình duyệt và các công cụ khác rằng đây là khu vực thông tin đính kèm kết thúc nội dung chính.
-    -->
-    <footer>
-        <p>&copy; 2026 [Tên Của Bạn]. Tất cả các quyền được bảo lưu.</p>
-        
-        <nav aria-label="Liên kết mạng xã hội">
-            <ul>
-                <li>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Trang GitHub cá nhân">GitHub</a>
-                </li>
-                <li>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Trang LinkedIn cá nhân">LinkedIn</a>
-                </li>
-            </ul>
-        </nav>
-    </footer>
-
+  <!-- ==============================================================
+       BƯỚC 3: TÍCH HỢP AOS JS VÀ KHỞI TẠO (Đặt trước thẻ đóng </body>)
+       ============================================================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    // Khởi tạo thư viện AOS
+    AOS.init({
+      duration: 800,      // Thời lượng chuyển động mặc định (800ms)
+      easing: 'ease-in-out', // Hiệu ứng gia tốc mượt mà
+      once: false,        // false: hiệu ứng chạy lại mỗi lần cuộn lên/xuống; true: chỉ chạy 1 lần
+      mirror: true        // Cho phép animation kích hoạt khi cuộn ngược lên
+    });
+  </script>
 </body>
 </html>

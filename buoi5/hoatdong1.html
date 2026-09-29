@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoạt động 1 | Micro-interactions - Nút Bấm Cảm Xúc</title>
+  <!-- Google Fonts: Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="hoatdong1.css">
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header>
+      <span class="header-badge">Buổi 5 • CSS Micro-interactions</span>
+      <h1 class="page-title">Hoạt động 1: Nút Bấm Cảm Xúc</h1>
+      <p class="page-desc">
+        Ứng dụng CSS Transition &amp; Cubic-Bezier để tạo cảm xúc chân thực cho nút bấm: nâng lên &amp; đổ bóng sâu khi rê chuột (Hover), nén xuống phản hồi xúc giác khi nhấp chuột (Active).
+      </p>
+    </header>
+
+    <!-- Khu vực tương tác trực quan (Live Interactive Stage) -->
+    <section class="showcase-stage" aria-label="Sân khấu thử nghiệm nút bấm">
+      <p class="stage-label">Sân khấu thử nghiệm trực tiếp</p>
+      
+      <!-- Nút bấm chính: Gửi tin nhắn -->
+      <div class="button-wrapper">
+        <button id="sendBtn" class="btn-send-message" type="button">
+          <!-- Icon máy bay giấy SVG -->
+          <svg class="icon-plane" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+          <span class="btn-text">Gửi tin nhắn</span>
+        </button>
+      </div>
+
+      <!-- Giám sát trạng thái theo thời gian thực -->
+      <div>
+        <div class="live-status-pill">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText">Trạng thái: Default (Bình thường)</span>
+        </div>
+        <p class="feedback-msg" id="feedbackMsg">✨ Tin nhắn của bạn đã được gửi thành công!</p>
+      </div>
+    </section>
+
+    <!-- Phân tích 3 trạng thái Micro-interaction -->
+    <section>
+      <h2 class="section-title">🔍 Cơ chế hoạt động của 3 trạng thái</h2>
+      
+      <div class="interaction-grid">
+        <!-- Card 1: Default -->
+        <article class="step-card">
+          <div class="step-header">
+            <span class="step-tag tag-default">Trạng thái 1</span>
+            <span>⚪</span>
+          </div>
+          <h3 class="step-title">Mặc định (Default)</h3>
+          <p class="step-desc">Nằm phẳng trên giao diện với bóng đổ nhẹ tự nhiên. Khai báo <code>transition</code> cùng hàm <code>cubic-bezier</code> để chuẩn bị cho các biến đổi.</p>
+          <pre class="code-preview"><code>box-shadow: 0 6px 14px -2px rgba(99, 102, 241, 0.35);
+transition: 
+  transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+  background-color 0.24s ease,
+  box-shadow 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);</code></pre>
+        </article>
+
+        <!-- Card 2: Hover -->
+        <article class="step-card">
+          <div class="step-header">
+            <span class="step-tag tag-hover">Trạng thái 2</span>
+            <span>🟣</span>
+          </div>
+          <h3 class="step-title">Rê chuột (:hover)</h3>
+          <p class="step-desc">Nút nhích lên <strong>3px</strong> theo trục Y, bóng đổ trải rộng và đậm màu hơn tạo cảm giác nút đang lơ lửng gần người dùng.</p>
+          <pre class="code-preview"><code>/* Nâng lên 3px & đổ bóng sâu */
+background-color: #4f46e5;
+transform: translateY(-3px);
+box-shadow: 0 14px 28px -3px rgba(99, 102, 241, 0.5);</code></pre>
+        </article>
+
+        <!-- Card 3: Active -->
+        <article class="step-card">
+          <div class="step-header">
+            <span class="step-tag tag-active">Trạng thái 3</span>
+            <span>🟢</span>
+          </div>
+          <h3 class="step-title">Bấm chuột (:active)</h3>
+          <p class="step-desc">Nút thu nhỏ lại <strong>5%</strong> (scale 0.95), hạ thấp xuống và bóng co lại, mô phỏng phản hồi vật lý nút cơ học bị đè xuống.</p>
+          <pre class="code-preview"><code>/* Nén xuống tạo cảm giác đã bấm */
+background-color: #4338ca;
+transform: translateY(1px) scale(0.95);
+box-shadow: 0 3px 8px rgba(67, 56, 202, 0.4);</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <!-- Bí quyết Cubic-Bezier -->
+    <section class="bezier-card">
+      <h3>🚀 Vì sao sử dụng Cubic-Bezier thay vì Linear hay Ease thông thường?</h3>
+      <div class="bezier-formula">cubic-bezier(0.34, 1.56, 0.64, 1)</div>
+      <p style="color: var(--text-secondary); margin-bottom: 12px;">
+        Hàm <code>cubic-bezier(x1, y1, x2, y2)</code> cho phép định nghĩa đường cong gia tốc tùy chỉnh. Khi đặt tham số <strong>y1 = 1.56 (&gt; 1)</strong>, phần tử sẽ có hiệu ứng <em>overshoot</em> (vượt quá mục tiêu một chút rồi bật nhẹ trở lại) giống như lò xo vật lý.
+      </p>
+      <p style="color: var(--text-muted); font-size: 14px;">
+        💡 Đây chính là bí quyết cốt lõi của <strong>Micro-interactions</strong> trong các hệ thống thiết kế hiện đại (Apple iOS, Material Design) giúp giao diện có "linh hồn" và cảm xúc hơn hẳn chuyển động cứng nhắc.
+      </p>
+    </section>
+
+    <!-- Biến thể phong cách khác -->
+    <section>
+      <h2 class="section-title">🎨 Các biến thể áp dụng cùng nguyên lý</h2>
+      <div class="variants-grid">
+        <button class="btn-variant-cyber" type="button">⚡ Shonen Cyber Action</button>
+        <button class="btn-variant-glass" type="button">💎 Glassmorphism Outline</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Bài tập Nhập môn Thiết kế Web • Nguyễn Hoàng Anh • Feature Task Leader</p>
+    </footer>
+
+  </div>
+
+  <!-- Script mô phỏng tương tác trực quan -->
+  <script>
+    const sendBtn = document.getElementById('sendBtn');
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    const feedbackMsg = document.getElementById('feedbackMsg');
+    const btnText = sendBtn.querySelector('.btn-text');
+
+    // Theo dõi Hover
+    sendBtn.addEventListener('mouseenter', () => {
+      statusDot.style.background = '#818cf8';
+      statusDot.style.boxShadow = '0 0 10px #818cf8';
+      statusText.textContent = 'Trạng thái: :hover (Nâng 3px + Đổ bóng đậm)';
+    });
+
+    sendBtn.addEventListener('mouseleave', () => {
+      statusDot.style.background = '#10b981';
+      statusDot.style.boxShadow = '0 0 10px #10b981';
+      statusText.textContent = 'Trạng thái: Default (Bình thường)';
+    });
+
+    // Theo dõi Mousedown & Click (Active)
+    sendBtn.addEventListener('mousedown', () => {
+      statusDot.style.background = '#f59e0b';
+      statusDot.style.boxShadow = '0 0 10px #f59e0b';
+      statusText.textContent = 'Trạng thái: :active (Scale 0.95 - Đã bấm!)';
+    });
+
+    sendBtn.addEventListener('click', () => {
+      btnText.textContent = 'Đang gửi...';
+      setTimeout(() => {
+        btnText.textContent = 'Đã gửi! ✓';
+        feedbackMsg.classList.add('show');
+        setTimeout(() => {
+          btnText.textContent = 'Gửi tin nhắn';
+          feedbackMsg.classList.remove('show');
+        }, 2500);
+      }, 600);
+    });
+  </script>
+</body>
+</html>

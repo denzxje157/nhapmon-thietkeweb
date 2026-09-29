@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nguyễn Hoàng Anh | Portfolio - Hoạt Động 2, 3 & 4 (Buổi 5)</title>
+  
+  <!-- Phông chữ Google Fonts: Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Thư viện AOS (Animate On Scroll) qua CDN - Hoạt động 3 -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  
+  <!-- File CSS tích hợp Hoạt động 2, 3 & 4 -->
+  <link rel="stylesheet" href="hoatdong2-3-4.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HOẠT ĐỘNG 2: "LOADING MASTER" - MÀN HÌNH TẢI TRANG PRELOADER SPINNER
+       ========================================================================== -->
+  <div class="preloader-overlay" id="preloader" aria-label="Màn hình đang tải">
+    <!-- Vòng tròn xoay 360 độ border-top-color chuẩn đề bài -->
+    <div class="spinner-classic" role="status"></div>
+    <p class="preloader-text">⚡ Đang tải Portfolio Nguyễn Hoàng Anh...</p>
+  </div>
+
+  <!-- Thanh điều hướng (Navbar) -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-group">
+        <img src="../buoi4/logo.png" alt="Logo cá nhân" class="brand-logo">
+        <span class="brand-name">Hoàng Anh</span>
+        <span class="brand-badge">Buổi 5</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#spinner-lab">HĐ 2: Spinner</a></li>
+        <li><a href="#performance">HĐ 4: Refactor 60fps</a></li>
+        <li><a href="#aos-guide">HĐ 3: AOS Scroll</a></li>
+        <li><a href="#projects">Dự án</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+
+      <!-- Nút kích hoạt lại Preloader để giảng viên kiểm tra HĐ 2 -->
+      <button class="btn-trigger-preloader" id="replayPreloaderBtn" type="button" title="Mở lại hiệu ứng màn hình chờ">
+        <span>🔄</span> Thử lại Spinner
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION: Áp dụng AOS Scroll Reveal (Hoạt động 3)
+         & Tối ưu chuyển động 60fps bằng transform (Hoạt động 4)
+         ========================================================================== -->
+    <section class="hero container" id="hero" data-aos="fade-up" data-aos-duration="900">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          <span>Task Leader • IT @ LHU • AI &amp; Web Architect</span>
+        </div>
+        <h1 class="hero-title">
+          Kiến tạo trải nghiệm Web<br>
+          <span class="text-gradient">Mượt mà, sống động &amp; 60 FPS</span>
+        </h1>
+        <p class="hero-subtitle">
+          Chào mừng bạn đến với không gian thực hành Buổi 5: Tích hợp hiệu ứng xoay vô hạn <code>@keyframes</code> (HĐ 2), thư viện cuộn trang <code>AOS</code> (HĐ 3) và chuẩn hóa chuyển động GPU <code>transform: translate</code> (HĐ 4).
+        </p>
+        <div class="hero-actions">
+          <a href="#performance" class="btn-send-message">
+            <span>⚡ Xem tối ưu 60 FPS</span>
+          </a>
+          <a href="#spinner-lab" class="btn-trigger-preloader" style="padding: 14px 24px; font-size: 15px;">
+            <span>🌀 Thử nghiệm Spinners</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Avatar nổi bật với animation GPU composite (Không dùng top/left) -->
+      <div class="hero-avatar-wrapper" data-aos="zoom-in" data-aos-delay="200">
+        <div class="avatar-glow-ring"></div>
+        <img src="../buoi4/anh.png" alt="Nguyễn Hoàng Anh" class="avatar-img">
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         HOẠT ĐỘNG 2: "LOADING MASTER" - BỘ SƯU TẬP CSS SPINNER
+         ========================================================================== -->
+    <section class="section container" id="spinner-lab">
+      <div class="section-head" data-aos="fade-up">
+        <span class="section-eyebrow">Hoạt động 2 (30 phút)</span>
+        <h2 class="section-h2">🌀 Loading Master: Nghệ thuật CSS Spinner</h2>
+        <p class="section-desc">
+          Ứng dụng <code>@keyframes spin</code> xoay 360 độ vô hạn với <code>border-top-color</code> khác biệt để tạo ảo giác quang học về chuyển động mượt mà liên tục.
+        </p>
+      </div>
+
+      <div class="spinner-grid">
+        <!-- Spinner 1: Chuẩn theo prompt mẫu đề bài -->
+        <article class="spinner-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="spinner-standard"></div>
+          <h3 class="spinner-name">1. Standard Border-Top</h3>
+          <p class="spinner-caption">
+            Viền mờ <code>rgba(...)</code> và <code>border-top-color: #38bdf8</code> xoay 360 độ theo chu kỳ 0.8s.
+          </p>
+          <code class="code-badge">border-top-color: #38bdf8</code>
+        </article>
+
+        <!-- Spinner 2: Dual Ring Reverse -->
+        <article class="spinner-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="spinner-dual"></div>
+          <h3 class="spinner-name">2. Dual-Ring Cyber</h3>
+          <p class="spinner-caption">
+            Hai vòng xoay lồng nhau: vòng ngoài tím xuôi chiều, vòng trong hồng ngược chiều (<code>reverse</code>).
+          </p>
+          <code class="code-badge">animation-direction: reverse</code>
+        </article>
+
+        <!-- Spinner 3: Pulse Glow Shonen -->
+        <article class="spinner-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="spinner-pulse"></div>
+          <h3 class="spinner-name">3. Pulse Glow Ring</h3>
+          <p class="spinner-caption">
+            Hiệu ứng phát quang Neon với gia tốc đàn hồi <code>cubic-bezier</code> tạo điểm nhấn nổi bật.
+          </p>
+          <code class="code-badge">box-shadow glow effect</code>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         HOẠT ĐỘNG 4: "REFACTORING PERFORMANCE" - TỐI ƯU 60 FPS
+         ========================================================================== -->
+    <section class="section container" id="performance">
+      <div class="section-head" data-aos="fade-up">
+        <span class="section-eyebrow">Hoạt động 4 (15 phút)</span>
+        <h2 class="section-h2">⚡ Refactoring Performance: Từ Top/Left sang Transform</h2>
+        <p class="section-desc">
+          Bí quyết sống còn để animation không bị giật lag (jank / stutter) trên trình duyệt di động: đưa chuyển động lên phần cứng GPU và loại bỏ hoàn toàn Layout Reflow.
+        </p>
+      </div>
+
+      <div class="perf-comparison">
+        <!-- Card 1: ❌ Cách cũ (Gây lag) -->
+        <div class="perf-card bad" data-aos="fade-right" data-aos-duration="800">
+          <span class="perf-badge">❌ Chưa Tối Ưu (Legacy)</span>
+          <h3 class="perf-title">Sử dụng top / left</h3>
+          <p class="perf-desc">
+            Thay đổi vị trí phần tử bằng <code>top</code>, <code>left</code>, <code>margin-top</code> bắt buộc CPU phải tính toán lại hình học trang (Layout / Reflow) và vẽ lại từng pixel (Repaint) trong mỗi khung hình.
+          </p>
+
+          <pre class="perf-code"><code><span class="code-del">/* ❌ RẤT CHẬM - GÂY DROP FRAME */
+@keyframes badFloating {
+  0%   { top: 0px; left: 0px; }
+  50%  { top: -20px; left: 10px; }
+  100% { top: 0px; left: 0px; }
+}</span></code></pre>
+
+          <ul class="perf-pipeline">
+            <li class="active-step">⚠️ <strong>Bước 1:</strong> Layout (Reflow) — <em>Rất nặng!</em></li>
+            <li class="active-step">⚠️ <strong>Bước 2:</strong> Paint (Repaint) — <em>Tốn CPU!</em></li>
+            <li class="active-step">⚠️ <strong>Bước 3:</strong> Composite</li>
+            <li>📉 <strong>Hậu quả:</strong> Tụt còn 15–25 FPS trên smartphone.</li>
+          </ul>
+        </div>
+
+        <!-- Card 2: ✅ Cách mới (Tối ưu 60 FPS) -->
+        <div class="perf-card good" data-aos="fade-left" data-aos-duration="800">
+          <span class="perf-badge">✅ Đã Refactor (Chuẩn 60 FPS)</span>
+          <h3 class="perf-title">Sử dụng transform: translate</h3>
+          <p class="perf-desc">
+            Thuộc tính <code>transform</code> được chuyển thẳng sang <strong>GPU (Card đồ họa)</strong> xử lý độc lập tại tầng Composite. Hoàn toàn không làm ảnh hưởng đến cấu trúc trang web.
+          </p>
+
+          <pre class="perf-code"><code><span class="code-add">/* ✅ SIÊU MƯỢT - KHÔNG REFLOW */
+@keyframes smoothFloating {
+  0%   { transform: translate3d(0, 0, 0); }
+  50%  { transform: translate3d(10px, -20px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}</span></code></pre>
+
+          <ul class="perf-pipeline">
+            <li style="color: #64748b;">⏭️ <strong>Bước 1:</strong> Bỏ qua Layout (0ms)</li>
+            <li style="color: #64748b;">⏭️ <strong>Bước 2:</strong> Bỏ qua Paint (0ms)</li>
+            <li class="active-step" style="color: #34d399;">🚀 <strong>Bước 3:</strong> GPU Composite trực tiếp!</li>
+            <li>🎯 <strong>Kết quả:</strong> Giữ vững 60 FPS mượt như nhung.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sân khấu kiểm chứng chuyển động GPU -->
+      <div class="interactive-perf-box" data-aos="zoom-in" data-aos-delay="200">
+        <h4 style="font-size: 16px; margin-bottom: 8px; color: var(--accent-cyan);">
+          🔬 Vật thể bay kiểm chứng GPU Acceleration (transform: translateX)
+        </h4>
+        <p style="font-size: 14px; color: var(--text-secondary);">
+          Vật thể bên dưới di chuyển qua lại vô hạn mà không kích hoạt bất kỳ sự kiện Paint/Reflow nào trong Chrome DevTools Performance:
+        </p>
+
+        <div class="demo-track">
+          <div class="demo-flyer">
+            <span>🚀 GPU Rendered</span>
+            <span style="font-size: 11px; opacity: 0.85;">(transform: translateX)</span>
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--accent-green); font-weight: 500;">
+          ✓ CPU Usage: ~0% • GPU Composite Layer: Active • Frame Rate: 60.0 FPS
+        </p>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         DỰ ÁN TIÊU BIỂU: Thể hiện AOS Scroll Reveal (Hoạt động 3)
+         ========================================================================== -->
+    <section class="section container" id="projects">
+      <div class="section-head" data-aos="fade-up">
+        <span class="section-eyebrow">Dự án tiêu biểu</span>
+        <h2 class="section-h2">💼 Tác phẩm &amp; Nghiên cứu nổi bật</h2>
+        <p class="section-desc">
+          Các dự án được cấu hình <code>data-aos="fade-up"</code> với khoảng trễ <code>data-aos-delay</code> so le (staggered) tạo cảm giác xuất hiện lớp lang chuyên nghiệp.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <!-- Dự án 1 -->
+        <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+          <div>
+            <div class="project-icon">🏛️</div>
+            <p class="project-category">E-Commerce &amp; AI</p>
+            <h3 class="project-title">Sắc Việt Marketplace</h3>
+            <p class="project-desc">
+              Nền tảng thương mại điện tử tôn vinh sản phẩm truyền thống Việt Nam, tích hợp bản đồ số tương tác và chatbot AI tư vấn du khách.
+            </p>
+          </div>
+          <div>
+            <div class="project-techs">
+              <span class="tech-tag">HTML5/CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">AI Chatbot</span>
+            </div>
+            <a href="#contact" class="project-link">Xem chi tiết &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Dự án 2 -->
+        <article class="project-card" data-aos="fade-up" data-aos-delay="250">
+          <div>
+            <div class="project-icon">👁️</div>
+            <p class="project-category">Deep Learning</p>
+            <h3 class="project-title">AI Image Detector</h3>
+            <p class="project-desc">
+              Tiện ích mở rộng Chrome Extension sử dụng mô hình Transformers chạy trực tiếp trên trình duyệt (Edge AI) để gắn nhãn ảnh AI.
+            </p>
+          </div>
+          <div>
+            <div class="project-techs">
+              <span class="tech-tag">Chrome Ext</span>
+              <span class="tech-tag">Transformers</span>
+              <span class="tech-tag">On-Device AI</span>
+            </div>
+            <a href="#contact" class="project-link">Xem chi tiết &rarr;</a>
+          </div>
+        </article>
+
+        <!-- Dự án 3 -->
+        <article class="project-card" data-aos="fade-up" data-aos-delay="400">
+          <div>
+            <div class="project-icon">🚜</div>
+            <p class="project-category">Smart Agriculture</p>
+            <h3 class="project-title">AgriTech Precision</h3>
+            <p class="project-desc">
+              Giải pháp bản đồ hóa nông nghiệp công nghệ cao, tích hợp định vị chuẩn xác và mạng nơ-ron thị giác máy tính trên thiết bị cơ giới.
+            </p>
+          </div>
+          <div>
+            <div class="project-techs">
+              <span class="tech-tag">Computer Vision</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">High-Precision GPS</span>
+            </div>
+            <a href="#contact" class="project-link">Xem chi tiết &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         HOẠT ĐỘNG 3: HƯỚNG DẪN TÍCH HỢP AOS (ANIMATE ON SCROLL)
+         ========================================================================== -->
+    <section class="section container" id="aos-guide">
+      <div class="section-head" data-aos="fade-up">
+        <span class="section-eyebrow">Hoạt động 3 (30 phút)</span>
+        <h2 class="section-h2">📜 Hướng dẫn Tích hợp Thư viện AOS</h2>
+        <p class="section-desc">
+          Cách thức nhúng thư viện Animate On Scroll vào bất kỳ dự án web nào chỉ với 2 bước nhanh chóng.
+        </p>
+      </div>
+
+      <div class="aos-summary-grid">
+        <div class="aos-feature-box" data-aos="zoom-in" data-aos-delay="100">
+          <strong>Bước 1: Nhúng CDN</strong>
+          <span>Thêm file CSS tại <code>&lt;head&gt;</code> và file JS trước thẻ đóng <code>&lt;/body&gt;</code></span>
+        </div>
+        <div class="aos-feature-box" data-aos="zoom-in" data-aos-delay="200">
+          <strong>Bước 2: Gắn data-aos</strong>
+          <span>Thêm thuộc tính <code>data-aos="fade-up"</code> vào các thẻ HTML cần tạo hoạt ảnh</span>
+        </div>
+        <div class="aos-feature-box" data-aos="zoom-in" data-aos-delay="300">
+          <strong>Bước 3: Khởi tạo JS</strong>
+          <span>Gọi hàm <code>AOS.init({ duration: 800, once: false });</code></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION LIÊN HỆ & NÚT BẤM CẢM XÚC (Kế thừa từ HĐ 1)
+         ========================================================================== -->
+    <section class="section container" id="contact">
+      <div class="contact-card" data-aos="flip-up" data-aos-duration="800">
+        <span class="section-eyebrow" style="color: var(--accent-pink);">Kết nối hợp tác</span>
+        <h2 class="section-h2" style="margin-bottom: 16px;">Sẵn sàng bắt đầu dự án mới?</h2>
+        <p class="section-desc" style="max-width: 520px; margin: 0 auto 36px;">
+          Hãy nhấn nút bên dưới để trải nghiệm nút bấm cảm xúc với hàm <code>cubic-bezier</code> và hiệu ứng rung chấn xúc giác (HĐ 1).
+        </p>
+
+        <!-- Nút Gửi tin nhắn cảm xúc (HĐ 1) -->
+        <button class="btn-send-message" id="contactBtn" type="button">
+          <!-- Icon máy bay giấy SVG -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+          <span id="contactBtnText">Gửi tin nhắn cho Hoàng Anh</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Chân trang (Footer) -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Nguyễn Hoàng Anh • Khoa CNTT - Đại học Lạc Hồng (LHU)</p>
+      <p style="margin-top: 6px; font-size: 13px; color: var(--text-secondary);">
+        Tích hợp toàn diện Hoạt động 2 (CSS Spinner), Hoạt động 3 (AOS Scroll) &amp; Hoạt động 4 (GPU 60fps Refactoring)
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       SCRIPTS: TÍCH HỢP AOS & QUẢN LÝ PRELOADER (HĐ 2 & 3)
+       ========================================================================== -->
+  <!-- 1. Script Thư viện AOS qua CDN -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <!-- 2. Mã JavaScript khởi tạo và quản lý tương tác -->
+  <script>
+    // Khởi tạo thư viện AOS (Hoạt động 3)
+    AOS.init({
+      duration: 800,     // Thời lượng hoạt ảnh: 800ms
+      offset: 80,        // Kích hoạt khi cuộn cách đối tượng 80px
+      once: false,       // Cho phép lặp lại hiệu ứng mỗi khi cuộn qua lại
+      easing: 'ease-out-cubic'
+    });
+
+    // Quản lý Preloader Spinner (Hoạt động 2)
+    const preloader = document.getElementById('preloader');
+    const replayBtn = document.getElementById('replayPreloaderBtn');
+
+    // Tự động tắt màn hình chờ sau khi trang đã nạp xong (1.2 giây)
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        preloader.classList.add('hide');
+      }, 1200);
+    });
+
+    // Cho phép giảng viên bấm nút "Thử lại Spinner" để xem lại animation
+    replayBtn.addEventListener('click', () => {
+      preloader.classList.remove('hide');
+      setTimeout(() => {
+        preloader.classList.add('hide');
+      }, 1500);
+    });
+
+    // Nút gửi tin nhắn cảm xúc (Hoạt động 1 kết hợp)
+    const contactBtn = document.getElementById('contactBtn');
+    const contactBtnText = document.getElementById('contactBtnText');
+    contactBtn.addEventListener('click', () => {
+      contactBtnText.textContent = 'Đang gửi...';
+      setTimeout(() => {
+        contactBtnText.textContent = 'Đã gửi thành công! ✨';
+        contactBtn.style.backgroundColor = '#10b981';
+        setTimeout(() => {
+          contactBtnText.textContent = 'Gửi tin nhắn cho Hoàng Anh';
+          contactBtn.style.backgroundColor = '';
+        }, 2500);
+      }, 700);
+    });
+  </script>
+</body>
+</html>

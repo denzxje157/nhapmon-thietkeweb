@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- THẺ META CƠ BẢN VÀ THIẾT LẬP HIỂN THỊ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- TIÊU ĐỀ TRANG VÀ THÔNG TIN TỐI ƯU HÓA TÌM KIẾM (SEO) -->
+    <title>Trần Quang Huy | Portfolio Game Developer (CSS Transitions, Animations &amp; Hiệu ứng Động)</title>
+    <meta name="description" content="Portfolio của Trần Quang Huy - Sinh viên CNTT &amp; Lập trình viên Game. Minh họa chuyên sâu CSS Transition, Keyframe Animations tùy chỉnh, tối ưu hiệu năng 60 FPS (transform/opacity) và tích hợp thư viện AOS/Animate.css.">
+    <meta name="keywords" content="CSS Transitions, CSS Keyframes, Web Animation, Web Performance, Reflow, Repaint, Transform, Opacity, AOS, Animate.css, Game Developer, Trần Quang Huy">
+    <meta name="author" content="Trần Quang Huy">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tqh.dev">
+
+    <!-- OPEN GRAPH META TAGS (HỖ TRỢ CHIA SẺ TRÊN MẠNG XÃ HỘI) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tqh.dev">
+    <meta property="og:title" content="Trần Quang Huy | Game Developer &amp; Chuyên đề CSS Animations">
+    <meta property="og:description" content="Khám phá các tương tác chuyển động mượt mà 60 FPS, 3D Card Flip, Radar Loader và hiệu ứng Scroll AOS trong Portfolio Trần Quang Huy.">
+    <meta property="og:locale" content="vi_VN">
+
+    <!-- THƯ VIỆN HIỆU ỨNG (Ý CHÍNH 4: TÍCH HỢP ANIMATE.CSS & AOS) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+
+    <!-- LIÊN KẾT BẢNG KIỂU CHÍNH CHO BÀI 05 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- LIÊN KẾT NHẢY NHANH ĐẾN NỘI DUNG CHÍNH (ACCESSIBILITY) -->
+    <a href="#main-content" class="skip-link">Chuyển đến nội dung chính</a>
+
+    <!-- ==========================================================================
+         1. HEADER (Grid Area: header)
+         - Tích hợp hiệu ứng Transition: hover gạch chân tự trượt và hiệu ứng blur kính mờ
+         ========================================================================== -->
+    <header class="site-header">
+        <div class="site-header-inner">
+            <!-- Nhận diện cá nhân / Logo -->
+            <div class="site-branding">
+                <a href="#about" class="site-logo">
+                    <strong>Trần Quang Huy</strong>
+                    <span class="logo-role">Game Developer &bull; Animation &amp; UI</span>
+                </a>
+            </div>
+
+            <!-- NAV: Menu điều hướng với Hover Underline Transition (scaleX) -->
+            <nav aria-label="Điều hướng chính trên website" class="site-nav">
+                <ul class="nav-menu">
+                    <li><a href="#about">Giới thiệu</a></li>
+                    <li><a href="#animation-lab">&#9889; Lab Chuyển động</a></li>
+                    <li><a href="#skills">Kỹ năng</a></li>
+                    <li><a href="#projects">Dự án Game</a></li>
+                    <li><a href="#competitions">Cuộc thi</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+         2. MAIN CONTENT (Grid Area: main)
+         - Bố cục co giãn mượt mà trên Mobile, Tablet và Desktop
+         ========================================================================== -->
+    <main id="main-content" class="page-main">
+
+        <!-- SECTION: HERO / ABOUT -->
+        <section id="about" class="hero-section" aria-labelledby="hero-title" data-aos="fade-down" data-aos-duration="600">
+            <div class="hero-content">
+                <div class="hero-top-row">
+                    <!-- Ý chính 2: Pulse Beacon nhịp đập trạng thái thời gian thực -->
+                    <span class="status-beacon">
+                        <span class="beacon-dot" aria-hidden="true"></span>
+                        Sẵn sàng lập đội Game Jam 2026
+                    </span>
+                    <span class="floating-badge">&#127918; Indie Game Dev</span>
+                </div>
+
+                <h1 id="hero-title" class="animate__animated animate__fadeInDown">Trần Quang Huy</h1>
+                <p class="hero-subtitle">Junior Game Developer &bull; Đam mê Tương tác Động &amp; Tối ưu 60 FPS</p>
+                <p class="hero-description">
+                    Chào bạn! Tôi hiện là sinh viên năm thứ 2 chuyên ngành Công nghệ Thông tin. Trang web này là không gian tôi vừa chia sẻ các dự án game cá nhân (Unity, Godot, C++), vừa là sân khấu thực hành chuyên sâu về <strong>CSS Transition, Keyframe Animations tùy chỉnh</strong> và <strong>kỹ thuật tối ưu hóa hiệu năng GPU rendering</strong>.
+                </p>
+
+                <!-- Ý chính 1: Nút bấm với Transition Hover, Focus, Active mượt mà -->
+                <div class="btn-group">
+                    <a href="#animation-lab" class="btn btn-primary">&#9889; Thử nghiệm Lab Chuyển động</a>
+                    <a href="#projects" class="btn btn-secondary">Khám phá Dự án Game</a>
+                    <a href="#contact" class="btn btn-outline">Kết nối hợp tác</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================================
+             SECTION ĐẶC BIỆT BÀI 05: PHÒNG THÍ NGHIỆM TƯƠNG TÁC ĐỘNG & HIỆU NĂNG
+             (ANIMATION & INTERACTION LAB)
+             Tập hợp trực quan 4 Ý CHÍNH của bài học
+             ====================================================================== -->
+        <section id="animation-lab" class="lab-section section-block" aria-labelledby="lab-title" data-aos="fade-up">
+            <header class="section-header">
+                <h2 id="lab-title">&#128300; Lab Bài 05: CSS Transition, Keyframes &amp; Performance</h2>
+                <p>Khu vực tương tác trực quan minh họa đầy đủ 4 trọng tâm lý thuyết &amp; kỹ thuật chuyển động hiện đại</p>
+            </header>
+
+            <div class="lab-grid">
+                <!-- KHỐI 1: Ý CHÍNH 1 - TRANSITION TRẠNG THÁI -->
+                <div class="lab-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="lab-card-title">&#10024; Ý chính 1: Transition Trạng thái</h3>
+                    <p class="card-desc">
+                        Hiệu ứng chuyển đổi mềm mại khi người dùng <strong>Hover</strong> (rê chuột), <strong>Focus</strong> (phím Tab/chọn ô nhập) hoặc <strong>Click/Active</strong> (nhấn giữ chuột/chạm).
+                    </p>
+
+                    <div class="lab-demo-area">
+                        <!-- Demo Nút bấm 3 trạng thái -->
+                        <button type="button" class="btn btn-primary" id="btn-state-demo">
+                            Hover &bull; Focus Tab &bull; Nhấn giữ Click
+                        </button>
+
+                        <!-- Demo Interactive Toggle Switch -->
+                        <label class="switch-control" for="toggle-fx">
+                            <input type="checkbox" id="toggle-fx" class="switch-input" checked>
+                            <span class="switch-slider" aria-hidden="true"></span>
+                            <span style="font-size: var(--font-size-xs); font-weight: 600;">Kích hoạt Hiệu ứng Game SFX (Smooth Transition)</span>
+                        </label>
+
+                        <!-- Demo Input Focus không giật Reflow -->
+                        <div style="width: 100%;">
+                            <label for="demo-input" style="font-size: var(--font-size-xs); font-weight: 600; display: block; margin-bottom: 4px;">Kiểm tra Focus Ring mượt mà:</label>
+                            <input type="text" id="demo-input" placeholder="Nhấp chuột hoặc Tab vào ô này..." class="form-field">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KHỐI 2: Ý CHÍNH 2 - KEYFRAMES CHUYỂN ĐỘNG TÙY CHỈNH -->
+                <div class="lab-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="lab-card-title">&#127916; Ý chính 2: Keyframes Tùy chỉnh</h3>
+                    <p class="card-desc">
+                        Thiết kế chuyển động tự động lặp vô hạn bằng <code>@keyframes</code>: <strong>Loading Radar Spinner</strong>, <strong>Pulse Signal Beacon</strong> và hiệu ứng <strong>3D Card Flip</strong>!
+                    </p>
+
+                    <div class="lab-demo-area">
+                        <!-- Loading Radar Indicator -->
+                        <div class="radar-spinner-container" style="width: 100%;">
+                            <div class="radar-loader" aria-label="Loading Game Assets"></div>
+                            <div>
+                                <strong>GAME HUD RADAR LOADING...</strong><br>
+                                <span style="color: var(--color-gray-400);">@keyframes spin-clockwise 360&deg;</span>
+                            </div>
+                        </div>
+
+                        <!-- 3D Card Flip Component -->
+                        <div class="flip-card-wrapper" id="stat-flip-card" tabindex="0" role="region" aria-label="Thẻ bài tương tác 3D lật hai mặt">
+                            <div class="flip-card-inner">
+                                <!-- Mặt trước (Front) -->
+                                <div class="flip-card-front">
+                                    <div>
+                                        <span class="card-badge">&#127183; THẺ BÀI GAME DEV</span>
+                                        <h4 style="margin-top: var(--space-2); color: var(--color-primary-700);">Trần Quang Huy</h4>
+                                        <p style="font-size: var(--font-size-xs); color: var(--text-secondary); margin-top: 4px;">
+                                            Vị trí: Gameplay &amp; Physics Programmer
+                                        </p>
+                                    </div>
+                                    <div class="flip-hint">
+                                        &#128260; Rê chuột hoặc chạm để LẬT MẶT SAU 3D &rarr;
+                                    </div>
+                                </div>
+                                <!-- Mặt sau (Back) -->
+                                <div class="flip-card-back">
+                                    <div>
+                                        <span class="card-badge" style="background: rgba(255,255,255,0.2); color: #fff; border-color: rgba(255,255,255,0.4);">&#9733; STATS BÍ MẬT</span>
+                                        <h4 style="margin-top: var(--space-2); color: var(--color-primary-200);">Chỉ số Kỹ thuật</h4>
+                                        <ul style="font-size: var(--font-size-xs); margin-top: 6px; padding-left: 16px;">
+                                            <li>Tốc độ phản xạ Game Jam: 98/100</li>
+                                            <li>Tối ưu vòng lặp Unity 60 FPS: 95/100</li>
+                                            <li>Giải thuật tìm đường A*: Master</li>
+                                        </ul>
+                                    </div>
+                                    <div class="flip-hint">
+                                        &#10004; transform: rotateY(180deg) 3D Preserve
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KHỐI 3: Ý CHÍNH 3 - TỐI ƯU HIỆU NĂNG REFLOW & REPAINT -->
+                <div class="lab-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="lab-card-title">&#128640; Ý chính 3: Hiệu năng (Transform &amp; Opacity)</h3>
+                    <p class="card-desc">
+                        Ngăn chặn hiện tượng <strong>Drop Frame / Lag giật</strong> bằng cách hiểu rõ quy trình dựng hình trình duyệt (Pixel Pipeline): chỉ chuyển động trên <strong>Compositor Thread của GPU</strong>.
+                    </p>
+
+                    <div class="perf-matrix">
+                        <div class="perf-col perf-col-bad">
+                            <strong>&#10060; NÊN TRÁNH (Reflow + Repaint):</strong>
+                            <p>Animate các thuộc tính hình học: <code>top</code>, <code>left</code>, <code>width</code>, <code>height</code>, <code>margin</code>.</p>
+                            <small>&rarr; Buộc CPU tính toán lại toàn bộ lưới tọa độ trên trang!</small>
+                        </div>
+                        <div class="perf-col perf-col-good">
+                            <strong>&#9989; KHUYÊN DÙNG (Composite Only):</strong>
+                            <p>Sử dụng: <code>transform: translate() / scale() / rotate()</code> và <code>opacity</code>.</p>
+                            <small>&rarr; Đẩy thẳng sang phần cứng card đồ họa GPU, duy trì chuẩn 60 FPS!</small>
+                        </div>
+                    </div>
+
+                    <div style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: var(--space-2);">
+                        &#128065; Đã kích hoạt hỗ trợ chuẩn tiếp cận: <code>@media (prefers-reduced-motion)</code> tự động dừng hoạt ảnh với người dùng có vấn đề tiền đình.
+                    </div>
+                </div>
+
+                <!-- KHỐI 4: Ý CHÍNH 4 - THƯ VIỆN HIỆU ỨNG (AOS & ANIMATE.CSS) -->
+                <div class="lab-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="lab-card-title">&#128218; Ý chính 4: Thư viện Hiệu ứng có chọn lọc</h3>
+                    <p class="card-desc">
+                        Tích hợp các thư viện chuyên dụng như <strong>AOS (Animate On Scroll)</strong> và <strong>Animate.css</strong> một cách tinh tế, có chừng mực, tránh gây rối mắt người dùng.
+                    </p>
+
+                    <div class="lib-showcase-box">
+                        <h4>Nguyên tắc sử dụng thư viện:</h4>
+                        <div style="margin-bottom: var(--space-2);">
+                            <span class="lib-tag-badge">AOS v2.3</span>
+                            <span class="lib-tag-badge">Animate.css v4.1</span>
+                            <span class="lib-tag-badge">Zero Reflow</span>
+                        </div>
+                        <p style="font-size: var(--font-size-xs); line-height: 1.5; color: var(--color-primary-100);">
+                            1. Dùng <strong>AOS</strong> để kích hoạt thẻ bài khi người dùng cuộn đến vị trí xem.<br>
+                            2. Dùng <strong>Animate.css</strong> cho các hiệu ứng xuất hiện ban đầu (fadeInDown) của tiêu đề Hero.<br>
+                            3. Luôn cấu hình <code>once: true</code> để hiệu ứng chỉ kích hoạt 1 lần, không lặp lại gây xao nhãng.
+                        </p>
+                    </div>
+
+                    <div style="margin-top: auto;">
+                        <button type="button" class="btn btn-outline btn-full" id="test-aos-replay">
+                            &#128257; Cuộn thử trang để quan sát hiệu ứng AOS
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: SKILLS -->
+        <section id="skills" class="section-block" aria-labelledby="skills-title" data-aos="fade-up">
+            <header class="section-header">
+                <h2 id="skills-title">Kỹ năng &amp; Công nghệ Lập trình Game</h2>
+                <p>Các thẻ kỹ năng được trang bị hiệu ứng Hover Elevation và Scale bằng thuộc tính transform GPU</p>
+            </header>
+
+            <div class="grid-gallery">
+                <!-- Card 1 -->
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="card-title">1. Game Engines &amp; Frameworks</h3>
+                    <ul class="card-list">
+                        <li>Unity 2D/3D (C# Scripting, Rigidbody Physics, UI Toolkit, Tilemap)</li>
+                        <li>Godot Engine 4 (GDScript, Kiến trúc Scene &amp; Node, Signals)</li>
+                        <li>Phaser.js &amp; HTML5 Canvas (Lập trình game 2D trên trình duyệt web)</li>
+                        <li>Unreal Engine 5 (Làm quen hệ thống Blueprints cơ bản)</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="card-title">2. Ngôn ngữ &amp; Nền tảng Thuật toán</h3>
+                    <ul class="card-list">
+                        <li>C / C++ (Cấu trúc dữ liệu nâng cao, giải thuật tối ưu &amp; lập trình thi đấu)</li>
+                        <li>C# (.NET, Lập trình hướng đối tượng OOP, Design Patterns trong Game)</li>
+                        <li>Python (Xử lý dữ liệu, viết kịch bản script tự động hóa)</li>
+                        <li>Toán học ứng dụng: Đại số tuyến tính, Hệ trục tọa độ, Vector, Thuật toán A*</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="card-title">3. Công cụ &amp; Thiết kế Game</h3>
+                    <ul class="card-list">
+                        <li>Git / GitHub (Quản lý phiên bản mã nguồn khi làm việc nhóm Game Jam)</li>
+                        <li>Aseprite (Vẽ đồ họa Pixel Art, thiết kế Sprite Sheet &amp; Animation 2D)</li>
+                        <li>Blender (Dựng hình 3D phong cách Low-poly cơ bản)</li>
+                        <li>Nền tảng phân phối itch.io (Đóng gói và phát hành game thử nghiệm)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: PROJECTS -->
+        <section id="projects" class="section-block" aria-labelledby="projects-title" data-aos="fade-up">
+            <header class="section-header">
+                <h2 id="projects-title">Dự án Game tiêu biểu</h2>
+                <p>Những tựa game hoàn thiện với hiệu ứng tương tác Hover và liên kết có animation chuyển dịch</p>
+            </header>
+
+            <div class="grid-gallery">
+                <!-- Dự án 1 -->
+                <article class="card project-card" aria-labelledby="project-1-title" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-badge">[Giải Nhì Game Jam]</div>
+                    <h3 id="project-1-title" class="card-title">Shadow Runner: Dimensional Shift</h3>
+                    <p class="card-desc">
+                        Tựa game 2D Puzzle-Platformer được tạo ra trong 48 giờ tại Vietnam Game Jam. Người chơi có năng lực chuyển đổi tức thời giữa hai chiều không gian "Ánh sáng" và "Bóng tối" để giải mã câu đố hóc búa, kích hoạt cơ quan bí mật và vượt chướng ngại vật.
+                    </p>
+                    <div class="card-tech">
+                        <strong>Công nghệ sử dụng:</strong>
+                        <ul class="tag-list">
+                            <li>Unity Engine</li>
+                            <li>Ngôn ngữ C#</li>
+                            <li>2D Rigidbody Physics</li>
+                            <li>Aseprite Pixel Art</li>
+                        </ul>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://itch.io" target="_blank" rel="noopener noreferrer" class="link-btn">Chơi trên itch.io &rarr;</a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-btn">Mã nguồn GitHub &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Dự án 2 -->
+                <article class="card project-card" aria-labelledby="project-2-title" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card-badge">[Đồ án Điểm A+]</div>
+                    <h3 id="project-2-title" class="card-title">CyberSiege: Top-Down Tactical Shooter</h3>
+                    <p class="card-desc">
+                        Game hành động chiến thuật góc nhìn từ trên xuống (Top-down Shooter). Ứng dụng thuật toán tìm đường A* cho AI đối thủ, hỗ trợ đa dạng vũ khí và tích hợp hệ thống State Machine điều khiển hành vi boss linh hoạt theo khoảng cách và lượng máu còn lại.
+                    </p>
+                    <div class="card-tech">
+                        <strong>Công nghệ sử dụng:</strong>
+                        <ul class="tag-list">
+                            <li>Godot Engine 4</li>
+                            <li>Ngôn ngữ GDScript</li>
+                            <li>Thuật toán A* Pathfinding</li>
+                            <li>Finite State Machine (FSM)</li>
+                        </ul>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://itch.io" target="_blank" rel="noopener noreferrer" class="link-btn">Tải Demo cài đặt &rarr;</a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-btn">Mã nguồn GitHub &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Dự án 3 -->
+                <article class="card project-card" aria-labelledby="project-3-title" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card-badge">[Web Game Trình Duyệt]</div>
+                    <h3 id="project-3-title" class="card-title">Pixel Arena: 2D Browser Multiplayer</h3>
+                    <p class="card-desc">
+                        Trò chơi đối kháng nhiều người chơi gọn nhẹ chạy mượt mà trên trình duyệt web không cần cài đặt ứng dụng. Sử dụng HTML5 Canvas để render đồ họa tốc độ 60 FPS cùng giao thức WebSocket đồng bộ trạng thái người chơi theo thời gian thực.
+                    </p>
+                    <div class="card-tech">
+                        <strong>Công nghệ sử dụng:</strong>
+                        <ul class="tag-list">
+                            <li>HTML5 Canvas</li>
+                            <li>JavaScript (ES6+)</li>
+                            <li>Node.js</li>
+                            <li>WebSocket / Socket.io</li>
+                        </ul>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="link-btn">Chơi trực tiếp &rarr;</a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-btn">Mã nguồn GitHub &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECTION: COMPETITIONS -->
+        <section id="competitions" class="section-block" aria-labelledby="competitions-title" data-aos="fade-up">
+            <header class="section-header">
+                <h2 id="competitions-title">Cuộc thi &amp; Giải thưởng Tiêu biểu</h2>
+                <p>Những dấu ấn từ tinh thần chiến đấu hết mình tại các kỳ Hackathon và đấu trường lập trình</p>
+            </header>
+
+            <ol class="timeline">
+                <li class="timeline-item card" data-aos="fade-left" data-aos-delay="100">
+                    <article>
+                        <h3 class="card-title">Vietnam Game Jam 2025 &ndash; <strong>Giải Nhì Toàn Quốc (2nd Place)</strong></h3>
+                        <p class="timeline-meta">
+                            Thời gian: <time datetime="2025-11">Tháng 11/2025</time> | Vai trò: Trưởng nhóm &amp; Lập trình Gameplay chính
+                        </p>
+                        <p class="card-desc">
+                            Dẫn dắt đội ngũ 4 thành viên lên ý tưởng, xây dựng đồ họa và lập trình hoàn thiện tựa game trong vòng 48 giờ liên tục theo chủ đề bí mật của ban giám khảo. Sản phẩm được đánh giá cao nhất ở hạng mục "Sáng tạo cơ chế gameplay".
+                        </p>
+                    </article>
+                </li>
+
+                <li class="timeline-item card" data-aos="fade-left" data-aos-delay="200">
+                    <article>
+                        <h3 class="card-title">Hackathon Sáng tạo Công nghệ Sinh viên 2025 &ndash; <strong>Top 10 Chung cuộc</strong></h3>
+                        <p class="timeline-meta">
+                            Thời gian: <time datetime="2025-05">Tháng 05/2025</time> | Đội thi sinh viên IT
+                        </p>
+                        <p class="card-desc">
+                            Xây dựng giải pháp Gamification (trò chơi hóa) ứng dụng học tập tương tác giúp học sinh tiếp cận kiến thức lịch sử qua các nhiệm vụ giải đố mini game dạng nhập vai.
+                        </p>
+                    </article>
+                </li>
+
+                <li class="timeline-item card" data-aos="fade-left" data-aos-delay="300">
+                    <article>
+                        <h3 class="card-title">Cuộc thi Lập trình Thuật toán Sinh viên (ICPC Cấp Trường) &ndash; <strong>Giải Khuyến Khích</strong></h3>
+                        <p class="timeline-meta">
+                            Thời gian: <time datetime="2024-12">Tháng 12/2024</time> | Bảng thi đấu cá nhân
+                        </p>
+                        <p class="card-desc">
+                            Giải quyết 6/9 bài toán thuật toán cấu trúc dữ liệu nâng cao bằng ngôn ngữ C++ trong thời gian 4 giờ thi đấu căng thẳng, củng cố nền tảng tư duy toán học cho lập trình game.
+                        </p>
+                    </article>
+                </li>
+            </ol>
+        </section>
+
+        <!-- SECTION: CONTACT -->
+        <section id="contact" class="section-block" aria-labelledby="contact-title" data-aos="fade-up">
+            <header class="section-header">
+                <h2 id="contact-title">Kết nối &amp; Lập đội Thi đấu</h2>
+                <p>Bạn đang tìm đồng đội tham gia Game Jam, Hackathon hoặc muốn cùng hợp tác làm dự án game indie? Hãy liên hệ ngay!</p>
+            </header>
+
+            <div class="contact-layout">
+                <!-- Thông tin liên hệ -->
+                <div class="contact-info card">
+                    <h3 class="card-title">Thông tin liên hệ trực tiếp</h3>
+                    <p class="card-desc">
+                        Tôi luôn sẵn sàng tiếp nhận các cơ hội giao lưu học hỏi, tìm kiếm người đồng hành làm game hoặc cơ hội thực tập vị trí Game Developer / Gameplay Programmer.
+                    </p>
+
+                    <address>
+                        <ul class="contact-list">
+                            <li>
+                                <strong>Hòm thư điện tử (Email):</strong><br>
+                                <a href="mailto:quanghuytran2607@gmail.com">quanghuytran2607@gmail.com</a>
+                            </li>
+                            <li>
+                                <strong>TK Discord trao đổi:</strong><br>
+                                <span>PNV | Login</span>
+                            </li>
+                            <li>
+                                <strong>Trang lưu trữ Game (itch.io):</strong><br>
+                                <a href="https://itch.io" target="_blank" rel="noopener noreferrer">tqh-games.itch.io</a>
+                            </li>
+                            <li>
+                                <strong>Khu vực học tập &amp; làm việc:</strong><br>
+                                <span>Hà Nội, Việt Nam</span>
+                            </li>
+                        </ul>
+                    </address>
+                </div>
+
+                <!-- Form liên hệ với Transition Focus mượt mà -->
+                <form action="#" method="post" class="contact-form card" id="contact-form-demo">
+                    <fieldset>
+                        <legend>Gửi lời nhắn hoặc mời lập team</legend>
+
+                        <div class="form-field">
+                            <label for="sender-name">Họ và tên của bạn:</label>
+                            <input type="text" id="sender-name" name="name" placeholder="Ví dụ: Lê Minh Đức" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="sender-email">Địa chỉ email:</label>
+                            <input type="email" id="sender-email" name="email" placeholder="duc.le@example.com" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="message-subject">Mục đích kết nối:</label>
+                            <input type="text" id="message-subject" name="subject" placeholder="Rủ tham gia Game Jam / Đề xuất làm game" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="message-content">Nội dung chi tiết:</label>
+                            <textarea id="message-content" name="message" rows="4" placeholder="Chia sẻ ý tưởng dự án hoặc thông tin cuộc thi bạn muốn cùng tham gia..." required></textarea>
+                        </div>
+
+                        <div class="form-field">
+                            <button type="submit" class="btn btn-primary btn-full" id="btn-submit-contact">
+                                <span>Gửi thông điệp ngay &rarr;</span>
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================================
+         3. SIDEBAR (Grid Area: sidebar)
+         ========================================================================== -->
+    <aside class="site-sidebar" aria-labelledby="sidebar-title">
+        
+        <!-- Widget 1: Hồ sơ nhanh -->
+        <div class="sidebar-widget card" data-aos="fade-left">
+            <h2 id="sidebar-title" class="widget-title">Hồ sơ vắn tắt</h2>
+            <div class="profile-summary">
+                <p><strong>Họ tên:</strong> Trần Quang Huy</p>
+                <p><strong>Chuyên ngành:</strong> Công nghệ Thông tin</p>
+                <p><strong>Định hướng:</strong> Game Development (Unity, Godot, C++)</p>
+                <p><strong>Hiệu ứng Web:</strong> CSS Transition &amp; 60 FPS GPU Rendering</p>
+            </div>
+        </div>
+
+        <!-- Widget 2: Fun facts cá nhân -->
+        <div class="sidebar-widget card" data-aos="fade-left" data-aos-delay="100">
+            <h3 class="widget-title">Fun Facts &amp; Cá nhân</h3>
+            <ul class="sidebar-list">
+                <li><strong>Game yêu thích:</strong> Hollow Knight &ndash; cảm hứng thiết kế Metroidvania.</li>
+                <li><strong>Kỷ lục Game Jam:</strong> Viết hơn 2.000 dòng code C# trong 48h liên tục.</li>
+                <li><strong>Ngôn ngữ đầu tiên:</strong> Scratch (kéo thả từ năm lớp 7).</li>
+                <li><strong>Thói quen khi code:</strong> Luôn nghe Lo-fi hoặc OST game.</li>
+                <li><strong>Mục tiêu 2026:</strong> Đạt Top 3 Game Jam và phát hành game trên Steam.</li>
+            </ul>
+        </div>
+
+        <!-- Widget 3: Châm ngôn yêu thích -->
+        <div class="sidebar-widget card" data-aos="fade-left" data-aos-delay="200">
+            <h3 class="widget-title">Triết lý thiết kế</h3>
+            <blockquote class="sidebar-quote">
+                <p>&ldquo;A game is a series of interesting decisions.&rdquo;</p>
+                <footer>&mdash; <cite>Sid Meier</cite> (Civilization)</footer>
+            </blockquote>
+        </div>
+
+        <!-- Widget 4: Kêu gọi lập đội Game Jam -->
+        <div class="sidebar-widget card cta-card" data-aos="fade-left" data-aos-delay="300">
+            <h3 class="widget-title">&#127918; Tìm đồng đội Game Jam</h3>
+            <p>Đang tìm kiếm Artist, Sound Designer và Programmer cùng chinh phục các giải đấu sắp tới!</p>
+            <a href="#contact" class="btn btn-secondary btn-full">Đăng ký tham gia cùng Huy &rarr;</a>
+        </div>
+    </aside>
+
+    <!-- ==========================================================================
+         4. FOOTER (Grid Area: footer)
+         ========================================================================== -->
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <div class="footer-info">
+                <p>&copy; 2026 Trần Quang Huy. Sinh viên CNTT &bull; Game Developer Portfolio.</p>
+                <p><small>Bài 05: CSS Transition, Keyframe Animations &amp; Tối ưu Hiệu năng GPU Rendering.</small></p>
+            </div>
+
+            <!-- Điều hướng chân trang -->
+            <nav aria-label="Liên kết mạng xã hội">
+                <ul class="nav-menu">
+                    <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="https://itch.io" target="_blank" rel="noopener noreferrer">itch.io</a></li>
+                    <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         JAVASCRIPT HỖ TRỢ: KHỞI TẠO AOS & XỬ LÝ TƯƠNG TÁC LAB BÀI 05
+         ========================================================================== -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Khởi tạo thư viện AOS (Ý chính 4) với các tham số tối ưu
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 700,
+                    easing: 'ease-out-cubic',
+                    once: true,
+                    offset: 50,
+                    disable: function() {
+                        // Tự động tắt nếu người dùng chọn chế độ giảm chuyển động
+                        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    }
+                });
+            }
+
+            // Hỗ trợ lật thẻ bài 3D bằng click trên thiết bị cảm ứng di động (Ý chính 2)
+            const flipCard = document.getElementById('stat-flip-card');
+            if (flipCard) {
+                flipCard.addEventListener('click', function () {
+                    const inner = this.querySelector('.flip-card-inner');
+                    if (inner) {
+                        inner.classList.toggle('is-flipped');
+                    }
+                });
+
+                // Hỗ trợ phím Space / Enter khi focus bằng bàn phím (Accessibility)
+                flipCard.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const inner = this.querySelector('.flip-card-inner');
+                        if (inner) {
+                            inner.classList.toggle('is-flipped');
+                        }
+                    }
+                });
+            }
+
+            // Nút cuộn thử nghiệm AOS
+            const replayBtn = document.getElementById('test-aos-replay');
+            if (replayBtn) {
+                replayBtn.addEventListener('click', function () {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // Demo feedback khi submit form
+            const form = document.getElementById('contact-form-demo');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const submitBtn = document.getElementById('btn-submit-contact');
+                    if (submitBtn) {
+                        const originalHtml = submitBtn.innerHTML;
+                        submitBtn.innerHTML = '&#9989; Đã ghi nhận thông điệp!';
+                        submitBtn.style.backgroundColor = 'var(--color-accent-600)';
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalHtml;
+                            submitBtn.style.backgroundColor = '';
+                            form.reset();
+                        }, 2500);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

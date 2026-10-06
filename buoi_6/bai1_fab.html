@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 1: Floating Action Button (FAB) - LHU Web Design</title>
+  
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('lhu_theme_preference') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="bai-tap.css">
+</head>
+<body>
+
+  <main class="exercise-container">
+    <div class="top-bar-nav">
+      <a href="index.html" class="back-home-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Quay lại Mục lục Buổi 6
+      </a>
+      <button class="standalone-theme-btn" id="standaloneThemeToggle" aria-label="Chuyển đổi Sáng / Tối">
+        <span class="sun-icon">☀️ Giao diện Sáng</span>
+        <span class="moon-icon">🌙 Giao diện Tối</span>
+      </button>
+    </div>
+
+    <header class="exercise-header">
+      <span class="exercise-badge">Bài tập 1 / Buổi 5 & 6</span>
+      <h1 class="exercise-title">Floating Action Button (FAB)</h1>
+      <p class="exercise-desc">Nút tương tác cố định ở góc màn hình kết hợp hiệu ứng rung nở (Pulse Animation) liên tục thu hút người dùng, không gây gián đoạn trải nghiệm.</p>
+    </header>
+
+    <!-- Khu vực Demo -->
+    <section class="demo-box">
+      <h2 class="demo-title">Mô phỏng Giao diện & Trải nghiệm Cuộn trang</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+        Hãy cuộn trang lên xuống: Bạn sẽ thấy nút <strong>FAB tròn màu xanh ở góc dưới bên phải màn hình</strong> luôn cố định vị trí (<code>position: fixed</code>) và liên tục co giãn với hiệu ứng sóng tỏa nhẹ (<code>@keyframes pulseAnimation</code>).
+      </p>
+
+      <!-- Nội dung giả lập dài để test scroll -->
+      <div style="background: rgba(255,255,255,0.03); border-radius: var(--radius-md); padding: 1.5rem; line-height: 1.8;">
+        <h3 style="color: var(--color-primary-light); margin-bottom: 0.5rem;">🌟 Trải nghiệm tương tác Micro-interaction</h3>
+        <p style="margin-bottom: 1rem;">
+          Nút FAB giúp khách hàng truy cập nhanh vào các kênh liên hệ quan trọng nhất như <strong>Zalo</strong>, <strong>Messenger</strong> hoặc <strong>Gọi trực tiếp</strong>. Hiệu ứng nhịp tim liên tục nhắc nhở người xem mà không che khuất nội dung trang web.
+        </p>
+        <p style="margin-bottom: 1rem;">
+          Khi rê chuột vào nút, chuyển động tự động tạm dừng (<code>animation-play-state: paused</code>) và nút hơi phóng to tạo phản hồi trực quan rõ ràng. Bấm vào nút để mở rộng danh sách kênh liên hệ!
+        </p>
+        <div style="padding: 1rem; border-left: 3px solid var(--color-success); background: rgba(16, 185, 129, 0.1); border-radius: 4px;">
+          <strong>💡 Mẹo kiểm thử:</strong> Bấm trực tiếp vào nút tròn góc dưới để mở/đóng menu mở rộng.
+        </div>
+      </div>
+
+      <div class="code-info">
+<pre>/* Đoạn mã CSS Keyframes cho hiệu ứng Pulse */
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 16px rgba(14, 165, 233, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(14, 165, 233, 0);
+  }
+}</pre>
+      </div>
+    </section>
+
+    <!-- Khối giải trình chuẩn Rubric -->
+    <section class="demo-box" style="margin-top: 2rem;">
+      <h2 class="demo-title">Gợi ý Prompt & Tư duy Kỹ thuật LHU</h2>
+      <div style="color: var(--text-secondary); font-size: var(--fs-sm); line-height: 1.7;">
+        <p><strong>🎯 Prompt đã sử dụng:</strong> <em>"Hãy tạo một nút tròn cố định ở góc dưới bên phải màn hình. Sử dụng CSS Animation để tạo hiệu ứng 'phập phồng' (pulse) co giãn liên tục và mượt mà bằng @keyframes. Nút có màu xanh gradient, đổ bóng lan tỏa và icon tin nhắn ở giữa. Khi click thì mở rộng menu gồm Zalo, Messenger và Hotline."</em></p>
+        <p style="margin-top: 0.75rem;"><strong>⚡ Tối ưu GPU:</strong> Sử dụng <code>transform: scale()</code> thay vì thay đổi <code>width/height</code> giúp trình duyệt tối ưu render trên tầng tổng hợp (Compositing Layer), đạt 60FPS mượt mà trên di động.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- WIDGET FAB GÓC DƯỚI BÊN PHẢI -->
+  <aside class="fab-container" id="fabContainer">
+    <!-- Menu phụ bật lên -->
+    <div class="fab-menu">
+      <a href="https://zalo.me" target="_blank" class="fab-item">
+        <span class="fab-label">Chat Zalo hỗ trợ</span>
+        <div class="fab-sub-btn fab-zalo">💬</div>
+      </a>
+      <a href="https://m.me" target="_blank" class="fab-item">
+        <span class="fab-label">Nhắn Messenger</span>
+        <div class="fab-sub-btn fab-messenger">✉️</div>
+      </a>
+      <a href="tel:02513952778" class="fab-item">
+        <span class="fab-label">Hotline LHU: (0251) 3952 778</span>
+        <div class="fab-sub-btn fab-phone">📞</div>
+      </a>
+    </div>
+
+    <!-- Nút FAB chính có Pulse Animation -->
+    <button class="fab-main-btn" id="fabToggleBtn" aria-label="Mở menu trợ giúp nhanh">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </button>
+  </aside>
+
+  <footer class="exercise-footer">
+    <p>© 2026 Nguyễn Hoàng Anh (@denzxje157) - Đại học Lạc Hồng (LHU). Bài thực hành hiệu ứng CSS.</p>
+  </footer>
+
+  <script>
+    // Kịch bản đóng/mở submenu tương tác
+    const fabContainer = document.getElementById('fabContainer');
+    const fabToggleBtn = document.getElementById('fabToggleBtn');
+
+    fabToggleBtn.addEventListener('click', () => {
+      fabContainer.classList.toggle('active');
+    });
+
+    // Xử lý chuyển đổi Theme Sáng / Tối
+    const standaloneThemeToggle = document.getElementById('standaloneThemeToggle');
+    if (standaloneThemeToggle) {
+      standaloneThemeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+        if (newTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+        localStorage.setItem('lhu_theme_preference', newTheme);
+      });
+    }
+  </script>
+</body>
+</html>

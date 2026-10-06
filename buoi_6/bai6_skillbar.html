@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 6: Skill Bar Animation - Thanh kỹ năng tự động chạy</title>
+  
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('lhu_theme_preference') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="bai-tap.css">
+</head>
+<body>
+
+  <main class="exercise-container">
+    <div class="top-bar-nav">
+      <a href="index.html" class="back-home-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Quay lại Mục lục Buổi 6
+      </a>
+      <button class="standalone-theme-btn" id="standaloneThemeToggle" aria-label="Chuyển đổi Sáng / Tối">
+        <span class="sun-icon">☀️ Giao diện Sáng</span>
+        <span class="moon-icon">🌙 Giao diện Tối</span>
+      </button>
+    </div>
+
+    <header class="exercise-header">
+      <span class="exercise-badge">Bài tập 6 / Buổi 5 & 6</span>
+      <h1 class="exercise-title">Skill Bar Animation (Thanh kỹ năng tự động)</h1>
+      <p class="exercise-desc">Khi tải trang web, các thanh tiến độ sẽ tự động tăng dần từ 0% đến giá trị phần trăm đích với đường cong gia tốc mượt mà và giữ nguyên trạng thái kết quả.</p>
+    </header>
+
+    <!-- Khu vực Demo -->
+    <section class="demo-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h2 class="demo-title" style="margin-bottom: 0;">Bộ đo năng lực Kỹ thuật Web (Developer Profile)</h2>
+        <button id="replayBtn" style="background: var(--bg-surface-elevated); border: 1px solid var(--border-color); color: var(--color-accent); padding: 0.5rem 1rem; border-radius: var(--radius-md); font-size: var(--fs-xs); font-weight: 600; cursor: pointer; transition: all var(--transition-fast);">
+          🔄 Chạy lại Animation
+        </button>
+      </div>
+
+      <div class="skills-container" id="skillsContainer">
+        <!-- Skill 1 -->
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">
+              <span style="color: #f97316;">🌐</span> Semantic HTML5 & Cấu trúc Web
+            </span>
+            <span class="skill-percentage">95%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill html"></div>
+          </div>
+        </div>
+
+        <!-- Skill 2 -->
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">
+              <span style="color: #38bdf8;">🎨</span> CSS Grid, Flexbox & Design System
+            </span>
+            <span class="skill-percentage">90%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill css"></div>
+          </div>
+        </div>
+
+        <!-- Skill 3 -->
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">
+              <span style="color: #ec4899;">📱</span> Mobile First & Fluid Responsive Design
+            </span>
+            <span class="skill-percentage">85%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill responsive"></div>
+          </div>
+        </div>
+
+        <!-- Skill 4 -->
+        <div class="skill-item">
+          <div class="skill-info">
+            <span class="skill-name">
+              <span style="color: #10b981;">🤖</span> Vibe Coding & AI Prompt Engineering
+            </span>
+            <span class="skill-percentage">98%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill vibe"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-info">
+<pre>/* CSS Keyframes cho thanh tiến trình nạp tự động */
+.skill-progress-fill {
+  height: 100%;
+  width: 0; /* Khởi đầu ở 0% */
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  /* Chạy từ 0 đến biến --target-width, giữ nguyên ở điểm kết thúc */
+  animation: fillProgressAnim 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.skill-progress-fill.html { 
+  --target-width: 95%; 
+  animation-delay: 0.1s; 
+}
+
+@keyframes fillProgressAnim {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: var(--target-width); /* Giữ lại đúng mức phần trăm */
+  }
+}</pre>
+      </div>
+    </section>
+
+    <!-- Khối giải trình -->
+    <section class="demo-box">
+      <h2 class="demo-title">Gợi ý Prompt & Tư duy Kỹ thuật LHU</h2>
+      <div style="color: var(--text-secondary); font-size: var(--fs-sm); line-height: 1.7;">
+        <p><strong>🎯 Prompt đã sử dụng:</strong> <em>"Viết CSS cho các thanh tiến trình (Progress bars) hiển thị kỹ năng lập trình web. Khi trang được tải, các thanh này sẽ tự động chạy từ 0% đến mức phần trăm cụ thể (ví dụ 95%, 90%, 85%) trong vòng 1.8 giây với hiệu ứng chuyển động mượt mà. Sử dụng thuộc tính animation-fill-mode: forwards để cố định thanh sau khi chạy xong."</em></p>
+        <p style="margin-top: 0.75rem;"><strong>💡 Tinh chỉnh <code>animation-fill-mode: forwards</code>:</strong> Mặc định sau khi chạy hết keyframes, CSS sẽ đưa phần tử trở về trạng thái CSS tĩnh ban đầu (`width: 0`). Nhờ có thuộc tính `forwards`, thanh tiến trình được "khóa" lại chính xác ở mốc giá trị cuối cùng.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="exercise-footer">
+    <p>© 2026 Nhập môn Thiết kế Web - Đại học Lạc Hồng (LHU). Bài thực hành hiệu ứng CSS.</p>
+  </footer>
+
+  <script>
+    // Kịch bản chạy lại animation khi bấm nút
+    const replayBtn = document.getElementById('replayBtn');
+    const skillsContainer = document.getElementById('skillsContainer');
+
+    replayBtn.addEventListener('click', () => {
+      const fills = document.querySelectorAll('.skill-progress-fill');
+      fills.forEach(fill => {
+        fill.style.animation = 'none';
+        // Trigger reflow
+        void fill.offsetWidth;
+        fill.style.animation = '';
+      });
+    });
+
+    // Xử lý chuyển đổi Theme Sáng / Tối
+    const standaloneThemeToggle = document.getElementById('standaloneThemeToggle');
+    if (standaloneThemeToggle) {
+      standaloneThemeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+        if (newTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+        localStorage.setItem('lhu_theme_preference', newTheme);
+      });
+    }
+  </script>
+</body>
+</html>

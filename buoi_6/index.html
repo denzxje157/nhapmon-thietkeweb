@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Portfolio & Showcase Hub Buổi 6 - Nguyễn Hoàng Anh, Sinh viên Khoa CNTT Trường Đại học Lạc Hồng (LHU). Hệ thống giao diện tích hợp hành trình Tuần 1 - Tuần 5 và 6 bài tập CSS chuyển động.">
+  
+  <!-- Script khởi tạo Theme tức thì ngăn ngừa chớp trắng (Zero-flash OLED Dark Mode) -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('lhu_theme_preference') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <!-- Tối ưu hóa Giao diện Web / Mobile App PWA -->
+  <meta name="theme-color" content="#000000" id="metaThemeColor">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Hoàng Anh LHU">
+
+  <title>Nguyễn Hoàng Anh - The Interactive Showcase & Portfolio Buổi 6 | LHU</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="bai-tap.css">
+</head>
+<body>
+
+  <!-- ==================== 1. STICKY RESPONSIVE HEADER ==================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="brand-wrapper">
+        <img src="logo.png" alt="Logo Đại học Lạc Hồng" class="brand-logo-img">
+        <div class="brand-text-block">
+          <span class="brand-title">Nguyễn Hoàng Anh</span>
+          <span class="brand-subtitle">LHU · Khoa Công Nghệ Thông Tin</span>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation Menu -->
+      <nav aria-label="Menu chính">
+        <ul class="desktop-nav">
+          <li><a href="#hero" class="nav-link active">Trang chủ</a></li>
+          <li><a href="#about-me" class="nav-link">Hồ sơ</a></li>
+          <li><a href="#journey-milestones" class="nav-link">Lộ trình Tuần 1-5</a></li>
+          <li><a href="#showcase-exercises" class="nav-link">6 Bài tập CSS</a></li>
+          <li><a href="#footer" class="nav-link">Liên hệ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Desktop Actions: Theme Toggle & GitHub -->
+      <div class="nav-actions-desktop">
+        <!-- Nút Bật/Tắt Sáng Tối (Theme Toggle) -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Chuyển đổi giao diện Sáng / Tối">
+          <span class="sun-icon">☀️</span>
+          <span class="moon-icon">🌙</span>
+          <span class="theme-label" id="themeLabelText">Chế độ</span>
+        </button>
+
+        <a href="https://github.com/denzxje157" target="_blank" class="btn-cta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          @denzxje157
+        </a>
+      </div>
+
+      <!-- Hamburger Button (Mobile / Tablet) -->
+      <button class="hamburger-toggle" id="hubHamburgerBtn" aria-label="Mở danh mục điều hướng">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <aside class="mobile-nav-drawer" id="hubMobileDrawer">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1rem; margin-bottom: 0.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <img src="logo.png" alt="Logo LHU" style="height: 36px; width: auto;">
+        <div>
+          <div style="font-weight: 800; color: var(--color-primary); font-size: 1rem;">Nguyễn Hoàng Anh</div>
+          <div style="font-size: 0.75rem; color: var(--text-dim);">LHU Web Design</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nút đổi theme trên Drawer -->
+    <button class="theme-toggle-btn" id="mobileDrawerThemeToggle" style="width: 100%; justify-content: center; padding: 0.65rem;">
+      <span class="sun-icon">☀️ Chuyển sang Giao diện Sáng</span>
+      <span class="moon-icon">🌙 Chuyển sang Giao diện Tối</span>
+    </button>
+
+    <ul class="mobile-nav-links">
+      <li><a href="#hero" class="mobile-drawer-link">🏠 Trang chủ</a></li>
+      <li><a href="#about-me" class="mobile-drawer-link">👤 Hồ sơ Hoàng Anh</a></li>
+      <li><a href="#journey-milestones" class="mobile-drawer-link">📚 Lộ trình Tuần 1 - 5</a></li>
+      <li><a href="#showcase-exercises" class="mobile-drawer-link">⚡ 6 Bài tập CSS Chuyển động</a></li>
+      <li><a href="#footer" class="mobile-drawer-link">📞 Thông tin &amp; Liên hệ</a></li>
+    </ul>
+
+    <div style="margin-top: auto;">
+      <a href="https://github.com/denzxje157" target="_blank" class="btn-cta" style="width: 100%; justify-content: center;">
+        Mở GitHub @denzxje157
+      </a>
+    </div>
+  </aside>
+  <div class="backdrop-overlay" id="hubBackdrop"></div>
+
+  <!-- ==================== 2. HERO SECTION & PORTFOLIO HOÀNG ANH ==================== -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-grid">
+      <!-- Cột Trái: Giới thiệu (1 hàng duy nhất, không cắt chữ) -->
+      <div class="hero-info-col">
+        <div class="pill-badge">
+          <span class="dot"></span>
+          <span>HỌC PHẦN 111101 · BUỔI 6: HOÀN THIỆN GIAO DIỆN &amp; TỐI ƯU HÓA</span>
+        </div>
+
+        <h1 class="hero-title">
+          The Interactive Showcase &amp; <br>
+          <span class="name-highlight">Nguyễn Hoàng Anh Portfolio</span>
+        </h1>
+
+        <!-- Dòng Typing Effect hiển thị trọn vẹn 1 hàng, có hoạt ảnh gõ chữ CSS thuần -->
+        <div class="typing-line-wrapper">
+          <span class="typing-line-prefix">⚡ VIBE CODING:</span>
+          <span class="typing-line-text">Web Developer &amp; AI Researcher</span>
+        </div>
+
+        <p class="hero-description">
+          Xin chào! Tôi là <strong>Nguyễn Hoàng Anh</strong>, sinh viên Năm 2 ngành Công nghệ Thông tin tại <strong>Trường Đại học Lạc Hồng (LHU)</strong>. Mục tiêu tương lai trở thành Giảng viên Đại học &amp; Nhà nghiên cứu Khoa học. Trang web này tích hợp hệ thống 6 bài tập hiệu ứng chuyển động CSS hiện đại, tối ưu 60 FPS trên nền tảng GPU.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#showcase-exercises" class="btn-cta">
+            🔥 Khám phá 6 Bài tập CSS
+          </a>
+          <a href="#journey-milestones" class="btn-secondary">
+            📚 Lộ trình Tuần 1 - 5
+          </a>
+          <a href="#about-me" class="btn-secondary">
+            👤 Hồ sơ chi tiết
+          </a>
+        </div>
+      </div>
+
+      <!-- Cột Phải: Chân dung Nguyễn Hoàng Anh thật sự -->
+      <div class="hero-avatar-col">
+        <div class="avatar-card-wrapper">
+          <div class="avatar-photo-box">
+            <span class="avatar-badge-lhu">
+              🎓 Sinh viên LHU
+            </span>
+            <img src="anh.png" alt="Chân dung Nguyễn Hoàng Anh" class="avatar-photo-img">
+          </div>
+          <div class="avatar-card-details">
+            <h2 class="avatar-name">Nguyễn Hoàng Anh</h2>
+            <p class="avatar-role">Team Leader &amp; Vibe Developer</p>
+            <div class="avatar-tags">
+              <span class="avatar-tag-item">Deep Learning</span>
+              <span class="avatar-tag-item">ESP32 IoT</span>
+              <span class="avatar-tag-item">Web 60 FPS</span>
+              <span class="avatar-tag-item">LHU IT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. SECTION ABOUT HOÀNG ANH ==================== -->
+  <section class="container" id="about-me" style="padding-bottom: 3.5rem;">
+    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-md);">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1rem;">
+        <div>
+          <span style="color: var(--color-primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;">Lý lịch học tập &amp; Nghiên cứu</span>
+          <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-top: 0.25rem;">Hồ sơ Năng lực - Nguyễn Hoàng Anh</h2>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <a href="https://github.com/denzxje157" target="_blank" class="btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.9rem;">
+            GitHub: @denzxje157
+          </a>
+          <span class="btn-secondary" style="font-size: 0.8rem; padding: 0.4rem 0.9rem; color: #dc2626;">
+            Kênh: ARTFIVE FASHION
+          </span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; line-height: 1.7; color: var(--text-muted); font-size: 0.95rem;">
+        <div>
+          <h3 style="color: var(--text-main); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            🎯 Định hướng Sự nghiệp
+          </h3>
+          <p>Trở thành <strong>Giảng viên Đại học &amp; Nhà nghiên cứu Khoa học</strong>, truyền cảm hứng công nghệ thông tin và phát triển các giải pháp Trí tuệ Nhân tạo phục vụ cộng đồng.</p>
+        </div>
+        <div>
+          <h3 style="color: var(--text-main); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            🤖 Nghiên cứu Trọng tâm
+          </h3>
+          <p>Mô hình mạng nơ-ron <strong>Transformers</strong>, xử lý hình ảnh <strong>Computer Vision</strong>, và tính toán biên trên vi điều khiển <strong>ESP32 / ESP8266</strong> kết nối cảm biến IoT.</p>
+        </div>
+        <div>
+          <h3 style="color: var(--text-main); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            💡 Tác phong Làm việc Nhóm
+          </h3>
+          <p>Trưởng nhóm đảm nhận vai trò <strong>Scrum Master / Lead Architect</strong>, định hướng kiến trúc chia module rõ ràng, quản lý Git Flow và phối hợp cùng AI hiệu quả.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. HÀNH TRÌNH TỪ TUẦN 1 ĐẾN TUẦN 5 (ĐẦY ĐỦ CHI TIẾT) ==================== -->
+  <section class="container journey-section" id="journey-milestones">
+    <div class="section-header">
+      <span class="section-subtitle">Chương trình Đào tạo Lạc Hồng</span>
+      <h2 class="section-title">Hành trình Học tập &amp; Thực hành từ Tuần 1 đến Tuần 5</h2>
+      <p style="color: var(--text-muted); max-width: 700px; margin: 0.5rem auto 0;">
+        Tổng hợp toàn diện các kiến thức, sản phẩm mã nguồn và kỹ năng Vibe Coding AI sinh viên Nguyễn Hoàng Anh đã hoàn thành xuyên suốt 5 tuần học đầu tiên.
+      </p>
+    </div>
+
+    <div class="journey-grid">
+      <!-- TUẦN 1 -->
+      <article class="journey-card">
+        <div class="journey-badge-col">
+          <span class="journey-week-num">01</span>
+          <span class="journey-week-label">Tuần 1</span>
+        </div>
+        <div class="journey-content-col">
+          <h3>Nhập môn &amp; Hệ sinh thái AI Web Development</h3>
+          <p>
+            <strong>Nội dung:</strong> Thiết lập môi trường làm việc VS Code, Vibe Coding, cấu hình Git cá nhân và quy trình Git Flow (Clone, Branch, Commit, Push). Khởi tạo trang Profile cá nhân của Nguyễn Hoàng Anh hoàn chỉnh với banner Đại học Lạc Hồng, cấu trúc YAML giới thiệu bản thân, bảng Tech Stack và dự án Sắc Việt Marketplace.
+          </p>
+          <div class="journey-tags">
+            <span class="journey-tag">HTML5 Cơ bản</span>
+            <span class="journey-tag">Git Flow</span>
+            <span class="journey-tag">Vibe Prompting</span>
+            <span class="journey-tag">Profile LHU</span>
+          </div>
+        </div>
+        <div class="journey-action-col">
+          <a href="../buoi1/index.html" class="journey-btn-link">
+            Xem Sản phẩm Tuần 1 →
+          </a>
+        </div>
+      </article>
+
+      <!-- TUẦN 2 -->
+      <article class="journey-card">
+        <div class="journey-badge-col">
+          <span class="journey-week-num">02</span>
+          <span class="journey-week-label">Tuần 2</span>
+        </div>
+        <div class="journey-content-col">
+          <h3>Tư duy Semantic HTML5 &amp; Cấu trúc Web Hệ thống</h3>
+          <p>
+            <strong>Nội dung:</strong> Làm chủ tư duy "No Div" bừa bãi, áp dụng 7+ thẻ Semantic tiêu chuẩn (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>) để tối ưu hóa SEO và cấu trúc cây DOM.
+            <br>• <em>Hoạt động 1:</em> X-Ray Vision soi cấu trúc Web DOM tree.
+            <br>• <em>Hoạt động 2:</em> Trang Portfolio cá nhân Semantic với thanh điều hướng HA, thẻ Aside thông tin sinh viên LHU và lưới kỹ năng.
+          </p>
+          <div class="journey-tags">
+            <span class="journey-tag">Semantic HTML5</span>
+            <span class="journey-tag">SEO Meta</span>
+            <span class="journey-tag">DOM Tree</span>
+            <span class="journey-tag">W3C Standard</span>
+          </div>
+        </div>
+        <div class="journey-action-col">
+          <a href="../buoi2/hoatdong1.html" class="journey-btn-link">
+            Xem HĐ 1 (X-Ray) →
+          </a>
+          <a href="../buoi2/hoatdong2.html" class="journey-btn-link">
+            Xem HĐ 2 (Portfolio) →
+          </a>
+        </div>
+      </article>
+
+      <!-- TUẦN 3 -->
+      <article class="journey-card">
+        <div class="journey-badge-col">
+          <span class="journey-week-num">03</span>
+          <span class="journey-week-label">Tuần 3</span>
+        </div>
+        <div class="journey-content-col">
+          <h3>CSS Layout System (Flexbox &amp; CSS Grid)</h3>
+          <p>
+            <strong>Nội dung:</strong> Phân biệt rõ nét Flexbox (dàn trang 1 chiều linh hoạt cho Menu, Card components) và CSS Grid (hệ thống lưới 2 chiều cho toàn bộ bố cục website). Nắm vững mô hình Box Model, sử dụng thuộc tính <code>gap</code> hiện đại thay cho <code>margin</code> thủ công.
+            <br>• <em>Hoạt động 1:</em> "Flex &amp; Grid Battle" – Thử thách căn giữa đối tượng tức thì và lưới 3 cột tự co giãn.
+            <br>• <em>Hoạt động 2:</em> Xây dựng bố cục Portfolio với Sidebar 250px và Main content 75% bằng <code>grid-template-areas</code>.
+          </p>
+          <div class="journey-tags">
+            <span class="journey-tag">CSS Flexbox</span>
+            <span class="journey-tag">CSS Grid 2D</span>
+            <span class="journey-tag">Box Model</span>
+            <span class="journey-tag">Gap System</span>
+          </div>
+        </div>
+        <div class="journey-action-col">
+          <a href="../buoi2/hoatdong1.html" class="journey-btn-link">
+            Xem Flex/Grid Battle →
+          </a>
+        </div>
+      </article>
+
+      <!-- TUẦN 4 -->
+      <article class="journey-card">
+        <div class="journey-badge-col">
+          <span class="journey-week-num">04</span>
+          <span class="journey-week-label">Tuần 4</span>
+        </div>
+        <div class="journey-content-col">
+          <h3>Design System &amp; Tư duy Responsive (Mobile First)</h3>
+          <p>
+            <strong>Nội dung:</strong> Xây dựng hệ thống biến CSS Tokens tại <code>:root</code> (màu sắc, spacing scale, radius). Áp dụng chủ đề **Shonen Anime Action** cực cháy (One Piece, Naruto, Jujutsu Kaisen, Demon Slayer) qua 4 hoạt động:
+            <br>• <em>HĐ 1:</em> Bảng mã màu thông minh &amp; Chế độ Sáng/Tối (Dark/Light Mode).
+            <br>• <em>HĐ 2:</em> Responsive Portfolio co giãn 1 cột trên Mobile (&lt; 768px).
+            <br>• <em>HĐ 3:</em> Breakpoint Challenge (Desktop 4 cột, Tablet 2 cột, Mobile 1 cột).
+            <br>• <em>HĐ 4:</em> Design System Refactoring loại bỏ 100% hardcode pixel.
+          </p>
+          <div class="journey-tags">
+            <span class="journey-tag">CSS Variables</span>
+            <span class="journey-tag">Mobile First</span>
+            <span class="journey-tag">Shonen Anime Theme</span>
+            <span class="journey-tag">4-Column Grid</span>
+          </div>
+        </div>
+        <div class="journey-action-col">
+          <a href="../buoi4/hoatdong1.html" class="journey-btn-link">HĐ 1: Màu sắc →</a>
+          <a href="../buoi4/hoatdong2.html" class="journey-btn-link">HĐ 2: Responsive →</a>
+          <a href="../buoi4/hoatdong3.html" class="journey-btn-link">HĐ 3: 4 Cột Anime →</a>
+          <a href="../buoi4/hoatdong4.html" class="journey-btn-link">HĐ 4: Refactor →</a>
+        </div>
+      </article>
+
+      <!-- TUẦN 5 -->
+      <article class="journey-card">
+        <div class="journey-badge-col">
+          <span class="journey-week-num">05</span>
+          <span class="journey-week-label">Tuần 5</span>
+        </div>
+        <div class="journey-content-col">
+          <h3>Hiệu ứng Chuyển động &amp; Thư viện Hiệu ứng (CSS Animations)</h3>
+          <p>
+            <strong>Nội dung:</strong> Hiểu rõ nguyên lý chuyển động trong Web (Timing functions, Keyframes, 2D/3D Transforms, Transition). 
+            <br>• <em>HĐ 1:</em> Micro-interactions nút bấm cảm xúc phản hồi đàn hồi với hàm <code>cubic-bezier</code>.
+            <br>• <em>HĐ 2:</em> "Loading Master" – Màn hình Preloader Spinner xoay 360 độ vô hạn <code>@keyframes spin</code>.
+            <br>• <em>HĐ 3:</em> "AOS - Scroll Reveal" – Tích hợp thư viện AOS qua CDN để xuất hiện mượt mà khi cuộn trang.
+            <br>• <em>HĐ 4:</em> Refactoring Performance – Thay đổi thuộc tính từ <code>top/left</code> sang GPU <code>transform: translate</code> cam kết 60 FPS.
+          </p>
+          <div class="journey-tags">
+            <span class="journey-tag">@keyframes</span>
+            <span class="journey-tag">cubic-bezier</span>
+            <span class="journey-tag">Thư viện AOS</span>
+            <span class="journey-tag">GPU 60 FPS</span>
+          </div>
+        </div>
+        <div class="journey-action-col">
+          <a href="../buoi5/hoatdong1.html" class="journey-btn-link">
+            Xem HĐ 1 (Nút bấm) →
+          </a>
+          <a href="../buoi5/hoatdong2-3-4.html" class="journey-btn-link">
+            Xem HĐ 2-3-4 (AOS &amp; Spinner) →
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ==================== 5. SHOWCASE GRID: 6 BÀI TẬP HIỆU ỨNG (BUỔI 5/6) ==================== -->
+  <section class="exercises-showcase-section" id="showcase-exercises">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Chuyển động &amp; Vi tương tác</span>
+        <h2 class="section-title">Bộ 6 Bài tập Hiệu ứng Nâng cao (Buổi 5 &amp; 6)</h2>
+        <p style="color: var(--text-muted); max-width: 650px; margin: 0.5rem auto 0;">
+          Từng bài tập có thể được tương tác trực tiếp qua bản xem trước hoặc mở trang độc lập để kiểm tra mã nguồn.
+        </p>
+      </div>
+
+      <div class="exercise-cards-grid">
+        <!-- Card 1: FAB -->
+        <article class="showcase-item">
+          <div class="showcase-preview-area">
+            <div class="mini-fab">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+          </div>
+          <div class="showcase-details">
+            <span class="exercise-num-badge">Bài tập 1</span>
+            <h3 class="showcase-name">Floating Action Button (FAB)</h3>
+            <p class="showcase-summary">Nút cố định góc dưới bên phải với hiệu ứng lan tỏa sóng nhịp tim (Pulse Animation) liên tục và submenu liên hệ.</p>
+            <div class="showcase-footer">
+              <span class="tech-tag">@keyframes pulse</span>
+              <a href="bai1_fab.html" class="view-exercise-btn">Chi tiết bài 1 →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: 3D Flip Card -->
+        <article class="showcase-item">
+          <div class="showcase-preview-area">
+            <div class="mini-flip-box">
+              <div class="mini-flip-card">
+                <div class="mini-front">
+                  <span>👤 Hoàng Anh</span>
+                  <span style="font-size: 0.65rem; color: var(--color-primary); font-weight: 700;">Hover để lật 3D</span>
+                </div>
+                <div class="mini-back">
+                  <span>🎓 Leader LHU</span>
+                  <span style="font-size: 0.65rem;">@denzxje157</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="showcase-details">
+            <span class="exercise-num-badge">Bài tập 2</span>
+            <h3 class="showcase-name">Card Flip Effect 3D</h3>
+            <p class="showcase-summary">Thẻ nhân sự của Nguyễn Hoàng Anh lật 180 độ theo trục Y trong không gian 3D (perspective) mượt mà không bị giật.</p>
+            <div class="showcase-footer">
+              <span class="tech-tag">preserve-3d</span>
+              <a href="bai2_cardflip.html" class="view-exercise-btn">Chi tiết bài 2 →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: Typing Effect -->
+        <article class="showcase-item">
+          <div class="showcase-preview-area" style="flex-direction: column;">
+            <div style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: var(--color-primary); border-right: 2.5px solid var(--color-primary); white-space: nowrap; overflow: hidden; width: 0; animation: typingMiniCard 3.5s steps(22, end) infinite; padding: 0.4rem 0.8rem; background: var(--bg-surface-elevated); border-radius: 8px;">
+              Tôi là Kỹ sư Phần mềm
+            </div>
+          </div>
+          <div class="showcase-details">
+            <span class="exercise-num-badge">Bài tập 3</span>
+            <h3 class="showcase-name">Pure CSS Typing Effect</h3>
+            <p class="showcase-summary">Hiệu ứng máy đánh chữ chạy tuần tự từng ký tự kèm con trỏ nhấp nháy, xây dựng 100% bằng CSS thuần (không dùng JS).</p>
+            <div class="showcase-footer">
+              <span class="tech-tag">steps() timing</span>
+              <a href="bai3_typing.html" class="view-exercise-btn">Chi tiết bài 3 →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4: Parallax Background -->
+        <article class="showcase-item">
+          <div class="showcase-preview-area" style="padding: 0.5rem;">
+            <div class="mini-parallax-stage">
+              <span>🌌 Parallax Fixed View</span>
+            </div>
+          </div>
+          <div class="showcase-details">
+            <span class="exercise-num-badge">Bài tập 4</span>
+            <h3 class="showcase-name">Parallax Depth Background</h3>
+            <p class="showcase-summary">Ảnh nền cố định tạo hiệu ứng chiều sâu không gian khi cuộn trang, mang lại trải nghiệm thị giác điện ảnh cuốn hút.</p>
+            <div class="showcase-footer">
+              <span class="tech-tag">attachment: fixed</span>
+              <a href="bai4_parallax.html" class="view-exercise-btn">Chi tiết bài 4 →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5: Hamburger Menu -->
+        <article class="showcase-item">
+          <div class="showcase-preview-area">
+            <button class="hamburger-btn" id="previewBurgerBtn" style="pointer-events: auto;">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </button>
+          </div>
+          <div class="showcase-details">
+            <span class="exercise-num-badge">Bài tập 5</span>
+            <h3 class="showcase-name">Modern Hamburger Menu</h3>
+            <p class="showcase-summary">Biến đổi 3 gạch ngang thành dấu 'X' đóng mở với hàm cubic-bezier nảy đàn hồi và Drawer trượt sang trọng.</p>
+            <div class="showcase-footer">
+              <span class="tech-tag">cubic-bezier bounce</span>
+              <a href="bai5_hamburger.html" class="view-exercise-btn">Chi tiết bài 5 →</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 6: Skill Bar Animation -->
+        <article class="showcase-item">
+          <div class="showcase-preview-area" style="padding: 1.5rem; flex-direction: column; justify-content: center; width: 100%;">
+            <div style="width: 100%; margin-bottom: 0.6rem;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 700; margin-bottom: 4px;">
+                <span>HTML/CSS</span><span style="color: var(--color-primary);">95%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-fill" style="--target-width: 95%;"></div>
+              </div>
+            </div>
+            <div style="width: 100%;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 700; margin-bottom: 4px;">
+                <span>Vibe Coding</span><span style="color: var(--color-success);">98%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-fill" style="--target-width: 98%; background: linear-gradient(90deg, #059669, #0284c7);"></div>
+              </div>
+            </div>
+          </div>
+          <div class="showcase-details">
+            <span class="exercise-num-badge">Bài tập 6</span>
+            <h3 class="showcase-name">Skill Bar Auto Animation</h3>
+            <p class="showcase-summary">Thanh kỹ năng tự động nạp đầy từ 0% đến mốc chỉ định khi tải trang với thuộc tính animation-fill-mode: forwards.</p>
+            <div class="showcase-footer">
+              <span class="tech-tag">fill-mode: forwards</span>
+              <a href="bai6_skillbar.html" class="view-exercise-btn">Chi tiết bài 6 →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6. FLOATING ACTION BUTTON (BÀI 1 TÍCH HỢP) ==================== -->
+  <aside class="fab-container" id="globalFabContainer">
+    <div class="fab-menu">
+      <a href="https://zalo.me" target="_blank" class="fab-item">
+        <span class="fab-label">Chat Zalo</span>
+        <div class="fab-sub-btn fab-zalo">💬</div>
+      </a>
+      <a href="https://m.me" target="_blank" class="fab-item">
+        <span class="fab-label">Messenger</span>
+        <div class="fab-sub-btn fab-messenger">✉️</div>
+      </a>
+      <a href="tel:02513952778" class="fab-item">
+        <span class="fab-label">Hotline LHU: (0251) 3952 778</span>
+        <div class="fab-sub-btn fab-phone">📞</div>
+      </a>
+    </div>
+    <button class="fab-main-btn" id="globalFabToggleBtn" aria-label="Kênh liên hệ hỗ trợ nhanh">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </button>
+  </aside>
+
+  <!-- ==================== 7. MOBILE BOTTOM APP NAVIGATION BAR ==================== -->
+  <nav class="bottom-app-nav" aria-label="Thanh điều hướng ứng dụng di động">
+    <a href="#hero" class="app-nav-item active">
+      <span class="app-nav-icon">🏠</span>
+      <span class="app-nav-text">Trang chủ</span>
+    </a>
+    <a href="#journey-milestones" class="app-nav-item">
+      <span class="app-nav-icon">📚</span>
+      <span class="app-nav-text">Tuần 1-5</span>
+    </a>
+    <a href="#showcase-exercises" class="app-nav-item">
+      <span class="app-nav-icon">⚡</span>
+      <span class="app-nav-text">6 Bài tập</span>
+    </a>
+    <a href="#about-me" class="app-nav-item">
+      <span class="app-nav-icon">👤</span>
+      <span class="app-nav-text">Cá nhân</span>
+    </a>
+    <button class="app-nav-item" id="mobileBottomThemeToggle" aria-label="Đổi sáng tối">
+      <span class="app-nav-icon sun-icon">☀️</span>
+      <span class="app-nav-icon moon-icon">🌙</span>
+      <span class="app-nav-text">Giao diện</span>
+    </button>
+  </nav>
+
+  <!-- ==================== 8. STICKY FOOTER 3 CỘT ==================== -->
+  <footer class="site-footer" id="footer">
+    <div class="container">
+      <div class="footer-columns-grid">
+        <!-- Cột 1: Thông tin nhóm & Nguyễn Hoàng Anh -->
+        <section class="footer-col">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <img src="logo.png" alt="Logo LHU" style="height: 38px; width: auto;">
+            <div>
+              <div style="font-weight: 800; color: var(--color-primary); font-size: 1.05rem;">Nguyễn Hoàng Anh</div>
+              <div style="font-size: 0.75rem; color: var(--text-dim);">Học phần Thiết kế Web (111101)</div>
+            </div>
+          </div>
+          <p class="footer-about-text">
+            Sản phẩm được thực hiện bởi <strong>Nguyễn Hoàng Anh</strong> (Trưởng nhóm). Khoa Công nghệ Thông tin, Trường Đại học Lạc Hồng. Ứng dụng phương pháp <strong>Vibe Coding</strong> và kiến trúc giao diện hiện đại.
+          </p>
+          <div class="footer-badges">
+            <span class="footer-badge-pill badge-blue">Semantic HTML5</span>
+            <span class="footer-badge-pill badge-green">GPU 60 FPS</span>
+            <span class="footer-badge-pill badge-gold">Đại học Lạc Hồng</span>
+          </div>
+        </section>
+
+        <!-- Cột 2: Liên kết nhanh tới các bài -->
+        <nav class="footer-col" aria-label="Liên kết chân trang">
+          <h3 class="footer-col-title">📑 Bài tập &amp; Lộ trình</h3>
+          <ul class="footer-nav-list">
+            <li><a href="bai1_fab.html">Bài 1: Nút tương tác FAB</a></li>
+            <li><a href="bai2_cardflip.html">Bài 2: Thẻ nhân sự lật mặt 3D</a></li>
+            <li><a href="bai3_typing.html">Bài 3: Hiệu ứng máy đánh chữ</a></li>
+            <li><a href="bai4_parallax.html">Bài 4: Parallax Background</a></li>
+            <li><a href="bai5_hamburger.html">Bài 5: Modern Hamburger Menu</a></li>
+            <li><a href="bai6_skillbar.html">Bài 6: Thanh kỹ năng tự chạy</a></li>
+          </ul>
+        </nav>
+
+        <!-- Cột 3: Form liên hệ trực tiếp -->
+        <section class="footer-col footer-col-subscribe">
+          <h3 class="footer-col-title">📬 Kết nối với Hoàng Anh</h3>
+          <p class="footer-about-text">
+            Gửi email hoặc phản hồi về bài tập để cùng thảo luận về công nghệ web và nghiên cứu AI!
+          </p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã gửi liên hệ cho Hoàng Anh!');">
+            <div class="newsletter-input-group">
+              <input type="email" placeholder="Nhập email của bạn..." required class="newsletter-input">
+              <button type="submit" class="newsletter-btn">Gửi đi</button>
+            </div>
+            <span class="newsletter-note">🔒 Bảo mật thông tin, hỗ trợ học tập tại LHU.</span>
+          </form>
+        </section>
+      </div>
+
+      <!-- Thanh bản quyền đáy -->
+      <div class="footer-bottom-bar">
+        <p>© 2026 Nguyễn Hoàng Anh (@denzxje157) · Đại học Lạc Hồng (LHU). All rights reserved.</p>
+        <p>Khát vọng dẫn đầu · Powered by Vibe Coding AI Assistant.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts Tương tác & Theme Switcher Logic -->
+  <script>
+    // ==========================================
+    // 1. QUẢN LÝ CHẾ ĐỘ SÁNG / TỐI (DARK / LIGHT MODE)
+    // ==========================================
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const mobileDrawerThemeToggle = document.getElementById('mobileDrawerThemeToggle');
+    const mobileBottomThemeToggle = document.getElementById('mobileBottomThemeToggle');
+    const metaThemeColor = document.getElementById('metaThemeColor');
+    const themeLabelText = document.getElementById('themeLabelText');
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        if (themeLabelText) themeLabelText.textContent = 'Giao diện Tối';
+        if (metaThemeColor) metaThemeColor.setAttribute('content', '#000000');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        if (themeLabelText) themeLabelText.textContent = 'Giao diện Sáng';
+        if (metaThemeColor) metaThemeColor.setAttribute('content', '#0052cc');
+      }
+      localStorage.setItem('lhu_theme_preference', theme);
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+    }
+
+    // Khởi tạo theme từ bộ nhớ trình duyệt hoặc mặc định 'dark' (Full Tối OLED)
+    const savedTheme = localStorage.getItem('lhu_theme_preference') || 'dark';
+    applyTheme(savedTheme);
+
+    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+    if (mobileDrawerThemeToggle) mobileDrawerThemeToggle.addEventListener('click', toggleTheme);
+    if (mobileBottomThemeToggle) mobileBottomThemeToggle.addEventListener('click', toggleTheme);
+
+    // ==========================================
+    // 2. XỬ LÝ DRAWER MENU DI ĐỘNG
+    // ==========================================
+    const hubHamburgerBtn = document.getElementById('hubHamburgerBtn');
+    const hubMobileDrawer = document.getElementById('hubMobileDrawer');
+    const hubBackdrop = document.getElementById('hubBackdrop');
+    const drawerLinks = document.querySelectorAll('.mobile-drawer-link');
+
+    function toggleMobileMenu() {
+      const isOpen = hubHamburgerBtn.classList.toggle('active');
+      hubMobileDrawer.classList.toggle('open');
+      hubBackdrop.classList.toggle('open');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    if (hubHamburgerBtn) hubHamburgerBtn.addEventListener('click', toggleMobileMenu);
+    if (hubBackdrop) hubBackdrop.addEventListener('click', toggleMobileMenu);
+    drawerLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (hubMobileDrawer.classList.contains('open')) {
+          toggleMobileMenu();
+        }
+      });
+    });
+
+    // Preview Hamburger Button trong Showcase Card 5
+    const previewBurgerBtn = document.getElementById('previewBurgerBtn');
+    if (previewBurgerBtn) {
+      previewBurgerBtn.addEventListener('click', () => {
+        previewBurgerBtn.classList.toggle('active');
+      });
+    }
+
+    // ==========================================
+    // 3. XỬ LÝ FLOATING ACTION BUTTON (FAB)
+    // ==========================================
+    const globalFabContainer = document.getElementById('globalFabContainer');
+    const globalFabToggleBtn = document.getElementById('globalFabToggleBtn');
+    if (globalFabToggleBtn) {
+      globalFabToggleBtn.addEventListener('click', () => {
+        globalFabContainer.classList.toggle('active');
+      });
+    }
+    document.addEventListener('click', (e) => {
+      if (globalFabContainer && !globalFabContainer.contains(e.target)) {
+        globalFabContainer.classList.remove('active');
+      }
+    });
+
+    // Active Tab cho Mobile Bottom App Bar khi cuộn trang
+    const bottomNavItems = document.querySelectorAll('.app-nav-item[href]');
+    window.addEventListener('scroll', () => {
+      const fromTop = window.scrollY + 120;
+      bottomNavItems.forEach(item => {
+        const sectionId = item.getAttribute('href');
+        if (sectionId && sectionId.startsWith('#')) {
+          const section = document.querySelector(sectionId);
+          if (section) {
+            if (section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+              bottomNavItems.forEach(i => i.classList.remove('active'));
+              item.classList.add('active');
+            }
+          }
+        }
+      });
+    }, { passive: true });
+  </script>
+</body>
+</html>

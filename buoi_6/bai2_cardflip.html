@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 2: Card Flip Effect 3D - Thẻ nhân sự lật mặt (Nguyễn Hoàng Anh)</title>
+  
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('lhu_theme_preference') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="bai-tap.css">
+</head>
+<body>
+
+  <main class="exercise-container">
+    <div class="top-bar-nav">
+      <a href="index.html" class="back-home-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Quay lại Mục lục Buổi 6
+      </a>
+      <button class="standalone-theme-btn" id="standaloneThemeToggle" aria-label="Chuyển đổi Sáng / Tối">
+        <span class="sun-icon">☀️ Giao diện Sáng</span>
+        <span class="moon-icon">🌙 Giao diện Tối</span>
+      </button>
+    </div>
+
+    <header class="exercise-header">
+      <span class="exercise-badge">Bài tập 2 / Buổi 5 & 6</span>
+      <h1 class="exercise-title">3D Card Flip Effect (Thẻ nhân sự lật mặt)</h1>
+      <p class="exercise-desc">Sử dụng thuộc tính không gian ba chiều trong CSS để tạo hiệu ứng lật thẻ 180 độ quanh trục Y mượt mà khi di chuột, tối ưu góc nhìn chiều sâu chân thực.</p>
+    </header>
+
+    <!-- Khu vực Demo Grid Thẻ lật 3D -->
+    <section class="demo-box">
+      <h2 class="demo-title">Đội ngũ Dự án LHU (Rê chuột hoặc chạm vào thẻ để lật 3D)</h2>
+      
+      <div class="flip-grid">
+        <!-- Thẻ 1: Nguyễn Hoàng Anh (Ảnh thật anh.png) -->
+        <article class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <!-- Mặt trước -->
+            <div class="flip-card-front">
+              <img src="anh.png" alt="Chân dung Nguyễn Hoàng Anh" class="flip-avatar" style="object-position: top center;">
+              <h3 class="flip-name">Nguyễn Hoàng Anh</h3>
+              <p class="flip-role">Team Leader · LHU IT</p>
+              <div class="flip-hint">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                Rê chuột để lật thẻ 3D
+              </div>
+            </div>
+            <!-- Mặt sau -->
+            <div class="flip-card-back">
+              <h3 class="flip-back-title">Nguyễn Hoàng Anh</h3>
+              <p class="flip-bio">Sinh viên Năm 2 - Khoa CNTT ĐH Lạc Hồng. Trưởng nhóm điều phối dự án, đam mê Deep Learning, Embedded IoT và Vibe Coding.</p>
+              <div class="flip-social-links">
+                <a href="https://github.com/denzxje157" target="_blank" class="social-btn">GitHub</a>
+                <a href="https://lhu.edu.vn" target="_blank" class="social-btn">LHU Portal</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Thẻ 2: UI/UX Designer -->
+        <article class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <!-- Mặt trước -->
+            <div class="flip-card-front">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Minh Phát" class="flip-avatar">
+              <h3 class="flip-name">Trần Minh Phát</h3>
+              <p class="flip-role">UI/UX Designer</p>
+              <div class="flip-hint">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                Rê chuột để lật thẻ 3D
+              </div>
+            </div>
+            <!-- Mặt sau -->
+            <div class="flip-card-back">
+              <h3 class="flip-back-title">Thiết kế Giao diện</h3>
+              <p class="flip-bio">Phụ trách Design System Tokens, CSS Flexbox/Grid và các hiệu ứng chuyển đổi trạng thái giao diện hiện đại.</p>
+              <div class="flip-social-links">
+                <a href="#" class="social-btn">Dribbble</a>
+                <a href="#" class="social-btn">Behance</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Thẻ 3: AI Prompt Engineer -->
+        <article class="flip-card" tabindex="0">
+          <div class="flip-card-inner">
+            <!-- Mặt trước -->
+            <div class="flip-card-front">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80" alt="Bảo Huy" class="flip-avatar">
+              <h3 class="flip-name">Lê Bảo Huy</h3>
+              <p class="flip-role">Prompt Engineer</p>
+              <div class="flip-hint">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                Rê chuột để lật thẻ 3D
+              </div>
+            </div>
+            <!-- Mặt sau -->
+            <div class="flip-card-back">
+              <h3 class="flip-back-title">Tối ưu hóa Trí tuệ AI</h3>
+              <p class="flip-bio">Chuyên thiết kế cấu trúc prompt tối ưu, phân rã bài toán và chỉ đạo trợ lý AI sinh mã nguồn chất lượng cao.</p>
+              <div class="flip-social-links">
+                <a href="#" class="social-btn">Facebook</a>
+                <a href="#" class="social-btn">Portfolio</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="code-info">
+<pre>/* Công thức then chốt của hiệu ứng lật thẻ 3D */
+.flip-card {
+  perspective: 1000px; /* Thiết lập phối cảnh 3D */
+}
+.flip-card-inner {
+  transform-style: preserve-3d; /* Giữ cấu trúc 3D cho thẻ con */
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg); /* Xoay 180 độ quanh trục thẳng đứng Y */
+}
+.flip-card-front, .flip-card-back {
+  backface-visibility: hidden; /* Ẩn mặt úp lưng để không bị xuyên thấu */
+}</pre>
+      </div>
+    </section>
+
+    <!-- Khối giải trình -->
+    <section class="demo-box">
+      <h2 class="demo-title">Gợi ý Prompt & Tư duy Kỹ thuật LHU</h2>
+      <div style="color: var(--text-secondary); font-size: var(--fs-sm); line-height: 1.7;">
+        <p><strong>🎯 Prompt đã sử dụng:</strong> <em>"Tạo hiệu ứng lật thẻ (Card Flip) bằng CSS thuần cho hồ sơ nhân sự của Nguyễn Hoàng Anh. Cấu trúc gồm container chính và hai thẻ con .card-front, .card-back. Khi hover vào thẻ, nó sẽ xoay 180 độ theo trục Y để hiện mặt sau. Sử dụng transform-style: preserve-3d và backface-visibility: hidden. Đảm bảo hiệu ứng có chiều sâu 3D mượt mà và hoạt động tốt trên cả điện thoại (chạm để lật)."</em></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="exercise-footer">
+    <p>© 2026 Nguyễn Hoàng Anh (@denzxje157) - Đại học Lạc Hồng (LHU). Bài thực hành hiệu ứng CSS.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.flip-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+      });
+    });
+
+    // Xử lý chuyển đổi Theme Sáng / Tối
+    const standaloneThemeToggle = document.getElementById('standaloneThemeToggle');
+    if (standaloneThemeToggle) {
+      standaloneThemeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+        if (newTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+        localStorage.setItem('lhu_theme_preference', newTheme);
+      });
+    }
+  </script>
+</body>
+</html>

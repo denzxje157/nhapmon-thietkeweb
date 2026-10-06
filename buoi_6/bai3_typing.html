@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 3: Typing Effect (Hiệu ứng máy đánh chữ) - Pure CSS</title>
+  
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('lhu_theme_preference') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="bai-tap.css">
+  <style>
+    /* Kiểu dáng giao diện Terminal tươi sáng, thanh lịch */
+    .typing-demo-terminal {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: var(--shadow-md);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    [data-theme="dark"] .typing-demo-terminal {
+      background: #000000 !important;
+      border-color: #1c1c20 !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9) !important;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #f1f5f9;
+      transition: border-color 0.3s ease;
+    }
+
+    [data-theme="dark"] .terminal-header {
+      border-bottom-color: #1c1c20 !important;
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .terminal-title {
+      color: #64748b;
+      font-size: 0.8rem;
+      font-family: var(--font-family-mono);
+      font-weight: 600;
+      margin-left: auto;
+    }
+
+    [data-theme="dark"] .terminal-title {
+      color: #a1a1aa !important;
+    }
+
+    /* Hiệu ứng gõ chữ 1: Terminal Console */
+    .typewriter-terminal-box {
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .typewriter-line {
+      font-family: var(--font-family-mono);
+      font-size: clamp(0.95rem, 2.5vw, 1.35rem);
+      font-weight: 700;
+      color: var(--color-primary);
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid var(--color-primary);
+      width: 0;
+      animation: 
+        typingTerminal 4.5s steps(33, end) infinite,
+        cursorBlink 0.75s step-end infinite;
+    }
+
+    @keyframes typingTerminal {
+      0%, 10% {
+        width: 0;
+      }
+      45%, 75% {
+        width: 100%;
+      }
+      90%, 100% {
+        width: 0;
+      }
+    }
+
+    /* Hiệu ứng gõ chữ 2: Header Showcase */
+    .hero-typing-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-10) var(--space-4);
+      text-align: center;
+      background: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      border-radius: var(--radius-lg);
+      margin-top: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 82, 204, 0.06);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    [data-theme="dark"] .hero-typing-box {
+      background: #050507 !important;
+      border-color: rgba(59, 130, 246, 0.4) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9) !important;
+    }
+
+    .hero-typing-sub {
+      color: var(--color-primary);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+      background: #dbeafe;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    [data-theme="dark"] .hero-typing-sub {
+      background: #000000 !important;
+      color: #60a5fa !important;
+      border: 1px solid rgba(59, 130, 246, 0.3) !important;
+    }
+
+    .hero-typing-wrapper {
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .hero-typing-text {
+      font-family: var(--font-family-mono);
+      font-size: clamp(1.1rem, 3.2vw, 2.2rem);
+      font-weight: 800;
+      color: var(--color-primary);
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3.5px solid var(--color-primary);
+      width: 0;
+      animation: 
+        typingHeroSentence 4s steps(25, end) infinite,
+        cursorBlink 0.75s step-end infinite;
+    }
+
+    @keyframes typingHeroSentence {
+      0%, 10% {
+        width: 0;
+      }
+      45%, 75% {
+        width: 100%;
+      }
+      90%, 100% {
+        width: 0;
+      }
+    }
+
+    @keyframes cursorBlink {
+      0%, 100% {
+        border-color: transparent;
+      }
+      50% {
+        border-color: var(--color-primary);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="exercise-container">
+    <div class="top-bar-nav">
+      <a href="index.html" class="back-home-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Quay lại Mục lục Buổi 6
+      </a>
+      <button class="standalone-theme-btn" id="standaloneThemeToggle" aria-label="Chuyển đổi Sáng / Tối">
+        <span class="sun-icon">☀️ Giao diện Sáng</span>
+        <span class="moon-icon">🌙 Giao diện Tối</span>
+      </button>
+    </div>
+
+    <header class="exercise-header">
+      <span class="exercise-badge">Bài tập 3 / Buổi 5 & 6</span>
+      <h1 class="exercise-title">Pure CSS Typing Effect (Máy đánh chữ)</h1>
+      <p class="exercise-desc">Mô phỏng chuyển động từng ký tự xuất hiện tuần tự kèm con trỏ nhấp nháy ở cuối dòng, ứng dụng 100% bằng CSS Animation thuần (không dùng bất kỳ dòng JavaScript nào).</p>
+    </header>
+
+    <!-- Khu vực Demo 1: Terminal Simulator -->
+    <section class="demo-box">
+      <h2 class="demo-title">Demo 1: Terminal Console Gõ Tự Động</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+        Hoạt ảnh máy đánh chữ đang chạy liên tục: gõ chữ từng bước bằng hàm <code>steps()</code>, dừng lại để người đọc quan sát, sau đó xóa lùi và lặp lại chu kỳ.
+      </p>
+
+      <div class="typing-demo-terminal">
+        <div class="terminal-header">
+          <div class="terminal-dot dot-red"></div>
+          <div class="terminal-dot dot-yellow"></div>
+          <div class="terminal-dot dot-green"></div>
+          <span class="terminal-title">bash - hoanganh@lhu-it:~</span>
+        </div>
+
+        <div style="margin-bottom: 0.75rem; color: #64748b; font-family: var(--font-family-mono); font-size: 0.85rem;">
+          $ whoami --role
+        </div>
+
+        <div class="typewriter-terminal-box">
+          <div class="typewriter-line">
+            &gt; Tôi là Nguyễn Hoàng Anh (LHU IT)
+          </div>
+        </div>
+      </div>
+
+      <!-- Khu vực Demo 2: Hero Title Simulator -->
+      <div class="hero-typing-box">
+        <span class="hero-typing-sub">⚡ Tiêu đề Header Giới thiệu (Chuẩn đề bài giáo trình)</span>
+        <div class="hero-typing-wrapper">
+          <h2 class="hero-typing-text">Tôi là Kỹ sư Phần mềm LHU</h2>
+        </div>
+      </div>
+
+      <div class="code-info">
+<pre>/* Bộ Animation CSS thuần cho hiệu ứng máy đánh chữ */
+.hero-typing-text {
+  font-family: 'Fira Code', monospace;
+  white-space: nowrap;        /* Giữ toàn bộ chữ trên 1 hàng ngang */
+  overflow: hidden;            /* Cắt ẩn phần chữ chưa được gõ */
+  border-right: 3px solid #0052cc; /* Con trỏ nhấp nháy */
+  width: 0;                    /* Bắt đầu tại 0 ký tự */
+  /* Chạy hiệu ứng gõ từng bước và nhấp nháy con trỏ */
+  animation: 
+    typingHeroSentence 4s steps(25, end) infinite,
+    cursorBlink 0.75s step-end infinite;
+}
+
+@keyframes typingHeroSentence {
+  0%, 10% { width: 0; }        /* Tạm dừng 0.4s lúc chưa gõ */
+  45%, 75% { width: 100%; }    /* Đã gõ xong 100%, dừng lại 1.2s để đọc */
+  90%, 100% { width: 0; }      /* Xóa lùi chữ và lặp lại chu kỳ mới */
+}
+
+@keyframes cursorBlink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: #0052cc; }
+}</pre>
+      </div>
+    </section>
+
+    <!-- Khối giải trình -->
+    <section class="demo-box">
+      <h2 class="demo-title">Gợi ý Prompt & Tư duy Kỹ thuật LHU</h2>
+      <div style="color: var(--text-secondary); font-size: var(--fs-sm); line-height: 1.7;">
+        <p><strong>🎯 Prompt chuẩn theo giáo trình:</strong> <em>"Hãy viết mã CSS tạo hiệu ứng máy đánh chữ (Typing effect) cho một thẻ tiêu đề Header: 'Tôi là Kỹ sư Phần mềm LHU'. Chữ sẽ xuất hiện dần dần từ trái sang phải bằng animation thay đổi width với hàm steps(25), kèm theo con trỏ nhấp nháy ở cuối dòng chữ. Dừng lại 1.5s cho người đọc rồi xóa lùi và lặp lại. Không sử dụng JavaScript."</em></p>
+        <p style="margin-top: 0.75rem;"><strong>💡 Tinh chỉnh kỹ thuật:</strong> Bằng cách chia giai đoạn keyframes thành <code>0% -> 45% (Gõ)</code>, <code>45% -> 75% (Dừng đọc)</code>, và <code>75% -> 90% (Xóa)</code>, người dùng có trải nghiệm thị giác chân thực và không bị mỏi mắt như các chuyển động giật cục đơn thuần.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="exercise-footer">
+    <p>© 2026 Nguyễn Hoàng Anh (@denzxje157) - Đại học Lạc Hồng (LHU). Bài thực hành hiệu ứng CSS.</p>
+  </footer>
+
+  <script>
+    // Xử lý chuyển đổi Theme Sáng / Tối
+    const standaloneThemeToggle = document.getElementById('standaloneThemeToggle');
+    if (standaloneThemeToggle) {
+      standaloneThemeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+        if (newTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+        localStorage.setItem('lhu_theme_preference', newTheme);
+      });
+    }
+  </script>
+</body>
+</html>

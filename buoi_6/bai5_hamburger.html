@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 5: Modern Hamburger Menu - Biến đổi thành dấu "X"</title>
+  
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('lhu_theme_preference') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="bai-tap.css">
+</head>
+<body>
+
+  <main class="exercise-container">
+    <div class="top-bar-nav">
+      <a href="index.html" class="back-home-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Quay lại Mục lục Buổi 6
+      </a>
+      <button class="standalone-theme-btn" id="standaloneThemeToggle" aria-label="Chuyển đổi Sáng / Tối">
+        <span class="sun-icon">☀️ Giao diện Sáng</span>
+        <span class="moon-icon">🌙 Giao diện Tối</span>
+      </button>
+    </div>
+
+    <header class="exercise-header">
+      <span class="exercise-badge">Bài tập 5 / Buổi 5 & 6</span>
+      <h1 class="exercise-title">Modern Hamburger Menu (Biến đổi dấu X)</h1>
+      <p class="exercise-desc">Chuyển đổi mượt mà biểu tượng ba gạch ngang truyền thống thành dấu "X" đóng mở thông qua CSS Transitions, Transform và Opacity.</p>
+    </header>
+
+    <!-- Khu vực Demo Hamburger -->
+    <section class="demo-box">
+      <h2 class="demo-title">Trình tương tác Hamburger & Menu Drawer</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+        Bấm vào nút bên dưới để quan sát hoạt ảnh biến đổi: <strong>Thanh trên xoay 45°</strong>, <strong>thanh giữa mờ dần về 0</strong>, và <strong>thanh dưới xoay -45°</strong>.
+      </p>
+
+      <div class="hamburger-demo-stage">
+        <!-- Nút bấm Hamburger -->
+        <button class="hamburger-btn" id="demoBurgerBtn" aria-label="Mở đóng thanh điều hướng">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <span style="font-size: var(--fs-xs); color: var(--text-muted); font-family: var(--font-family-mono);" id="burgerStatusText">
+          Trạng thái: [ĐANG ĐÓNG] - Nhấp vào nút để mở
+        </span>
+
+        <!-- Menu Drawer mô phỏng -->
+        <nav class="nav-drawer" id="demoNavDrawer">
+          <ul>
+            <li><a href="#home">🏠 1. Trang chủ giới thiệu</a></li>
+            <li><a href="#courses">📚 2. Học phần Thiết kế Web</a></li>
+            <li><a href="#projects">💻 3. Danh sách đồ án mẫu</a></li>
+            <li><a href="#contact">📞 4. Liên hệ giảng viên LHU</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="code-info">
+<pre>/* Công thức biến đổi Hamburger sang dấu X */
+.hamburger-line {
+  width: 26px;
+  height: 3px;
+  background-color: #f8fafc;
+  transition: transform 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6), opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Khi active */
+.hamburger-btn.active .hamburger-line:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);   /* Dịch xuống tâm và xoay chéo */
+  background-color: #ef4444;
+}
+.hamburger-btn.active .hamburger-line:nth-child(2) {
+  opacity: 0;                                 /* Biến mất thanh giữa */
+  transform: scaleX(0);
+}
+.hamburger-btn.active .hamburger-line:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg); /* Dịch lên tâm và xoay ngược */
+  background-color: #ef4444;
+}</pre>
+      </div>
+    </section>
+
+    <!-- Khối giải trình -->
+    <section class="demo-box">
+      <h2 class="demo-title">Gợi ý Prompt & Tư duy Kỹ thuật LHU</h2>
+      <div style="color: var(--text-secondary); font-size: var(--fs-sm); line-height: 1.7;">
+        <p><strong>🎯 Prompt đã sử dụng:</strong> <em>"Tạo hiệu ứng chuyển đổi biểu tượng Hamburger (3 gạch) thành dấu X bằng CSS Transition. Nút chứa 3 thẻ span. Khi thêm class 'active', thanh trên cùng xoay 45 độ và trượt xuống giữa, thanh giữa mờ dần và co nhỏ biến mất, thanh dưới cùng xoay -45 độ và trượt lên giữa. Tinh chỉnh hàm cubic-bezier nảy nhẹ để hoạt ảnh sống động."</em></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="exercise-footer">
+    <p>© 2026 Nguyễn Hoàng Anh (@denzxje157) - Đại học Lạc Hồng (LHU). Bài thực hành hiệu ứng CSS.</p>
+  </footer>
+
+  <script>
+    const demoBurgerBtn = document.getElementById('demoBurgerBtn');
+    const demoNavDrawer = document.getElementById('demoNavDrawer');
+    const burgerStatusText = document.getElementById('burgerStatusText');
+
+    demoBurgerBtn.addEventListener('click', () => {
+      const isActive = demoBurgerBtn.classList.toggle('active');
+      demoNavDrawer.classList.toggle('open');
+      burgerStatusText.textContent = isActive 
+        ? "Trạng thái: [ĐANG MỞ - DẤU X] - Bấm để đóng lại" 
+        : "Trạng thái: [ĐANG ĐÓNG] - Nhấp vào nút để mở";
+    });
+
+    // Xử lý chuyển đổi Theme Sáng / Tối
+    const standaloneThemeToggle = document.getElementById('standaloneThemeToggle');
+    if (standaloneThemeToggle) {
+      standaloneThemeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+        if (newTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+        localStorage.setItem('lhu_theme_preference', newTheme);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 4: Parallax Background - Ảnh nền chuyển động sâu</title>
+  
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('lhu_theme_preference') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="bai-tap.css">
+  <style>
+    /* Section nội dung trung gian để cuộn */
+    .content-interlude {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      margin: 2.5rem 0;
+      line-height: 1.8;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    [data-theme="dark"] .content-interlude {
+      background: #050507 !important;
+      border-color: #1c1c20 !important;
+    }
+
+    .parallax-section-2 {
+      background-image: radial-gradient(rgba(0, 0, 0, 0.6), rgba(15, 23, 42, 0.9)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 380px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-8);
+      border: 1px solid var(--border-color);
+      margin: 2.5rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="exercise-container">
+    <div class="top-bar-nav">
+      <a href="index.html" class="back-home-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Quay lại Mục lục Buổi 6
+      </a>
+      <button class="standalone-theme-btn" id="standaloneThemeToggle" aria-label="Chuyển đổi Sáng / Tối">
+        <span class="sun-icon">☀️ Giao diện Sáng</span>
+        <span class="moon-icon">🌙 Giao diện Tối</span>
+      </button>
+    </div>
+
+    <header class="exercise-header">
+      <span class="exercise-badge">Bài tập 4 / Buổi 5 & 6</span>
+      <h1 class="exercise-title">Parallax Background (Hiệu ứng Chiều sâu)</h1>
+      <p class="exercise-desc">Sử dụng thuộc tính nền cố định trong CSS thuần để tạo cảm giác ảnh nền nằm ở một tầng không gian sâu hơn, di chuyển với vận tốc khác khi người xem cuộn trang.</p>
+    </header>
+
+    <!-- Khối Parallax 1 -->
+    <section class="parallax-section">
+      <div class="parallax-content">
+        <span class="parallax-tag">⚡ Không gian Đa chiều #1</span>
+        <h2 class="parallax-title">Công nghệ Tương lai AI</h2>
+        <p class="parallax-desc">Trí tuệ nhân tạo đang thay đổi cách con người sáng tạo giao diện web từng phút từng giây.</p>
+        <span style="font-size: var(--fs-xs); color: #93c5fd; background: rgba(0,0,0,0.5); padding: 4px 12px; border-radius: 20px;">
+          ↓ Hãy cuộn xuống để trải nghiệm sự tách lớp
+        </span>
+      </div>
+    </section>
+
+    <!-- Nội dung trung gian -->
+    <article class="content-interlude">
+      <h3 style="color: var(--color-primary-light); font-size: var(--fs-xl); margin-bottom: 1rem;">
+        🌟 Cơ chế hoạt động của kỹ thuật CSS Fixed Background
+      </h3>
+      <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+        Khi sử dụng thuộc tính <code>background-attachment: fixed;</code>, khung nhìn (Viewport) của trình duyệt sẽ đóng vai trò là cửa sổ nhìn thẳng vào bức ảnh nền được ghim cố định với màn hình. Các phần tử HTML khác nằm ở tầng trên (Z-index cao hơn) sẽ lướt qua bề mặt bức ảnh.
+      </p>
+      <p style="color: var(--text-secondary);">
+        Kỹ thuật này mang lại vẻ đẹp điện ảnh (Cinematic) mà không tiêu tốn tài nguyên xử lý JavaScript scroll listener phức tạp, từ đó tối ưu hóa chỉ số FPS khi cuộn màn hình.
+      </p>
+    </article>
+
+    <!-- Khối Parallax 2 -->
+    <section class="parallax-section-2">
+      <div class="parallax-content">
+        <span class="parallax-tag" style="color: var(--color-success);">🚀 Không gian Đa chiều #2</span>
+        <h2 class="parallax-title">Chinh phục Hệ sinh thái Vũ trụ Web</h2>
+        <p class="parallax-desc">Từ những dòng mã nguồn căn bản đến các sản phẩm thực tế vươn tầm thế giới số.</p>
+        <span style="font-size: var(--fs-xs); color: #86efac; background: rgba(0,0,0,0.5); padding: 4px 12px; border-radius: 20px;">
+          Khung hình số 2 với hình ảnh trạm vũ trụ
+        </span>
+      </div>
+    </section>
+
+    <!-- Khối giải trình code -->
+    <section class="demo-box">
+      <h2 class="demo-title">Mã nguồn CSS & Giải trình kỹ thuật</h2>
+      <div class="code-info">
+<pre>/* Bộ quy tắc then chốt để kích hoạt Parallax đơn giản */
+.parallax-section {
+  background-image: url('assets/hero-bg.jpg');
+  background-attachment: fixed;  /* Ghim ảnh nền cố định vào Viewport */
+  background-position: center;   /* Căn giữa tâm điểm bức ảnh */
+  background-repeat: no-repeat;
+  background-size: cover;        /* Phủ kín toàn bộ vùng chứa */
+  min-height: 400px;
+}
+
+/* Lưu ý Responsive trên Mobile:
+   Một số trình duyệt di động (iOS Safari) tối ưu tiết kiệm pin bằng cách tắt
+   background-attachment: fixed. Khi cần thiết có thể fallback sang scroll: */
+@media (max-width: 768px) {
+  .parallax-section {
+    background-attachment: scroll;
+  }
+}</pre>
+      </div>
+
+      <div style="margin-top: 1.5rem; color: var(--text-secondary); font-size: var(--fs-sm); line-height: 1.7;">
+        <p><strong>🎯 Prompt đã sử dụng:</strong> <em>"Hướng dẫn cách tạo hiệu ứng Parallax đơn giản cho một Section bằng CSS. Khi cuộn trang, ảnh nền phải giữ cố định hoặc di chuyển chậm hơn nội dung phía trên. Hãy đảm bảo ảnh hiển thị sắc nét, căn giữa trung tâm và tối ưu trên mọi màn hình."</em></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="exercise-footer">
+    <p>© 2026 Nguyễn Hoàng Anh (@denzxje157) - Đại học Lạc Hồng (LHU). Bài thực hành hiệu ứng CSS.</p>
+  </footer>
+
+  <script>
+    // Xử lý chuyển đổi Theme Sáng / Tối
+    const standaloneThemeToggle = document.getElementById('standaloneThemeToggle');
+    if (standaloneThemeToggle) {
+      standaloneThemeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+        if (newTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+        localStorage.setItem('lhu_theme_preference', newTheme);
+      });
+    }
+  </script>
+</body>
+</html>

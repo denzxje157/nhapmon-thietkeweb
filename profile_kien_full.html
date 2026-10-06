@@ -1,350 +1,459 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio chuyên môn của Hà Văn Kiên - Kiến trúc sư Frontend Cao cấp &amp; Chuyên gia Tiêu chuẩn Ngữ nghĩa W3C, Trợ năng Web (A11y), WCAG 2.2 AAA.">
-  <meta name="author" content="Hà Văn Kiên">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="canonical" href="https://example.com/ha-van-kien">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size=90>🌐</text></svg>">
-
-  <!-- [HOẠT ĐỘNG 3] Nhúng CSS của thư viện AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <title>Hà Văn Kiên | Kiến trúc sư Frontend Cao cấp &amp; Chuyên gia Tiêu chuẩn W3C</title>
-  
+  <meta name="description" content="Portfolio chuyên nghiệp - Hà Văn Kiên.">
+  <title>Hà Văn Kiên | Chuyên Gia Web Frontend</title>
   <style>
-    /* ==========================================================================
-       KIẾN TRÚC CSS: HÀ VĂN KIÊN PORTFOLIO (WCAG 2.2 AAA COMPLIANT)
-       ========================================================================== */
-
+    /* BÀI 4 - DESIGN SYSTEM & MOBILE FIRST */
     :root {
-      --clr-bg: #f8f9fa;
+      --clr-bg: #f3f4f6;
       --clr-surface: #ffffff;
-      --clr-text-main: #111827;
-      --clr-text-muted: #4b5563;
-      --clr-primary: #0f172a;    
-      --clr-accent: #2563eb;     
-      --clr-accent-hover: #1d4ed8;
-      --clr-focus: #db2777;      
+      --clr-text-main: #1f2937;
+      --clr-text-muted: #6b7280;
+      --clr-primary: #111827;    
+      --clr-accent: #3b82f6;     
+      --clr-accent-hover: #2563eb;
       --clr-border: #e5e7eb;
       
       --font-base: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'Courier New', Courier, monospace;
+      
       --space-xs: 0.5rem;
       --space-sm: 1rem;
-      --space-md: 2rem;
-      --space-lg: 4rem;
+      --space-md: 1.5rem;
+      --space-lg: 3rem;
+      --space-xl: 5rem;
+      
       --radius-md: 8px;
-      --radius-lg: 12px;
-      --transition: 0.2s ease-in-out;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
       font-family: var(--font-base);
       color: var(--clr-text-main);
       background-color: var(--clr-bg);
-      line-height: 1.7;
-      font-size: 1.125rem; 
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* ==========================================================================
-       [HOẠT ĐỘNG 2 & 4] LOADING MASTER (Tạo Spinner & Tối ưu chuyển động)
-       ========================================================================== */
-    #page-loader-wrapper {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-color: var(--clr-bg);
+    /* BÀI 5 - LOADER (PURE CSS) */
+    #page-loader {
+      position: fixed; inset: 0; background: var(--clr-bg);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      z-index: 99999; animation: hideLoader 0.6s 1.5s forwards ease-in-out;
+      pointer-events: none;
+    }
+    .spinner {
+      width: 50px; height: 50px; border: 4px solid var(--clr-border);
+      border-top-color: var(--clr-accent); border-radius: 50%;
+      animation: spin 1s linear infinite; margin-bottom: 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes hideLoader { to { opacity: 0; visibility: hidden; } }
+
+    /* BÀI TẬP 5: MODERN HAMBURGER MENU (CSS CHECKBOX HACK) */
+    .menu-toggle-checkbox { display: none; }
+    .nav-container {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--clr-border);
+      z-index: 9999; padding: var(--space-sm) var(--space-md);
+      display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+    .nav-logo { font-size: 1.5rem; font-weight: 800; color: var(--clr-primary); text-decoration: none; }
+    
+    .hamburger-menu {
+      display: flex; flex-direction: column; gap: 6px; cursor: pointer;
+      padding: 0.5rem; z-index: 10000;
+    }
+    .hamburger-menu .line {
+      width: 30px; height: 3px; background: var(--clr-primary); border-radius: 3px;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+    }
+    /* Chuyển 3 gạch thành chữ X */
+    .menu-toggle-checkbox:checked ~ .nav-container .hamburger-menu .line1 { transform: translateY(9px) rotate(45deg); }
+    .menu-toggle-checkbox:checked ~ .nav-container .hamburger-menu .line2 { opacity: 0; }
+    .menu-toggle-checkbox:checked ~ .nav-container .hamburger-menu .line3 { transform: translateY(-9px) rotate(-45deg); }
+    
+    /* Offcanvas Menu */
+    .mobile-menu {
+      position: fixed; top: 0; right: -100%; width: 300px; height: 100vh;
+      background: var(--clr-surface); box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+      padding: 6rem var(--space-md) var(--space-md);
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 9998;
+      display: flex; flex-direction: column; gap: var(--space-md);
+    }
+    .menu-toggle-checkbox:checked ~ .mobile-menu { right: 0; }
+    .mobile-menu a {
+      text-decoration: none; color: var(--clr-text-main); font-size: 1.25rem; font-weight: 600;
+      padding-bottom: 0.5rem; border-bottom: 2px solid transparent;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--clr-accent); border-color: var(--clr-accent); }
+    
+    /* Màn chắn tối (Overlay) */
+    .menu-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden;
+      transition: opacity 0.4s, visibility 0.4s; z-index: 9997;
+    }
+    .menu-toggle-checkbox:checked ~ .menu-overlay { opacity: 1; visibility: visible; }
+
+    /* BÀI TẬP 4: PARALLAX IMAGE BANNER */
+    .parallax-banner {
+      /* Sử dụng ảnh có sẵn */
+      background-image: linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.8)), url('Image/IMG_0620.JPG');
+      background-attachment: fixed; /* HIỆU ỨNG PARALLAX */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 99999;
-      /* Dùng opacity và visibility (GPU) thay vì display:none để không bị giật lag */
-      transition: opacity 0.5s ease, visibility 0.5s ease;
+      text-align: center;
+      color: white;
+      padding: var(--space-md);
+      margin-top: 0; /* Nav fixed nên ko cần margin banner */
     }
 
-    .portfolio-loader {
-      width: 60px;
-      height: 60px;
-      border: 5px solid rgba(37, 99, 235, 0.2); 
-      border-top-color: var(--clr-accent); 
-      border-radius: 50%;
-      animation: spin_loader 1s linear infinite; 
+    /* BÀI TẬP 3: TYPING EFFECT (Thuần CSS) */
+    .typing-container {
+      font-family: var(--font-mono);
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      color: #93c5fd;
+      margin-top: 1rem;
+      /* Hiệu ứng gõ chữ */
+      display: inline-block;
+      overflow: hidden; 
+      white-space: nowrap; 
+      border-right: 3px solid #93c5fd; 
+      width: 0;
+      animation: typing 3s 1.5s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+    }
+    /* Chữ: "Tôi là một Web Developer..." có 29 ký tự */
+    @keyframes typing { from { width: 0; } to { width: 29ch; } }
+    @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: #93c5fd; } }
+
+    .banner-title {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: var(--space-sm);
+      opacity: 0; animation: fadeUp 1s 0.5s forwards;
     }
 
-    @keyframes spin_loader {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    /* MAIN LAYOUT (CSS GRID) */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-md);
     }
-    /* ========================================================================== */
-
-    *:focus-visible { outline: 3px solid var(--clr-focus) !important; outline-offset: 4px !important; border-radius: 2px; }
-    hr { border: 0; height: 1px; background: var(--clr-border); margin-block: var(--space-lg); }
-
-    header, main, footer { max-width: 1000px; margin: 0 auto; padding-inline: var(--space-md); }
-    header { padding-block: var(--space-lg) var(--space-md); }
-    main { padding-block: var(--space-md); }
-    footer { padding-block: var(--space-lg); background-color: var(--clr-primary); color: #f3f4f6; }
-
-    h1, h2, h3, h4 { color: var(--clr-primary); line-height: 1.2; margin-top: 0; }
-    h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; letter-spacing: -0.05em; }
-    h2 { font-size: clamp(2rem, 4vw, 2.5rem); border-bottom: 2px solid var(--clr-accent); padding-bottom: var(--space-xs); margin-bottom: var(--space-md); display: inline-block; }
-    h3 { font-size: 1.5rem; margin-top: var(--space-md); }
-
-    a { color: var(--clr-accent); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; font-weight: 500; }
-    a:hover { color: var(--clr-accent-hover); text-decoration-thickness: 4px; }
-
-    header nav ul { display: flex; flex-wrap: wrap; gap: var(--space-sm); list-style: none; padding: 0; margin-block: var(--space-md); }
-    header nav a { display: inline-block; padding: var(--space-xs) var(--space-sm); background-color: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md); text-decoration: none; color: var(--clr-text-main); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    header nav a:hover { background-color: var(--clr-accent); color: #fff; border-color: var(--clr-accent); }
-
-    figure { margin: var(--space-md) 0; background: var(--clr-surface); padding: var(--space-sm); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); }
-    img, video, audio { max-width: 100%; height: auto; border-radius: var(--radius-md); display: block; }
-    figcaption { text-align: center; font-size: 0.9rem; color: var(--clr-text-muted); margin-top: var(--space-sm); font-style: italic; }
-
-    table { width: 100%; border-collapse: collapse; margin-block: var(--space-md); background: var(--clr-surface); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-    th, td { border: 1px solid var(--clr-border); padding: var(--space-sm); text-align: left; }
-    th { background-color: var(--clr-primary); color: #fff; font-weight: 600; }
-    caption { caption-side: top; text-align: left; font-weight: bold; margin-bottom: var(--space-xs); color: var(--clr-text-muted); }
-
-    details { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-md); padding: var(--space-sm); margin-block: var(--space-sm); }
-    summary { font-weight: bold; cursor: pointer; padding: var(--space-xs); color: var(--clr-accent); }
-    summary:hover { color: var(--clr-accent-hover); }
-
-    dialog { border: none; border-radius: var(--radius-lg); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); padding: var(--space-md); max-width: 600px; background: var(--clr-surface); }
-    dialog::backdrop { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); }
-
-    fieldset { border: 2px solid var(--clr-border); border-radius: var(--radius-md); padding: var(--space-md); margin-bottom: var(--space-md); background: var(--clr-surface); }
-    legend { background: var(--clr-primary); color: #fff; padding: var(--space-xs) var(--space-sm); border-radius: 4px; font-weight: 600; }
-    label { font-weight: 600; display: inline-block; margin-bottom: 0.25rem; }
-    input:not([type="checkbox"]):not([type="radio"]), select, textarea { width: 100%; padding: 0.75rem; border: 1px solid #9ca3af; border-radius: 4px; font-family: inherit; font-size: 1rem; background: #fff; margin-bottom: var(--space-sm); }
-
-    /* ==========================================================================
-       [HOẠT ĐỘNG 1 & 4] MICRO-INTERACTIONS & TỐI ƯU HIỆU NĂNG CHO NÚT BẤM
-       ========================================================================== */
-    button {
-      background-color: var(--clr-accent);
-      color: #fff;
-      border: 2px solid transparent;
-      padding: 0.75rem 1.5rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      /* Hàm timing cubic-bezier giúp chuyển động mượt mà tự nhiên */
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    @media (min-width: 992px) {
+      .main-grid { grid-template-columns: 1fr 1fr; align-items: center; }
+      .full-width { grid-column: 1 / -1; }
     }
 
-    button:hover {
-      background-color: var(--clr-accent-hover);
-      /* Dùng transform thay vì margin để không gây Reflow (lag) */
-      transform: translateY(-3px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    /* BÀI TẬP 2: CARD FLIP EFFECT */
+    .flip-card-container {
+      width: 100%;
+      max-width: 350px;
+      height: 450px;
+      perspective: 1000px; /* Khung nhìn 3D */
+      margin: 0 auto;
     }
-
-    button:active {
-      transform: scale(0.95);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    .flip-card-inner {
+      width: 100%; height: 100%;
+      position: relative;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-style: preserve-3d; /* Giữ môi trường 3D cho mặt sau */
+    }
+    .flip-card-container:hover .flip-card-inner {
+      transform: rotateY(180deg); /* Lật thẻ */
+    }
+    .flip-front, .flip-back {
+      width: 100%; height: 100%;
+      position: absolute; top: 0; left: 0;
+      backface-visibility: hidden; /* Ẩn mặt trái */
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+    .flip-front {
+      background: var(--clr-surface);
+      display: flex; flex-direction: column;
+    }
+    .flip-front img {
+      width: 100%; height: 60%; object-fit: cover;
+    }
+    .flip-front .card-content {
+      padding: var(--space-md); text-align: center; flex: 1;
+      display: flex; flex-direction: column; justify-content: center;
     }
     
-    button[type="reset"] { background-color: transparent; color: var(--clr-text-main); border-color: var(--clr-border); box-shadow: none; }
-    button[type="reset"]:hover { background-color: #f3f4f6; transform: translateY(0); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
-
-    footer a { color: #93c5fd; }
-    footer a:hover { color: #ffffff; }
-    footer h2, footer h3 { color: #ffffff; border-bottom-color: #4b5563; }
-
-    @media (max-width: 768px) {
-      :root { --space-md: 1.5rem; --space-lg: 2.5rem; }
-      table { display: block; overflow-x: auto; white-space: nowrap; }
+    .flip-back {
+      background: var(--clr-primary);
+      color: white;
+      transform: rotateY(180deg);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: var(--space-lg); text-align: center;
     }
+    .flip-back h3 { margin-bottom: var(--space-sm); color: var(--clr-accent); }
+    .flip-back p { margin-bottom: var(--space-md); }
+    
+    /* BÀI TẬP 6: SKILL BAR ANIMATION */
+    .skills-section {
+      background: var(--clr-surface);
+      padding: var(--space-lg);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .skill-item { margin-bottom: var(--space-md); }
+    .skill-info { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-weight: bold; }
+    .skill-bar-bg {
+      width: 100%; height: 12px; background: var(--clr-border);
+      border-radius: var(--radius-full); overflow: hidden;
+    }
+    .skill-fill {
+      height: 100%; background: linear-gradient(90deg, var(--clr-accent), #60a5fa);
+      width: 0; /* Khởi tạo 0% */
+      border-radius: var(--radius-full);
+    }
+    /* Chạy Animation khi load trang (Do không dùng JS scroll trigger, ta cho delay để nó chạy lúc vừa load xong hoặc có thể dùng thuộc tính view-timeline mới của CSS, nhưng tương thích kém. Ở đây dùng Keyframes cơ bản kèm delay) */
+    .skill-html { animation: fillHtml 2s 2s cubic-bezier(0.1, 0.7, 0.1, 1) forwards; }
+    .skill-css { animation: fillCss 2s 2.2s cubic-bezier(0.1, 0.7, 0.1, 1) forwards; }
+    .skill-ui { animation: fillUi 2s 2.4s cubic-bezier(0.1, 0.7, 0.1, 1) forwards; }
+    
+    @keyframes fillHtml { to { width: 95%; } }
+    @keyframes fillCss { to { width: 90%; } }
+    @keyframes fillUi { to { width: 85%; } }
+
+    /* BÀI TẬP 1: FLOATING ACTION BUTTON (FAB) */
+    .fab-btn {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 64px; height: 64px;
+      background-color: var(--clr-accent); color: white;
+      border-radius: 50%;
+      display: flex; justify-content: center; align-items: center;
+      text-decoration: none; font-size: 1.5rem; font-weight: bold;
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4);
+      z-index: 9990;
+      /* Hiệu ứng Phập phồng (Pulse) */
+      animation: fabPulse 2s infinite;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .fab-btn:hover {
+      transform: scale(1.1); background-color: var(--clr-accent-hover);
+      animation: none; /* Dừng phập phồng khi hover */
+    }
+    @keyframes fabPulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+      70% { box-shadow: 0 0 0 20px rgba(37, 99, 235, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+    }
+
+    /* Các thành phần cơ bản khác */
+    .section-title { font-size: 2rem; color: var(--clr-primary); margin-bottom: var(--space-lg); text-align: center; }
+    .section-title span { color: var(--clr-accent); }
+    
+    footer { background: var(--clr-primary); color: white; text-align: center; padding: var(--space-lg) var(--space-md); }
+    
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+  
+    /* PROJECT CARDS */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: var(--space-md); margin-top: var(--space-md);
+    }
+    .project-card-link {
+      text-decoration: none; color: inherit; background: var(--clr-surface);
+      border: 1px solid var(--clr-border); border-radius: var(--radius-md);
+      padding: var(--space-md); transition: transform 0.3s, box-shadow 0.3s;
+      display: flex; flex-direction: column; align-items: flex-start;
+    }
+    .project-card-link:hover {
+      transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+      border-color: var(--clr-accent);
+    }
+    .project-card-link i { font-size: 2rem; color: var(--clr-accent); margin-bottom: 1rem; }
+    .project-card-link h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
+    .project-card-link p { color: var(--clr-text-muted); font-size: 0.9rem; }
+
   </style>
 </head>
-<body itemscope itemtype="https://schema.org/Person">
+<body>
 
-  <!-- [HOẠT ĐỘNG 2] Màn hình Loading xoay vòng -->
-  <div id="page-loader-wrapper">
-    <div class="portfolio-loader"></div>
+  <!-- BÀI 5: Pure CSS Loader -->
+  <div id="page-loader">
+    <div class="spinner"></div>
+    <h3>Đang tải dữ liệu...</h3>
   </div>
 
-  <header data-aos="fade-down" data-aos-duration="1000">
-    <h1 itemprop="name">Hà Văn Kiên</h1>
-    <p>
-      <strong itemprop="jobTitle">Kiến trúc sư Frontend Cao cấp</strong> | 
-      <span itemprop="knowsAbout">Chuyên gia Tiêu chuẩn Ngữ nghĩa <abbr title="World Wide Web Consortium">W3C</abbr></span> &amp; 
-      <span>Cố vấn Trợ năng Web (<abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2 AAA)</span>
-    </p>
-
-    <nav aria-label="Điều hướng chính toàn trang">
-      <h2>Mục lục Điều hướng</h2>
-      <ul>
-        <li><a href="#about">Giới thiệu &amp; Triết lý</a></li>
-        <li><a href="#projects">Dự án Tiêu biểu</a></li>
-        <li><a href="#experience">Lộ trình Sự nghiệp</a></li>
-        <li><a href="#skills">Ma trận Kỹ năng &amp; Chuẩn mực</a></li>
-        <li><a href="#multimedia">Diễn thuyết &amp; Hội thảo Media</a></li>
-        <li><a href="#contact">Khởi tạo Hợp tác &amp; Liên hệ</a></li>
-      </ul>
-    </nav>
+  <!-- CHECKBOX CHO HAMBURGER MENU (BÀI TẬP 5) -->
+  <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+  
+  <header class="nav-container">
+    <a href="#" class="nav-logo" style="display: flex; align-items: center;"><img src="Image/avatar.jpg" alt="Avatar" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; display: block; border: 2px solid var(--clr-accent);"></a>
+    <label for="menu-toggle" class="hamburger-menu" title="Mở menu">
+      <span class="line line1"></span>
+      <span class="line line2"></span>
+      <span class="line line3"></span>
+    </label>
   </header>
 
-  <hr>
+  <!-- Menu trượt ngang (Offcanvas) -->
+  <nav class="mobile-menu">
+    <a href="#home">Trang chủ</a>
+    <a href="#about">Về tôi</a>
+    <a href="#skills">Kỹ năng chuyên môn</a>
+    <a href="#projects">Dự án tiêu biểu</a>
+  </nav>
+  <label for="menu-toggle" class="menu-overlay"></label>
 
-  <main id="main-content">
+  <!-- BÀI TẬP 4 & BÀI TẬP 3: PARALLAX BANNER VÀ TYPING EFFECT -->
+  <section id="home" class="parallax-banner">
+    <h1 class="banner-title">Hà Văn Kiên</h1>
+    <!-- Chữ gõ cần đúng 29 ký tự để khớp animation (T-ô-i l-à m-ộ-t W-e-b D-e-v-e-l-o-p-e-r...) -->
+    <!-- Thực tế chuỗi: "Tôi là một Web Developer..." có: 27 ký tự. Ta chỉnh ch trong CSS thành 29ch cho rộng rãi -->
+    <div class="typing-container">Tôi là một Web Developer ...</div>
+  </section>
 
-    <!-- [HOẠT ĐỘNG 3] Tích hợp AOS cho các section -->
-    <section id="about" aria-labelledby="about-heading" data-aos="fade-up" data-aos-duration="800">
-      <h2 id="about-heading">Giới thiệu &amp; Triết lý Kỹ nghệ</h2>
-      <p itemprop="description">
-        Với hơn <time datetime="P12Y">12 năm</time> nghiên cứu chuyên sâu về kiến trúc hệ thống giao diện người dùng, tôi định hình lại quy trình phát triển sản phẩm kỹ thuật số bằng cách lấy tính ngữ nghĩa bản địa, khả năng tương thích ngược và khả năng tiếp cận toàn cầu làm nền tảng cốt lõi.
+  
+  <!-- TỔNG HỢP CÁC DỰ ÁN TRÊN MÁY -->
+  <section id="projects" style="max-width: 1200px; margin: var(--space-xl) auto; padding: 0 var(--space-md);">
+    <h2 class="section-title" style="text-align: center; margin-bottom: 0.5rem;">Tổng Hợp <span>Dự Án Đã Phát Triển</span></h2>
+    <p class="text-muted" style="text-align: center; max-width: 600px; margin: 0 auto var(--space-lg);">Danh sách các dự án thực hành qua từng buổi học trên máy. Nhấn vào từng thẻ để chuyển đến xem chi tiết dự án.</p>
+    
+    <div class="projects-grid">
+      <a href="buoi1/footer.html" target="_blank" class="project-card-link">
+        <i class="fa-solid fa-play"></i>
+        <h3>Dự án Buổi 1</h3>
+        <p>Khởi tạo dự án & Môi trường làm việc nhóm (Footer).</p>
+      </a>
+
+      <a href="buoi2/profile_kien.html" target="_blank" class="project-card-link">
+        <i class="fa-solid fa-code"></i>
+        <h3>Dự án Buổi 2</h3>
+        <p>Tư duy Semantic HTML5 & Cấu trúc Web hệ thống.</p>
+      </a>
+
+      <a href="buoi3/index2.html" target="_blank" class="project-card-link">
+        <i class="fa-solid fa-layer-group"></i>
+        <h3>Dự án Buổi 3</h3>
+        <p>CSS Layout System (Flexbox và CSS Grid).</p>
+      </a>
+
+      <a href="buoi4/baitap.html" target="_blank" class="project-card-link">
+        <i class="fa-solid fa-mobile-screen"></i>
+        <h3>Dự án Buổi 4</h3>
+        <p>Design System và Tư duy Responsive (Mobile First).</p>
+      </a>
+
+      <a href="buoi5/hd1.html" target="_blank" class="project-card-link">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <h3>Dự án Buổi 5</h3>
+        <p>Hiệu ứng chuyển động (CSS Animations & Transitions).</p>
+      </a>
+    </div>
+  </section>
+
+  <main class="main-grid" id="about">
+    
+    <!-- BÀI TẬP 2: CARD FLIP EFFECT -->
+    <section class="about-card">
+      <div class="flip-card-container">
+        <div class="flip-card-inner">
+          <!-- Mặt trước -->
+          <div class="flip-front">
+            <img src="Image/avatar.jpg" alt="Hà Văn Kiên Avatar" loading="lazy">
+            <div class="card-content">
+              <h2>Hà Văn Kiên</h2>
+              <p style="color: var(--clr-text-muted);">Senior Frontend Architect</p>
+              <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--clr-accent); font-weight: bold;">(Hover để xem chi tiết ➜)</p>
+            </div>
+          </div>
+          <!-- Mặt sau -->
+          <div class="flip-back">
+            <h3>Thông Tin Liên Hệ</h3>
+            <p><strong>Email:</strong> hakien2525@gmail.com</p>
+            <p><strong>Phone:</strong> 0348517883</p>
+            <p><strong>Kinh nghiệm:</strong> Hơn 12 năm xây dựng kiến trúc UI theo chuẩn W3C & WCAG 2.2 AAA.</p>
+            <a href="mailto:kien.ha@example.com" style="display: inline-block; padding: 0.5rem 1rem; background: white; color: var(--clr-primary); text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 1rem;">Gửi Email Ngay</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-text">
+      <h2 class="section-title">Triết Lý <span>Kỹ Nghệ</span></h2>
+      <p style="font-size: 1.125rem; margin-bottom: 1rem;">
+        Với định hướng phát triển rõ ràng, tôi định hình lại quy trình phát triển sản phẩm kỹ thuật số bằng cách lấy tính ngữ nghĩa (Semantic HTML5), CSS Architecture vững chắc và tư duy Mobile-First làm nền tảng.
       </p>
-
-      <figure data-aos="zoom-in" data-aos-delay="200">
-        <picture>
-          <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=400&amp;auto=format&amp;fit=crop&amp;q=80" alt="Chân dung kiến trúc sư Hà Văn Kiên đang làm việc tại hội thảo kỹ thuật W3C" width="400" height="400" loading="lazy">
-        </picture>
-        <figcaption>Ảnh chân dung chuyên môn: Hà Văn Kiên tại phiên điều trần tiêu chuẩn hóa Web mở năm <time datetime="2025">2026</time>.</figcaption>
-      </figure>
+      <p style="font-size: 1.125rem;">
+        Mọi hiệu ứng, cấu trúc và giao diện bạn thấy tại đây đều được xây dựng <strong>100% bằng HTML5 và CSS</strong>, không sử dụng bất kỳ dòng JavaScript nào, thể hiện sự am hiểu sâu sắc về sức mạnh của trình duyệt hiện đại.
+      </p>
     </section>
 
-    <hr>
-
-    <section id="projects" aria-labelledby="projects-heading" data-aos="fade-up" data-aos-duration="800">
-      <h2 id="projects-heading">Dự án Kỹ thuật Tiêu biểu</h2>
+    <!-- BÀI TẬP 6: SKILL BAR ANIMATION -->
+    <section id="skills" class="full-width skills-section">
+      <h2 class="section-title">Ma Trận <span>Kỹ Năng</span></h2>
       
-      <article itemscope itemtype="https://schema.org/SoftwareSourceCode" id="project-w3c-ds" data-aos="fade-right" data-aos-delay="100">
-        <header>
-          <h3 itemprop="name">Hệ Thống Thiết Kế Tương Thích Tuyệt Đối WCAG 2.2 AAA</h3>
-        </header>
-        <p itemprop="description">Xây dựng bộ khung thành phần giao diện không rào cản phục vụ 4 triệu công dân.</p>
-        <figure>
-          <img src="https://images.unsplash.com/photo-1581291518655-9523c932edcf?w=600&amp;auto=format&amp;fit=crop&amp;q=80" alt="Biểu đồ phân cấp ngữ nghĩa" width="600" height="300" loading="lazy">
-        </figure>
-      </article>
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>HTML5 (Semantic, Accessibility)</span>
+          <span>95%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-fill skill-html"></div>
+        </div>
+      </div>
 
-      <hr>
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>CSS3 (Grid, Flexbox, Animations)</span>
+          <span>90%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-fill skill-css"></div>
+        </div>
+      </div>
 
-      <article itemscope itemtype="https://schema.org/SoftwareSourceCode" id="project-health-portal" data-aos="fade-left" data-aos-delay="200">
-        <header>
-          <h3 itemprop="name">Cổng Tra Cứu Y Tế Toàn Dân Tối Ưu Cho Trình Đọc Màn Hình</h3>
-        </header>
-        <p itemprop="description">Kiến trúc lại cổng thông tin y tế trực tuyến cấp quốc gia, giải quyết bài toán tiếp cận dữ liệu phân tích sức khỏe đa chiều.</p>
-        <figure>
-          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&amp;auto=format&amp;fit=crop&amp;q=80" alt="Màn hình giao diện bảng dữ liệu lâm sàng y tế" width="600" height="300" loading="lazy">
-        </figure>
-      </article>
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>UI/UX & Design System</span>
+          <span>85%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-fill skill-ui"></div>
+        </div>
+      </div>
     </section>
 
-    <hr>
-
-    <section id="skills" aria-labelledby="skills-heading" data-aos="zoom-in-up" data-aos-duration="800">
-      <h2 id="skills-heading">Ma Trận Năng Lực &amp; Tiêu Chuẩn Thành Thạo</h2>
-      <table>
-        <caption>Đánh giá mức độ thông thạo các nhóm năng lực tiêu chuẩn Web W3C</caption>
-        <thead>
-          <tr>
-            <th scope="col">Lĩnh vực Kỹ năng</th>
-            <th scope="col">Tiêu chuẩn Áp dụng</th>
-            <th scope="col">Mức độ Thành thạo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Ngữ nghĩa Cấu trúc DOM</th>
-            <td>HTML5 Living Standard</td>
-            <td>Chuyên gia Cao cấp</td>
-          </tr>
-          <tr>
-            <th scope="row">Trợ năng &amp; Công nghệ Hỗ trợ</th>
-            <td>WAI-ARIA 1.3 / WCAG 2.2 AAA</td>
-            <td>Kiến trúc sư Trưởng</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <hr>
-
-    <section id="contact" aria-labelledby="contact-heading" data-aos="fade-up" data-aos-duration="1000">
-      <h2 id="contact-heading">Khởi Tạo Hợp Tác &amp; Đăng Ký Tư Vấn</h2>
-      <p>Quý đối tác và đơn vị quan tâm vui lòng hoàn thành biểu mẫu bên dưới.</p>
-
-      <form action="https://httpbin.org/post" method="post">
-        <fieldset>
-          <legend>Thông Tin Định Danh Khách Hàng</legend>
-          
-          <p>
-            <label for="client-name">Họ và tên đầy đủ <abbr title="Trường bắt buộc nhập">*</abbr>:</label><br>
-            <input type="text" id="client-name" name="name" required placeholder="Ví dụ: Trần Quốc Tuấn">
-          </p>
-
-          <p>
-            <label for="client-email">Thư điện tử doanh nghiệp <abbr title="Trường bắt buộc nhập">*</abbr>:</label><br>
-            <input type="email" id="client-email" name="email" required placeholder="tuantran@organization.org">
-          </p>
-        </fieldset>
-
-        <fieldset>
-          <legend>Thông Số Yêu Cầu Kỹ Thuật</legend>
-          <p>
-            <label for="project-description">Bản tóm tắt yêu cầu nghiệp vụ <abbr title="Trường bắt buộc nhập">*</abbr>:</label><br>
-            <textarea id="project-description" name="scope" rows="4" required placeholder="Mô tả hiện trạng dự án..."></textarea>
-          </p>
-        </fieldset>
-
-        <p>
-          <!-- Nút đã được áp dụng Hoạt động 1 & 4 (CSS ở trên) -->
-          <button type="submit">Xác Nhận &amp; Gửi Đăng Ký Tư Vấn</button>
-          <button type="reset">Đặt Lại Toàn Bộ Thông Tin</button>
-        </p>
-      </form>
-    </section>
   </main>
 
-  <hr>
+  <!-- BÀI TẬP 1: FLOATING ACTION BUTTON (FAB) -->
+  <a href="mailto:kien.ha@example.com" class="fab-btn" title="Liên hệ ngay">
+    <!-- SVG Icon thay cho chữ để tối giản và chuyên nghiệp hơn -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+    </svg>
+  </a>
 
-  <footer data-aos="fade-in" data-aos-duration="1200">
-    <section aria-labelledby="footer-contact-info">
-      <h2 id="footer-contact-info">Thông Tin Liên Hệ Trực Tiếp</h2>
-      <address>
-        <p>Kênh trao đổi chuyên môn: <a href="mailto:kien.ha@example.com" itemprop="email">kien.ha@example.com</a></p>
-        <p>Đường dây hỗ trợ khẩn cấp: <a href="tel:+84912345678" itemprop="telephone">+84 (0) 91 234 5678</a></p>
-      </address>
-    </section>
+  <footer>
+    <p>&copy; 2026 Hà Văn Kiên. Thiết kế chuẩn Semantic W3C.</p>
+    <p>Thuần HTML5 & CSS - Không JavaScript.</p>
   </footer>
-
-  <!-- ==========================================================================
-       [HOẠT ĐỘNG 3] NHÚNG JS VÀ KHỞI TẠO AOS / LOADER
-       ========================================================================== -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    // 1. Khởi tạo hiệu ứng cuộn trang AOS (Hoạt động 3)
-    AOS.init({
-      once: true,   // Hiệu ứng chỉ chạy 1 lần khi cuộn xuống
-      offset: 80,   // Khoảng cách 80px từ dưới màn hình kích hoạt hiệu ứng
-      duration: 800 // Thời gian chuyển động mặc định 800ms
-    });
-
-    // 2. Logic điều khiển ẩn màn hình Loading (Hoạt động 2)
-    window.addEventListener('load', function() {
-      const loader = document.getElementById('page-loader-wrapper');
-      if (loader) {
-        loader.style.opacity = '0';
-        loader.style.visibility = 'hidden';
-        // Xóa hẳn thẻ div khỏi quá trình render sau 0.5s để làm nhẹ trình duyệt
-        setTimeout(() => {
-          loader.style.display = 'none';
-        }, 500);
-      }
-    });
-  </script>
 
 </body>
 </html>

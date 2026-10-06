@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Cá Nhân | Nguyễn Lê Đông</title>
+    <!-- Nhúng file CSS riêng biệt -->
+    <link rel="stylesheet" href="bai1.css">
+</head>
+<body>
+
+    <div class="portfolio-layout">
+        <!-- ================= 1. CỘT BÊN TRÁI: MENU DANH MỤC ================= -->
+        <aside class="sidebar" id="sidebar">
+            
+            <!-- HÀNG TRÊN CÙNG: NÚT HAMBURGER CHUYỂN ĐỔI THÀNH DẤU X -->
+            <div class="sidebar-top-bar">
+                <span class="sidebar-badge">⚡ Menu Danh Mục</span>
+                <button class="menu-toggle" id="menuToggle" aria-label="Chuyển đổi Menu điều hướng" aria-expanded="false" title="Nhấn để xem hiệu ứng Hamburger ⇄ Dấu X">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+
+            <div class="profile-header">
+                <div class="avatar-main">Đ</div>
+                <h2 class="profile-name">Nguyễn Lê Đông</h2>
+                <p class="profile-title">Tôi là một Web Developer <span class="cursor">|</span></p>
+                <p class="profile-location">📍 Việt Nam</p>
+            </div>
+
+            <nav class="nav-menu" id="navMenu" aria-label="Thanh điều hướng">
+                <ul>
+                    <li class="active"><a href="#about"><span class="icon">👤</span> Giới thiệu</a></li>
+                    <li><a href="#skills"><span class="icon">&lt;/&gt;</span> Kỹ năng</a></li>
+                    <li><a href="#services"><span class="icon">💼</span> Dịch vụ</a></li>
+                    <li><a href="#projects"><span class="icon">📁</span> Dự án</a></li>
+                    <li><a href="#contact"><span class="icon">✉️</span> Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="footer-btn" title="Hồ sơ">🎒</button>
+                <button class="footer-btn" title="Kinh nghiệm">💼</button>
+                <button class="footer-btn" title="Điện thoại">📱</button>
+            </div>
+        </aside>
+
+        <!-- ================= 2. CỘT BÊN PHẢI: KHU VỰC NỘI DUNG CHÍNH ================= -->
+        <main class="main-content">
+            
+            <!-- PHẦN 1: GIỚI THIỆU BẢN THÂN + HIỆU ỨNG TYPING + THẺ LẬT 3D -->
+            <section class="section-card" id="about">
+                <div class="card-header">
+                    <h2>Giới thiệu Bản Thân</h2>
+                    <span class="welcome-badge">Xin chào 👋</span>
+                </div>
+
+                <div class="about-grid">
+                    <!-- Bên trái: Tiêu đề máy đánh chữ (Typing Effect) + Mô tả -->
+                    <div class="about-description">
+                        
+                        <!-- 1. HIỆU ỨNG MÁY ĐÁNH CHỮ (TYPING EFFECT) THUẦN CSS -->
+                        <div class="typing-box">
+                            <h1 class="typing-text">Xin chào, tôi là Nguyễn Lê Đông!</h1>
+                        </div>
+
+                        <!-- Đoạn văn bản giới thiệu bản thân -->
+                        <p>Tôi là một sinh viên lập trình web đam mê biến những ý tưởng sáng tạo thành các giao diện trực quan, tối ưu trải nghiệm người dùng và chuẩn cấu trúc Semantic HTML5.</p>
+                        <p>Trang Portfolio này được thiết kế theo cấu trúc hiện đại, kết hợp bố cục <strong>CSS Grid</strong> và <strong>Flexbox</strong> linh hoạt. Mỗi dự án, tôi đều chú trọng thiết kế responsive để website hiển thị hoàn hảo trên điện thoại, máy tính bảng lẫn màn hình lớn. Bên cạnh đó, tôi quen thuộc với Git/GitHub để làm việc nhóm hiệu quả và dùng Figma để chuyển hóa ý tưởng UI/UX thành sản phẩm thực tế.</p>
+                        <p><strong>Mục Tiêu Nghề Nghiệp:</strong> Phát triển chuyên sâu trong lĩnh vực lập trình Front-end, thành thạo các kỹ thuật dàn trang và animation CSS 3D hiện đại mang lại giá trị thực tế cao.</p>
+                    </div>
+
+                    <!-- ========================================================
+                         2. THẺ THÔNG TIN CÁ NHÂN LẬT 3D (3D CARD FLIP)
+                         - Container: .card-container (perspective: 1000px)
+                         - Thẻ lật: .card (transform-style: preserve-3d)
+                         - 2 mặt: .card-front và .card-back (backface-visibility: hidden)
+                         ======================================================== -->
+                    <div class="card-container">
+                        <div class="card">
+                            
+                            <!-- Mặt trước (.card-front) - Tên và chức danh Nguyễn Lê Đông -->
+                            <div class="card-front">
+                                <div class="flip-avatar">Đ</div>
+                                <h3 class="flip-name">Nguyễn Lê Đông</h3>
+                                <p class="flip-role">Frontend Developer</p>
+                                <span class="flip-hint">↻ Rê chuột để lật thẻ</span>
+                            </div>
+
+                            <!-- Mặt sau (.card-back) - Xoay sẵn rotateY(180deg) -->
+                            <div class="card-back">
+                                <h3>Thông Tin Chi Tiết</h3>
+                                <div class="back-info">
+                                    <p><strong>Họ & Tên:</strong> Nguyễn Lê Đông</p>
+                                    <p><strong>Chuyên môn:</strong> Frontend Developer</p>
+                                    <p><strong>Kỹ năng:</strong> HTML5, CSS 3D, Flexbox, UI/UX</p>
+                                    <p><strong>Mục tiêu:</strong> Tối ưu hóa trải nghiệm người dùng và hiệu năng cao.</p>
+                                </div>
+                                <div class="back-tags">
+                                    <span>HTML5</span>
+                                    <span>CSS 3D</span>
+                                    <span>Figma</span>
+                                </div>
+                                <a href="#contact" class="back-btn">Liên Hệ Ngay</a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- PHẦN 2: KỸ NĂNG CHUYÊN MÔN -->
+            <section class="section-card" id="skills">
+                <h2>Kỹ Năng Chuyên Môn</h2>
+                <div class="skills-list">
+                    <span class="skill-pill">HTML5 Semantic</span>
+                    <span class="skill-pill">CSS Grid Layout</span>
+                    <span class="skill-pill">Flexbox</span>
+                    <span class="skill-pill">CSS Variables (:root)</span>
+                    <span class="skill-pill">Responsive Web Design</span>
+                    <span class="skill-pill">JavaScript (ES6+)</span>
+                    <span class="skill-pill">ReactJS</span>
+                    <span class="skill-pill">Git & GitHub</span>
+                    <span class="skill-pill">UI/UX Figma</span>
+                    <span class="skill-pill">Tailwind CSS</span>
+                    <span class="skill-pill">Bootstrap 5</span>
+                </div>
+
+                <!-- ========================================================
+                     HỆ THỐNG THANH TIẾN TRÌNH (SKILLS PROGRESS BARS)
+                     - Hiệu ứng chạy mượt từ 0% đến phần trăm mục tiêu trong 2s
+                     - Dễ dàng chỉnh sửa phần trăm qua style="--target-width: ...%"
+                     ======================================================== -->
+                <div class="skills-progress-wrapper">
+                    <h3 class="progress-section-title">📊 Tiến Độ &amp; Mức Độ Thành Thạo</h3>
+                    <div class="progress-grid">
+                        
+                        <!-- 1. HTML5 & Semantic Web -->
+                        <div class="skill-progress-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><span class="skill-bullet">🔹</span> HTML5 &amp; Semantic Web</span>
+                                <span class="skill-percent">95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 95%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- 2. CSS3, Grid & Flexbox -->
+                        <div class="skill-progress-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><span class="skill-bullet">🔹</span> CSS3, Grid &amp; Flexbox</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 90%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- 3. JavaScript (ES6+) -->
+                        <div class="skill-progress-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><span class="skill-bullet">🔹</span> JavaScript (ES6+ &amp; DOM)</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 85%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- 4. ReactJS -->
+                        <div class="skill-progress-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><span class="skill-bullet">🔹</span> ReactJS &amp; Component UI</span>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 80%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- 5. UI/UX Figma -->
+                        <div class="skill-progress-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><span class="skill-bullet">🔹</span> UI/UX Design (Figma)</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 85%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- 6. Git & GitHub -->
+                        <div class="skill-progress-item">
+                            <div class="skill-info">
+                                <span class="skill-name"><span class="skill-bullet">🔹</span> Git &amp; GitHub (Version Control)</span>
+                                <span class="skill-percent">88%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="--target-width: 88%;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 PHẦN: BANNER PARALLAX SCROLLING (CUỘN TRANG TẠO CHIỀU SÂU)
+                 - background-attachment: fixed giữ ảnh nền cố định
+                 - Lớp phủ tối .parallax-overlay tạo độ tương phản cao
+                 - Nội dung căn giữa, chữ nổi bật, font rõ nét
+                 - Tương thích tốt trên Desktop và Mobile (fallback scroll)
+                 ======================================================== -->
+            <section class="parallax-section" aria-label="Khẩu hiệu và Cam kết phát triển">
+                <div class="parallax-overlay"></div>
+                <div class="parallax-content">
+                    <span class="parallax-badge">Sáng Tạo &amp; Đột Phá</span>
+                    <h2 class="parallax-title">Xây Dựng Trải Nghiệm Web Hiện Đại &amp; Tối Ưu</h2>
+                    <p class="parallax-desc">
+                        Kết hợp giữa tư duy thiết kế thẩm mỹ, cấu trúc mã nguồn tối ưu chuẩn Semantic và công nghệ web hiện đại để tạo nên những sản phẩm số mượt mà, ấn tượng trên mọi thiết bị.
+                    </p>
+                    <div class="parallax-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Cam kết chất lượng</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">20+</span>
+                            <span class="stat-label">Dự án hoàn thành</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">&lt;0.5s</span>
+                            <span class="stat-label">Tốc độ phản hồi UI</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PHẦN 3: DỊCH VỤ CUNG CẤP -->
+            <section class="section-card" id="services">
+                <h2>Dịch Vụ Cung Cấp (Services)</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="service-icon">💻</div>
+                        <h3>Thiết Kế Web</h3>
+                        <p>Xây dựng giao diện web chuẩn Semantic HTML5, CSS Grid và Flexbox responsive toàn diện.</p>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-icon">📱</div>
+                        <h3>Giao Diện Di Động</h3>
+                        <p>Tối ưu hóa hiển thị mượt mà trên smartphone, tablet với hệ thống Media Queries chuẩn.</p>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-icon">🎨</div>
+                        <h3>Thiết Kế UI/UX</h3>
+                        <p>Xây dựng hệ thống bảng màu thông minh qua CSS Variables đồng bộ và hiện đại.</p>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-icon">⚡</div>
+                        <h3>Tối Ưu Hiệu Năng</h3>
+                        <p>Cấu trúc mã nguồn sạch sẽ, không thừa thãi, tải trang nhanh và chuẩn SEO công cụ tìm kiếm.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PHẦN 4: DỰ ÁN TIÊU BIỂU -->
+            <section class="section-card" id="projects">
+                <h2>Các Dự Án Tiêu Biểu</h2>
+                <div class="projects-list">
+                    <article class="project-item">
+                        <h3>Dự án E-commerce Website</h3>
+                        <p>Trang thương mại điện tử đơn giản được xây dựng với HTML5, CSS3 và Vanilla JavaScript. Hỗ trợ giỏ hàng và danh mục sản phẩm trực quan.</p>
+                        <a href="#projects" class="project-link">Xem chi tiết dự án &rarr;</a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Dự án Quản Lý Công Việc (Todo App)</h3>
+                        <p>Ứng dụng quản lý công việc cá nhân giúp theo dõi tiến độ công việc hàng ngày, lưu trữ dữ liệu với Local Storage.</p>
+                        <a href="#projects" class="project-link">Xem chi tiết dự án &rarr;</a>
+                    </article>
+                </div>
+            </section>
+
+            <!-- PHẦN 5: LIÊN HỆ -->
+            <section class="section-card" id="contact">
+                <h2>Liên Hệ</h2>
+                <p>Bạn có dự án cần hợp tác hoặc câu hỏi trao đổi? Hãy để lại tin nhắn cho tôi!</p>
+
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Họ và tên:</label>
+                        <input type="text" id="name" name="name" placeholder="Nhập họ và tên..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email của bạn:</label>
+                        <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tin nhắn:</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Nhập nội dung tin nhắn..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Gửi Tin Nhắn</button>
+                </form>
+            </section>
+
+            <footer class="footer">
+                <p>&copy; 2026 <strong>Nguyễn Lê Đông</strong>. Tất cả các quyền được bảo lưu.</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- ================= 3. NÚT NỔI PHẬP PHỒNG (FLOATING ACTION BUTTONS) ================= -->
+    <div class="fab-group">
+        <a href="https://zalo.me" target="_blank" class="fab-item fab-zalo" title="Chat Zalo" aria-label="Chat Zalo">
+            <span>Zalo</span>
+        </a>
+        <a href="https://m.me" target="_blank" class="fab-item fab-messenger" title="Chat Messenger" aria-label="Chat Messenger">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2C6.477 2 2 6.145 2 11.258c0 2.91 1.455 5.512 3.736 7.186V22l3.415-1.874c.905.251 1.864.387 2.849.387 5.523 0 10-4.145 10-9.258C22 6.145 17.523 2 12 2zm1.055 12.443l-2.55-2.723-4.977 2.723 5.474-5.811 2.613 2.723 4.914-2.723-5.474 5.811z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- ================= JAVASCRIPT: TOGGLE HAMBURGER MENU (HAMBURGER ⇄ X) ================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            const sidebar = document.getElementById('sidebar');
+
+            if (menuToggle) {
+                // Sự kiện click chuyển đổi Hamburger <-> Dấu X
+                menuToggle.addEventListener('click', function () {
+                    const isOpen = menuToggle.classList.toggle('open');
+                    menuToggle.setAttribute('aria-expanded', isOpen);
+
+                    // Mở / đóng danh sách menu khi ở chế độ responsive mobile
+                    if (navMenu) {
+                        navMenu.classList.toggle('show');
+                    }
+                    if (sidebar) {
+                        sidebar.classList.toggle('menu-expanded');
+                    }
+                });
+
+                // Tự động đóng menu khi người dùng bấm vào một mục điều hướng (trên mobile)
+                const navLinks = document.querySelectorAll('.nav-menu a');
+                navLinks.forEach(function (link) {
+                    link.addEventListener('click', function () {
+                        if (window.innerWidth <= 900) {
+                            menuToggle.classList.remove('open');
+                            menuToggle.setAttribute('aria-expanded', 'false');
+                            if (navMenu) navMenu.classList.remove('show');
+                            if (sidebar) sidebar.classList.remove('menu-expanded');
+                        }
+                    });
+                });
+            }
+
+            // KÍCH HOẠT HIỆU ỨNG CHẠY THANH TIẾN TRÌNH KHI CUỘN TỚI MỤC KỸ NĂNG
+            const skillsSection = document.getElementById('skills');
+            if (skillsSection && 'IntersectionObserver' in window) {
+                const progressObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            const fills = entry.target.querySelectorAll('.progress-fill');
+                            fills.forEach(function (fill) {
+                                fill.style.animation = 'none';
+                                fill.offsetHeight; // Kích hoạt reflow trình duyệt
+                                fill.style.animation = 'fillProgress 2s cubic-bezier(0.25, 1, 0.5, 1) forwards';
+                            });
+                            progressObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                progressObserver.observe(skillsSection);
+            }
+        });
+    </script>
+
+</body>
+</html>

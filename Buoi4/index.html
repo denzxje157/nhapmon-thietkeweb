@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành Buổi 4 - CSS Variables & Responsive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Hoạt động 1 & 4: Design System Refactoring & CSS Variables -->
+    <header class="header">
+        <h1>Bảng Mã Màu Thông Minh & Design System</h1>
+        <p class="subtitle">Sử dụng CSS Variables (:root) cho toàn bộ màu sắc và khoảng cách.</p>
+    </header>
+
+    <!-- Hoạt động 2: Bài thực hành số 3 - Responsive Portfolio (Grid Layout) -->
+    <main class="portfolio-container">
+        <aside class="sidebar">
+            <h2>Sidebar</h2>
+            <p>Thông tin cá nhân, avatar, và menu điều hướng.</p>
+            <p>Ở màn hình lớn (Desktop), tôi nằm bên trái. Khi xuống màn hình nhỏ (< 768px), tôi sẽ nhảy lên trên cùng thành 1 cột.</p>
+        </aside>
+        
+        <section class="main-content">
+            <h2>Nội Dung Chính (Main Content)</h2>
+            <p>Đây là khu vực nội dung chính của Portfolio. Trên Desktop, nó nằm cạnh sidebar tạo thành giao diện 2 cột.</p>
+            <p>Nhờ sử dụng Media Queries, khi xem trên Mobile, toàn bộ layout sẽ tự động cuộn dọc xuống dưới Sidebar.</p>
+        </section>
+    </main>
+
+    <!-- Hoạt động 3: Responsive Breakpoint Challenge -->
+    <section class="services-section">
+        <h2 class="text-center">Các Dịch Vụ Của Tôi (Services Challenge)</h2>
+        <!-- 4 cột trên Desktop, 2 cột Tablet, 1 cột Mobile -->
+        <div class="services-container">
+            <div class="service-card">
+                <h3>Thiết kế Web</h3>
+                <p>Thiết kế giao diện UI/UX đẹp mắt, tập trung vào trải nghiệm người dùng.</p>
+            </div>
+            <div class="service-card">
+                <h3>Lập trình Frontend</h3>
+                <p>Chuyển đổi giao diện thành mã HTML/CSS/JS một cách chính xác.</p>
+            </div>
+            <div class="service-card">
+                <h3>Backend & API</h3>
+                <p>Xây dựng hệ thống máy chủ, quản trị cơ sở dữ liệu mạnh mẽ.</p>
+            </div>
+            <div class="service-card">
+                <h3>SEO Optimization</h3>
+                <p>Tối ưu hóa website lên top các công cụ tìm kiếm như Google.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

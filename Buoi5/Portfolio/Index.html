@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoàng Minh Phát - Kỹ Sư IoT & Machine Learning</title>
+    
+    <!-- AOS Library CSS for Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Font Awesome cho Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts cho typography hiện đại -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- File CSS Tùy chỉnh -->
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+    <!-- BÀI 5: Modern Hamburger Menu (Hiệu ứng mượt mà CSS Transitions) -->
+    <div class="menu-wrap">
+        <input type="checkbox" class="toggler" aria-label="Toggle Menu">
+        <div class="hamburger"><div></div></div>
+        <div class="menu">
+            <div>
+                <div>
+                    <ul>
+                        <li><a href="#home">Trang chủ</a></li>
+                        <li><a href="#about">Về tôi</a></li>
+                        <li><a href="#skills">Kỹ năng</a></li>
+                        <li><a href="#contact">Liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BÀI 4: Parallax Image Banner -->
+    <header id="home" class="parallax">
+        <div class="hero-content">
+            <h1 data-aos="fade-down" data-aos-duration="1000">Xin chào, tôi là <span>Phát</span></h1>
+            
+            <!-- BÀI 3: Typing Effect (Chỉ dùng CSS) -->
+            <div class="typing-container">
+                <h2 class="typing-text">Tôi là một IoT & Machine Learning Engineer.</h2>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- BÀI 2: Card Flip Effect (Thẻ nhân sự lật 180 độ) -->
+        <section id="about" class="section">
+            <h2 class="section-title" data-aos="fade-up">Về Tôi</h2>
+            <div class="flip-card" data-aos="zoom-in" data-aos-duration="1200">
+                <div class="flip-card-inner">
+                    <!-- Mặt trước -->
+                    <div class="flip-card-front">
+                        <!-- Nguồn ảnh Unsplash, có thể thay thế bằng ảnh cá nhân -->
+                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=400&auto=format&fit=crop" alt="Hoàng Minh Phát" class="avatar">
+                        <h3>Hoàng Minh Phát</h3>
+                        <p>&lt; Kỹ Sư IoT & ML /&gt;</p>
+                    </div>
+                    <!-- Mặt sau -->
+                    <div class="flip-card-back">
+                        <h3>Thông Tin Liên Hệ</h3>
+                        <hr>
+                        <p><i class="fas fa-envelope"></i> phat.iot@example.com</p>
+                        <p><i class="fas fa-phone"></i> +84 987 654 321</p>
+                        <p><i class="fab fa-github"></i> github.com/minhphat-iot</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Hồ Chí Minh, Việt Nam</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BÀI 6: Skill Bar Animation (Chạy từ 0% đến giá trị đích khi tải/scroll) -->
+        <section id="skills" class="section bg-darker">
+            <h2 class="section-title" data-aos="fade-up">Kỹ Năng Chuyên Môn</h2>
+            <div class="skills-wrapper" data-aos="fade-up" data-aos-duration="1000">
+                
+                <div class="skill-container">
+                    <div class="skill-name">IoT (Internet of Things) <span>90%</span></div>
+                    <div class="skill-bar">
+                        <!-- Sử dụng biến CSS --target để truyền giá trị % cho animation -->
+                        <div class="skill-level skill-animate" style="--target: 90%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-container">
+                    <div class="skill-name">Machine Learning <span>85%</span></div>
+                    <div class="skill-bar">
+                        <div class="skill-level skill-animate" style="--target: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-container">
+                    <div class="skill-name">Python <span>95%</span></div>
+                    <div class="skill-bar">
+                        <div class="skill-level skill-animate" style="--target: 95%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-container">
+                    <div class="skill-name">C / C++ <span>80%</span></div>
+                    <div class="skill-bar">
+                        <div class="skill-level skill-animate" style="--target: 80%;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <p>&copy; 2026 Hoàng Minh Phát. Thiết kế bằng HTML & CSS thuần.</p>
+    </footer>
+
+    <!-- BÀI 1: Floating Action Button (FAB) với hiệu ứng phập phồng (pulse) -->
+    <a href="#contact" class="fab" aria-label="Liên hệ nhanh">
+        <i class="fas fa-comment-dots"></i>
+    </a>
+
+    <!-- Thư viện AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Khởi tạo thư viện AOS (Animate On Scroll)
+        AOS.init({
+            once: true, // Animation chỉ chạy 1 lần khi cuộn xuống
+            offset: 120, // Bắt đầu animation khi cách 120px
+            duration: 800
+        });
+    </script>
+</body>
+</html>

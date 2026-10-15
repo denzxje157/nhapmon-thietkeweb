@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio của tôi</title>
+
+  <!-- Thư viện AOS (CSS) qua CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <!-- CSS của bạn -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Vòng tròn Loading -->
+  <div id="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" data-aos="fade-down">
+    <div class="container">
+      <h1>Tên của bạn</h1>
+      <p>Web Developer &amp; Designer</p>
+    </div>
+  </header>
+
+  <!-- HĐ 2: Responsive Portfolio (2 cột Desktop) -->
+  <section class="about-section">
+    <div class="container layout-2-col">
+      <div class="about-image" data-aos="fade-right" data-aos-duration="900">
+        <img src="https://placehold.co/500x400" alt="Avatar">
+      </div>
+      <div class="about-content" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+        <h2>Giới thiệu bản thân</h2>
+        <p>Tôi là một lập trình viên đam mê thiết kế web, luôn hướng tới trải nghiệm người dùng tối ưu. Xin chào và chào
+          mừng đến với Portfolio của tôi!</p>
+        <a href="#" class="btn-primary">Liên hệ ngay</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HĐ 3: Breakpoint Challenge (Khu vực Dịch vụ) -->
+  <section class="services-section" data-aos="fade-up">
+    <div class="container">
+      <h2 class="section-title">Dịch vụ của tôi</h2>
+
+      <div class="services-grid">
+        <!-- Mỗi thẻ được bọc trong 1 div mang data-aos để hiệu ứng hover
+             (transform) của .service-card không bị AOS ghi đè.
+             style="display:grid" giúp thẻ bên trong giãn đầy và cao bằng nhau. -->
+        <div data-aos="fade-up" data-aos-delay="0" style="display: grid;">
+          <div class="service-card">
+            <h3>Thiết kế Web</h3>
+            <p>Tạo ra các giao diện website đẹp mắt, chuẩn UX/UI và thân thiện với người dùng.</p>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="100" style="display: grid;">
+          <div class="service-card">
+            <h3>Phát triển Frontend</h3>
+            <p>Sử dụng HTML, CSS, JavaScript để xây dựng các ứng dụng web tương tác mượt mà.</p>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="200" style="display: grid;">
+          <div class="service-card">
+            <h3>Phát triển Backend</h3>
+            <p>Xây dựng hệ thống máy chủ, cơ sở dữ liệu và API mạnh mẽ, bảo mật.</p>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="300" style="display: grid;">
+          <div class="service-card">
+            <h3>SEO &amp; Marketing</h3>
+            <p>Tối ưu hóa công cụ tìm kiếm giúp website của bạn đạt thứ hạng cao trên Google.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" data-aos="fade-up" data-aos-offset="0">
+    <div class="container">
+      <p>&copy; 2026 Portfolio của bạn. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Thư viện AOS (JS) qua CDN -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    const loader = document.getElementById('loader-wrapper');
+
+    function finishLoading() {
+      // Thêm class .hide (đã có trong CSS) để loader mờ dần rồi biến mất
+      loader.classList.add('hide');
+      // Khởi động AOS sau khi loading xong
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 80
+      });
+    }
+
+    window.addEventListener('load', finishLoading);
+    // Phòng trường hợp ảnh tải quá lâu: chờ tối đa 5 giây
+    setTimeout(() => {
+      if (!loader.classList.contains('hide')) finishLoading();
+    }, 5000);
+  </script>
+</body>
+
+</html>

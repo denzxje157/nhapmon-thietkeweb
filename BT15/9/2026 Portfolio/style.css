@@ -1,0 +1,168 @@
+/* =========================================================
+   HĐ 1 & 4: Design System - Định nghĩa CSS Variables 
+========================================================= */
+:root {
+  /* Bảng màu thông minh */
+  --color-primary: #3498db;
+  /* Xanh dương chủ đạo */
+  --color-secondary: #e74c3c;
+  /* Đỏ/Cam phụ trợ */
+
+  /* 3 mức xám */
+  --color-gray-light: #f8f9fa;
+  --color-gray-medium: #ced4da;
+  --color-gray-dark: #343a40;
+
+  /* Màu nền & chữ */
+  --color-bg: #ffffff;
+  --color-text: var(--color-gray-dark);
+  /* Hệ thống khoảng cách (Spacing) */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+  --spacing-xl: 64px;
+}
+
+/* Reset CSS cơ bản */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* =========================================================
+   THIẾT KẾ MẶC ĐỊNH (MOBILE FIRST)
+========================================================= */
+/* Header */
+.header {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+/* Nút bấm */
+.btn-primary {
+  display: inline-block;
+  background-color: var(--color-secondary);
+  color: var(--color-bg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: var(--spacing-md);
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #c0392b;
+}
+
+/* HĐ 2: Responsive Portfolio - Mặc định 1 cột cho Mobile */
+.about-section {
+  padding: var(--spacing-xl) 0;
+}
+
+.layout-2-col {
+  display: flex;
+  flex-direction: column;
+  /* 1 cột trên Mobile */
+  gap: var(--spacing-lg);
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* HĐ 3: Breakpoint Challenge (Dịch vụ) - Mặc định 1 cột Mobile */
+.services-section {
+  background-color: var(--color-gray-light);
+  padding: var(--spacing-xl) 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.services-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  /* 1 cột mặc định cho Mobile */
+  grid-template-columns: 1fr;
+}
+
+.service-card {
+  background-color: var(--color-bg);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--color-gray-medium);
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--color-gray-dark);
+  color: var(--color-bg);
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+}
+
+/* =========================================================
+   MEDIA QUERIES (TABLET & DESKTOP)
+========================================================= */
+/* Breakpoint cho Tablet (>= 768px) */
+@media (min-width: 768px) {
+
+  /* HĐ 2: Chuyển About section thành 2 cột */
+  .layout-2-col {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .about-image,
+  .about-content {
+    flex: 1;
+    /* Chia đều 50% - 50% */
+  }
+
+  /* HĐ 3: Chuyển Dịch vụ thành 2 cột */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Breakpoint cho Desktop (>= 1024px) */
+@media (min-width: 1024px) {
+
+  /* HĐ 3: Chuyển Dịch vụ thành 4 cột */
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

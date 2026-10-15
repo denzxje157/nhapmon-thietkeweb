@@ -1,0 +1,51 @@
+    <!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thử nghiệm Button Hover</title>
+    <style>
+        /* Đặt giao diện chung để căn giữa button cho dễ nhìn */
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f3f4f6;
+        }
+
+        /* Mã CSS cho Button */
+        .custom-btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #fb2a01;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+                        box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .custom-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 8px -2px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="custom-btn">Hover vào tôi</button>
+
+</body>
+</html>

@@ -1,0 +1,749 @@
+/* ===================================================
+   RESET CSS & BIẾN MÀU TOÀN CỤC
+   =================================================== */
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --primary-light: #eef2ff;
+    --target-red: #ef4444;
+    --target-green: #22c55e;
+    --bg-body: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===================================================
+   TOP NAVBAR TỐI ƯU
+   =================================================== */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.brand-title {
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: #0f172a;
+    display: block;
+    letter-spacing: -0.3px;
+}
+
+.brand-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: block;
+}
+
+.quick-files {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.file-link {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+    background-color: #f1f5f9;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.file-link:hover {
+    background-color: #e2e8f0;
+    color: var(--text-main);
+    transform: translateY(-1px);
+}
+
+.file-link.highlight {
+    background-color: #fef2f2;
+    border-color: #fca5a5;
+    color: #dc2626;
+}
+
+.file-link.highlight:hover {
+    background-color: #fee2e2;
+}
+
+/* ===================================================
+   HERO SECTION
+   =================================================== */
+.hero {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 50px 24px 30px;
+    text-align: center;
+}
+
+.hero-badge {
+    display: inline-block;
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    border: 1px solid #bfdbfe;
+    margin-bottom: 16px;
+}
+
+.hero-title {
+    font-size: 2.3rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.8px;
+    color: #0f172a;
+    margin-bottom: 14px;
+}
+
+.hero-desc {
+    max-width: 680px;
+    margin: 0 auto 30px;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+.hero-desc code {
+    background: #e2e8f0;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    color: #1e293b;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.tab-btn {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    color: #475569;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    background-color: #f1f5f9;
+    color: var(--text-main);
+}
+
+.tab-btn.active {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+/* ===================================================
+   MAIN CONTENT & SHOWCASE CARDS
+   =================================================== */
+.main-wrapper {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 10px 24px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.showcase-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.showcase-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.featured-card {
+    border: 2px solid #cbd5e1;
+}
+
+.card-header {
+    padding: 28px 32px 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.header-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.pill-target {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.pill-flex {
+    background-color: #e0f2fe;
+    color: #0369a1;
+}
+
+.pill-grid {
+    background-color: #fef3c7;
+    color: #b45309;
+}
+
+.pill-muted {
+    background-color: #f1f5f9;
+    color: #475569;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    text-transform: none;
+}
+
+.status-indicator-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #dc2626;
+}
+
+.card-header h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.card-prompt {
+    background-color: #f8fafc;
+    border-left: 4px solid var(--primary);
+    padding: 12px 18px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.5;
+}
+
+/* ===================================================
+   DEMO STAGE (VÙNG THỰC THI)
+   =================================================== */
+.demo-stage {
+    padding: 32px;
+    background-color: #f8fafc;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* ---------------------------------------------------
+   1. BÀI TẬP CÁI BIA (TARGET HOVER)
+   --------------------------------------------------- */
+.target-stage {
+    background: radial-gradient(circle at center, #ffffff 0%, #f1f5f9 100%);
+    text-align: center;
+}
+
+.target-interactive-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.hint-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.bullseye-wrapper {
+    padding: 15px;
+    display: inline-block;
+}
+
+/* Hình cái bia SVG */
+.bullseye {
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
+    display: block;
+}
+
+/* === QUY TẮC CHÍNH ĐÚNG YÊU CẦU ĐỀ BÀI === */
+/* Chưa chạm chuột vào: MÀU ĐỎ */
+.ring-colored {
+    fill: var(--target-red);              /* Màu đỏ */
+    transition: fill 0.35s ease;          /* Chuyển màu êm dịu */
+}
+
+/* Khi rê chuột vào (:hover): MÀU XANH LÁ CÂY */
+.bullseye:hover .ring-colored {
+    fill: var(--target-green);            /* Màu xanh lá cây */
+}
+
+/* Phóng to và tạo ánh hào quang màu xanh lá khi hover */
+.bullseye:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 12px 24px rgba(34, 197, 94, 0.45));
+}
+
+.ring-white {
+    fill: #ffffff;
+}
+
+.crosshair {
+    stroke: rgba(0, 0, 0, 0.15);
+    stroke-width: 1.5;
+    stroke-dasharray: 4, 4;
+    transition: stroke 0.35s ease;
+}
+
+.bullseye:hover .crosshair {
+    stroke: rgba(255, 255, 255, 0.45);
+}
+
+/* Trạng thái màu trực quan */
+.color-states {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.state-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    font-size: 13.5px;
+    color: #475569;
+    transition: all 0.3s ease;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot-red {
+    background-color: var(--target-red);
+}
+
+.dot-green {
+    background-color: var(--target-green);
+}
+
+.state-arrow {
+    color: #94a3b8;
+    font-size: 16px;
+}
+
+.state-chip.active-state {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.state-red.active-state {
+    border-color: #fca5a5;
+    background-color: #fef2f2;
+    color: #991b1b;
+}
+
+.state-green.active-state {
+    border-color: #86efac;
+    background-color: #f0fdf4;
+    color: #166534;
+}
+
+/* ---------------------------------------------------
+   2. BÀI TẬP FLEXBOX (CĂN GIỮA TOÀN MÀN HÌNH 100VH)
+   --------------------------------------------------- */
+.viewport-mockup {
+    border-radius: 12px;
+    border: 1px solid #cbd5e1;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: var(--shadow-sm);
+}
+
+.viewport-bar {
+    background-color: #e2e8f0;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #cbd5e1;
+}
+
+.vp-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.vp-red { background-color: #ef4444; }
+.vp-yellow { background-color: #f59e0b; }
+.vp-green { background-color: #10b981; }
+
+.vp-title {
+    font-size: 12px;
+    color: #475569;
+    font-weight: 600;
+    margin-left: 6px;
+}
+
+/* === CLASS THEO ĐÚNG ĐỀ BÀI: .container === */
+.container {
+    display: flex;                   /* 1. Flexbox */
+    justify-content: center;         /* 2. Căn giữa ngang */
+    align-items: center;             /* 3. Căn giữa dọc */
+    height: 100vh;                   /* 4. Chiều cao toàn màn hình 100vh */
+    width: 100%;                     /* Chiều rộng toàn màn hình */
+}
+
+/* Giới hạn chiều cao khung hiển thị demo trong giao diện dashboard để dễ nhìn */
+.flex-demo-container {
+    height: 380px;                   /* Chiều cao khung mô phỏng để xem trực quan */
+    background: linear-gradient(135deg, #e0e7ff 0%, #ede9fe 100%);
+    padding: 20px;
+}
+
+.flex-box-content {
+    background-color: #ffffff;
+    padding: 36px 32px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.12);
+    text-align: center;
+    max-width: 440px;
+    border: 1px solid #e0e7ff;
+}
+
+.box-badge {
+    display: inline-block;
+    background-color: #e0e7ff;
+    color: #4338ca;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.flex-box-content h3 {
+    font-size: 1.25rem;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.flex-box-content p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.property-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+}
+
+.property-badges code {
+    background: #f1f5f9;
+    color: #334155;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-weight: 600;
+    border: 1px solid #e2e8f0;
+}
+
+/* ---------------------------------------------------
+   3. BÀI TẬP CSS GRID (3 CỘT, GAP 20PX, BO GÓC 10PX)
+   --------------------------------------------------- */
+/* === ĐÚNG THEO YÊU CẦU ĐỀ BÀI === */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 cột bằng nhau */
+    gap: 20px;                              /* Khoảng cách giữa các cột là 20px */
+}
+
+/* Mỗi thẻ: nền xám nhạt và bo góc 10px */
+.grid-item {
+    background-color: #f0f0f0;              /* Màu nền xám nhạt */
+    border-radius: 10px;                    /* Bo góc 10px */
+    padding: 24px;                          /* Khoảng đệm bên trong */
+    border: 1px solid #e5e7eb;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    background-color: #e5e7eb;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.item-num {
+    font-size: 13px;
+    font-weight: 800;
+    color: #9ca3af;
+    background-color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.item-icon {
+    font-size: 20px;
+}
+
+.grid-item h3 {
+    font-size: 1.15rem;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.grid-item p {
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    flex-grow: 1;
+}
+
+.grid-item code {
+    background: #e2e8f0;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+}
+
+.card-subtag {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+/* ===================================================
+   CODE DISPLAY PANEL
+   =================================================== */
+.code-panel {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 16px 24px 22px;
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #334155;
+}
+
+.code-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-copy {
+    background-color: #1e293b;
+    border: 1px solid #475569;
+    color: #cbd5e1;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-copy:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #ffffff;
+}
+
+.code-panel pre {
+    margin: 0;
+    overflow-x: auto;
+}
+
+.code-panel code {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+
+/* ===================================================
+   FOOTER & TOAST
+   =================================================== */
+.footer {
+    border-top: 1px solid var(--border-color);
+    background-color: #ffffff;
+    padding: 36px 24px;
+    text-align: center;
+}
+
+.footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 4px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #0f172a;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 1px solid #334155;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 999;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===================================================
+   RESPONSIVE (TABLET & MOBILE)
+   =================================================== */
+@media (max-width: 868px) {
+    .grid-container {
+        grid-template-columns: 1fr;  /* Trên mobile chuyển thành 1 cột */
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .card-header, .demo-stage {
+        padding: 20px;
+    }
+}

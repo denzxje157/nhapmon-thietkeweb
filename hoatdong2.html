@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Cá Nhân | Nguyễn Lê Đông - Hoạt Động 2</title>
+    <style>
+        /* ==========================================================================
+           1. HỆ THỐNG CSS VARIABLES TẠI :root
+           - Toàn bộ mã màu (Color System)
+           - Toàn bộ thông số khoảng cách (Spacing System: Margin, Padding, Gap)
+           - Thông số bo góc và đổ bóng (Border Radius & Box Shadow)
+           ========================================================================== */
+        :root {
+            /* --- A. BẢNG MÃ MÀU (COLOR PALETTE) --- */
+            --primary-color: #2563eb;           /* Xanh dương chủ đạo */
+            --primary-hover: #1d4ed8;           /* Xanh đậm khi hover nút */
+            --primary-light: #eff6ff;           /* Nền xanh nhạt khi active/hover item */
+            --secondary-color: #38bdf8;         /* Xanh ngọc phụ / viền highlight */
+
+            --text-dark: #0f172a;               /* Xám đậm nhất: Tiêu đề H1, H2, H3, nhãn label */
+            --text-medium: #475569;             /* Xám vừa: Văn bản mô tả, liên kết thường */
+            --text-light: #94a3b8;              /* Xám nhạt: Phụ đề, footer, placeholder */
+
+            --bg-color: #f8fafc;                /* Màu nền chính toàn trang */
+            --bg-card: #ffffff;                 /* Màu nền thẻ card, sidebar */
+            --bg-dark-header: #1e293b;          /* Nền tối thứ 2 cho gradient header */
+            --border-color: #e2e8f0;            /* Màu đường viền */
+            --color-white: #ffffff;             /* Màu trắng */
+
+            /* Đổ bóng & Vòng sáng Focus */
+            --shadow-sm: rgba(0, 0, 0, 0.04);
+            --shadow-md: rgba(0, 0, 0, 0.06);
+            --shadow-lg: rgba(0, 0, 0, 0.08);
+            --shadow-primary: rgba(37, 99, 235, 0.25);
+            --ring-primary: rgba(37, 99, 235, 0.15);
+
+            /* --- B. HỆ THỐNG KHOẢNG CÁCH (SPACING / MARGIN / PADDING / GAP) --- */
+            --space-0: 0;                       /* 0px */
+            --space-xs: 6px;                    /* 6px */
+            --space-sm: 8px;                    /* 8px */
+            --space-md: 10px;                   /* 10px */
+            --space-12: 12px;                   /* 12px */
+            --space-14: 14px;                   /* 14px */
+            --space-15: 15px;                   /* 15px */
+            --space-base: 16px;                 /* 16px */
+            --space-18: 18px;                   /* 18px */
+            --space-lg: 20px;                   /* 20px */
+            --space-22: 22px;                   /* 22px */
+            --space-24: 24px;                   /* 24px */
+            --space-26: 26px;                   /* 26px */
+            --space-xl: 28px;                   /* 28px */
+            --space-2xl: 32px;                  /* 32px */
+
+            /* --- C. BO GÓC (BORDER RADIUS) --- */
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 10px;
+            --radius-xl: 12px;
+            --radius-pill: 20px;
+            --radius-circle: 50%;
+        }
+
+        /* ==========================================================================
+           RESET CSS CƠ BẢN VÀ ÁP DỤNG BIẾN TOÀN CỤC
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: var(--space-0);
+            padding: var(--space-0);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* ==========================================================================
+           2. DÀN TRANG CSS GRID (grid-template-areas)
+           - Header chiếm toàn bộ chiều ngang
+           - Sidebar rộng 250px
+           - Main content chiếm phần còn lại (1fr)
+           - Footer chiếm toàn bộ chiều ngang
+           ========================================================================== */
+        .layout-container {
+            display: grid;
+            min-height: 100vh;
+            grid-template-columns: 250px 1fr;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas:
+                "header  header"
+                "sidebar main"
+                "footer  footer";
+        }
+
+        /* --------------------------------------------------------------------------
+           HEADER (Full width)
+           -------------------------------------------------------------------------- */
+        .header {
+            grid-area: header;
+            background: linear-gradient(135deg, var(--text-dark), var(--bg-dark-header));
+            color: var(--color-white);
+            padding: var(--space-18) var(--space-2xl);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--primary-color);
+            box-shadow: 0 2px 8px var(--shadow-lg);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            color: var(--color-white);
+            letter-spacing: -0.5px;
+        }
+
+        .header .header-desc {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        /* --------------------------------------------------------------------------
+           SIDEBAR (Cố định 250px)
+           -------------------------------------------------------------------------- */
+        .sidebar {
+            grid-area: sidebar;
+            background-color: var(--bg-card);
+            border-right: 1px solid var(--border-color);
+            padding: var(--space-xl) var(--space-lg);
+        }
+
+        .sidebar h2 {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin-bottom: var(--space-18);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: var(--space-sm);
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: var(--space-md) var(--space-14);
+            color: var(--text-medium);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+        }
+
+        /* --------------------------------------------------------------------------
+           MAIN CONTENT (Chiếm phần còn lại 1fr)
+           -------------------------------------------------------------------------- */
+        .main-content {
+            grid-area: main;
+            padding: var(--space-2xl);
+            background-color: var(--bg-color);
+        }
+
+        /* Các khối Section trong Portfolio */
+        .portfolio-section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: 0 1px 3px var(--shadow-sm);
+        }
+
+        .portfolio-section h2 {
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            margin-bottom: var(--space-base);
+            padding-bottom: var(--space-md);
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .portfolio-section h3 {
+            color: var(--text-dark);
+            font-size: 1.15rem;
+            margin-top: var(--space-14);
+            margin-bottom: var(--space-sm);
+        }
+
+        .portfolio-section p {
+            color: var(--text-medium);
+            margin-bottom: var(--space-14);
+        }
+
+        /* SECTION 1: ABOUT (GIỚI THIỆU BẢN THÂN) */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-24);
+            margin-bottom: var(--space-base);
+        }
+
+        .avatar-box {
+            width: 110px;
+            height: 110px;
+            border-radius: var(--radius-circle);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px var(--shadow-primary);
+        }
+
+        .about-text p {
+            margin-bottom: var(--space-sm);
+        }
+
+        /* ==========================================================================
+           3. DANH MỤC 'SKILLS' DÙNG FLEXBOX (PROMPT 2)
+           - Hiển thị dạng hàng ngang (flex-direction: row)
+           - Tự động xuống dòng (flex-wrap: wrap)
+           - Khoảng cách giữa các item là 15px (gap: var(--space-15))
+           - Căn giữa các item (justify-content: center; align-items: center)
+           ========================================================================== */
+        .skills-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: var(--space-15);
+            justify-content: center;
+            align-items: center;
+            margin-top: var(--space-18);
+            padding: var(--space-md) var(--space-0);
+        }
+
+        .skill-item {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-pill);
+            padding: var(--space-md) var(--space-lg);
+            font-size: 0.92rem;
+            font-weight: 600;
+            box-shadow: 0 1px 2px var(--shadow-sm);
+            transition: all 0.25s ease-in-out;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .skill-item:hover {
+            background-color: var(--primary-color);
+            color: var(--color-white);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow-primary);
+        }
+
+        /* ==========================================================================
+           BỐ CỤC .services-container BẰNG CSS GRID & MEDIA QUERIES
+           - Màn hình > 1024px: 4 cột
+           - Màn hình 768px - 1024px: 2 cột
+           - Màn hình < 768px: 1 cột
+           - Khoảng cách giữa các cột/hàng: gap: var(--space-lg) (20px)
+           ========================================================================== */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+            margin-top: var(--space-18);
+        }
+
+        .service-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-24) var(--space-18);
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .service-icon {
+            font-size: 2.2rem;
+            margin-bottom: var(--space-12);
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: var(--space-sm);
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            margin-bottom: var(--space-0);
+            line-height: 1.5;
+        }
+
+        /* SECTION 4: PROJECTS (DỰ ÁN TIÊU BIỂU) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-base);
+        }
+
+        .project-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .project-card h3 {
+            color: var(--text-dark);
+            margin-top: var(--space-0);
+            margin-bottom: var(--space-sm);
+        }
+
+        .project-card p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: var(--space-md);
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* SECTION 5: CONTACT (LIÊN HỆ) */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-base);
+            max-width: 600px;
+            margin-top: var(--space-base);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: var(--space-md) var(--space-14);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background-color: var(--bg-card);
+            color: var(--text-dark);
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px var(--ring-primary);
+        }
+
+        .btn-submit {
+            align-self: flex-start;
+            background-color: var(--primary-color);
+            color: var(--color-white);
+            border: none;
+            border-radius: var(--radius-md);
+            padding: var(--space-12) var(--space-26);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.15s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        /* --------------------------------------------------------------------------
+           FOOTER (Full width)
+           -------------------------------------------------------------------------- */
+        .footer {
+            grid-area: footer;
+            background-color: var(--text-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: var(--space-22) var(--space-24);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .footer strong {
+            color: var(--secondary-color);
+        }
+
+        .footer-nav ul {
+            display: flex;
+            gap: var(--space-lg);
+            list-style: none;
+        }
+
+        .footer-nav a {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .footer-nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* ==========================================================================
+           MEDIA QUERIES (RESPONSIVE)
+           ========================================================================== */
+
+        /* 1. Màn hình 768px - 1024px: 2 cột cho dịch vụ */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .services-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-lg);
+            }
+        }
+
+        /* 2. Màn hình < 768px (Mobile & Tablet nhỏ): 1 cột duy nhất */
+        @media (max-width: 768px) {
+            .layout-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto 1fr auto;
+                grid-template-areas:
+                    "header"
+                    "sidebar"
+                    "main"
+                    "footer";
+            }
+
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: var(--space-base) var(--space-lg);
+                gap: var(--space-xs);
+            }
+
+            .header h1 {
+                font-size: 1.35rem;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: var(--space-14) var(--space-base);
+                background-color: var(--bg-card);
+            }
+
+            .sidebar h2 {
+                display: none;
+            }
+
+            .sidebar-nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: var(--space-sm);
+            }
+
+            .sidebar-nav li {
+                margin-bottom: var(--space-0);
+            }
+
+            .sidebar-nav a {
+                padding: var(--space-sm) var(--space-12);
+                font-size: 0.88rem;
+                background-color: var(--bg-color);
+                border: 1px solid var(--border-color);
+            }
+
+            .main-content {
+                padding: var(--space-lg) var(--space-base);
+            }
+
+            .portfolio-section {
+                padding: var(--space-lg) var(--space-base);
+                margin-bottom: var(--space-lg);
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-base);
+            }
+
+            .skills-container {
+                gap: var(--space-md);
+            }
+
+            .skill-item {
+                padding: var(--space-sm) var(--space-14);
+                font-size: 0.85rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-base);
+            }
+
+            .services-container {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .btn-submit {
+                width: 100%;
+                text-align: center;
+                padding: var(--space-14);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="layout-container">
+        <!-- 1. HEADER (toàn bộ chiều ngang) -->
+        <header class="header">
+            <h1>Nguyễn Lê Đông</h1>
+            <span class="header-desc">Portfolio Cá Nhân - Web Development</span>
+        </header>
+
+        <!-- 2. SIDEBAR (cố định 250px) -->
+        <aside class="sidebar">
+            <h2>Danh Mục</h2>
+            <nav class="sidebar-nav" aria-label="Thanh điều hướng Portfolio">
+                <ul>
+                    <li><a href="#about" class="active">Giới thiệu bản thân</a></li>
+                    <li><a href="#skills">Kỹ năng (Skills)</a></li>
+                    <li><a href="#services">Dịch vụ (Services)</a></li>
+                    <li><a href="#projects">Dự án tiêu biểu</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- 3. MAIN CONTENT (chiếm phần còn lại 1fr) -->
+        <main class="main-content">
+
+            <!-- PHẦN 1: GIỚI THIỆU BẢN THÂN (#about) -->
+            <section class="portfolio-section" id="about">
+                <h2>Giới Thiệu Bản Thân</h2>
+                <div class="about-content">
+                    <div class="avatar-box">Đ</div>
+                    <div class="about-text">
+                        <p>Xin chào, tôi là <strong>Nguyễn Lê Đông</strong>. Tôi là một sinh viên lập trình web đam mê xây dựng các giao diện trực quan, tối ưu trải nghiệm người dùng và chuẩn cấu trúc Semantic HTML5.</p>
+                        <p>Trang Portfolio này được thiết kế dựa trên hệ thống <strong>CSS Variables</strong> tại <code>:root</code>, kết hợp bố cục <strong>CSS Grid</strong> (quản lý vùng bằng <code>grid-template-areas</code>) và <strong>Flexbox</strong> cho danh mục kỹ năng.</p>
+                    </div>
+                </div>
+
+                <h3>Mục Tiêu Nghề Nghiệp</h3>
+                <p>Phát triển chuyên sâu trong lĩnh vực lập trình Front-end, thành thạo các kỹ thuật dàn trang hiện đại và xây dựng các ứng dụng web mang lại giá trị thực tế cao.</p>
+            </section>
+
+            <!-- PHẦN 2: DANH MỤC SKILLS (#skills) ĐÁP ỨNG PROMPT 2 -->
+            <section class="portfolio-section" id="skills">
+                <h2>Kỹ Năng (Skills)</h2>
+                <p>Danh mục kỹ năng hiển thị dạng hàng ngang, tự động xuống dòng (flex-wrap), khoảng cách 15px và căn giữa bằng Flexbox:</p>
+                
+                <div class="skills-container">
+                    <div class="skill-item">HTML5 Semantic</div>
+                    <div class="skill-item">CSS Grid Layout</div>
+                    <div class="skill-item">Flexbox</div>
+                    <div class="skill-item">CSS Variables (:root)</div>
+                    <div class="skill-item">Responsive Web Design</div>
+                    <div class="skill-item">JavaScript (ES6+)</div>
+                    <div class="skill-item">ReactJS</div>
+                    <div class="skill-item">Git & GitHub</div>
+                    <div class="skill-item">UI/UX Figma</div>
+                    <div class="skill-item">Tailwind CSS</div>
+                    <div class="skill-item">Bootstrap 5</div>
+                </div>
+            </section>
+
+            <!-- PHẦN 3: DỊCH VỤ CUNG CẤP (.services-container) -->
+            <section class="portfolio-section" id="services">
+                <h2>Dịch Vụ Cung CẤP (Services)</h2>
+                <p>Bố cục CSS Grid co giãn đa màn hình: Màn hình &gt; 1024px (4 cột), 768px - 1024px (2 cột), &lt; 768px (1 cột), sử dụng <code>gap: 20px</code>:</p>
+                
+                <div class="services-container">
+                    <div class="service-card">
+                        <div class="service-icon">💻</div>
+                        <h3>Thiết Kế Web</h3>
+                        <p>Xây dựng giao diện web chuẩn Semantic HTML5, CSS Grid và Flexbox responsive toàn diện.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3>Giao Diện Di Động</h3>
+                        <p>Tối ưu hóa hiển thị mượt mà trên smartphone, tablet với hệ thống Media Queries chuẩn.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">🎨</div>
+                        <h3>Thiết Kế UI/UX</h3>
+                        <p>Xây dựng hệ thống bảng màu thông minh qua CSS Variables đồng bộ và hiện đại.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3>Tối Ưu Hiệu Năng</h3>
+                        <p>Cấu trúc mã nguồn sạch sẽ, không thừa thãi, tải trang nhanh và chuẩn SEO công cụ tìm kiếm.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PHẦN 4: DỰ ÁN TIÊU BIỂU (#projects) -->
+            <section class="portfolio-section" id="projects">
+                <h2>Các Dự Án Tiêu Biểu</h2>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <h3>Dự án E-commerce Website</h3>
+                        <p>Trang thương mại điện tử đơn giản được xây dựng với HTML5, CSS3 và Vanilla JavaScript. Hỗ trợ giỏ hàng và danh mục sản phẩm trực quan.</p>
+                        <a href="#projects" class="project-link">Xem chi tiết dự án &rarr;</a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Dự án Quản Lý Công Việc (Todo App)</h3>
+                        <p>Ứng dụng quản lý công việc cá nhân giúp theo dõi tiến độ công việc hàng ngày, lưu trữ dữ liệu với Local Storage.</p>
+                        <a href="#projects" class="project-link">Xem chi tiết dự án &rarr;</a>
+                    </article>
+                </div>
+            </section>
+
+            <!-- PHẦN 5: LIÊN HỆ (#contact) -->
+            <section class="portfolio-section" id="contact">
+                <h2>Liên Hệ</h2>
+                <p>Bạn có dự án cần hợp tác hoặc câu hỏi trao đổi? Hãy để lại tin nhắn cho tôi!</p>
+
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Họ và tên:</label>
+                        <input type="text" id="name" name="name" placeholder="Nhập họ và tên..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email của bạn:</label>
+                        <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tin nhắn:</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Nhập nội dung tin nhắn..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Gửi Tin Nhắn</button>
+                </form>
+            </section>
+
+        </main>
+
+        <!-- 6. FOOTER (toàn bộ chiều ngang) -->
+        <footer class="footer">
+            <p>&copy; 2026 <strong>Nguyễn Lê Đông</strong>. Tất cả các quyền được bảo lưu.</p>
+            <nav class="footer-nav" aria-label="Liên kết mạng xã hội">
+                <ul>
+                    <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                </ul>
+            </nav>
+        </footer>
+    </div>
+
+</body>
+</html>

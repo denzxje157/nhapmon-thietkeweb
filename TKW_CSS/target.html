@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiệu Ứng Di Chuột Vào Hình Cái Bia</title>
+    <link rel="stylesheet" href="target.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <h2>Hiệu Ứng Hover Cái Bia</h2>
+            <p class="instruction">Di chuyển chuột vào hình cái bia bên dưới:</p>
+
+            <!-- Hình cái bia (SVG với các vòng tròn tâm ngắm) -->
+            <div class="target-wrapper">
+                <svg class="target" viewBox="0 0 200 200" width="180" height="180">
+                    <!-- Vòng 1 (Vòng ngoài cùng) -->
+                    <circle class="color-ring" cx="100" cy="100" r="90" />
+                    <!-- Vòng trắng 1 -->
+                    <circle class="white-ring" cx="100" cy="100" r="72" />
+                    <!-- Vòng 2 (Vòng giữa) -->
+                    <circle class="color-ring" cx="100" cy="100" r="54" />
+                    <!-- Vòng trắng 2 -->
+                    <circle class="white-ring" cx="100" cy="100" r="36" />
+                    <!-- Vòng 3 (Tâm bia / Bullseye) -->
+                    <circle class="color-ring" cx="100" cy="100" r="18" />
+                    
+                    <!-- Đường ngắm chữ thập -->
+                    <line class="crosshair" x1="100" y1="5" x2="100" y2="195" />
+                    <line class="crosshair" x1="5" y1="100" x2="195" y2="100" />
+                </svg>
+            </div>
+
+            <!-- Nhãn trạng thái -->
+            <div class="status-indicator">
+                <span class="status-badge red-badge">Không chạm: Màu Đỏ</span>
+                <span class="arrow">➜</span>
+                <span class="status-badge green-badge">Rê chuột vào: Màu Xanh Lá</span>
+            </div>
+
+            <!-- Khối mã CSS mẫu -->
+            <div class="code-box">
+                <pre><code>/* 1. Bình thường (không chạm vào): MÀU ĐỎ */
+.color-ring {
+    fill: #ef4444; /* Màu đỏ */
+    transition: fill 0.3s ease;
+}
+
+/* 2. Khi di chuyển chuột vào (:hover): MÀU XANH LÁ CÂY */
+.target:hover .color-ring {
+    fill: #22c55e; /* Màu xanh lá cây */
+}</code></pre>
+            </div>
+
+            <div class="back-link">
+                <a href="index.html">← Quay lại trang tổng hợp</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

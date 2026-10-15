@@ -1,0 +1,158 @@
+/* Reset margin và padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f5f9;
+    color: #1e293b;
+}
+
+/* Căn giữa thẻ card toàn màn hình (100vh) bằng Flexbox */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Khung nội dung chính */
+.card {
+    background-color: #ffffff;
+    padding: 36px 32px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    max-width: 520px;
+    width: 100%;
+}
+
+.card h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #0f172a;
+}
+
+.instruction {
+    color: #64748b;
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+/* ==============================================================
+   QUY TẮC CSS CHO HÌNH CÁI BIA:
+   - Bình thường (không chạm vào): MÀU ĐỎ (#ef4444)
+   - Khi di chuyển chuột vào (:hover): MÀU XANH LÁ CÂY (#22c55e)
+   ============================================================== */
+
+.target-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.target {
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Hiệu ứng phóng to nhẹ khi rê chuột vào */
+.target:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 8px 16px rgba(34, 197, 94, 0.35));
+}
+
+/* 1. MÀU ĐỎ KHI KHÔNG CHẠM CHUỘT VÀO */
+.color-ring {
+    fill: #ef4444;                          /* Màu đỏ */
+    transition: fill 0.35s ease;             /* Chuyển màu mượt mà */
+}
+
+/* 2. MÀU XANH LÁ CÂY KHI DI CHUYỂN CHUỘT VÀO (:hover) */
+.target:hover .color-ring {
+    fill: #22c55e;                          /* Màu xanh lá cây */
+}
+
+/* Vòng tròn màu trắng xen kẽ của cái bia */
+.white-ring {
+    fill: #ffffff;
+}
+
+/* Tâm ngắm chữ thập */
+.crosshair {
+    stroke: rgba(0, 0, 0, 0.15);
+    stroke-width: 1.5;
+    stroke-dasharray: 4, 4;
+    transition: stroke 0.35s ease;
+}
+
+.target:hover .crosshair {
+    stroke: rgba(255, 255, 255, 0.4);
+}
+
+/* Nhãn trạng thái */
+.status-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.red-badge {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.green-badge {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+.arrow {
+    color: #94a3b8;
+}
+
+/* Khung hiển thị mã code */
+.code-box {
+    background-color: #1e293b;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: left;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+.code-box pre {
+    margin: 0;
+}
+
+.code-box code {
+    font-family: Consolas, Monaco, monospace;
+    font-size: 13px;
+    color: #f8fafc;
+    line-height: 1.5;
+}
+
+.back-link a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}

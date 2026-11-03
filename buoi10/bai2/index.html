@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather & Travel Planner - Kế hoạch Hành trình Thông minh</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="theme-sunny">
+  <!-- Background Overlay -->
+  <div class="bg-overlay"></div>
+
+  <div class="planner-container">
+    <!-- Header -->
+    <header class="app-header glass-card">
+      <div class="brand">
+        <i class="fa-solid fa-compass brand-icon"></i>
+        <div>
+          <h1>Weather & Travel Planner</h1>
+          <p class="subtitle">Trải nghiệm du lịch thông minh & theo dõi thời tiết thực</p>
+        </div>
+      </div>
+      <div class="header-tools">
+        <!-- Countdown Widget -->
+        <div class="countdown-card" id="countdownCard">
+          <div class="countdown-label"><i class="fa-solid fa-plane-departure"></i> Khởi hành sau:</div>
+          <div class="countdown-timer" id="countdownTimer">00d 00h 00m 00s</div>
+        </div>
+        <div class="date-picker-wrap">
+          <input type="datetime-local" id="tripDateInput" title="Chọn ngày giờ khởi hành">
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Grid: Left = Weather, Right = Itinerary -->
+    <main class="main-layout">
+      <!-- Left Column: Weather Module -->
+      <section class="weather-panel glass-card">
+        <div class="panel-header">
+          <h2><i class="fa-solid fa-cloud-sun"></i> Thông tin Thời tiết</h2>
+          <select id="citySelect" class="glass-select">
+            <!-- Cities rendered dynamically -->
+          </select>
+        </div>
+
+        <div class="weather-card" id="weatherDisplay">
+          <div class="weather-hero">
+            <div class="weather-icon-large" id="weatherIcon">
+              <i class="fa-solid fa-sun"></i>
+            </div>
+            <div class="weather-temp-wrap">
+              <span class="weather-temp" id="weatherTemp">32°C</span>
+              <span class="weather-condition" id="weatherCondition">Nắng ráo</span>
+            </div>
+          </div>
+
+          <div class="weather-details-grid">
+            <div class="detail-box">
+              <i class="fa-solid fa-droplet text-info"></i>
+              <div>
+                <span class="lbl">Độ ẩm</span>
+                <strong id="weatherHumidity">65%</strong>
+              </div>
+            </div>
+            <div class="detail-box">
+              <i class="fa-solid fa-wind text-primary"></i>
+              <div>
+                <span class="lbl">Sức gió</span>
+                <strong id="weatherWind">12 km/h</strong>
+              </div>
+            </div>
+            <div class="detail-box">
+              <i class="fa-solid fa-temperature-half text-warning"></i>
+              <div>
+                <span class="lbl">Cảm giác như</span>
+                <strong id="weatherFeelsLike">35°C</strong>
+              </div>
+            </div>
+            <div class="detail-box">
+              <i class="fa-solid fa-sun text-accent"></i>
+              <div>
+                <span class="lbl">Chỉ số UV</span>
+                <strong id="weatherUV">Cao (7)</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gợi ý thông minh (Smart Suggestion) -->
+          <div class="smart-suggestion glass-card" id="smartSuggestion">
+            <i class="fa-solid fa-lightbulb"></i>
+            <div class="suggestion-content">
+              <h4>Gợi ý trang phục & chuẩn bị:</h4>
+              <p id="suggestionText">Thời tiết nắng nóng, nên mang nước lọc, kính râm và thoa kem chống nắng!</p>
+            </div>
+          </div>
+
+          <!-- Giới thiệu địa điểm du lịch tiêu biểu -->
+          <div class="city-intro glass-card">
+            <h4><i class="fa-solid fa-map-location-dot"></i> Điểm đến nổi tiếng</h4>
+            <p id="citySpotDesc">Thác Giang Điền (Đồng Nai) với cảnh sắc thiên nhiên trong lành, rực rỡ, thích hợp cho hoạt động cắm trại dã ngoại cuối tuần cùng bạn bè.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Itinerary Module -->
+      <section class="itinerary-panel glass-card">
+        <div class="panel-header">
+          <h2><i class="fa-solid fa-route"></i> Kế hoạch Lịch trình</h2>
+          <div class="itinerary-actions">
+            <button class="btn btn-export" id="btnExport" title="Xuất danh sách ra file .txt">
+              <i class="fa-solid fa-file-arrow-down"></i> Xuất file .txt
+            </button>
+          </div>
+        </div>
+
+        <!-- Add Destination Form -->
+        <form id="itineraryForm" class="itinerary-form">
+          <div class="form-row">
+            <div class="input-wrap flex-2">
+              <i class="fa-solid fa-location-dot"></i>
+              <input type="text" id="placeName" placeholder="Tên địa điểm (vd: Thác Giang Điền, Bãi Sau...)" required>
+            </div>
+            <div class="input-wrap flex-1">
+              <i class="fa-regular fa-clock"></i>
+              <input type="text" id="placeTime" placeholder="Thời gian (vd: 09:00 AM)" required>
+            </div>
+            <button type="submit" class="btn btn-primary" id="btnAddPlace">
+              <i class="fa-solid fa-plus"></i> Thêm
+            </button>
+          </div>
+        </form>
+
+        <!-- Search, Filter, Sort, Pagination Controls -->
+        <div class="itinerary-controls">
+          <div class="search-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="itinerarySearch" placeholder="Tìm kiếm địa điểm...">
+          </div>
+          <div class="filter-controls">
+            <select id="filterStatus" class="glass-select">
+              <option value="all">Tất cả trạng thái</option>
+              <option value="pending">Chưa đến</option>
+              <option value="visited">Đã đến</option>
+            </select>
+            <select id="sortPlaces" class="glass-select">
+              <option value="date-desc">Mới thêm gần đây</option>
+              <option value="title-asc">Tên (A-Z)</option>
+              <option value="title-desc">Tên (Z-A)</option>
+            </select>
+            <select id="pageSize" class="glass-select">
+              <option value="10">10 / trang</option>
+              <option value="20">20 / trang</option>
+              <option value="50">50 / trang</option>
+              <option value="all">Tất cả</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Places List -->
+        <ul class="places-list" id="placesList">
+          <!-- Rendered dynamically -->
+        </ul>
+
+        <div id="emptyPlaces" class="empty-state" style="display: none;">
+          <i class="fa-solid fa-map-pin"></i>
+          <p>Chưa có địa điểm nào trong lịch trình.</p>
+        </div>
+
+        <!-- Pagination & Footer Summary -->
+        <div class="list-footer">
+          <div class="pagination-info" id="paginationInfo">Trang 1 / 1</div>
+          <div class="pagination-btns">
+            <button class="btn btn-sm" id="btnPrevPage"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="btn btn-sm" id="btnNextPage"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+
+        <div class="stats-summary">
+          <span>Tổng địa điểm: <strong id="totalPlacesCount">0</strong></span>
+          <span>Đã khám phá: <strong id="visitedPlacesCount">0</strong></span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

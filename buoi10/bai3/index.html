@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng ký tham gia AI & Future Careers Workshop 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="bg-lights">
+    <div class="light-blob light-1"></div>
+    <div class="light-blob light-2"></div>
+  </div>
+
+  <div class="main-wrapper">
+    <div class="event-card glass-card">
+      <!-- Event Hero & Content Marketing Info -->
+      <header class="event-header">
+        <span class="event-tag"><i class="fa-solid fa-sparkles"></i> AI WORKSHOP 2026</span>
+        <h1 class="headline">Làm Chủ Trí Tuệ Nhân Tạo & Bứt Phá Sự Nghiệp Tương Lai</h1>
+        <p class="event-desc">
+          Khám phá công nghệ Generative AI, tự động hóa quy trình làm việc và mở ra cơ hội đột phá thu nhập ngay trong kỷ nguyên số. Sự kiện quy tụ các chuyên gia hàng đầu từ các tập đoàn công nghệ tiên phong!
+        </p>
+        
+        <!-- Live Seat Counter (Max 50) -->
+        <div class="seats-counter" id="seatsCounter">
+          <div class="seats-header">
+            <span><i class="fa-solid fa-users"></i> Chỗ ngồi còn lại:</span>
+            <strong id="seatsRemaining">18 / 50</strong>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 64%;"></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Google Apps Script URL Config (Optional override) -->
+      <div class="script-url-hint">
+        <details>
+          <summary><i class="fa-solid fa-gear"></i> Tùy chỉnh URL Google Apps Script Web App</summary>
+          <div class="url-input-group">
+            <input type="text" id="scriptUrlInput" placeholder="Dán URL Web App của Apps Script vào đây (mặc định đã có sẵn giả lập)">
+            <button type="button" class="btn btn-sm" id="btnSaveScriptUrl">Lưu URL</button>
+          </div>
+        </details>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="registrationForm" class="registration-form" novalidate>
+        <!-- Full Name -->
+        <div class="form-group" id="groupName">
+          <label for="fullName"><i class="fa-solid fa-user"></i> Họ và tên sinh viên / người tham gia</label>
+          <div class="input-container">
+            <input type="text" id="fullName" name="fullName" placeholder="Ví dụ: Nguyễn Văn Phúc" autocomplete="name">
+            <i class="validation-icon fa-solid"></i>
+          </div>
+          <small class="error-msg" id="errorName"></small>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group" id="groupEmail">
+          <label for="email"><i class="fa-solid fa-envelope"></i> Địa chỉ Email liên hệ</label>
+          <div class="input-container">
+            <input type="email" id="email" name="email" placeholder="Ví dụ: phuc.nguyen@gmail.com" autocomplete="email">
+            <i class="validation-icon fa-solid"></i>
+          </div>
+          <small class="error-msg" id="errorEmail"></small>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group" id="groupPhone">
+          <label for="phone"><i class="fa-solid fa-phone"></i> Số điện thoại di động</label>
+          <div class="input-container">
+            <input type="tel" id="phone" name="phone" placeholder="Số điện thoại gồm 10 chữ số (vd: 0912345678)" autocomplete="tel">
+            <i class="validation-icon fa-solid"></i>
+          </div>
+          <small class="error-msg" id="errorPhone"></small>
+        </div>
+
+        <!-- Ticket Type -->
+        <div class="form-group" id="groupTicket">
+          <label for="ticketType"><i class="fa-solid fa-ticket"></i> Hạng vé tham dự</label>
+          <div class="input-container">
+            <select id="ticketType" name="ticketType">
+              <option value="" disabled selected>-- Chọn hạng vé phù hợp --</option>
+              <option value="Student">Vé Sinh Viên (Student Pass) - Miễn phí 100%</option>
+              <option value="Standard">Vé Tiêu Chuẩn (Standard Pass) - 199.000 VNĐ</option>
+              <option value="VIP">Vé VIP (VIP Access & Ăn trưa cùng diễn giả) - 499.000 VNĐ</option>
+            </select>
+          </div>
+          <small class="error-msg" id="errorTicket"></small>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-submit" id="btnSubmit">
+          <span class="btn-text"><i class="fa-solid fa-paper-plane"></i> Đăng Ký Tham Gia Ngay</span>
+          <span class="btn-spinner" style="display: none;"><i class="fa-solid fa-circle-notch fa-spin"></i> Đang xử lý...</span>
+        </button>
+      </form>
+
+      <!-- Registrations History Table (Integrated List with Search, Filter, Sort, Pagination) -->
+      <section class="records-section">
+        <div class="records-header">
+          <h3><i class="fa-solid fa-address-book"></i> Danh sách đã đăng ký thành công</h3>
+          <div class="records-controls">
+            <input type="text" id="searchRecord" placeholder="Tìm theo tên/email...">
+            <select id="filterTicket" class="glass-select">
+              <option value="all">Tất cả vé</option>
+              <option value="Student">Vé Student</option>
+              <option value="Standard">Vé Standard</option>
+              <option value="VIP">Vé VIP</option>
+            </select>
+            <select id="sortRecord" class="glass-select">
+              <option value="newest">Mới nhất</option>
+              <option value="name-asc">Tên (A-Z)</option>
+            </select>
+            <select id="pageSize" class="glass-select">
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="all">Tất cả</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="glass-table">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Hạng vé</th>
+                <th>Thời gian</th>
+                <th>QR</th>
+              </tr>
+            </thead>
+            <tbody id="recordsBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="records-pagination">
+          <span id="pageInfo">Trang 1 / 1</span>
+          <div class="btns">
+            <button class="btn btn-sm" id="btnPrev"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="btn btn-sm" id="btnNext"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Success Modal with QR Check-in & Auto Email Confirmation Demo -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-box glass-card">
+      <button class="modal-close" id="btnCloseModal">&times;</button>
+      <div class="modal-icon-success">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h2>Chúc mừng bạn đã đăng ký thành công!</h2>
+      <p class="modal-sub">Dữ liệu đã được đồng bộ lên Google Sheets và gửi Email xác nhận.</p>
+
+      <!-- QR Code Section -->
+      <div class="qr-container">
+        <h4><i class="fa-solid fa-qrcode"></i> Vé Check-in điện tử (QR Code)</h4>
+        <div class="qr-image-wrap">
+          <img id="qrCodeImg" src="" alt="QR Code Check-in">
+        </div>
+        <p class="qr-note">Vui lòng chụp lại màn hình hoặc lưu mã QR này để đối soát tại bàn đón tiếp.</p>
+      </div>
+
+      <!-- Automated Email Confirmation Box -->
+      <div class="email-preview-box">
+        <div class="email-badge"><i class="fa-solid fa-envelope-circle-check"></i> Nội dung Email xác nhận tự động đã gửi:</div>
+        <div class="email-content" id="emailPreviewContent">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block" id="btnDone">Đã hiểu & Hoàn tất</button>
+    </div>
+  </div>
+
+  <!-- Google Apps Script Source Code Documentation modal / accordion -->
+  <div class="script-reference-wrap">
+    <details class="glass-card">
+      <summary><i class="fa-solid fa-code"></i> Hướng dẫn & Mã nguồn Google Apps Script (.gs) phía Backend</summary>
+      <pre><code>// ==========================================
+// GOOGLE APPS SCRIPT (Code.gs)
+// Mở Google Sheets -> Tiện ích mở rộng (Extensions) -> Apps Script -> Dán đoạn code này:
+// ==========================================
+function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.tryLock(10000);
+  try {
+    var doc = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = doc.getActiveSheet();
+    
+    // Nếu sheet trống, thêm dòng tiêu đề
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(["Thời gian", "Họ tên", "Email", "Số điện thoại", "Hạng vé", "Mã Check-in"]);
+    }
+    
+    // Đếm số hàng để kiểm tra giới hạn 50 người
+    var totalRows = sheet.getLastRow();
+    if (totalRows > 50) {
+      return ContentService.createTextOutput(JSON.stringify({
+        status: "full",
+        message: "Sự kiện đã đủ 50 người đăng ký. Rất tiếc không thể tiếp nhận thêm!"
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    var data = JSON.parse(e.postData.contents);
+    var timestamp = new Date();
+    var checkInCode = "AI2026-" + ("" + Math.random()).substring(2, 8);
+    
+    sheet.appendRow([
+      timestamp,
+      data.fullName,
+      data.email,
+      data.phone,
+      data.ticketType,
+      checkInCode
+    ]);
+    
+    // Tự động gửi Email xác nhận qua GmailApp
+    try {
+      var subject = "[AI Workshop 2026] Xác nhận đăng ký thành công cho " + data.fullName;
+      var body = "Xin chào " + data.fullName + ",\n\n"
+        + "Cảm ơn bạn đã đăng ký tham dự sự kiện 'AI & Future Careers Workshop 2026'!\n"
+        + "- Hạng vé: " + data.ticketType + "\n"
+        + "- Mã Check-in: " + checkInCode + "\n\n"
+        + "LƯU Ý QUAN TRỌNG:\n"
+        + "Vui lòng mang theo Laptop cá nhân có cài đặt trình duyệt web và sạc đầy pin để tham gia phần thực hành 'Vibe Coding' cùng diễn giả.\n\n"
+        + "Hẹn gặp lại bạn tại hội trường!\n"
+        + "Ban Tổ Chức AI Workshop 2026.";
+      GmailApp.sendEmail(data.email, subject, body);
+    } catch (mailErr) {
+      Logger.log("Mail error: " + mailErr);
+    }
+    
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "success",
+      checkInCode: checkInCode,
+      message: "Đăng ký thành công và đã ghi nhận vào Google Sheets!"
+    })).setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "error",
+      message: error.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
+  }
+}</code></pre>
+    </details>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

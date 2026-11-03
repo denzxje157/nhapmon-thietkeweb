@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA Motors - Tương Lai Xe Điện Thông Minh & Đẳng Cấp</title>
+  <!-- Google Fonts: Syne (Tiêu đề) + Inter (Nội dung) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-lang="vi">
+  <!-- Sticky Header Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo">
+        <span class="gold-text">AURA</span> MOTORS
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#hero" class="nav-link active" data-i18n="nav_home">Trang chủ</a>
+        <a href="#about" class="nav-link" data-i18n="nav_about">Về thương hiệu</a>
+        <a href="#features" class="nav-link" data-i18n="nav_features">Công nghệ pin</a>
+        <a href="#gallery" class="nav-link" data-i18n="nav_gallery">Showroom</a>
+        <a href="#specs" class="nav-link" data-i18n="nav_specs">Thông số kỹ thuật</a>
+        <a href="#models" class="nav-link" data-i18n="nav_models">Phiên bản</a>
+        <a href="#contact" class="nav-link" data-i18n="nav_contact">Liên hệ</a>
+      </nav>
+
+      <div class="header-right">
+        <!-- Language Switcher (I18n) -->
+        <button class="btn-lang" id="btnLang" title="Chuyển đổi ngôn ngữ / Switch language">
+          <i class="fa-solid fa-globe"></i> <span id="currentLangLabel">VI</span>
+        </button>
+        <a href="#models" class="btn btn-gold btn-header" data-i18n="btn_preorder">Đặt trước ngay</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu Mobile">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Background Video / Canvas overlay -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-media">
+      <div class="hero-video-fallback"></div>
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content reveal-on-scroll">
+      <span class="badge-luxury" data-i18n="hero_badge">ĐỈNH CAO THIẾT KẾ & CÔNG NGHỆ 2026</span>
+      <h1 class="hero-title" data-i18n="hero_title">Tương Lai Di Chuyển Thông Minh Đích Thực</h1>
+      <p class="hero-slogan" data-i18n="hero_slogan">
+        Đột phá với hệ thống pin trạng thái rắn siêu sạc 15 phút, phạm vi di chuyển 950km và trí tuệ nhân tạo tự hành cấp độ 4 độc quyền.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#gallery" class="btn btn-gold" data-i18n="hero_btn_explore">
+          <i class="fa-solid fa-compass"></i> Khám Phá Ngay
+        </a>
+        <a href="#specs" class="btn btn-glass" data-i18n="hero_btn_specs">
+          <i class="fa-solid fa-sliders"></i> Xem Thông Số
+        </a>
+      </div>
+    </div>
+
+    <a href="#about" class="scroll-down-indicator" aria-label="Cuộn xuống">
+      <i class="fa-solid fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal-on-scroll">
+          <span class="section-tag" data-i18n="about_tag">TRIẾT LÝ SÁNG TẠO</span>
+          <h2 class="section-title" data-i18n="about_title">Biểu Tượng Của Phong Cách Sống Không Phát Thải</h2>
+          <p data-i18n="about_desc1">
+            Tại AURA, chúng tôi tái định nghĩa trải nghiệm lái xe bằng sự hòa quyện hoàn hảo giữa nghệ thuật thủ công tinh xảo, vật liệu thân thiện môi trường và sức mạnh điện hóa tiên tiến bậc nhất thế giới.
+          </p>
+          <p data-i18n="about_desc2">
+            Mỗi chi tiết trên chiếc AURA Hyper-GT đều được trau chuốt tỉ mỉ từ nhôm tái chế hàng không đến da sinh học cao cấp, đem lại cảm giác sang trọng tột cùng mà vẫn trọn vẹn trách nhiệm với hành tinh.
+          </p>
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-num">950<small>km</small></span>
+              <span class="stat-lbl" data-i18n="stat_range">Hành trình 1 lần sạc</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">2.4<small>giây</small></span>
+              <span class="stat-lbl" data-i18n="stat_accel">Tăng tốc 0 - 100km/h</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">15<small>phút</small></span>
+              <span class="stat-lbl" data-i18n="stat_charge">Sạc siêu tốc 10-80%</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-media reveal-on-scroll">
+          <div class="glass-media-card">
+            <div class="media-placeholder car-silhouette">
+              <i class="fa-solid fa-car-side car-large-icon"></i>
+              <div class="media-accent-glow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features: Green Battery & Autonomous AI -->
+  <section class="section features-section" id="features">
+    <div class="container">
+      <div class="section-center-head reveal-on-scroll">
+        <span class="section-tag" data-i18n="feat_tag">CÔNG NGHỆ DẪN ĐẦU</span>
+        <h2 class="section-title" data-i18n="feat_title">Pin Xanh Nguyên Khối & Trí Tuệ Tự Hành AI Cấp Độ 4</h2>
+        <p class="section-sub" data-i18n="feat_sub">
+          Được trang bị chip xử lý thần kinh 1000 TOPS và tế bào pin Solid-State thế hệ mới nhất, AURA tự tin đưa bạn đến mọi đích đến an toàn tuyệt đối.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card glass-card reveal-on-scroll">
+          <div class="feat-icon"><i class="fa-solid fa-battery-bolt"></i></div>
+          <h3 data-i18n="feat_1_title">Pin Xanh Solid-State 120 kWh</h3>
+          <p data-i18n="feat_1_desc">Khả năng chống suy giảm tuổi thọ tới 1.000.000 km, loại bỏ hoàn toàn nguy cơ cháy nổ nhờ dung môi điện phân dạng rắn tiên phong.</p>
+        </div>
+        <div class="feature-card glass-card reveal-on-scroll">
+          <div class="feat-icon"><i class="fa-solid fa-robot"></i></div>
+          <h3 data-i18n="feat_2_title">AURA Copilot Tự Hành Cấp Độ 4</h3>
+          <p data-i18n="feat_2_desc">12 cảm biến LiDAR, 16 camera độ phân giải 8K và radar mmWave giúp xe tự hành mượt mà trong mọi điều kiện thời tiết khắc nghiệt.</p>
+        </div>
+        <div class="feature-card glass-card reveal-on-scroll">
+          <div class="feat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3 data-i18n="feat_3_title">Khung Gầm Titanium Siêu Cường</h3>
+          <p data-i18n="feat_3_desc">Đạt chuẩn an toàn 5 sao Euro NCAP cao nhất, bảo vệ toàn diện khoang cabin trước mọi xung lực va chạm đa hướng.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Showroom Gallery (Color Switcher) -->
+  <section class="section gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-center-head reveal-on-scroll">
+        <span class="section-tag" data-i18n="gallery_tag">SHOWROOM TƯƠNG TÁC</span>
+        <h2 class="section-title" data-i18n="gallery_title">Chiêm Ngưỡng Từng Tông Màu Kiệt Tác</h2>
+        <p class="section-sub" data-i18n="gallery_sub">Lựa chọn màu sắc ngoại thất phản chiếu cá tính quyền uy của chủ nhân.</p>
+      </div>
+
+      <div class="gallery-display glass-card reveal-on-scroll">
+        <div class="car-display-stage" id="carStage">
+          <div class="car-visual-box" id="carVisual">
+            <!-- Simulated dynamic car frame with glowing livery -->
+            <div class="car-render car-color-gold" id="carRender">
+              <i class="fa-solid fa-car-side"></i>
+              <div class="car-render-badge" id="carColorName">Imperial Gold (Vàng Hoàng Gia)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="color-picker-strip">
+          <span class="pick-label" data-i18n="color_picker_label">Chọn màu sắc ngoại thất:</span>
+          <div class="color-options">
+            <button class="color-dot dot-gold active" data-color="gold" title="Imperial Gold (Vàng Hoàng Gia)"></button>
+            <button class="color-dot dot-black" data-color="black" title="Onyx Black (Đen Huyền Bí)"></button>
+            <button class="color-dot dot-white" data-color="white" title="Pearl White (Trắng Ngọc Trai)"></button>
+            <button class="color-dot dot-crimson" data-color="crimson" title="Crimson Red (Đỏ Rực Rỡ)"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Specs: Tabs & Accordion -->
+  <section class="section specs-section" id="specs">
+    <div class="container">
+      <div class="section-center-head reveal-on-scroll">
+        <span class="section-tag" data-i18n="specs_tag">BẢNG DỮ LIỆU KỸ THUẬT</span>
+        <h2 class="section-title" data-i18n="specs_title">Thông Số Hiệu Năng Vượt Trội</h2>
+      </div>
+
+      <div class="specs-wrapper glass-card reveal-on-scroll">
+        <!-- Tabs Navigation -->
+        <div class="specs-tabs">
+          <button class="tab-btn active" data-tab="tab-power"><i class="fa-solid fa-bolt"></i> <span data-i18n="tab_power">Động Cơ & Vận Hành</span></button>
+          <button class="tab-btn" data-tab="tab-dimension"><i class="fa-solid fa-ruler-combined"></i> <span data-i18n="tab_dimension">Kích Thước & Khung Gầm</span></button>
+          <button class="tab-btn" data-tab="tab-comfort"><i class="fa-solid fa-couch"></i> <span data-i18n="tab_comfort">Tiện Nghi & Nội Thất</span></button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="tab-content-panel active" id="tab-power">
+          <div class="accordion-item open">
+            <div class="accordion-header">
+              <span data-i18n="spec_motor_title">Hệ thống động cơ điện Tri-Motor AWD</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p data-i18n="spec_motor_desc">Trang bị 3 mô tơ điện nam châm vĩnh cửu độc lập, tổng công suất cực đại 1,020 mã lực, mô-men xoắn tức thời 1,420 Nm giúp xe tăng tốc 0-100km/h chỉ trong 2.4 giây.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span data-i18n="spec_battery_title">Hệ thống pin và công nghệ sạc cực nhanh 800V</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p data-i18n="spec_battery_desc">Kiến trúc điện áp cao 800V Silicon Carbide hỗ trợ công suất sạc DC lên đến 350 kW, nạp đủ 400km hành trình chỉ sau đúng 15 phút cắm sạc.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content-panel" id="tab-dimension">
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span data-i18n="spec_size_title">Kích thước tổng thể D x R x C</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p data-i18n="spec_size_desc">4,990 mm x 1,980 mm x 1,420 mm. Chiều dài cơ sở 3,020 mm mang lại không gian để chân rộng rãi cho hàng ghế ông chủ phía sau.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span data-i18n="spec_suspension_title">Treo khí nén thích ứng thông minh (Air Suspension)</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p data-i18n="spec_suspension_desc">Hệ thống camera quét mặt đường trước 15m với tần số 1000 lần/giây để tự động điều chỉnh độ cứng và nâng hạ gầm xe theo từng gờ giảm tốc.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content-panel" id="tab-comfort">
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span data-i18n="spec_sound_title">Âm thanh vòm Burmester 3D 24 loa</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+              <p data-i18n="spec_sound_desc">Công suất 1,600W tích hợp công nghệ chống ồn chủ động chủ động qua micro trần xe, mang lại không gian tĩnh lặng như thính phòng nhạc kịch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Car Models / Versions Showcase (With Filter & Pricing) -->
+  <section class="section models-section" id="models">
+    <div class="container">
+      <div class="section-center-head reveal-on-scroll">
+        <span class="section-tag" data-i18n="models_tag">CÁC PHIÊN BẢN</span>
+        <h2 class="section-title" data-i18n="models_title">Lựa Chọn Phiên Bản Xứng Tầm</h2>
+      </div>
+
+      <div class="models-grid">
+        <!-- Standard Model -->
+        <div class="model-card glass-card reveal-on-scroll">
+          <div class="model-header">
+            <span class="model-badge" data-i18n="ver_std">Tiêu Chuẩn (Standard)</span>
+            <div class="model-price">$78,000</div>
+          </div>
+          <p class="model-desc" data-i18n="ver_std_desc">Lựa chọn lý tưởng cho việc di chuyển đô thị hiện đại với phạm vi 650km, mâm đúc 20 inch và gói tự hành Autopilot cấp 2.</p>
+          <ul class="model-features">
+            <li><i class="fa-solid fa-check"></i> <span data-i18n="std_feat_1">Động cơ đơn RWD 350 HP</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-i18n="std_feat_2">Tăng tốc 0-100km/h: 5.2s</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-i18n="std_feat_3">Màn hình giải trí OLED 15.6 inch</span></li>
+          </ul>
+          <button class="btn btn-glass btn-block btn-select-model" data-model="Standard" data-i18n="btn_choose">Chọn Phiên Bản Này</button>
+        </div>
+
+        <!-- Advanced Model -->
+        <div class="model-card glass-card featured reveal-on-scroll">
+          <div class="popular-ribbon" data-i18n="ribbon_popular">Bán chạy nhất</div>
+          <div class="model-header">
+            <span class="model-badge" data-i18n="ver_adv">Nâng Cao (Advanced)</span>
+            <div class="model-price">$105,000</div>
+          </div>
+          <p class="model-desc" data-i18n="ver_adv_desc">Sự cân bằng hoàn hảo giữa sức mạnh thể thao dẫn động 4 bánh toàn thời gian AWD và tiện nghi cao cấp vượt trội.</p>
+          <ul class="model-features">
+            <li><i class="fa-solid fa-check"></i> <span data-i18n="adv_feat_1">Động cơ kép Dual-Motor AWD 680 HP</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-i18n="adv_feat_2">Tăng tốc 0-100km/h: 3.4s</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-i18n="adv_feat_3">Tự hành AURA Copilot cấp 3</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-i18n="adv_feat_4">Treo khí nén thích ứng thông minh</span></li>
+          </ul>
+          <button class="btn btn-gold btn-block btn-select-model" data-model="Advanced" data-i18n="btn_choose">Chọn Phiên Bản Này</button>
+        </div>
+
+        <!-- Luxury Model -->
+        <div class="model-card glass-card reveal-on-scroll">
+          <div class="model-header">
+            <span class="model-badge" data-i18n="ver_lux">Cao Cấp (Luxury Flagship)</span>
+            <div class="model-price">$142,000</div>
+          </div>
+          <p class="model-desc" data-i18n="ver_lux_desc">Kiệt tác tối thượng sở hữu 1,020 mã lực, nội thất bọc da Nappa thủ công và trần xe mô phỏng dải ngân hà đầy mê hoặc.</p>
+          <ul class="model-features">
+            <li><i class="fa-solid fa-check"></i> <span data-i18n="lux_feat_1">Tri-Motor Hyper AWD 1,020 HP</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-i18n="lux_feat_2">Tăng tốc 0-100km/h: 2.4s</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-i18n="lux_feat_3">Tự hành cấp độ 4 hoàn chỉnh</span></li>
+            <li><i class="fa-solid fa-check"></i> <span data-i18n="lux_feat_4">Hệ thống âm thanh Burmester 3D 24 loa</span></li>
+          </ul>
+          <button class="btn btn-glass btn-block btn-select-model" data-model="Luxury" data-i18n="btn_choose">Chọn Phiên Bản Này</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer & Contact Bar -->
+  <footer class="footer" id="contact">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="#hero" class="brand-logo"><span class="gold-text">AURA</span> MOTORS</a>
+        <p class="footer-about" data-i18n="footer_about">
+          Tiên phong kiến tạo kỷ nguyên di chuyển xanh không khí thải với tinh hoa công nghệ điện hóa và trí tuệ nhân tạo.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer_links_title">Liên Kết Nhanh</h4>
+        <ul class="footer-links">
+          <li><a href="#hero" data-i18n="nav_home">Trang chủ</a></li>
+          <li><a href="#about" data-i18n="nav_about">Về thương hiệu</a></li>
+          <li><a href="#features" data-i18n="nav_features">Công nghệ pin</a></li>
+          <li><a href="#specs" data-i18n="nav_specs">Thông số kỹ thuật</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer_contact_title">Tổng Đài & Showroom</h4>
+        <p><i class="fa-solid fa-location-dot"></i> Showroom AURA Flagship, Quận 1, TP. Hồ Chí Minh</p>
+        <p><i class="fa-solid fa-phone"></i> Hotline VIP: 1800 6868 (24/7)</p>
+        <p><i class="fa-solid fa-envelope"></i> Email: concierge@auramotors.vn</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AURA Motors Luxury Electric Vehicles. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- 10-Second Promo Modal (Points 9-10 feature) -->
+  <div class="promo-modal-overlay" id="promoModal">
+    <div class="promo-box glass-card">
+      <button class="promo-close" id="btnClosePromo">&times;</button>
+      <div class="promo-badge"><i class="fa-solid fa-gift"></i> ĐẶC QUYỀN VIP</div>
+      <h3 data-i18n="promo_title">Món Quà Tri Ân Khách Hàng Thượng Lưu</h3>
+      <p data-i18n="promo_desc">
+        Chúc mừng bạn đã dành thời gian khám phá AURA Motors! Nhận ngay mã voucher giảm trực tiếp <strong>10%</strong> giá trị gói sạc pin siêu tốc trọn đời khi đặt cọc trong hôm nay:
+      </p>
+      <div class="promo-code-box">
+        <span class="code-text" id="promoCodeText">AURA-LUXURY-10</span>
+        <button class="btn btn-sm btn-gold" id="btnCopyPromo"><i class="fa-regular fa-copy"></i> Sao chép</button>
+      </div>
+      <button class="btn btn-gold btn-block" id="btnClaimPromo" data-i18n="promo_btn">Áp Dụng Đặt Cọc Ngay</button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

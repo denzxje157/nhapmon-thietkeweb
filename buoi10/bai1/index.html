@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personalized AI Dashboard - Quản lý tác vụ cá nhân</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Mobile Sidebar Toggle -->
+    <button class="mobile-toggle" id="sidebarToggle" aria-label="Đóng mở Sidebar">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <i class="fa-solid fa-brain brand-icon"></i>
+        <h2>AI Dashboard</h2>
+      </div>
+
+      <div class="sidebar-search">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Tìm kiếm công việc...">
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Bộ lọc công việc</div>
+        <button class="nav-item active" data-filter="all">
+          <i class="fa-solid fa-layer-group"></i> Tất cả <span class="badge" id="countAll">0</span>
+        </button>
+        <button class="nav-item" data-filter="pending">
+          <i class="fa-regular fa-clock"></i> Chưa xong <span class="badge" id="countPending">0</span>
+        </button>
+        <button class="nav-item" data-filter="completed">
+          <i class="fa-solid fa-check-double"></i> Đã hoàn thành <span class="badge" id="countCompleted">0</span>
+        </button>
+
+        <div class="nav-section-title">Theo mức độ</div>
+        <button class="nav-item" data-priority="high">
+          <i class="fa-solid fa-circle text-danger"></i> Quan trọng <span class="badge" id="countHigh">0</span>
+        </button>
+        <button class="nav-item" data-priority="medium">
+          <i class="fa-solid fa-circle text-warning"></i> Bình thường <span class="badge" id="countMedium">0</span>
+        </button>
+        <button class="nav-item" data-priority="low">
+          <i class="fa-solid fa-circle text-success"></i> Thấp <span class="badge" id="countLow">0</span>
+        </button>
+      </nav>
+
+      <!-- Tin tức thông báo -->
+      <div class="sidebar-news glass-card">
+        <h4><i class="fa-solid fa-bell"></i> Thông báo</h4>
+        <p>Lịch thi học kỳ sắp tới sẽ bắt đầu vào tuần sau. Hãy hoàn thành các mục tiêu học tập đúng hạn!</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="dashboard-header glass-card">
+        <div class="user-greeting">
+          <h1 id="greetingText">Chào bạn, hôm nay bạn thế nào?</h1>
+          <p class="subtitle">Chúc bạn một ngày làm việc hiệu quả và tràn đầy năng lượng!</p>
+        </div>
+        <div class="header-actions">
+          <div class="clock-display" id="clockDisplay">
+            <i class="fa-regular fa-clock"></i> <span>00:00:00</span>
+          </div>
+          <button class="theme-toggle" id="themeToggle" title="Chuyển chế độ Sáng / Tối">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Stat Cards -->
+      <section class="stats-grid">
+        <div class="stat-card glass-card">
+          <div class="stat-icon bg-blue"><i class="fa-solid fa-users"></i></div>
+          <div class="stat-info">
+            <span class="stat-title">Tổng sinh viên theo dõi</span>
+            <span class="stat-value">5 thành viên</span>
+          </div>
+        </div>
+        <div class="stat-card glass-card">
+          <div class="stat-icon bg-green"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="stat-info">
+            <span class="stat-title">Tỉ lệ hoàn thành mục tiêu</span>
+            <span class="stat-value" id="completionRate">0%</span>
+          </div>
+        </div>
+        <div class="stat-card glass-card">
+          <div class="stat-icon bg-purple"><i class="fa-solid fa-book-open"></i></div>
+          <div class="stat-info">
+            <span class="stat-title">Số lớp đang mở</span>
+            <span class="stat-value">4 Lớp học phần</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Task Manager Card -->
+      <section class="task-section glass-card">
+        <div class="section-header">
+          <h2><i class="fa-solid fa-list-check"></i> Quản lý công việc</h2>
+          <div class="list-controls">
+            <!-- Sort -->
+            <select id="sortBy" class="glass-select">
+              <option value="date-desc">Mới nhất trước</option>
+              <option value="date-asc">Cũ nhất trước</option>
+              <option value="title-asc">Tên (A-Z)</option>
+              <option value="title-desc">Tên (Z-A)</option>
+              <option value="priority-desc">Ưu tiên cao nhất</option>
+            </select>
+            <!-- Page Size -->
+            <select id="pageSize" class="glass-select">
+              <option value="10">10 / trang</option>
+              <option value="20">20 / trang</option>
+              <option value="50">50 / trang</option>
+              <option value="all">Tất cả</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Input Section -->
+        <form id="taskForm" class="task-input-box">
+          <input type="text" id="taskTitle" placeholder="Nhập tên công việc mới..." autocomplete="off">
+          <select id="taskPriority" class="glass-select">
+            <option value="high">Quan trọng</option>
+            <option value="medium" selected>Bình thường</option>
+            <option value="low">Thấp</option>
+          </select>
+          <button type="submit" class="btn btn-primary" id="btnAddTask">
+            <i class="fa-solid fa-plus"></i> Thêm
+          </button>
+        </form>
+
+        <!-- Task List -->
+        <ul class="task-list" id="taskList">
+          <!-- Rendered dynamically -->
+        </ul>
+
+        <!-- Empty state message -->
+        <div id="emptyState" class="empty-state" style="display: none;">
+          <i class="fa-regular fa-clipboard"></i>
+          <p>Không có công việc nào phù hợp</p>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination-wrapper" id="paginationWrapper">
+          <span class="page-info" id="pageInfo">Trang 1 / 1</span>
+          <div class="pagination-buttons">
+            <button class="btn btn-sm" id="btnPrevPage"><i class="fa-solid fa-chevron-left"></i> Trước</button>
+            <button class="btn btn-sm" id="btnNextPage">Sau <i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Footer info -->
+        <footer class="task-footer">
+          <span>Tổng số công việc: <strong id="totalTaskCount">0</strong></span>
+          <span>Đã hoàn thành: <strong id="completedTaskCount">0</strong></span>
+        </footer>
+      </section>
+
+      <!-- Mock Data: Sinh viên tiêu biểu (Theo đề bài) -->
+      <section class="students-section glass-card">
+        <h3><i class="fa-solid fa-graduation-cap"></i> Danh sách sinh viên tiêu biểu phụ trách</h3>
+        <div class="table-responsive">
+          <table class="glass-table">
+            <thead>
+              <tr>
+                <th>Họ tên</th>
+                <th>MSSV</th>
+                <th>Điểm TB</th>
+                <th>Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nguyễn Văn Phúc</strong></td>
+                <td>20260101</td>
+                <td>8.9</td>
+                <td><span class="status-badge status-active">Đang học</span></td>
+              </tr>
+              <tr>
+                <td><strong>Trần Gia Bảo</strong></td>
+                <td>20260102</td>
+                <td>8.5</td>
+                <td><span class="status-badge status-active">Đang học</span></td>
+              </tr>
+              <tr>
+                <td><strong>Lê Thị Kim Ngân</strong></td>
+                <td>20260103</td>
+                <td>9.2</td>
+                <td><span class="status-badge status-active">Đang học</span></td>
+              </tr>
+              <tr>
+                <td><strong>Phạm Hoàng Anh</strong></td>
+                <td>20260104</td>
+                <td>7.8</td>
+                <td><span class="status-badge status-active">Đang học</span></td>
+              </tr>
+              <tr>
+                <td><strong>Đặng Quốc Huy</strong></td>
+                <td>20260105</td>
+                <td>4.8</td>
+                <td><span class="status-badge status-warning">Cảnh báo</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

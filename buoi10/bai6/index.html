@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA Immersive Experience - Tương Tác Chuyển Động Đỉnh Cao</title>
+  <!-- Google Fonts: Syne & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <!-- Custom Cursor & Meteor Trail (3-5 trailing circles) -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-circle" id="cursorCircle"></div>
+  <div class="cursor-trail" id="trail1"></div>
+  <div class="cursor-trail" id="trail2"></div>
+  <div class="cursor-trail" id="trail3"></div>
+  <div class="cursor-trail" id="trail4"></div>
+
+  <!-- Smooth Navigation Header -->
+  <header class="header glass-card">
+    <a href="#hero" class="nav-brand">
+      <i class="fa-solid fa-atom"></i> <span>AURA</span> IMMERSIVE
+    </a>
+    <nav class="nav-links">
+      <a href="#hero" class="nav-link active">Khởi Đầu</a>
+      <a href="#quotes" class="nav-link">Triết Lý</a>
+      <a href="#interactive" class="nav-link">Nút Nam Châm</a>
+      <a href="#depth" class="nav-link">Chiều Sâu Parallax</a>
+    </nav>
+    <div class="header-status">
+      <span class="fps-badge" id="fpsDisplay"><i class="fa-solid fa-bolt"></i> 60 FPS</span>
+      <button class="btn-motion-toggle" id="btnMotionToggle" title="Bật/Tắt hiệu ứng chuyển động giảm thiểu">
+        <i class="fa-solid fa-person-running"></i> <span id="motionLabel">Full Motion</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section with Parallax Depth -->
+  <section class="section hero-section" id="hero">
+    <!-- Parallax Background Layers -->
+    <div class="parallax-bg-layer" id="parallaxLayer">
+      <div class="parallax-circle circle-1"></div>
+      <div class="parallax-circle circle-2"></div>
+      <div class="parallax-grid"></div>
+    </div>
+
+    <div class="hero-content">
+      <span class="badge-pill">TRẢI NGHIỆM TƯƠNG TÁC 60FPS</span>
+      <h1 class="hero-headline text-reveal" id="heroHeadline">
+        Chạm Vào Tương Lai Của Công Nghệ & Chuyển Động
+      </h1>
+      <p class="hero-desc typewriter-text" id="typewriterText">
+        <!-- Animated via JS typewriter -->
+      </p>
+
+      <!-- Magnetic Buttons Group -->
+      <div class="magnetic-container">
+        <button class="magnetic-btn btn-primary" id="btnExplore">
+          <span class="btn-text">Khám Phá Chiều Không Gian</span>
+          <span class="btn-bubble"></span>
+        </button>
+        <button class="magnetic-btn btn-glass" id="btnInteract">
+          <span class="btn-text">Tương Tác Nam Châm</span>
+          <span class="btn-bubble"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: 5 Philosophical Quotes on Creativity & Technology (Scroll Reveal) -->
+  <section class="section quotes-section" id="quotes">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">TRIẾT LÝ SÁNG TẠO</span>
+        <h2>5 Định Đề Về Nghệ Thuật Và Công Nghệ</h2>
+        <p>Mỗi câu nói được hé lộ qua hiệu ứng xuất hiện từng chữ (Scroll Reveal) khi người dùng cuộn tới.</p>
+      </div>
+
+      <div class="quotes-grid">
+        <div class="quote-card glass-card reveal-card">
+          <div class="quote-num">01</div>
+          <p class="quote-text">"Sáng tạo không bao giờ có giới hạn cuối cùng."</p>
+          <span class="quote-author">Triết lý thiết kế AURA</span>
+        </div>
+        <div class="quote-card glass-card reveal-card">
+          <div class="quote-num">02</div>
+          <p class="quote-text">"Công nghệ hiện đại định hình lại tương lai nhân loại."</p>
+          <span class="quote-author">Kỷ nguyên Trí tuệ Nhân tạo</span>
+        </div>
+        <div class="quote-card glass-card reveal-card">
+          <div class="quote-num">03</div>
+          <p class="quote-text">"Chuyển động mượt mà là linh hồn của tương tác số."</p>
+          <span class="quote-author">Chuẩn mực 60 FPS GPU</span>
+        </div>
+        <div class="quote-card glass-card reveal-card">
+          <div class="quote-num">04</div>
+          <p class="quote-text">"Sự đơn giản đỉnh cao chính là tinh hoa của phức tạp."</p>
+          <span class="quote-author">Leonardo da Vinci</span>
+        </div>
+        <div class="quote-card glass-card reveal-card">
+          <div class="quote-num">05</div>
+          <p class="quote-text">"Mã nguồn sạch là kiệt tác nghệ thuật thời đại mới."</p>
+          <span class="quote-author">Vibe Coding 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Magnetic Interaction Playground -->
+  <section class="section interactive-section" id="interactive">
+    <div class="container">
+      <div class="interactive-stage glass-card">
+        <span class="section-tag">MAGNETIC INTERACTION</span>
+        <h2>Thử Nghiệm Lực Hút Nam Châm & Đuôi Sao Băng</h2>
+        <p>Rê chuột lại gần các nút bấm bên dưới trong bán kính 100px để cảm nhận hiệu ứng "hút" đàn hồi mượt mà.</p>
+
+        <div class="magnetic-playground">
+          <button class="magnetic-btn btn-neon neon-purple">
+            <span class="btn-text"><i class="fa-solid fa-wand-magic-sparkles"></i> Lực Hút Cực Mạnh</span>
+          </button>
+          <button class="magnetic-btn btn-neon neon-cyan">
+            <span class="btn-text"><i class="fa-solid fa-magnet"></i> Trọng Trường Số</span>
+          </button>
+          <button class="magnetic-btn btn-neon neon-gold">
+            <span class="btn-text"><i class="fa-solid fa-meteor"></i> Đuôi Sao Băng</span>
+          </button>
+        </div>
+
+        <div class="interaction-hint">
+          <small><i class="fa-solid fa-computer-mouse"></i> Trên điện thoại: Tự động chuyển đổi sang hiệu ứng chạm cảm ứng Touch Feedback.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Parallax Depth Showcase -->
+  <section class="section depth-section" id="depth">
+    <div class="container">
+      <div class="depth-card glass-card">
+        <div class="depth-text">
+          <span class="section-tag">CHIỀU SÂU 3D</span>
+          <h2>Parallax Scroll & Nội Suy Tuyến Tính (LERP)</h2>
+          <p>
+            Sử dụng công thức toán học nội suy tuyến tính: <code>current = current + (target - current) * 0.1</code> kết hợp cùng <code>requestAnimationFrame()</code> và <code>will-change: transform</code> để GPU tối ưu hóa từng khung hình.
+          </p>
+        </div>
+        <div class="depth-graphic">
+          <div class="cube-visual" id="cubeVisual">
+            <div class="cube-inner">
+              <i class="fa-solid fa-cube"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 AURA Immersive Experience. Thiết kế tối ưu GPU với chuẩn chuyển động 60FPS.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Style Explorer - Dynamic Theme Showcase</title>
+  <!-- Google Fonts: Space Grotesk, Montserrat, Orbitron, Cinzel, Quicksand -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="theme-eco light-mode">
+  <!-- Fixed Floating Theme Toolbar -->
+  <aside class="theme-toolbar glass-card" id="themeToolbar">
+    <div class="toolbar-head">
+      <i class="fa-solid fa-palette"></i>
+      <span>Theme Engine</span>
+      <button class="toolbar-collapse-btn" id="btnCollapseToolbar" title="Thu gọn / Mở rộng">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- Dark/Light Mode Switch -->
+    <div class="toolbar-section">
+      <span class="toolbar-lbl">Chế độ hiển thị:</span>
+      <button class="mode-switch-btn" id="btnModeToggle">
+        <span class="mode-icon"><i class="fa-solid fa-sun"></i></span>
+        <span class="mode-text" id="modeText">Light Mode</span>
+      </button>
+    </div>
+
+    <!-- 3 Brand Themes Selector -->
+    <div class="toolbar-section">
+      <span class="toolbar-lbl">Bộ Theme Thương Hiệu:</span>
+      <div class="theme-buttons-grid">
+        <button class="btn-theme-select active" data-theme="eco">
+          <i class="fa-solid fa-leaf"></i> Eco Green
+        </button>
+        <button class="btn-theme-select" data-theme="luxury">
+          <i class="fa-solid fa-crown"></i> Luxury Gold
+        </button>
+        <button class="btn-theme-select" data-theme="cyberpunk">
+          <i class="fa-solid fa-microchip"></i> Cyberpunk Pink
+        </button>
+      </div>
+    </div>
+
+    <!-- Custom Color Picker (Points 9-10) -->
+    <div class="toolbar-section">
+      <span class="toolbar-lbl">Tùy biến màu chủ đạo:</span>
+      <div class="color-picker-row">
+        <input type="color" id="customColorPicker" value="#10b981">
+        <span class="color-hex-label" id="colorHexLabel">#10b981</span>
+        <button class="btn-reset-color" id="btnResetColor" title="Đặt lại màu mặc định của Theme">
+          <i class="fa-solid fa-rotate-left"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Auto System Match Info -->
+    <div class="toolbar-footer">
+      <small><i class="fa-solid fa-circle-info"></i> Tự động nhận diện theme hệ thống OS</small>
+    </div>
+  </aside>
+
+  <!-- Main Website Container -->
+  <div class="site-wrapper">
+    <!-- Navigation Bar -->
+    <header class="site-header glass-card">
+      <div class="header-brand">
+        <i class="brand-dynamic-icon fa-solid fa-leaf" id="brandIcon"></i>
+        <span class="brand-title" id="brandTitle">TERRA ECO</span>
+      </div>
+      <nav class="header-nav">
+        <a href="#hero" class="active">Khám Phá</a>
+        <a href="#showcase">Trưng Bày</a>
+        <a href="#features">Đặc Điểm</a>
+        <a href="#cta">Hành Động</a>
+      </nav>
+      <button class="btn btn-primary" id="headerCtaBtn">Trải Nghiệm</button>
+    </header>
+
+    <!-- Dynamic Hero Banner with Image & Content Synchronization -->
+    <section class="hero-section glass-card" id="hero">
+      <div class="hero-grid">
+        <div class="hero-text-col">
+          <span class="theme-chip" id="heroChip">BẢO VỆ MÔI TRƯỜNG & SỐNG XANH</span>
+          <h1 class="hero-headline" id="heroHeadline">Kiến Tạo Tương Lai Bền Vững Cùng Thiên Nhiên</h1>
+          <p class="hero-subtext" id="heroSubtext">
+            Chung tay bảo vệ hệ sinh thái toàn cầu bằng những giải pháp năng lượng tái tạo và vật liệu sinh học tuần hoàn, hướng đến hành tinh xanh không rác thải.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" id="heroPrimaryBtn">
+              <i class="fa-solid fa-arrow-right"></i> Tham Gia Ngay
+            </button>
+            <button class="btn btn-outline" id="heroSecondaryBtn">
+              <i class="fa-regular fa-compass"></i> Tìm Hiểu Thêm
+            </button>
+          </div>
+        </div>
+
+        <!-- Banner Visual Representation -->
+        <div class="hero-visual-col">
+          <div class="banner-stage" id="bannerStage">
+            <div class="banner-graphic-card">
+              <div class="banner-icon-large" id="bannerGraphicIcon">
+                <i class="fa-solid fa-seedling"></i>
+              </div>
+              <div class="banner-caption" id="bannerCaption">Hệ sinh thái tuần hoàn Organic Green</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Showcase Section (Cards with Dynamic CSS Variables) -->
+    <section class="section showcase-section" id="showcase">
+      <div class="section-title-wrap">
+        <span class="section-badge">BỘ SƯU TẬP THEME</span>
+        <h2>Trực Quan Hóa Hệ Thống Biến CSS Variables</h2>
+        <p>Mọi thành phần: màu nhấn, font chữ, độ bo góc, đổ bóng đều được điều khiển tức thời qua CSS :root variables.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card glass-card">
+          <div class="card-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h3 id="card1Title">Thiết Kế Thích Ứng</h3>
+          <p id="card1Desc">Hệ thống CSS Variables tự động cập nhật độ tương phản chuẩn WCAG khi người dùng chuyển đổi qua lại giữa Dark và Light mode.</p>
+          <a href="#" class="card-link">Xem chi tiết <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="card glass-card">
+          <div class="card-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+          <h3 id="card2Title">Hiệu Năng Đỉnh Cao</h3>
+          <p id="card2Desc">Chuyển đổi theme mượt mà trong 0.5 giây với transition: all 0.5s ease, không gây giật lag hay khựng khung hình.</p>
+          <a href="#" class="card-link">Xem chi tiết <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="card glass-card">
+          <div class="card-icon"><i class="fa-solid fa-database"></i></div>
+          <h3 id="card3Title">Ghi Nhớ Trạng Thái</h3>
+          <p id="card3Desc">LocalStorage lưu trữ chính xác lựa chọn Theme, Chế độ sáng tối và Mã màu Color Picker tự chọn của bạn sau mỗi lần tải lại trang.</p>
+          <a href="#" class="card-link">Xem chi tiết <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CSS Variables Inspector Box -->
+    <section class="inspector-section glass-card" id="features">
+      <h3><i class="fa-solid fa-code"></i> Giá trị các biến CSS :root đang áp dụng thời gian thực</h3>
+      <div class="variables-table">
+        <div class="var-row">
+          <code>--primary-color</code>
+          <div class="color-sample" id="samplePrimary"></div>
+          <span id="valPrimary">#10b981</span>
+        </div>
+        <div class="var-row">
+          <code>--bg-color</code>
+          <div class="color-sample" id="sampleBg"></div>
+          <span id="valBg">#f0fdf4</span>
+        </div>
+        <div class="var-row">
+          <code>--text-color</code>
+          <div class="color-sample" id="sampleText"></div>
+          <span id="valText">#064e3b</span>
+        </div>
+        <div class="var-row">
+          <code>--font-main</code>
+          <div class="font-sample" id="sampleFont">Quicksand</div>
+          <span id="valFont">'Quicksand', sans-serif</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>&copy; 2026 Brand Style Explorer with Dynamic Theme Engine & CSS Variables.</p>
+    </footer>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
